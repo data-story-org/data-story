@@ -1,4 +1,4 @@
-import Feature from '../../../../src/core/Feature';
+import { Feature } from '@data-story-org/core';
 import Aggregate from '../../../../src/server/nodes/Aggregate'
 import { when } from "../ServerNodeTester";
 

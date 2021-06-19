@@ -2,9 +2,6 @@
 # yarn lockfile v1
 
 
-"@ajthinking/core2@file:../core2":
-  version "0.1.0"
-
 "@babel/code-frame@^7.0.0":
   version "7.12.11"
   resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.12.11.tgz#f4ad435aa263db935b8f10f2c552d23fb716a63f"
@@ -1179,6 +1176,9 @@
   dependencies:
     exec-sh "^0.3.2"
     minimist "^1.2.0"
+
+"@data-story-org/core@file:../core":
+  version "0.1.0"
 
 "@discoveryjs/json-ext@^0.5.0":
   version "0.5.2"

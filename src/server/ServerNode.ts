@@ -1,6 +1,6 @@
 import ServerDiagram from "./ServerDiagram";
 import * as _ from "lodash";
-import Feature from "../core/Feature";
+import { Feature } from "@data-story-org/core";
 import UID from "../core/utils/UID";
 import NodeParameter from "../core/NodeParameter";
 

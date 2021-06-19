@@ -1,4 +1,4 @@
-import Feature from '../../../src/core/Feature'
+import { Feature } from '@data-story-org/core'
 
 test('a Feature can be instantiate from various types', () => {
     [

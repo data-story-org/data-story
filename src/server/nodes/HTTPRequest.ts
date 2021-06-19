@@ -1,6 +1,6 @@
 import ServerNode from "../ServerNode";
 import axios from 'axios';
-import Feature from "../../core/Feature";
+import { Feature } from "@data-story-org/core";
 import NodeParameter from "../../core/NodeParameter";
 
 export default class HTTPRequest extends ServerNode {

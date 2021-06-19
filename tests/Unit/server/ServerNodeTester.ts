@@ -1,6 +1,6 @@
 import DiagramModel from "../../../src/core/DiagramModel"
 import { DiagramModelBuilder } from "../../../src/core/DiagramModelBuilder"
-import Feature from "../../../src/core/Feature"
+import { Feature } from "@data-story-org/core"
 import OutputProvider from "../../../src/server/nodes/OutputProvider"
 import Server from "../../../src/server/Server"
 import ServerDiagram from "../../../src/server/ServerDiagram"

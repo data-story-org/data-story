@@ -1,6 +1,6 @@
 import ServerNode from "../ServerNode";
 import NodeParameter from "../../core/NodeParameter";
-import Feature from "../../core/Feature";
+import { Feature } from "@data-story-org/core";
 
 const placeholder =
 `// PER FEATURE mode gives you access to variables: previous, current and next, ie

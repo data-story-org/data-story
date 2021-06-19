@@ -1,6 +1,6 @@
 import ServerNode from "../ServerNode";
 import NodeParameter from "../../core/NodeParameter";
-import Feature from "../../core/Feature";
+import { Feature } from "@data-story-org/core";
 
 export default class OutputProvider extends ServerNode {
 	constructor(options = {}) {
