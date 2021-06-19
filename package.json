@@ -55,7 +55,6 @@
         "typescript": "^4.2.2"
     },
     "dependencies": {
-        "@ajthinking/core2": "file:../core2",
         "@babel/plugin-proposal-decorators": "^7.12.1",
         "@babel/plugin-transform-modules-commonjs": "^7.13.8",
         "@emotion/react": "^11.1.5",
