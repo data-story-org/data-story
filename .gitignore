@@ -1,0 +1,12 @@
+.env
+.idea/
+.idea
+.vscode/
+notes/notes.md
+notes/reflections.md
+sketches/
+vendor/
+node_modules/
+package-lock.json
+composer.lock
+tinker.ts

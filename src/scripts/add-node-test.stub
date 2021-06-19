@@ -1,0 +1,12 @@
+import NODE_NAME from '../../../../src/server/nodes/NODE_NAME'
+import { when } from "../ServerNodeTester";
+
+it('DESCRIPTION', async () => {
+	throw 'Please finish tests for node NODE_NAME'
+	
+    await when(NODE_NAME).hasDefaultParameters()
+		.assertCanRun()
+		.finish()
+	
+
+});
