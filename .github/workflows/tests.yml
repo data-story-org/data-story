@@ -10,4 +10,4 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Run js tests
-      run: yarn && yarn test
+      run: rm yarn.lock && yarn && yarn test
