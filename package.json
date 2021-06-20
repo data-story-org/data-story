@@ -43,7 +43,6 @@
         "jest": "^26.6.3",
         "jquery": "^3.2",
         "laravel-mix": "^6.0.0",
-        "lodash": "^4.17.21",
         "popper.js": "^1.12",
         "react": "^17.0.2",
         "react-dom": "^16.2.0",
@@ -55,6 +54,7 @@
         "typescript": "^4.2.2"
     },
     "dependencies": {
+        "lodash": "^4.17.21",		
         "@babel/plugin-proposal-decorators": "^7.12.1",
         "@babel/plugin-transform-modules-commonjs": "^7.13.8",
         "@data-story-org/core": "https://github.com/data-story-org/core",
