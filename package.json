@@ -34,7 +34,7 @@
         "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --config=node_modules/laravel-mix/setup/webpack.config.js",
         "test": "jest"
     },
-    "devDependencies": {
+    "dependencies": {
         "@babel/preset-react": "^7.0.0",
         "@types/jest": "^26.0.20",
         "axios": "^0.19",
@@ -51,9 +51,7 @@
         "sass-loader": "^8.0.0",
         "ts-jest": "^26.5.2",
         "ts-loader": "^8.0.17",
-        "typescript": "^4.2.2"
-    },
-    "dependencies": {
+        "typescript": "^4.2.2",
         "lodash": "^4.17.21",		
         "@babel/plugin-proposal-decorators": "^7.12.1",
         "@babel/plugin-transform-modules-commonjs": "^7.13.8",
