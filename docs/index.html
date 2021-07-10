@@ -8,10 +8,13 @@
     </head>
     <body class="bg-gray-700">
         <script>
-            window.dataStoryConfig = {
+			let params = (new URL(window.location)).searchParams
+
+            window.config = {
                 appName: 'DataStory',
                 appDesc: 'proof of concept',
-				client: 'LocalClient' // or APIClient
+				client: params.get('client') ?? 'LocalClient',
+				server: params.get('server'),
             }
         </script>
         <div id="app"></div>

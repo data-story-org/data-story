@@ -1,4 +1,4 @@
-import Server from '../../server/Server'
+import { Server } from '@data-story-org/core'
 import DiagramModel from '../DiagramModel';
 import ClientInterface from './ClientInterface';
 

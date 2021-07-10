@@ -3,9 +3,11 @@ import {nonCircularJsonStringify} from '../utils/nonCircularJsonStringify'
 import ClientInterface from './ClientInterface'
 
 export default class APIClient implements ClientInterface {
-    constructor(
-        public root: string = 'http://localhost:3000' // https://data-story-server.herokuapp.com
-    ) {}
+	public root = 'http://localhost:3000'   // https://data-story-server.herokuapp.com
+
+    constructor(root: string) {
+		if(root) this.root = root
+	}
 
     boot(options: object) : Promise<any>{
         return axios.post(this.root + '/boot', options)
@@ -20,6 +22,11 @@ export default class APIClient implements ClientInterface {
     }
 
     save(name, model) {
-        return new Promise(() => {})
+        return axios.post(this.root + '/save', {
+			name,
+            model: nonCircularJsonStringify(
+                model.serialize() 
+            )
+        })
     }
 }

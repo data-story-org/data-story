@@ -63,19 +63,41 @@ export default observer(class ConfigModal extends React.Component {
 
     renderBody()
     {
+		const servers = [
+			'/data-story/api',
+			'http://localhost:3000',
+			'https://data-story-server.herokuapp.com'
+		]
+
         return (
             <div>
                 <div className="w-full bg-gray-100 px-6 py-2">
                     <div className="flex flex-col my-4 justify-center align-middle text-gray-500 text-xs font-mono">
-						<String_
+						{/* <String_
 							key={'server'}
 							handleChange={() => {}}
 							options={{
 								name: 'Server URL',
 								description: 'leave blank for local server',
-								value: 'http://localhost:3000',
 							}}
-						/>
+						/> */}
+						<div className="mb-2">Reboot to connect to a API server</div>
+						<ul className="text-indigo-500">
+							{servers.map(server => {
+								return (
+									<div
+										className = 'cursor-pointer hover:text-indigo-600'
+										href={server}
+										key={server}
+										onClick={() => {
+											window.location = window.location.hostname + '?client=APIClient&server=' + server
+										}}
+									>
+										<li>{server}</li>
+									</div>
+								)
+							})}
+						</ul>
                     </div>
 
                 </div>

@@ -1,9 +1,8 @@
 import APIClient from './APIClient';
 import LocalClient from './LocalClient';
 
-const clients = {
-    APIClient,
-    LocalClient
-}
+export default (config) => {
+	if(config.client == 'APIClient') return new APIClient(config.server)
 
-export default (name: string) => new clients[name]
+	return new LocalClient
+}
