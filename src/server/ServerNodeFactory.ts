@@ -74,7 +74,7 @@ export default class ServerNodeFactory {
     }
 
     static hydrate(node: SerializedNodeModel, diagram = null) {
-		const type = this.find(node.serverNodeType)
+		const type = this.find(node.nodeType)
 
         return new type({
 			...node,

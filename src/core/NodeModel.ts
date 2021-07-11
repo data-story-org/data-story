@@ -22,7 +22,7 @@ export default class NodeModel extends DefaultNodeModel {
 	name: string
 	nodeReact: 'Node'
 	parameters: NodeParameter[]
-	serverNodeType: string
+	nodeType: string
 	id: string
 
 	constructor(options) {
@@ -43,7 +43,7 @@ export default class NodeModel extends DefaultNodeModel {
 		this.name = options.name
 		this.nodeReact = options.nodeReact
 		this.parameters = options.parameters
-		this.serverNodeType = options.serverNodeType
+		this.nodeType = options.nodeType
 
 		options.ports.forEach(port => {
 			this.addPort(
@@ -66,7 +66,7 @@ export default class NodeModel extends DefaultNodeModel {
 			editableOutPorts: this.editableOutPorts,
 			name: this.name,
 			nodeReact: this.nodeReact,
-			serverNodeType: this.serverNodeType,
+			nodeType: this.nodeType,
 		};
     }
 
