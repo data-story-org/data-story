@@ -55,7 +55,7 @@
         "lodash": "^4.17.21",		
         "@babel/plugin-proposal-decorators": "^7.12.1",
         "@babel/plugin-transform-modules-commonjs": "^7.13.8",
-        "@data-story-org/core": "link:../core",
+        "@data-story-org/core": "link../core",
         "@emotion/react": "^11.1.5",
         "@emotion/styled": "^11.3.0",
         "@projectstorm/react-diagrams": "^6.0.2",
