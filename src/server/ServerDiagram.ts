@@ -109,7 +109,9 @@ export default class ServerDiagram {
       node.ports.filter((p) => p.in == true),
     );
 
-    const linkLists = inPorts.map((port: any) => port.links);
+    const linkLists = inPorts.map(
+      (port: any) => port.links,
+    );
 
     const links = linkLists
       .map((linkList) => Object.values(linkList))

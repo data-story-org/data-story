@@ -174,10 +174,7 @@ export default abstract class ServerNode {
     return _.cloneDeep(features);
   }
 
-  protected output(
-    features: any[],
-    port = 'Output',
-  ) {
+  protected output(features: any[], port = 'Output') {
     this.portNamed(port).features = this.portNamed(port)
       .features
       ? this.portNamed(port).features.concat(features)

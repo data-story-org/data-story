@@ -139,7 +139,8 @@ export default class DiagramModel extends DefaultDiagramModel {
     // Resolve ports
     const fromPort =
       Object.values(from.getOutPorts())[0] ?? false;
-    const toPort = Object.values(to.getInPorts())[0] ?? false;
+    const toPort =
+      Object.values(to.getInPorts())[0] ?? false;
 
     // Ensure there are ports to connect to
     return fromPort && toPort;
