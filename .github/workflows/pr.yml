@@ -13,3 +13,17 @@ jobs:
         uses: hiwelo/new-dependencies-action@1.0.1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+
+  lint_review:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: bahmutov/npm-install@v1
+        with:
+          useRollingCache: true
+          useLockFile: false
+
+      - uses: reviewdog/action-eslint@v1
+        with:
+          reporter: github-pr-review
+          eslint_flags: 'src/'

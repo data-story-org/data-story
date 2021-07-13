@@ -1,0 +1,40 @@
+name: Test
+
+on:
+  push:
+    branches:
+      - master
+    tags-ignore: ["v[0-9]+.[0-9]+.[0-9]+*"]
+    paths:
+      - "**.ts"
+      - "package*"
+      - "yarn*"
+      - "*.json"
+      - "*.js"
+      - "*rc"
+      - ".github/workflows/**.yml"
+  pull_request:
+    branches:
+      - "*"
+    tags-ignore: ["v[0-9]+.[0-9]+.[0-9]+*"]
+  pull_request_target:
+    branches:
+      - "*"
+    tags-ignore: ["v[0-9]+.[0-9]+.[0-9]+*"]
+
+jobs:
+  test:
+    strategy:
+      matrix:
+        platform: [ubuntu-latest]
+    runs-on: ${{ matrix.platform }}
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: bahmutov/npm-install@v1
+        with:
+          useRollingCache: true
+          useLockFile: false
+
+      - name: Test
+        run: npm test --passWithNoTests
