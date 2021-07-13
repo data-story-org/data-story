@@ -27,6 +27,7 @@ jobs:
       - uses: bahmutov/npm-install@v1
         with:
           useRollingCache: true
+          useLockFile: false
 
       - name: Format with prettier
         run: npm run format
@@ -56,6 +57,7 @@ jobs:
       - uses: bahmutov/npm-install@v1
         with:
           useRollingCache: true
+          useLockFile: false
 
       - name: Test
         run: npm test --passWithNoTests
