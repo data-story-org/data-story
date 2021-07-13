@@ -47,16 +47,22 @@ export default observer(
               return port.features;
             })
             .forEach((port) => {
-							
-							let allLinks = Object.values(this.props.store.diagram.engine.model.layers[0].models)
-							
-							allLinks.filter(link => {
-								return link.sourcePort.options.id == port.id
-							}).forEach(link => {
-                  this.props.store.diagram.engine.model.getLink(
-                    link.options.id,
-                  ).addLabel(port.features.length);								
-							})
+              let allLinks = Object.values(
+                this.props.store.diagram.engine.model
+                  .layers[0].models,
+              );
+
+              allLinks
+                .filter((link) => {
+                  return (
+                    link.sourcePort.options.id == port.id
+                  );
+                })
+                .forEach((link) => {
+                  this.props.store.diagram.engine.model
+                    .getLink(link.options.id)
+                    .addLabel(port.features.length);
+                });
             });
           this.showSuccessToast();
 
