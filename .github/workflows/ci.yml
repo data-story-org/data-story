@@ -28,6 +28,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.head_ref }}
       - uses: bahmutov/npm-install@v1
         with:
           useRollingCache: true
@@ -49,7 +51,6 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Apply formatting changes
-          branch: master
 
   test:
     strategy:
