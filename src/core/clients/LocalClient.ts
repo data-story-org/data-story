@@ -12,7 +12,7 @@ export default class LocalClient
   }
 
   run(model: DiagramModel) {
-    return server.run(model);
+    return server.run(model.serialize());
   }
 
   save(name: string, model: DiagramModel) {

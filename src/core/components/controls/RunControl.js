@@ -47,13 +47,16 @@ export default observer(
               return port.features;
             })
             .forEach((port) => {
-              port.links.forEach((linkId) => {
-                let link =
+							
+							let allLinks = Object.values(this.props.store.diagram.engine.model.layers[0].models)
+							
+							allLinks.filter(link => {
+								return link.sourcePort.options.id == port.id
+							}).forEach(link => {
                   this.props.store.diagram.engine.model.getLink(
-                    linkId,
-                  );
-                link.addLabel(port.features.length);
-              });
+                    link.options.id,
+                  ).addLabel(port.features.length);								
+							})
             });
           this.showSuccessToast();
 

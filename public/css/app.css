@@ -32756,13 +32756,13 @@ foreignObject > div > div {
 }
 
 .Toastify__toast-body {
-  background: #E5E7EB;
+  background: #e5e7eb;
   font-family: monospace;
-  color: #4499AF;
+  color: #4499af;
 }
 
 .Toastify__toast {
-  background: #E5E7EB !important;
+  background: #e5e7eb !important;
 }
 
 @media (min-width: 640px) {
