@@ -1,0 +1,67 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - master
+    tags-ignore: ["v[0-9]+.[0-9]+.[0-9]+*"]
+    paths:
+      - "**.ts"
+      - "package*"
+      - "yarn*"
+      - "*.json"
+      - "*.js"
+      - "*rc"
+      - ".github/workflows/**.yml"
+  pull_request:
+    branches:
+      - "*"
+    tags-ignore: ["v[0-9]+.[0-9]+.[0-9]+*"]
+  pull_request_target:
+    branches:
+      - "*"
+    tags-ignore: ["v[0-9]+.[0-9]+.[0-9]+*"]
+
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: bahmutov/npm-install@v1
+        with:
+          useRollingCache: true
+          useLockFile: false
+
+      - name: Format with prettier
+        run: npm run format
+
+      # - name: Fix all fixable eslint warnings
+      #   run: npm run lint:quiet:fix
+
+      # - name: Get all unfixable eslint errors
+      #   uses: wearerequired/lint-action@v1
+      #   with:
+      #     eslint: true
+      #     eslint_extensions: js,ts
+
+      - name: Commit formatting changes
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Apply formatting changes
+
+  test:
+    strategy:
+      matrix:
+        platform: [ubuntu-latest]
+    runs-on: ${{ matrix.platform }}
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: bahmutov/npm-install@v1
+        with:
+          useRollingCache: true
+          useLockFile: false
+
+      - name: Test
+        run: npm test
