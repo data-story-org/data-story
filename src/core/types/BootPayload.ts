@@ -1,6 +1,6 @@
 export interface BootPayload {
-	data: {
-		stories?: string[],
-		availableNodes: object[]
-	}
+  data: {
+    stories?: string[];
+    availableNodes: object[];
+  };
 }

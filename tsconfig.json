@@ -1,16 +1,13 @@
 {
-    "compilerOptions": {
-      "module": "ES6",
-	  "esModuleInterop": true,
-      "moduleResolution": "node",
-      "removeComments": true,
-      "preserveConstEnums": true,
-      "sourceMap": true,
-      "jsx": "react",      
-      "lib": [
-        "es2019",
-        "dom"
-      ],
-      "target":"ES6"
-    }
+  "compilerOptions": {
+    "module": "ES6",
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "removeComments": true,
+    "preserveConstEnums": true,
+    "sourceMap": true,
+    "jsx": "react",
+    "lib": ["es2019", "dom"],
+    "target": "ES6"
+  }
 }

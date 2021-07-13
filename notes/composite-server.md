@@ -1,28 +1,32 @@
 # Extendable servers
+
 ```jsx
-let server = new DefaultServer()
+let server = new DefaultServer();
 // Add some extra nodes or configuration
-server.extend(extension)
+server.extend(extension);
 ```
+
 ```html
-<DataStory server={server}>
+<DataStory server="{server}"></DataStory>
 ```
 
 # Composite servers
 
 ```jsx
 let server = new CompositeServer({
-    DefaultServer, // generic nodes
-    CustomServer, // custom nodes
-})
+  DefaultServer, // generic nodes
+  CustomServer, // custom nodes
+});
 ```
+
 ```html
-<DataStory server={server}>
+<DataStory server="{server}"></DataStory>
 ```
 
 Example:
-* Frontend boots
-    - The CompositeServer will in turn boot each underlying server - DefaultServer and CustomServer - and combine capabilities
-* Frontend run:
-    - executionOrder is calculated
-    - for each node delegate computation to coresponding server
+
+- Frontend boots
+  - The CompositeServer will in turn boot each underlying server - DefaultServer and CustomServer - and combine capabilities
+- Frontend run:
+  - executionOrder is calculated
+  - for each node delegate computation to coresponding server
