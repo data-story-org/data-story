@@ -21,15 +21,15 @@ export default abstract class ServerNode {
   public id: string;
   public ports: any[];
   public diagram: ServerDiagram;
-  public category: string = 'Custom';
-  public editableInPorts: boolean = false;
-  public editableOutPorts: boolean = false;
-  public key: string = 'test-key';
+  public category = 'Custom';
+  public editableInPorts = false;
+  public editableOutPorts = false;
+  public key = 'test-key';
   public name: string;
   public nodeType: string;
-  public nodeReact: string = 'Node';
+  public nodeReact = 'Node';
   public parameters: any[];
-  public summary: string = 'No summary provided.';
+  public summary = 'No summary provided.';
   public defaultInPorts: string[];
   public defaultOutPorts: string[];
 
@@ -115,7 +115,7 @@ export default abstract class ServerNode {
     name: string,
     feature: Feature = null,
   ) {
-    let value = this.getParameter(name).value;
+    const value = this.getParameter(name).value;
 
     if (!feature) return value;
 
@@ -123,14 +123,14 @@ export default abstract class ServerNode {
   }
 
   protected interpretParameterValue(parametric, feature) {
-    let matches = parametric.match(
+    const matches = parametric.match(
       /\{\{[\.a-zA-Z\s_]*\}\}/g,
     );
     if (matches) {
-      for (let match of matches) {
-        let originalMatch = match;
+      for (const match of matches) {
+        const originalMatch = match;
 
-        let parts = match
+        const parts = match
           .replace('{{', '')
           .replace('}}', '')
           .trim()
@@ -138,7 +138,7 @@ export default abstract class ServerNode {
 
         parts.shift(); // Remove 'feature'
 
-        let interpreted = parts.reduce(
+        const interpreted = parts.reduce(
           (carry, property) => {
             return carry[property];
           },
@@ -155,17 +155,17 @@ export default abstract class ServerNode {
     return parametric;
   }
 
-  protected input(portName: string = 'Input') {
+  protected input(portName = 'Input') {
     return this.getDataAtPortNamed(portName);
   }
 
-  protected getDataAtPortNamed(name: string = 'Input') {
-    let port = this.portNamed(name);
+  protected getDataAtPortNamed(name = 'Input') {
+    const port = this.portNamed(name);
 
-    let features = port.links
+    const features = port.links
       .map((linkId) => {
-        let link = this.diagram.find(linkId);
-        let source = this.diagram.find(link.sourcePort);
+        const link = this.diagram.find(linkId);
+        const source = this.diagram.find(link.sourcePort);
 
         return source.features ?? [];
       })
@@ -176,7 +176,7 @@ export default abstract class ServerNode {
 
   protected output(
     features: any[],
-    port: string = 'Output',
+    port = 'Output',
   ) {
     this.portNamed(port).features = this.portNamed(port)
       .features

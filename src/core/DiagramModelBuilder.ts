@@ -10,9 +10,9 @@ export class DiagramModelBuilder {
   }
 
   add(nodeClass, parameterKeyValues = {}, config = {}) {
-    let diagram = this.getDiagram();
+    const diagram = this.getDiagram();
 
-    let node = new NodeModel({
+    const node = new NodeModel({
       ...new nodeClass().serialize(),
       ...config,
     });
@@ -30,7 +30,7 @@ export class DiagramModelBuilder {
     for (const [name, value] of Object.entries(
       parameters,
     )) {
-      let parameter = this.currentNode.parameters.find(
+      const parameter = this.currentNode.parameters.find(
         (p) => p.name == name,
       );
       parameter.value = value;

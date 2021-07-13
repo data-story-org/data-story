@@ -27,7 +27,7 @@ export default class DownloadJSON extends ServerNode {
       indentation,
     );
     // @ts-ignore: By adding 'dom' to tsconfig lib Blob IS accessible here
-    var blob = new Blob([json], {
+    const blob = new Blob([json], {
       type: 'text/plain;charset=utf-8',
     });
     this.save(blob, filename);

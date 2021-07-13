@@ -43,9 +43,9 @@ export default class RegExpFilter extends ServerNode {
 
   protected filterByRegExp(features, returnFailed = false) {
     return features.filter((feature) => {
-      let expression = this.getExpression();
-      let attribute = this.getParameterValue('attribute');
-      let comparable = attribute
+      const expression = this.getExpression();
+      const attribute = this.getParameterValue('attribute');
+      const comparable = attribute
         .split('.')
         .reduce((traversed, part) => {
           return part ? traversed[part] : traversed;
@@ -58,7 +58,7 @@ export default class RegExpFilter extends ServerNode {
   }
 
   protected getExpression() {
-    let cleaned = trim(
+    const cleaned = trim(
       this.getParameterValue('expression'),
       '/',
     );

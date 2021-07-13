@@ -103,7 +103,7 @@ export default class NodeModel extends DefaultNodeModel {
   }
 
   dependencies() {
-    let cached =
+    const cached =
       this.getDiagramModel().getCachedNodeDependencies(
         this.id,
       );
@@ -111,23 +111,23 @@ export default class NodeModel extends DefaultNodeModel {
       return cached;
     }
 
-    let inPorts = Object.values(this.getInPorts());
-    let linkLists = inPorts
+    const inPorts = Object.values(this.getInPorts());
+    const linkLists = inPorts
       .map((port: any) => port.links)
       .flat();
-    let links = linkLists
+    const links = linkLists
       .map((linkList) => Object.values(linkList))
       .flat();
 
-    let dependencies = links.map(
+    const dependencies = links.map(
       (link: any) => link.sourcePort.parent,
     );
 
-    let deepDependencies = dependencies.map((d) =>
+    const deepDependencies = dependencies.map((d) =>
       d.dependencies(),
     );
 
-    let result = dependencies.concat(
+    const result = dependencies.concat(
       deepDependencies.flat(),
     );
 

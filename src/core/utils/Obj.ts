@@ -8,7 +8,7 @@ export const get = (object: any, path = '') => {
 };
 
 export const pickBy = (object, picker) => {
-  let result = {};
+  const result = {};
 
   for (const [key, value] of Object.entries(object)) {
     if (picker(value, key)) {

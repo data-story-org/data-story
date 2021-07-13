@@ -18,17 +18,17 @@ export default class CreateGrid extends ServerNode {
   }
 
   async run() {
-    let type = this.getParameterValue('grid_type');
-    let gridMinX = parseFloat(
+    const type = this.getParameterValue('grid_type');
+    const gridMinX = parseFloat(
       this.getParameterValue('grid_min_x'),
     );
-    let gridMinY = parseFloat(
+    const gridMinY = parseFloat(
       this.getParameterValue('grid_min_y'),
     );
-    let gridMaxX = parseFloat(
+    const gridMaxX = parseFloat(
       this.getParameterValue('grid_max_x'),
     );
-    let gridMaxY = parseFloat(
+    const gridMaxY = parseFloat(
       this.getParameterValue('grid_max_y'),
     );
     let gridSizeX = parseInt(
@@ -37,10 +37,10 @@ export default class CreateGrid extends ServerNode {
     let gridSizeY = parseInt(
       this.getParameterValue('grid_size_y'),
     );
-    let gridSpacingX = parseFloat(
+    const gridSpacingX = parseFloat(
       this.getParameterValue('grid_spacing_x'),
     );
-    let gridSpacingY = parseFloat(
+    const gridSpacingY = parseFloat(
       this.getParameterValue('grid_spacing_y'),
     );
 
@@ -53,11 +53,11 @@ export default class CreateGrid extends ServerNode {
       );
     }
 
-    let features = [];
+    const features = [];
 
     for (let x = 0; x < gridSizeX; x++) {
       for (let y = 0; y < gridSizeY; y++) {
-        let point = {
+        const point = {
           x: gridMinX + x * gridSpacingX,
           y: gridMinY + y * gridSpacingY,
         };

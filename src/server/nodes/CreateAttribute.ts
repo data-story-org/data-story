@@ -16,8 +16,8 @@ export default class CreateAttribute extends ServerNode {
   }
 
   async run() {
-    let attribute = this.getParameterValue('attribute');
-    let value = this.getParameterValue('value');
+    const attribute = this.getParameterValue('attribute');
+    const value = this.getParameterValue('value');
 
     this.output(
       this.input().map((feature) =>

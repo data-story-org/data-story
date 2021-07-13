@@ -29,7 +29,7 @@ export default class DownloadGeoJSON extends ServerNode {
     );
 
     // @ts-ignore: By adding 'dom' to tsconfig lib Blob IS accessible here
-    var blob = new Blob([content], {
+    const blob = new Blob([content], {
       type: 'text/plain;charset=utf-8',
     });
     saveAs(blob, filename);

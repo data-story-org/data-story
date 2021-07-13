@@ -17,8 +17,8 @@ export default class EngineFactory {
   static load(
     serializedModel: SerializedDiagramModel,
   ): DiagramEngine {
-    let engine = this.getEngine();
-    let model = new DiagramModel();
+    const engine = this.getEngine();
+    const model = new DiagramModel();
 
     serializedModel =
       typeof serializedModel == 'string'
@@ -32,7 +32,7 @@ export default class EngineFactory {
   }
 
   static default(): DiagramEngine {
-    let engine = this.getEngine();
+    const engine = this.getEngine();
 
     const state: any = engine
       .getStateMachine()
@@ -43,7 +43,7 @@ export default class EngineFactory {
       .getNodeFactories()
       .registerFactory(new NodeModelFactory() as any);
 
-    let model = new DiagramModel();
+    const model = new DiagramModel();
 
     engine.setModel(model);
 
@@ -51,7 +51,7 @@ export default class EngineFactory {
   }
 
   static getEngine(): DiagramEngine {
-    let engine = createEngine();
+    const engine = createEngine();
 
     engine
       .getNodeFactories()

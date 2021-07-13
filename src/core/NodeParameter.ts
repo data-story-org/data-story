@@ -1,7 +1,7 @@
 export default class NodeParameter {
   name: string;
-  description: string = '';
-  fieldType: string = 'String_';
+  description = '';
+  fieldType = 'String_';
   placeholder?: string;
   value: any = '';
   options?: string[];

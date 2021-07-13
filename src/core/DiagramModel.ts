@@ -54,7 +54,7 @@ export default class DiagramModel extends DefaultDiagramModel {
 
     // Fallback 1: place below latest node
     // Fallback 2: place at 100, 100
-    let latest: any = [...this.latestNodes][0] ?? null;
+    const latest: any = [...this.latestNodes][0] ?? null;
 
     node.setPosition(
       latest?.position?.x ? latest.position.x : 100,
@@ -62,7 +62,7 @@ export default class DiagramModel extends DefaultDiagramModel {
     );
   }
 
-  setLocked(locked: boolean = true) {
+  setLocked(locked = true) {
     super.setLocked(locked);
 
     if (locked) {
@@ -78,14 +78,14 @@ export default class DiagramModel extends DefaultDiagramModel {
   smartInspectorNames(node) {
     if (node.options.name != 'Inspect') return;
 
-    let nameParam = node.options.parameters.find(
+    const nameParam = node.options.parameters.find(
       (n) => n.name == 'node_name',
     );
 
-    let sourceLink: any =
+    const sourceLink: any =
       Object.values(node.ports?.Input?.links)[0] ?? null;
     if (!sourceLink) return;
-    let sourcePortName =
+    const sourcePortName =
       sourceLink.sourcePort.options.name ?? false;
 
     // It must be a specific name to make sense
@@ -99,13 +99,13 @@ export default class DiagramModel extends DefaultDiagramModel {
     if (!this.canLink(from, to)) return;
 
     // fromPort: prefer first unused outPort. Otherwise defaults to first
-    let fromPort: any = this.getAutomatedFromPort(from);
+    const fromPort: any = this.getAutomatedFromPort(from);
 
     // toPort: the first inPort
-    let toPort: any = Object.values(to.getInPorts())[0];
+    const toPort: any = Object.values(to.getInPorts())[0];
 
     // Links
-    let link = new DefaultLinkModel();
+    const link = new DefaultLinkModel();
     link.setSourcePort(fromPort);
     link.setTargetPort(toPort);
 
@@ -137,17 +137,17 @@ export default class DiagramModel extends DefaultDiagramModel {
     if (!from) return;
 
     // Resolve ports
-    let fromPort =
+    const fromPort =
       Object.values(from.getOutPorts())[0] ?? false;
-    let toPort = Object.values(to.getInPorts())[0] ?? false;
+    const toPort = Object.values(to.getInPorts())[0] ?? false;
 
     // Ensure there are ports to connect to
     return fromPort && toPort;
   }
 
   setLinkedNodePosition(latest, node) {
-    let fromPort = this.getAutomatedFromPort(latest);
-    let position = Object.values(
+    const fromPort = this.getAutomatedFromPort(latest);
+    const position = Object.values(
       latest.getOutPorts(),
     ).indexOf(fromPort);
 

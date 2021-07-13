@@ -17,7 +17,7 @@ export default class CreateSequence extends ServerNode {
   }
 
   async run() {
-    let count = parseInt(
+    const count = parseInt(
       this.getParameterValue(
         'number_of_features_to_create',
       ),

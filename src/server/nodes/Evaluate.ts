@@ -32,7 +32,7 @@ export default class Evaluate extends ServerNode {
   }
 
   runPerFeature() {
-    let inputs = this.input(); // maintain state - no additional feature clones
+    const inputs = this.input(); // maintain state - no additional feature clones
 
     this.output(
       inputs.map((current, index) => {
