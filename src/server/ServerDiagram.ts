@@ -8,7 +8,7 @@ export default class ServerDiagram {
   };
 
   static hydrate(data: SerializedDiagramModel, factory) {
-    let instance = new this();
+    const instance = new this();
 
     for (const [key, value] of Object.entries(data)) {
       if (key === 'layers') {
@@ -32,7 +32,7 @@ export default class ServerDiagram {
   }
 
   async run() {
-    for await (let node of this.executionOrder()) {
+    for await (const node of this.executionOrder()) {
       await node.run();
     }
 
@@ -46,7 +46,7 @@ export default class ServerDiagram {
   }
 
   find(id: string) {
-    let searchables = this.nodes
+    const searchables = this.nodes
       .concat(this.nodes.map((node) => node.ports).flat())
       .concat(this.links);
 
@@ -54,7 +54,7 @@ export default class ServerDiagram {
   }
 
   findByName(name: string) {
-    let searchables = this.nodes
+    const searchables = this.nodes
       .concat(this.nodes.map((node) => node.ports).flat())
       .concat(this.links);
 
@@ -72,7 +72,7 @@ export default class ServerDiagram {
   executionOrder() {
     this.clearCachedNodeDependencies();
 
-    let r = this.nodes.sort((n1, n2) => {
+    const r = this.nodes.sort((n1, n2) => {
       if (this.dependsOn(n2, n1)) {
         return -1;
       }
@@ -100,31 +100,33 @@ export default class ServerDiagram {
   }
 
   dependencies(node) {
-    let cached = this.getCachedNodeDependencies(node.id);
+    const cached = this.getCachedNodeDependencies(node.id);
     if (cached !== null) {
       return cached;
     }
 
-    let inPorts = Object.values(
+    const inPorts = Object.values(
       node.ports.filter((p) => p.in == true),
     );
 
-    let linkLists = inPorts.map((port: any) => port.links);
+    const linkLists = inPorts.map(
+      (port: any) => port.links,
+    );
 
-    let links = linkLists
+    const links = linkLists
       .map((linkList) => Object.values(linkList))
       .flat();
-    let dependencies = links.map((link: any) => {
-      let sourcePort = this.find(link).sourcePort;
-      let sourceNode = this.find(sourcePort).parentNode;
+    const dependencies = links.map((link: any) => {
+      const sourcePort = this.find(link).sourcePort;
+      const sourceNode = this.find(sourcePort).parentNode;
       return this.find(sourceNode).id;
     });
 
-    let deepDependencies = dependencies.map((d) => {
+    const deepDependencies = dependencies.map((d) => {
       return this.dependencies(this.find(d));
     });
 
-    let result = dependencies.concat(
+    const result = dependencies.concat(
       deepDependencies.flat(),
     );
 

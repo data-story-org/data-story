@@ -31,9 +31,9 @@ export default class FilterDuplicates extends ServerNode {
 
   uniqueFeatures(all) {
     const attribute = this.getParameterValue('attribute');
-    var prims = { boolean: {}, number: {}, string: {} },
+    const prims = { boolean: {}, number: {}, string: {} },
       objs = [];
-    var uniqueFeatures = [];
+    const uniqueFeatures = [];
 
     all.forEach(function (feature) {
       let comparable = attribute
@@ -41,7 +41,7 @@ export default class FilterDuplicates extends ServerNode {
         .reduce((traversed, part) => {
           return part ? traversed[part] : traversed;
         }, feature.original);
-      var type = typeof comparable;
+      const type = typeof comparable;
 
       if (type in prims) {
         if (!prims[type].hasOwnProperty(comparable)) {

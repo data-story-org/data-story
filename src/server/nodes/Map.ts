@@ -22,7 +22,7 @@ export default class Map extends ServerNode {
 
     this.output(
       this.input().map((item) => {
-        let mapped = paths.reduce((carry, path) => {
+        const mapped = paths.reduce((carry, path) => {
           return carry[path];
         }, item.original);
 

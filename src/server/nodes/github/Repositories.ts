@@ -19,9 +19,9 @@ export default class Repositories
   }
 
   serialize() {
-    let description = super.serialize();
+    const description = super.serialize();
 
-    let urlParam = description.parameters.find(
+    const urlParam = description.parameters.find(
       (p) => p.name == 'url',
     );
     urlParam.value =

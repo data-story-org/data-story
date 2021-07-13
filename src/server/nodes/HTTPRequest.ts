@@ -20,7 +20,7 @@ export default class HTTPRequest extends ServerNode {
   }
 
   async run() {
-    for await (let feature of this.input()) {
+    for await (const feature of this.input()) {
       await this.request(feature)
         .then((result) => {
           this.output([new Feature(result)], 'Response');

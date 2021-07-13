@@ -31,7 +31,7 @@ export default class DownloadCSV extends ServerNode {
     });
     const csv = [headers, ...rows].join('\n');
     // @ts-ignore: By adding 'dom' to tsconfig lib Blob IS accessible here
-    var blob = new Blob([csv], {
+    const blob = new Blob([csv], {
       type: 'text/plain;charset=utf-8',
     });
     this.save(blob, filename);

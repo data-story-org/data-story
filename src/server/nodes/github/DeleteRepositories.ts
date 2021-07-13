@@ -19,18 +19,18 @@ export default class DeleteRepositories
   }
 
   serialize() {
-    let description = super.serialize();
+    const description = super.serialize();
 
-    let verbParam = description.parameters.find(
+    const verbParam = description.parameters.find(
       (p) => p.name == 'verb',
     );
     verbParam.value = 'DELETE';
-    let urlParam = description.parameters.find(
+    const urlParam = description.parameters.find(
       (p) => p.name == 'url',
     );
     urlParam.value =
       'https://api.github.com/repos/ajthinking/draft-401';
-    let configParam = description.parameters.find(
+    const configParam = description.parameters.find(
       (p) => p.name == 'config',
     );
     configParam.value =

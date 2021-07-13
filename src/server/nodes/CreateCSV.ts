@@ -19,13 +19,13 @@ export default class CreateCSV extends ServerNode {
   async run() {
     const delimiter = this.getParameterValue('delimiter');
     const content = this.getParameterValue('content');
-    let rows = content
+    const rows = content
       .split('\n')
       .map((row) => row.split(delimiter));
     const headings = rows.shift();
 
     const objects = rows.map((row) => {
-      let object = {};
+      const object = {};
       for (const index in headings) {
         const key = headings[index];
         object[key] = this.parseValue(row[index]);
@@ -38,7 +38,7 @@ export default class CreateCSV extends ServerNode {
   }
 
   serialize() {
-    let description = super.serialize();
+    const description = super.serialize();
 
     description.parameters.push(
       NodeParameter.string('delimiter')
