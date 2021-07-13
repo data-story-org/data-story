@@ -60,4 +60,4 @@ jobs:
           useLockFile: false
 
       - name: Test
-        run: npm test --passWithNoTests
+        run: npm test
