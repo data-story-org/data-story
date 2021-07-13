@@ -11,3 +11,5 @@
 /docs               export-ignore
 /.github            export-ignore
 /.editorconfig      export-ignore
+
+package.json filter=changeToGitVersion
