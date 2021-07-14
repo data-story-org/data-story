@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { observer } from 'mobx-react';
 import axios from 'axios';
-import { nonCircularJsonStringify } from '../../../core/utils/nonCircularJsonStringify';
+import { nonCircularJsonStringify } from '@data-story-org/core/src/utils/nonCircularJsonStringify';
 import { toast, Slide } from 'react-toastify';
 
 export default observer(

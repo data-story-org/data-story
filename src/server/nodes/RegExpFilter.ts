@@ -1,6 +1,6 @@
 import ServerNode from '../ServerNode';
 // @ts-ignore
-import { trim } from '../../core/utils/Str';
+import { trim } from '@data-story-org/core/src/utils/Str';
 import NodeParameter from '../../core/NodeParameter';
 
 export default class RegExpFilter extends ServerNode {

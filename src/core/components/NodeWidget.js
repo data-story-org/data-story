@@ -4,7 +4,7 @@ import Modal from 'react-modal';
 
 import NodeWidgetModal from './modals/NodeWidgetModal';
 import NodeInspectorLink from './NodeInspectorLink';
-import modalStyle from '../../core/utils/modalStyle';
+import modalStyle from '@data-story-org/core/src/utils/modalStyle';
 import store from '../store/main';
 
 /**

@@ -1,6 +1,6 @@
 import ServerNode from '../ServerNode';
 import NodeParameter from '../../core/NodeParameter';
-import { groupBy } from '../../core/utils/Arr';
+import { groupBy } from '@data-story-org/core/src/utils/Arr';
 import { Feature } from '@data-story-org/core';
 
 export default class Aggregate extends ServerNode {
