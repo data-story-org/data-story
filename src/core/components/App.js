@@ -12,7 +12,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import EngineFactory from '../../core/EngineFactory';
 import store from '../store/main';
 import Cookie from '../utils/Cookie';
-import * as demos from '../../server/demos.ts';
 
 export default observer(
   class App extends React.Component {
@@ -79,13 +78,13 @@ export default observer(
     }
 
     bootDemos() {
-      for (const name of Object.keys(demos)) {
-        //this.props.store.metadata.client.save(name, demos[name])
-      }
-      // this.props.store.metadata.client.save('With parameters', demos.WithParameters)
-      // this.props.store.metadata.client.save('Working with json', demos.WorkingWithJSON)
-      // this.props.store.metadata.client.save('Scraping a map service', demos.ScrapingAMapService)
-      // this.props.store.metadata.client.save('Cleanup old github repos', demos.CleanupOldGithubRepos)
+      // for (const name of Object.keys(demos)) {
+      //   //this.props.store.metadata.client.save(name, demos[name])
+      // }
+      // // this.props.store.metadata.client.save('With parameters', demos.WithParameters)
+      // // this.props.store.metadata.client.save('Working with json', demos.WorkingWithJSON)
+      // // this.props.store.metadata.client.save('Scraping a map service', demos.ScrapingAMapService)
+      // // this.props.store.metadata.client.save('Cleanup old github repos', demos.CleanupOldGithubRepos)
     }
 
     registerKeybindings() {
