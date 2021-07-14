@@ -7,6 +7,7 @@
     "preserveConstEnums": true,
     "sourceMap": true,
     "resolveJsonModule": true,
+    "experimentalDecorators": true,
     "jsx": "react",
     "lib": ["es2019", "dom"],
     "target": "ES6"

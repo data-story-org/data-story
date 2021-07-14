@@ -1,11 +1,11 @@
-import { action, observable, makeObservable } from 'mobx';
+import { action, observable } from 'mobx';
 import NodeModel from '../../core/NodeModel';
 import clientFactory from '../clients/ClientFactory';
 
 export class Store {
   results;
 
-  diagram = {
+  @observable diagram = {
     engine: null,
     availableNodes: [],
     refresh: 0,
@@ -13,7 +13,7 @@ export class Store {
     nodeSerial: 1,
   };
 
-  metadata = {
+  @observable metadata = {
     running: false,
     page: 'Workbench',
     activeInspector: null,
@@ -22,33 +22,7 @@ export class Store {
     client: clientFactory((window as any).config),
   };
 
-  constructor() {
-    makeObservable(this, {
-      // Observables
-      diagram: observable,
-      metadata: observable,
-
-      // Setters
-      addNode: action.bound,
-      clearLinkLabels: action.bound,
-      increaseNodeSerial: action.bound,
-      goToInspector: action.bound,
-      refreshDiagram: action.bound,
-      setActiveInspector: action.bound,
-      setActiveStory: action.bound,
-      setAvailableNodes: action.bound,
-      setEngine: action.bound,
-      setPage: action.bound,
-      setResults: action.bound,
-      setNotRunning: action.bound,
-      setRunning: action.bound,
-      setStories: action.bound,
-
-      // Getters 👇
-    });
-  }
-
-  addNode(data) {
+  @action addNode(data): void {
     this.diagram.engine.model.addNode(
       new NodeModel({
         serial: this.diagram.nodeSerial++,
@@ -59,7 +33,7 @@ export class Store {
     this.refreshDiagram();
   }
 
-  clearLinkLabels() {
+  @action clearLinkLabels(): void {
     Object.values(
       this.diagram.engine.model.layers[0].models,
     ).forEach((link: any) => {
@@ -67,12 +41,12 @@ export class Store {
     });
   }
 
-  goToInspector(id) {
+  @action goToInspector(id): void {
     this.metadata.activeInspector = id;
     this.metadata.page = 'Inspector';
   }
 
-  nodesWithInspectables() {
+  @action nodesWithInspectables() {
     // React diagram is not observable outside of its own context
     // Reference the refresh counter to ensure we have the latest data
     this.diagram.refresh;
@@ -83,50 +57,50 @@ export class Store {
       .filter((node) => node.isInspectable());
   }
 
-  refreshDiagram() {
+  @action refreshDiagram(): void {
     this.diagram.refresh++;
   }
 
-  increaseNodeSerial() {
+  @action increaseNodeSerial(): void {
     this.diagram.nodeSerial++;
   }
 
-  setActiveStory(story) {
+  @action setActiveStory(story): void {
     this.metadata.activeStory = story;
   }
 
-  setActiveInspector(nodeId) {
+  @action setActiveInspector(nodeId): void {
     this.metadata.activeInspector = nodeId;
   }
 
-  setAvailableNodes(nodes) {
+  @action setAvailableNodes(nodes): void {
     this.diagram.availableNodes = nodes;
   }
 
-  setEngine(engine) {
+  @action setEngine(engine): void {
     this.diagram.engine = engine;
   }
 
-  setPage(name) {
+  @action setPage(name): void {
     this.clearLinkLabels();
     this.metadata.page = name;
   }
 
-  setResults(results) {
+  @action setResults(results): void {
     this.results = results;
   }
 
-  setNotRunning() {
+  @action setNotRunning(): void {
     setTimeout(() => {
       this.metadata.running = false;
     }, 500);
   }
 
-  setRunning() {
+  @action setRunning(): void {
     this.metadata.running = true;
   }
 
-  setStories(stories) {
+  @action setStories(stories): void {
     this.metadata.stories = stories;
   }
 }
