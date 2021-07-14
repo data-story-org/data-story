@@ -1,14 +1,11 @@
-import React from 'react';
+import React, { createContext, useContext } from 'react';
 import ReactDOM from 'react-dom';
-import store from "./store/main"
-import { Provider as RealProvider } from "mobx-react";
 import App from './components/App';
+import { StoreProvider } from './store/StoreProvider';
 
-// TODO
-const Provider: any = RealProvider
-
-ReactDOM.render((
-    <Provider store={store}>
-        <App store={store} />
-    </Provider>
-), document.getElementById('app'));
+ReactDOM.render(
+  <StoreProvider>
+    <App />
+  </StoreProvider>,
+  document.getElementById('app'),
+);
