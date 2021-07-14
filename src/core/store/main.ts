@@ -22,7 +22,7 @@ export class Store {
     client: clientFactory((window as any).config),
   };
 
-  @action addNode(data): void {
+  @action.bound addNode(data): void {
     this.diagram.engine.model.addNode(
       new NodeModel({
         serial: this.diagram.nodeSerial++,
@@ -33,7 +33,7 @@ export class Store {
     this.refreshDiagram();
   }
 
-  @action clearLinkLabels(): void {
+  @action.bound clearLinkLabels(): void {
     Object.values(
       this.diagram.engine.model.layers[0].models,
     ).forEach((link: any) => {
@@ -41,12 +41,12 @@ export class Store {
     });
   }
 
-  @action goToInspector(id): void {
+  @action.bound goToInspector(id): void {
     this.metadata.activeInspector = id;
     this.metadata.page = 'Inspector';
   }
 
-  @action nodesWithInspectables() {
+  @action.bound nodesWithInspectables() {
     // React diagram is not observable outside of its own context
     // Reference the refresh counter to ensure we have the latest data
     this.diagram.refresh;
@@ -57,50 +57,50 @@ export class Store {
       .filter((node) => node.isInspectable());
   }
 
-  @action refreshDiagram(): void {
+  @action.bound refreshDiagram(): void {
     this.diagram.refresh++;
   }
 
-  @action increaseNodeSerial(): void {
+  @action.bound increaseNodeSerial(): void {
     this.diagram.nodeSerial++;
   }
 
-  @action setActiveStory(story): void {
+  @action.bound setActiveStory(story): void {
     this.metadata.activeStory = story;
   }
 
-  @action setActiveInspector(nodeId): void {
+  @action.bound setActiveInspector(nodeId): void {
     this.metadata.activeInspector = nodeId;
   }
 
-  @action setAvailableNodes(nodes): void {
+  @action.bound setAvailableNodes(nodes): void {
     this.diagram.availableNodes = nodes;
   }
 
-  @action setEngine(engine): void {
+  @action.bound setEngine(engine): void {
     this.diagram.engine = engine;
   }
 
-  @action setPage(name): void {
+  @action.bound setPage(name): void {
     this.clearLinkLabels();
     this.metadata.page = name;
   }
 
-  @action setResults(results): void {
+  @action.bound setResults(results): void {
     this.results = results;
   }
 
-  @action setNotRunning(): void {
+  @action.bound setNotRunning(): void {
     setTimeout(() => {
       this.metadata.running = false;
     }, 500);
   }
 
-  @action setRunning(): void {
+  @action.bound setRunning(): void {
     this.metadata.running = true;
   }
 
-  @action setStories(stories): void {
+  @action.bound setStories(stories): void {
     this.metadata.stories = stories;
   }
 }
