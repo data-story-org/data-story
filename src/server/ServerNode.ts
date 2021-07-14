@@ -1,7 +1,7 @@
 import ServerDiagram from './ServerDiagram';
 import * as _ from 'lodash';
 import { Feature } from '@data-story-org/core';
-import UID from '../core/utils/UID';
+import UID from '@data-story-org/core/src/utils/UID';
 import NodeParameter from '../core/NodeParameter';
 
 type ServerNodeOptions = {

@@ -2,7 +2,7 @@ import React from 'react';
 import { observer } from 'mobx-react';
 import BaseControl from './BaseControl';
 import Modal from 'react-modal';
-import modalStyle from '../../../core/utils/modalStyle';
+import modalStyle from '@data-story-org/core/src/utils/modalStyle';
 import ConfigModal from '../modals/ConfigModal';
 import store from '../../store/main';
 
