@@ -1,24 +1,24 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { observer } from 'mobx-react';
 import InspectorTable from '../InspectorTable';
+import { useStore } from '../../store/StoreProvider';
 
-export default observer(
-  class Inspector extends React.Component {
-    render() {
-      let id = this.props.store.metadata.activeInspector;
-      let features = id
-        ? this.props.store.diagram.engine.model.getNode(id)
-            .features
-        : [];
+const Inspector: FC = observer(() => {
+  const store = useStore();
 
-      return (
-        <div className="p-4">
-          <InspectorTable features={features} />
-        </div>
-      );
-    }
-  },
-);
+  let id = store.metadata.activeInspector;
+  let features = id
+    ? store.diagram.engine.model.getNode(id).features
+    : [];
+
+  return (
+    <div className="p-4">
+      <InspectorTable features={features} />
+    </div>
+  );
+});
+
+export default Inspector;
 
 /*
 

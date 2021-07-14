@@ -1,9 +1,9 @@
-import React from 'react';
+import React, {FC} from 'react';
 import Diagram from '../Diagram';
-import store from '../../store/main';
+import { useStore } from '../../store/StoreProvider';
 
-export default class Workbench extends React.Component {
-  render() {
+const Workbench: FC = () => {
+    const store = useStore();
     return (
       <div>
         <Diagram store={store} />
@@ -16,5 +16,6 @@ export default class Workbench extends React.Component {
 			</div> */}
       </div>
     );
-  }
 }
+
+export default Workbench;
