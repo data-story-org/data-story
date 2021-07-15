@@ -138,7 +138,6 @@ const NodeWidget = ({ engine, node }) => {
         style={modalStyle}
       >
         <NodeWidgetModal
-          store={store}
           node={node}
           closeModal={closeModal}
         />
