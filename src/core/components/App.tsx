@@ -109,7 +109,7 @@ const App: FC = observer(() => {
   return (
     <div>
       <Header />
-      <Toolbar store={store} />
+      <Toolbar />
       {booted && renderActivePage()}
       <ToastContainer style={{ paddingTop: '0px' }} />
     </div>
