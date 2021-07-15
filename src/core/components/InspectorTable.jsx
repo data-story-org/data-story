@@ -1,7 +1,7 @@
 import React, { useState, FC } from 'react';
 // import Feature from '../Feature';
 
-// TODO Make InspectorTable definetly-typed
+// TODO Make InspectorTable definitely-typed
 /* interface Props {
  *   features: Feature[];
  * } */
