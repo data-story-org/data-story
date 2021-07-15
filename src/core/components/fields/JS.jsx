@@ -1,16 +1,27 @@
-import React from 'react';
+import React, { FC } from 'react';
+import { NodeModelOptions } from '../../NodeModel';
 
-const Textarea = ({ options, handleChange }) => {
+// TODO Make JS field definitely typed
+/* interface Props {
+ *   options: NodeModelOptions;
+ *   handleChange: (e: any, o: NodeModelOptions) => void;
+ * } */
+
+const JS = ({
+  options,
+  handleChange,
+} ) => {
   return (
     <div className="flex flex-col my-4 justify-center align-middle text-gray-500 text-xs font-mono">
-      <span className="my-2">
+      <div className="my-2">
         <div className="">
           {options.name}
           {options.description
             ? ' (' + options.description + ')'
             : ''}
         </div>
-      </span>
+      </div>
+      {/* REPLACE WITH SOME EDITOR! */}
       <textarea
         onChange={(e) => {
           handleChange(e, options);
@@ -22,4 +33,4 @@ const Textarea = ({ options, handleChange }) => {
   );
 };
 
-export default Textarea;
+export default JS;

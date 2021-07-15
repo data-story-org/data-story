@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Textarea = ({ options, handleChange }) => {
+const JSON_ = ({ options, handleChange }) => {
   return (
     <div className="flex flex-col my-4 justify-center align-middle text-gray-500 text-xs font-mono">
       <span className="my-2">
@@ -11,6 +11,7 @@ const Textarea = ({ options, handleChange }) => {
             : ''}
         </div>
       </span>
+      {/* REPLACE WITH SOME EDITOR! */}
       <textarea
         onChange={(e) => {
           handleChange(e, options);
@@ -22,4 +23,4 @@ const Textarea = ({ options, handleChange }) => {
   );
 };
 
-export default Textarea;
+export default JSON_;
