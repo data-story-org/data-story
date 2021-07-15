@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { AbstractReactFactory } from '@projectstorm/react-canvas-core';
 import NodeModel from '../core/NodeModel'
 import NodeWidget from './components/NodeWidget'

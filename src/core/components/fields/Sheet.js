@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import jexcel from 'jexcel';
 import ReactDOM from 'react-dom';
 
