@@ -25,3 +25,8 @@ export const StoreProvider: StoreComponent = ({
         </StoreContext.Provider>
     );
 };
+
+// HOC to be used with class components
+export const withStore = (Children: ReactNode) => (props) => {
+   return <Children {...props} store={useStore()} />
+}
