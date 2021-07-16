@@ -24,8 +24,7 @@ import { withStore } from '../store';
  *   node: NodeModel;
  * } */
 
-const NodeWidget = ({ engine, node }) => {
-  const store = useStore()
+const NodeWidget = ({ engine, node, store }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const renderHeading = () => {
@@ -175,4 +174,4 @@ const NodeWidget = ({ engine, node }) => {
   );
 };
 
-export default NodeWidget;
+export default observer(withStore(NodeWidget));
