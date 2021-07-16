@@ -131,4 +131,5 @@ export class Store {
   }
 }
 
-export const RootStore = (window as any).store = new Store();
+export const RootStore = ((window as any).store =
+  new Store());
