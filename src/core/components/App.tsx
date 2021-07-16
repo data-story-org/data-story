@@ -47,7 +47,7 @@ const registerKeybindings = (store: Store) => {
   });
 
   Mousetrap.bind('shift+l', (e) => {
-    store.setPage('Log   ');
+    store.setPage('Log');
   });
 };
 
