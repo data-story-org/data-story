@@ -10,10 +10,10 @@ interface Props {
   store: Store;
 }
 
-const SaveControl: FC<Props> = observer(({ store }) => {
+const SaveControl: FC<Props> = ({ store }) => {
   const [title, icon] = ['Save story', 'fas fa-save'];
   const [isOpen, setIsOpen] = useState(false);
-  const [defaultStory, _setDefaultStory] = useState(
+  const [defaultStory, setDefaultStory] = useState(
     store.metadata.activeStory,
   );
 
@@ -40,12 +40,13 @@ const SaveControl: FC<Props> = observer(({ store }) => {
       >
         <SaveModal
           store={store}
-          defaultStory={defaultStory}
+          storyName={defaultStory}
+          setStoryName={setDefaultStory}
           closeModal={closeModal}
         />
       </Modal>
     </span>
   );
-});
+};
 
-export default SaveControl;
+export default observer(SaveControl);
