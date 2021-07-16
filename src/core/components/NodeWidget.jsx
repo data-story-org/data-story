@@ -1,16 +1,13 @@
-import React, { FC, useState } from 'react';
+import React, { useState } from 'react';
 import {
-  DiagramEngine,
   PortWidget,
 } from '@projectstorm/react-diagrams';
-import { CanvasEngine } from '@projectstorm/react-canvas-core';
 import Modal from 'react-modal';
 
 import NodeWidgetModal from './modals/NodeWidgetModal';
 import NodeInspectorLink from './NodeInspectorLink';
 import modalStyle from '@data-story-org/core/src/utils/modalStyle';
-import NodeModel from '../NodeModel';
-import { observer } from 'mobx-react';
+// import NodeModel from '../NodeModel';
 import { withStore } from '../store';
 
 /**
@@ -174,4 +171,4 @@ const NodeWidget = ({ engine, node, store }) => {
   );
 };
 
-export default observer(withStore(NodeWidget));
+export default withStore(NodeWidget);

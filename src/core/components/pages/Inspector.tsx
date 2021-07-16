@@ -3,7 +3,7 @@ import { observer } from 'mobx-react';
 import InspectorTable from '../InspectorTable';
 import { useStore } from '../../store/StoreProvider';
 
-const Inspector: FC = observer(() => {
+const Inspector: FC = () => {
   const store = useStore();
 
   let id = store.metadata.activeInspector;
@@ -16,9 +16,9 @@ const Inspector: FC = observer(() => {
       <InspectorTable features={features} />
     </div>
   );
-});
+}
 
-export default Inspector;
+export default observer(Inspector);
 
 /*
 

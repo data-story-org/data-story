@@ -6,61 +6,57 @@ interface Props {
   node: NodeModel;
 }
 
-const CommentNodeWidget: FC<Props> = observer(
-  ({ node }: Props) => {
-    const [comment, setComment] = useState(
-      node.parameters.find((p) => p.name == 'text'),
+const CommentNodeWidget: FC<Props> = ({ node }: Props) => {
+  const [comment, setComment] = useState(
+    node.parameters.find((p) => p.name == 'text'),
+  );
+  const [rows, setRows] = useState(2);
+  const [minRows, _setMinRows] = useState(2);
+  const [maxRows, _setMaxRows] = useState(24);
+
+  const updateComment = (e) => {
+    e.persist();
+
+    const textareaLineHeight = 12;
+
+    const previousRows = e.target.rows;
+    e.target.rows = minRows; // reset number of rows in textarea
+
+    const currentRows = ~~(
+      e.target.scrollHeight / textareaLineHeight
     );
-    const [rows, setRows] = useState(2);
-    const [minRows, _setMinRows] = useState(2);
-    const [maxRows, _setMaxRows] = useState(24);
 
-    const updateComment = (e) => {
-      e.persist();
+    if (currentRows === previousRows) {
+      e.target.rows = currentRows;
+    }
 
-      const textareaLineHeight = 12;
+    if (currentRows >= maxRows) {
+      e.target.rows = maxRows;
+      e.target.scrollTop = e.target.scrollHeight;
+    }
 
-      const previousRows = e.target.rows;
-      e.target.rows = minRows; // reset number of rows in textarea
+    setComment(e.target.value);
+    setRows(currentRows < maxRows ? currentRows : maxRows);
+  };
 
-      const currentRows = ~~(
-        e.target.scrollHeight / textareaLineHeight
-      );
-
-      if (currentRows === previousRows) {
-        e.target.rows = currentRows;
+  return (
+    <div
+      className={
+        'flex font-mono text-xxs text-gray-200 p-2 border border-gray-500 overflow-auto'
       }
-
-      if (currentRows >= maxRows) {
-        e.target.rows = maxRows;
-        e.target.scrollTop = e.target.scrollHeight;
-      }
-
-      setComment(e.target.value);
-      setRows(
-        currentRows < maxRows ? currentRows : maxRows,
-      );
-    };
-
-    return (
-      <div
+    >
+      <textarea
+        onFocus={() => node.setLocked(true)}
+        onBlur={() => node.setLocked(false)}
+        rows={rows}
         className={
-          'flex font-mono text-xxs text-gray-200 p-2 border border-gray-500 overflow-auto'
+          'w-full bg-transparent resize-x overflow-auto'
         }
-      >
-        <textarea
-          onFocus={() => node.setLocked(true)}
-          onBlur={() => node.setLocked(false)}
-          rows={rows}
-          className={
-            'w-full bg-transparent resize-x overflow-auto'
-          }
-          value={comment.value}
-          onChange={updateComment}
-        />
-      </div>
-    );
-  },
-);
+        value={comment.value}
+        onChange={updateComment}
+      />
+    </div>
+  );
+};
 
-export default CommentNodeWidget;
+export default observer(CommentNodeWidget);

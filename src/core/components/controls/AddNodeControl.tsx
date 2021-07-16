@@ -30,7 +30,7 @@ const customStyles = {
 // Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
 Modal.setAppElement('#app');
 
-const AddNodeControl = observer(() => {
+const AddNodeControl = () => {
   useEffect(() => {
     Mousetrap.bind(
       '?', // shift+plus
@@ -84,6 +84,6 @@ const AddNodeControl = observer(() => {
       </Modal>
     </span>
   );
-});
+}
 
-export default AddNodeControl;
+export default observer(AddNodeControl);

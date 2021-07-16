@@ -29,7 +29,7 @@ import BaseControl, {
  *   },
  * ); */
 
-const LogControl = observer(() => {
+const LogControl = () => {
   const store = useStore();
   const [title, icon, page] = [
     'Log',
@@ -55,6 +55,6 @@ const LogControl = observer(() => {
       style={style}
     />
   );
-});
+};
 
-export default LogControl;
+export default observer(LogControl);

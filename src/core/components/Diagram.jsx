@@ -5,7 +5,7 @@ import { observer } from 'mobx-react';
 
 const style = 'fullsize bg-gray-600';
 
-const Diagram = observer(({store}) => {
+const Diagram = ({ store }) => {
   // this.diagramRef = React.createRef();
   const diagramRef = useRef();
 
@@ -41,6 +41,6 @@ const Diagram = observer(({store}) => {
       />
     </div>
   );
-});
+};
 
-export default Diagram;
+export default observer(Diagram);

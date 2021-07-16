@@ -1,4 +1,4 @@
-import React, {FC} from 'react';
+import React, { FC } from 'react';
 import { observer } from 'mobx-react';
 import BaseControl, {
   BaseControlStyle,
@@ -9,7 +9,7 @@ interface Props {
   store: Store;
 }
 
-const WorkbenchControl: FC<Props> = observer(({store}) => {
+const WorkbenchControl: FC<Props> = ({ store }) => {
   const [title, icon, page] = [
     'Story workbench',
     'fas fa-project-diagram',
@@ -33,6 +33,6 @@ const WorkbenchControl: FC<Props> = observer(({store}) => {
       style={style}
     />
   );
-});
+};
 
-export default WorkbenchControl;
+export default observer(WorkbenchControl);

@@ -15,7 +15,7 @@ interface Props {
   store: Store;
 }
 
-const Toolbar: FC<Props> = observer(({ store }) => {
+const Toolbar: FC<Props> = ({ store }) => {
   // this.state = {
   //   progressTick: 0,
   // }
@@ -34,9 +34,9 @@ const Toolbar: FC<Props> = observer(({ store }) => {
                 key={
                   node.getDisplayName() + node.options.id
                 }
-                onClick={((e) =>
-                  onClickInspectable(node))
-                /* .bind(node) */
+                onClick={
+                  (e) => onClickInspectable(node)
+                  /* .bind(node) */
                 }
                 className={inspectableLinkStyle(node)}
               >
@@ -91,6 +91,6 @@ const Toolbar: FC<Props> = observer(({ store }) => {
       </div>
     </div>
   );
-});
+};
 
-export default Toolbar;
+export default observer(Toolbar);

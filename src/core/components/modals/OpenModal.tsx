@@ -9,7 +9,7 @@ interface Props {
   closeModal: () => void;
 }
 
-const OpenModal: FC<Props> = observer(({ store, closeModal }) => {
+const OpenModal: FC<Props> = ({ store, closeModal }) => {
   // Never used
   /* const [storyName, setStoryName] = useState(''); */
 
@@ -134,6 +134,6 @@ const OpenModal: FC<Props> = observer(({ store, closeModal }) => {
       {renderActions()}
     </div>
   );
-});
+}
 
-export default OpenModal;
+export default observer(OpenModal);

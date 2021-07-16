@@ -10,7 +10,7 @@ interface Props {
   store: Store;
 }
 
-const OpenControl: FC<Props> = observer(({ store }) => {
+const OpenControl: FC<Props> = ({ store }) => {
   const [title, icon] = ['Open story', 'fas fa-folder'];
   const [isOpen, setIsOpen] = useState(false);
 
@@ -39,6 +39,6 @@ const OpenControl: FC<Props> = observer(({ store }) => {
       </Modal>
     </span>
   );
-});
+};
 
-export default OpenControl;
+export default observer(OpenControl);

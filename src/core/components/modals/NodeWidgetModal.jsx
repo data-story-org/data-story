@@ -21,7 +21,7 @@ import field from '../fields/factory';
  *   closeModal: () => void;
  * } */
 
-const NodeWidgetModal = observer(({ node, closeModal }) => {
+const NodeWidgetModal = ({ node, closeModal }) => {
   const [parameters, setParameters] = useState(
     _.cloneDeep(node.parameters),
   );
@@ -240,6 +240,6 @@ const NodeWidgetModal = observer(({ node, closeModal }) => {
                 />                                 */}
     </div>
   );
-});
+}
 
-export default NodeWidgetModal;
+export default observer(NodeWidgetModal);

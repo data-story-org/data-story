@@ -8,13 +8,15 @@ interface Props {
   onFinish: () => void;
 }
 
-const NodeSearch = observer(({ onFinish }) => {
+const NodeSearch = ({ onFinish }) => {
   const store = useStore();
   const [search, setSearch] = useState('');
   const nameInput = useRef();
 
   useEffect(() => {
     nameInput.current.focus();
+    // Not Implemented
+    /* Mousetrap.bind('enter', handleSelect()) */
 
     // Mousetrap.bind(Array.from('abcdefghijklmnopqrstuvwxyz'),
     //     (key) => {
@@ -129,6 +131,6 @@ const NodeSearch = observer(({ onFinish }) => {
       </ul>
     </div>
   );
-});
+};
 
-export default NodeSearch;
+export default observer(NodeSearch);

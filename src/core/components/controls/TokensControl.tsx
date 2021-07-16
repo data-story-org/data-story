@@ -5,7 +5,7 @@ import BaseControl, {
   BaseControlStyle,
 } from './BaseControl';
 
-const TokensControl = observer(() => {
+const TokensControl = () => {
   const store = useStore();
   const [title, icon, page] = [
     'Tokens',
@@ -31,6 +31,6 @@ const TokensControl = observer(() => {
       style={style}
     />
   );
-});
+}
 
-export default TokensControl;
+export default observer(TokensControl);

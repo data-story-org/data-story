@@ -10,7 +10,7 @@ interface Props {
   store: Store;
 }
 
-const ConfigControl: FC<Props> = observer(({store}) => {
+const ConfigControl: FC<Props> = ({store}) => {
   const [title, icon] = ['Configuration', 'fas fa-cog'];
   const [isOpen, setIsOpen] = useState(false);
 
@@ -39,6 +39,6 @@ const ConfigControl: FC<Props> = observer(({store}) => {
       </Modal>
     </span>
   );
-});
+}
 
-export default ConfigControl;
+export default observer(ConfigControl);

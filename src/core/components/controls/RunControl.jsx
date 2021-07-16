@@ -4,7 +4,7 @@ import BaseControl from './BaseControl';
 import { toast, Slide } from 'react-toastify';
 import Mousetrap from 'mousetrap';
 
-const RunControl= observer(({store}) => {
+const RunControl = ({ store }) => {
   const [id, title, icon] = [
     'run',
     'Run story',
@@ -94,7 +94,7 @@ const RunControl= observer(({store}) => {
       onClick={onClick}
     />
   );
-});
+};
 
 // TODO Separate creating of the notifications into reusable component
 const showFailureToast = () => {
@@ -121,4 +121,4 @@ const showSuccessToast = () => {
   });
 };
 
-export default RunControl;
+export default observer(RunControl);

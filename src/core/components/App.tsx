@@ -57,7 +57,7 @@ const registerExitConfirmation = () => {
   };
 };
 
-const App: FC = observer(() => {
+const App: FC = () => {
   const store = useStore();
   const [booted, setBooted] = useState(false);
 
@@ -115,6 +115,6 @@ const App: FC = observer(() => {
       <ToastContainer style={{ paddingTop: '0px' }} />
     </div>
   );
-});
+}
 
-export default App;
+export default observer(App);
