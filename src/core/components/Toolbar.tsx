@@ -9,9 +9,13 @@ import LogControl from './controls/LogControl';
 import ConfigControl from './controls/ConfigControl';
 import AddNodeControl from './controls/AddNodeControl';
 import TokensControl from './controls/TokensControl';
-import store from '../store/main';
+import { Store } from '../store/main';
 
-const Toolbar: FC = observer(() => {
+interface Props {
+  store: Store;
+}
+
+const Toolbar: FC<Props> = observer(({ store }) => {
   // this.state = {
   //   progressTick: 0,
   // }
@@ -31,7 +35,9 @@ const Toolbar: FC = observer(() => {
                   node.getDisplayName() + node.options.id
                 }
                 onClick={((e) =>
-                  onClickInspectable(node)).bind(node)}
+                  onClickInspectable(node))
+                /* .bind(node) */
+                }
                 className={inspectableLinkStyle(node)}
               >
                 {node.getDisplayName()}
@@ -73,14 +79,14 @@ const Toolbar: FC = observer(() => {
   return (
     <div className="flex w-full bg-gray-600 border-t-2 border-gray-500 shadow shadow-xl">
       <div className="flex no-wrap items-center flex-1 w-full px-2 py-2">
-        <WorkbenchControl />
-        <ConfigControl />
-        <OpenControl />
-        <SaveControl />
-        <RunControl />
+        <WorkbenchControl store={store} />
+        <ConfigControl store={store} />
+        <OpenControl store={store} />
+        <SaveControl store={store} />
+        <RunControl store={store} />
         {/* <TokensControl  />
                     <LogControl  /> */}
-        <AddNodeControl />
+        <AddNodeControl store={store} />
         {renderInspectables()}
       </div>
     </div>

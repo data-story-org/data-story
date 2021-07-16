@@ -1,15 +1,15 @@
 import React, { FC } from 'react';
 
 import { observer } from 'mobx-react';
-import { useStore } from '../store/StoreProvider';
+import { Store } from '../store/main';
 
 interface Props {
+    store: Store;
   nodeId: number;
 }
 
 const NodeInspectorLink: FC<Props> = observer(
-  ({ nodeId }: Props) => {
-    const store = useStore();
+  ({ store, nodeId }: Props) => {
     // Listen to a property to force refresh
     store.diagram.refresh;
 

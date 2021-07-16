@@ -10,7 +10,7 @@ import NodeWidgetModal from './modals/NodeWidgetModal';
 import NodeInspectorLink from './NodeInspectorLink';
 import modalStyle from '@data-story-org/core/src/utils/modalStyle';
 import NodeModel from '../NodeModel';
-import store from '../store/main';
+import {useStore} from '../store/StoreProvider'
 
 /**
  * Using a observer on this component will break things... :/
@@ -24,6 +24,7 @@ import store from '../store/main';
  * } */
 
 const NodeWidget = ({ engine, node }) => {
+  const store = useStore()
   const [isOpen, setIsOpen] = useState(false);
 
   const renderHeading = () => {
@@ -47,7 +48,6 @@ const NodeWidget = ({ engine, node }) => {
       return (
         <div
           className="flex w-full"
-          // @ts-ignore
           key={port.options.name}
         >
           <PortWidget
@@ -67,12 +67,10 @@ const NodeWidget = ({ engine, node }) => {
           <div className="flex w-full items-center text-gray-200 py-1 border border-gray-900 rounded-lg bg-gray-500">
             <div className="flex items-center justify-between w-full">
               <span className="flex px-4 flex-1">
-                // @ts-ignore
                 {port.options.label}
               </span>
               <NodeInspectorLink
-                store={store}
-                nodeId={node.options.id}
+                store={store} nodeId={node.options.id}
               />
             </div>
           </div>
@@ -160,7 +158,7 @@ const NodeWidget = ({ engine, node }) => {
   return (
     <div
       className={'flex font-mono text-xxs text-gray-200'}
-      onDoubleClick={open.bind(this)}
+      onDoubleClick={open}
     >
       <div className="flex-grow-0 max-w-md">
         {renderHeading()}

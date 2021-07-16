@@ -1,15 +1,15 @@
 import React, { FC, useState } from 'react';
 import { observer } from 'mobx-react';
-import { useStore } from '../../store/StoreProvider';
+import { Store } from '../../store/main';
 
 interface Props {
+  store: Store;
   defaultStory: string;
   closeModal: () => void;
 }
 
 const SaveModal: FC<Props> = observer(
-  ({ defaultStory, closeModal }) => {
-    const store = useStore();
+  ({ store, defaultStory, closeModal }) => {
     const [storyName, setStoryName] =
       useState(defaultStory);
 

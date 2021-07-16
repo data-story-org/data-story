@@ -74,8 +74,8 @@ const App: FC = observer(() => {
   useEffect(() => {
     boot();
     registerKeybindings(store);
-      /* registerExitConfirmation(); */
-  });
+    /* registerExitConfirmation(); */
+  }, []);
 
   const boot = () => {
     store.metadata.client
@@ -99,17 +99,18 @@ const App: FC = observer(() => {
         );
         store.setStories(Cookie.keys());
 
-        setBooted(true).catch((error) => {
-          console.error('Boot error', error);
-          showBootFailureToast();
-        });
+        setBooted(true);
+      })
+      .catch((error) => {
+        console.error('Boot error', error);
+        showBootFailureToast();
       });
   };
 
   return (
     <div>
       <Header />
-      <Toolbar />
+      <Toolbar store={store} />
       {booted && renderActivePage()}
       <ToastContainer style={{ paddingTop: '0px' }} />
     </div>
@@ -117,6 +118,3 @@ const App: FC = observer(() => {
 });
 
 export default App;
-function useEffect(arg0: () => void) {
-  throw new Error('Function not implemented.');
-}

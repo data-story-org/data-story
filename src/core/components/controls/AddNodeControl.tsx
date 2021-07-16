@@ -3,8 +3,6 @@ import { observer } from 'mobx-react';
 import BaseControl from './BaseControl';
 import Modal from 'react-modal';
 import NodeSearch from './NodeSearch';
-import { useStore } from '../../store/StoreProvider';
-
 import Mousetrap from 'mousetrap';
 
 const customStyles = {
@@ -43,7 +41,6 @@ const AddNodeControl = observer(() => {
     );
   }, []);
 
-  const store = useStore();
   const [id, title, icon] = [
     'add-node',
     'Add Node',

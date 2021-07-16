@@ -1,19 +1,14 @@
-import React, { FC, useRef, useEffect } from 'react';
+import React, { useRef, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { CanvasWidget } from '@projectstorm/react-canvas-core';
 import { observer } from 'mobx-react';
-import { useStore } from '../store/StoreProvider';
 
 const style = 'fullsize bg-gray-600';
 
-const Diagram: FC = observer(() => {
+const Diagram = observer(({store}) => {
   // this.diagramRef = React.createRef();
-  const diagramRef = useRef(null);
-  const store = useStore();
+  const diagramRef = useRef();
 
-  const timer = setTimeout(() => {
-    ReactDOM.findDOMNode(diagramRef.current).focus();
-  }, 500);
   /* componentDidMount() {
      *   // FOCUS THE WORKBENCH!!! HOW?
 
@@ -32,8 +27,8 @@ const Diagram: FC = observer(() => {
     const timer = setTimeout(() => {
       ReactDOM.findDOMNode(diagramRef.current).focus();
     }, 500);
-    return () => clearTimeout(timer);
-  });
+    // return () => clearTimeout(timer);
+  }, []);
 
   return (
     <div>

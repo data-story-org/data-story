@@ -11,17 +11,17 @@ const StoreContext = createContext<Store>();
 export const useStore = (): Store => useContext(StoreContext);
 
 export type StoreComponent = FC<{
-  store: Store;
-  children: ReactNode;
+    store: Store;
+    children: ReactNode;
 }>;
 
 export const StoreProvider: StoreComponent = ({
-  children,
-  store,
+    store,
+    children,
 }): ReactElement => {
-  return (
-    <StoreContext.Provider value={store}>
-      {children}
-    </StoreContext.Provider>
-  );
+    return (
+        <StoreContext.Provider value={store}>
+            {children}
+        </StoreContext.Provider>
+    );
 };

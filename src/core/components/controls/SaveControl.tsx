@@ -1,13 +1,16 @@
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
 import { observer } from 'mobx-react';
 import BaseControl from './BaseControl';
 import Modal from 'react-modal';
 import modalStyle from '@data-story-org/core/src/utils/modalStyle';
 import SaveModal from '../modals/SaveModal';
-import { useStore } from '../../store/StoreProvider';
+import { Store } from '../../store/main';
 
-const SaveControl = observer(() => {
-  const store = useStore();
+interface Props {
+  store: Store;
+}
+
+const SaveControl: FC<Props> = observer(({ store }) => {
   const [title, icon] = ['Save story', 'fas fa-save'];
   const [isOpen, setIsOpen] = useState(false);
   const [defaultStory, _setDefaultStory] = useState(
@@ -36,6 +39,7 @@ const SaveControl = observer(() => {
         style={modalStyle}
       >
         <SaveModal
+          store={store}
           defaultStory={defaultStory}
           closeModal={closeModal}
         />

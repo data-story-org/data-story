@@ -1,11 +1,16 @@
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
 import { observer } from 'mobx-react';
 import BaseControl from './BaseControl';
 import Modal from 'react-modal';
 import modalStyle from '@data-story-org/core/src/utils/modalStyle';
 import OpenModal from '../modals/OpenModal';
+import { Store } from '../../store/main';
 
-const OpenControl = observer(() => {
+interface Props {
+  store: Store;
+}
+
+const OpenControl: FC<Props> = observer(({ store }) => {
   const [title, icon] = ['Open story', 'fas fa-folder'];
   const [isOpen, setIsOpen] = useState(false);
 
@@ -30,7 +35,7 @@ const OpenControl = observer(() => {
         onRequestClose={closeModal}
         style={modalStyle}
       >
-        <OpenModal closeModal={closeModal} />
+        <OpenModal store={store} closeModal={closeModal} />
       </Modal>
     </span>
   );

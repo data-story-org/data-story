@@ -1,12 +1,15 @@
-import React from 'react';
+import React, {FC} from 'react';
 import { observer } from 'mobx-react';
 import BaseControl, {
   BaseControlStyle,
 } from './BaseControl';
-import { useStore } from '../../store/StoreProvider';
+import { Store } from '../../store/main';
 
-const WorkbenchControl = observer(() => {
-  const store = useStore();
+interface Props {
+  store: Store;
+}
+
+const WorkbenchControl: FC<Props> = observer(({store}) => {
   const [title, icon, page] = [
     'Story workbench',
     'fas fa-project-diagram',

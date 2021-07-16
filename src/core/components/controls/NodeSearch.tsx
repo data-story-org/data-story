@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { observer } from 'mobx-react';
 var Mousetrap = require('mousetrap');
 import _ from 'lodash';
@@ -11,10 +11,10 @@ interface Props {
 const NodeSearch = observer(({ onFinish }) => {
   const store = useStore();
   const [search, setSearch] = useState('');
-  const [nameInput, setNameInput] = useState(null);
+  const nameInput = useRef();
 
   useEffect(() => {
-    nameInput.focus();
+    nameInput.current.focus();
 
     // Mousetrap.bind(Array.from('abcdefghijklmnopqrstuvwxyz'),
     //     (key) => {
@@ -94,12 +94,12 @@ const NodeSearch = observer(({ onFinish }) => {
   };
 
   const handleSelect = (e) => {
-    e.preDefault();
+    e.preventDefault();
 
-    let name = e.target.getAttribute(
+    const name = e.target.getAttribute(
       'data-node-model-variation-name',
     );
-    let nodeData = store.diagram.availableNodes.find(
+    const nodeData = store.diagram.availableNodes.find(
       (node) => node.name == name,
     );
     store.addNode(
@@ -117,9 +117,7 @@ const NodeSearch = observer(({ onFinish }) => {
         id="node-search"
         value={search}
         onChange={searchChange}
-        ref={(input) => {
-          setNameInput(input);
-        }}
+        ref={nameInput}
         className="w-full p-4 rounded mb-4"
         placeholder="model | method | reader | writer ..."
         tabIndex={1}

@@ -15,29 +15,30 @@ const CommentNodeWidget: FC<Props> = observer(
     const [minRows, _setMinRows] = useState(2);
     const [maxRows, _setMaxRows] = useState(24);
 
-    const updateComment = (event) => {
-      const updatedComment = comment;
-      updatedComment.value = event.target.value;
+    const updateComment = (e) => {
+      e.preventDefault();
+      const commentUpdated = comment;
+      commentUpdated.value = e.target.value;
 
       const textareaLineHeight = 12;
 
-      const previousRows = event.target.rows;
-      event.target.rows = minRows; // reset number of rows in textarea
+      const previousRows = e.target.rows;
+      e.target.rows = minRows; // reset number of rows in textarea
 
       const currentRows = ~~(
-        event.target.scrollHeight / textareaLineHeight
+        e.target.scrollHeight / textareaLineHeight
       );
 
       if (currentRows === previousRows) {
-        event.target.rows = currentRows;
+        e.target.rows = currentRows;
       }
 
       if (currentRows >= maxRows) {
-        event.target.rows = maxRows;
-        event.target.scrollTop = event.target.scrollHeight;
+        e.target.rows = maxRows;
+        e.target.scrollTop = e.target.scrollHeight;
       }
 
-      setComment(updatedComment);
+      setComment(commentUpdated);
       setRows(
         currentRows < maxRows ? currentRows : maxRows,
       );

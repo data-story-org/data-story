@@ -1,12 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { FC, useEffect } from 'react';
 import { observer } from 'mobx-react';
 import BaseControl from './BaseControl';
 import { toast, Slide } from 'react-toastify';
-import { useStore } from '../../store/StoreProvider';
 import Mousetrap from 'mousetrap';
 
-const RunControl = observer(() => {
-  const store = useStore();
+const RunControl= observer(({store}) => {
   const [id, title, icon] = [
     'run',
     'Run story',

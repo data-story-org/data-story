@@ -2,14 +2,14 @@ import React, { FC, useState } from 'react';
 import { observer } from 'mobx-react';
 import Cookie from '../../utils/Cookie';
 import DiagramModel from '../../DiagramModel';
-import { useStore } from '../../store/StoreProvider';
+import { Store } from '../../store/main';
 
 interface Props {
+  store: Store;
   closeModal: () => void;
 }
 
-const OpenModal: FC<Props> = observer(({ closeModal }) => {
-  const store = useStore();
+const OpenModal: FC<Props> = observer(({ store, closeModal }) => {
   // Never used
   /* const [storyName, setStoryName] = useState(''); */
 
