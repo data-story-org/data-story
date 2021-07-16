@@ -1,12 +1,15 @@
-import React from 'react';
+import React, {FC} from 'react';
 import { observer } from 'mobx-react';
-import { useStore } from '../../store/StoreProvider';
+import { Store } from '../../store/';
 import BaseControl, {
   BaseControlStyle,
 } from './BaseControl';
 
-const TokensControl = () => {
-  const store = useStore();
+interface Props {
+  store: Store;
+}
+
+const TokensControl: FC<Props> = ({store}) => {
   const [title, icon, page] = [
     'Tokens',
     'fas fa-key',

@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { observer } from 'mobx-react';
 import BaseControl from './BaseControl';
 import Modal from 'react-modal';
 import NodeSearch from './NodeSearch';
 import Mousetrap from 'mousetrap';
+import { Store } from '../../store/';
 
 const customStyles = {
   content: {
@@ -30,7 +31,11 @@ const customStyles = {
 // Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
 Modal.setAppElement('#app');
 
-const AddNodeControl = () => {
+interface Props {
+  store: Store;
+}
+
+const AddNodeControl: FC<Props> = ({store}) => {
   useEffect(() => {
     Mousetrap.bind(
       '?', // shift+plus
@@ -80,7 +85,7 @@ const AddNodeControl = () => {
         style={customStyles}
         contentLabel="Example Modal"
       >
-        <NodeSearch onFinish={closeModal} />
+      <NodeSearch store={store} onFinish={closeModal} />
       </Modal>
     </span>
   );

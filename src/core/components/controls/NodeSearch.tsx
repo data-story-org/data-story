@@ -1,15 +1,15 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { FC, useState, useEffect, useRef } from 'react';
 import { observer } from 'mobx-react';
 var Mousetrap = require('mousetrap');
 import _ from 'lodash';
-import { useStore } from '../../store/StoreProvider';
+import { Store } from '../../store/';
 
 interface Props {
+  store: Store;
   onFinish: () => void;
 }
 
-const NodeSearch = ({ onFinish }) => {
-  const store = useStore();
+const NodeSearch: FC<Props> = ({ store, onFinish }) => {
   const [search, setSearch] = useState('');
   const nameInput = useRef();
 
