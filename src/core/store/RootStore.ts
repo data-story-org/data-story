@@ -130,4 +130,5 @@ export class Store {
     this.metadata.stories = stories;
   }
 }
-export default (window as any).store = new Store();
+
+export const RootStore = (window as any).store = new Store();

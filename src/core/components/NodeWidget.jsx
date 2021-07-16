@@ -10,7 +10,8 @@ import NodeWidgetModal from './modals/NodeWidgetModal';
 import NodeInspectorLink from './NodeInspectorLink';
 import modalStyle from '@data-story-org/core/src/utils/modalStyle';
 import NodeModel from '../NodeModel';
-import {useStore} from '../store/StoreProvider'
+import { observer } from 'mobx-react';
+import { withStore } from '../store';
 
 /**
  * Using a observer on this component will break things... :/

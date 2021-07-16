@@ -13,7 +13,7 @@ import EngineFactory from '../../core/EngineFactory';
 import Cookie from '../utils/Cookie';
 import { useStore } from '../store/StoreProvider';
 import Mousetrap from 'mousetrap';
-import { Store } from '../store/main';
+import { Store } from '../store';
 
 const bootDemos = (store: Store) => {
   // for (const name of Object.keys(demos)) {

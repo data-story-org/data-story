@@ -1,6 +1,6 @@
 import React, { FC, useState } from 'react';
 import { observer } from 'mobx-react';
-import { Store } from '../../store/main';
+import { Store } from '../../store';
 
 interface Props {
   store: Store;

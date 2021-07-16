@@ -2,7 +2,7 @@ import React, { useState, FC } from 'react';
 import { observer } from 'mobx-react';
 /* import Cookie from '../../utils/Cookie';
  * import DiagramModel from '../../DiagramModel'; */
-import { Store } from '../../store/main';
+import { Store } from '../../store';
 
 interface Props {
   store: Store;

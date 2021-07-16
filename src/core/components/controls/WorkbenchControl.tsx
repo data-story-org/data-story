@@ -3,7 +3,7 @@ import { observer } from 'mobx-react';
 import BaseControl, {
   BaseControlStyle,
 } from './BaseControl';
-import { Store } from '../../store/main';
+import { Store } from '../../store';
 
 interface Props {
   store: Store;

@@ -4,7 +4,7 @@ import BaseControl from './BaseControl';
 import Modal from 'react-modal';
 import modalStyle from '@data-story-org/core/src/utils/modalStyle';
 import ConfigModal from '../modals/ConfigModal';
-import { Store } from '../../store/main';
+import { Store } from '../../store';
 
 interface Props {
   store: Store;

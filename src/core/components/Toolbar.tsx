@@ -9,7 +9,7 @@ import LogControl from './controls/LogControl';
 import ConfigControl from './controls/ConfigControl';
 import AddNodeControl from './controls/AddNodeControl';
 import TokensControl from './controls/TokensControl';
-import { Store } from '../store/main';
+import { Store } from '../store';
 
 interface Props {
   store: Store;
