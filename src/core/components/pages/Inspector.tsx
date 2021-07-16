@@ -6,8 +6,8 @@ import { useStore } from '../../store/StoreProvider';
 const Inspector: FC = () => {
   const store = useStore();
 
-  let id = store.metadata.activeInspector;
-  let features = id
+  const id = store.metadata.activeInspector;
+  const features = id
     ? store.diagram.engine.model.getNode(id).features
     : [];
 
