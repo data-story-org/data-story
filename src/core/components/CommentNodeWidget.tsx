@@ -16,9 +16,7 @@ const CommentNodeWidget: FC<Props> = observer(
     const [maxRows, _setMaxRows] = useState(24);
 
     const updateComment = (e) => {
-      e.preventDefault();
-      const commentUpdated = comment;
-      commentUpdated.value = e.target.value;
+      e.persist();
 
       const textareaLineHeight = 12;
 
@@ -38,7 +36,7 @@ const CommentNodeWidget: FC<Props> = observer(
         e.target.scrollTop = e.target.scrollHeight;
       }
 
-      setComment(commentUpdated);
+      setComment(e.target.value);
       setRows(
         currentRows < maxRows ? currentRows : maxRows,
       );
