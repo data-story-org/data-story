@@ -15,3 +15,13 @@ yarn && yarn watch
 ```
 
 Serve public/index.html
+
+## Hotkeys (MAC)
+
+| Hotkey        | Action           |
+| ------------- |:-------------:|
+| ALT+D                 | Go to diagram |
+| ALT+T                 | Go to inspectors |
+| ALT+PLUS              | Add node |
+| ALT+R                 | Run diagram |
+| SHIFT+click on link   | Select link |
