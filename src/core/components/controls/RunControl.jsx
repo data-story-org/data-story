@@ -1,8 +1,8 @@
-import React, { FC, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { observer } from 'mobx-react';
 import BaseControl from './BaseControl';
-import { toast, Slide } from 'react-toastify';
 import Mousetrap from 'mousetrap';
+import { showNotification } from '../../utils/Notifications';
 
 const RunControl = ({ store }) => {
   const [id, title, icon] = [
@@ -73,14 +73,21 @@ const RunControl = ({ store }) => {
                   .addLabel(port.features.length);
               });
           });
-        showSuccessToast();
+        showNotification({
+          message: 'Successfully ran story!',
+          type: 'success',
+        });
 
         store.setNotRunning();
         store.refreshDiagram();
       })
       .catch((error) => {
         store.setNotRunning();
-        showFailureToast();
+        showNotification({
+          message:
+            'Crap! Could not run story! Check console.',
+          type: 'error',
+        });
 
         throw error;
       });
@@ -94,31 +101,6 @@ const RunControl = ({ store }) => {
       onClick={onClick}
     />
   );
-};
-
-// TODO Separate creating of the notifications into reusable component
-const showFailureToast = () => {
-  toast.info('Crap! Could not run story! Check console.', {
-    position: 'bottom-right',
-    transition: Slide,
-    autoClose: 3500,
-    hideProgressBar: true,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-  });
-};
-
-const showSuccessToast = () => {
-  toast.info('Successfully ran story!', {
-    position: 'bottom-right',
-    transition: Slide,
-    autoClose: 3500,
-    hideProgressBar: true,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-  });
 };
 
 export default observer(RunControl);
