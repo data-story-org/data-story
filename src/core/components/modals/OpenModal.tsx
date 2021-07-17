@@ -114,19 +114,6 @@ const OpenModal: FC<Props> = ({ store, closeModal }) => {
     }
   };
 
-    // Never used
-    /* const showSuccessToast = () => {
-     *   toast.info('Successfully saved story!', {
-     *     position: 'bottom-right',
-     *     transition: Slide,
-     *     autoClose: 3500,
-     *     hideProgressBar: true,
-     *     closeOnClick: true,
-     *     pauseOnHover: true,
-     *     draggable: true,
-     *   });
-     * }; */
-
   return (
     <div>
       {renderHeading()}
@@ -134,6 +121,6 @@ const OpenModal: FC<Props> = ({ store, closeModal }) => {
       {renderActions()}
     </div>
   );
-}
+};
 
 export default observer(OpenModal);
