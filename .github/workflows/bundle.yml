@@ -22,7 +22,7 @@ jobs:
       - uses: bahmutov/npm-install@v1
         with:
           useLockFile: false
-          install-command: yarn  --silent
+          install-command: yarn --silent
 
       - name: Build in production environment
         run: yarn run prod

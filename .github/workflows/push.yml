@@ -23,9 +23,10 @@ jobs:
         with:
           useRollingCache: true
           useLockFile: false
+          install-command: yarn --silent
 
       - name: Format with prettier
-        run: npm run format
+        run: yarn run format
 
       # - name: Fix all fixable eslint warnings
       #   run: npm run lint:quiet:fix

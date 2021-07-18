@@ -22,6 +22,7 @@ jobs:
         with:
           useRollingCache: true
           useLockFile: false
+          install-command: yarn --silent
 
       - uses: reviewdog/action-eslint@v1
         with:
