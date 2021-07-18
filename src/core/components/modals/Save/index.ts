@@ -1,3 +1,3 @@
-import SaveModal from './Save'
+import SaveModal from './Save';
 
 export default SaveModal;
