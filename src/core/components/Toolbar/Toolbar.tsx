@@ -1,15 +1,17 @@
 import React, { FC, useState } from 'react';
 import { observer } from 'mobx-react';
 
-import WorkbenchControl from './controls/WorkbenchControl';
-import OpenControl from './controls/OpenControl';
-import SaveControl from './controls/SaveControl';
-import RunControl from './controls/RunControl';
-import LogControl from './controls/LogControl';
-import ConfigControl from './controls/ConfigControl';
-import AddNodeControl from './controls/AddNodeControl';
-import TokensControl from './controls/TokensControl';
-import { Store } from '../store';
+import WorkbenchControl from '../controls/WorkbenchControl';
+import OpenControl from '../controls/OpenControl';
+import SaveControl from '../controls/SaveControl';
+import RunControl from '../controls/RunControl';
+import LogControl from '../controls/LogControl';
+import ConfigControl from '../controls/ConfigControl';
+import AddNodeControl from '../controls/AddNodeControl';
+import TokensControl from '../controls/TokensControl';
+import { Store } from '../../store';
+
+import ToolbarInspectables from './ToolbarInspectables';
 
 interface Props {
   store: Store;
@@ -22,32 +24,6 @@ const Toolbar: FC<Props> = ({ store }) => {
 
   // It seems like progress doesn't implemented now
   /* const [progressTick, setProgressTick] = useState(0); */
-
-  const renderInspectables = () => {
-    return (
-      store.diagram.engine && (
-        <span className="border-l ml-8 pl-8">
-          {store.nodesWithInspectables().map((node) => {
-            return (
-              <span
-                dusk="inspect"
-                key={
-                  node.getDisplayName() + node.options.id
-                }
-                onClick={
-                  (e) => onClickInspectable(node)
-                  /* .bind(node) */
-                }
-                className={inspectableLinkStyle(node)}
-              >
-                {node.getDisplayName()}
-              </span>
-            );
-          })}
-        </span>
-      )
-    );
-  };
 
   const onClickInspectable = (node) => {
     if (
@@ -87,7 +63,11 @@ const Toolbar: FC<Props> = ({ store }) => {
         {/* <TokensControl  />
                     <LogControl  /> */}
         <AddNodeControl store={store} />
-        {renderInspectables()}
+        <ToolbarInspectables
+          store={store}
+          onClickInspectable={onClickInspectable}
+          inspectableLinkStyle={inspectableLinkStyle}
+        />
       </div>
     </div>
   );

@@ -1,7 +1,7 @@
 import React from 'react';
 import { AbstractReactFactory } from '@projectstorm/react-canvas-core';
 import NodeModel from '../core/NodeModel';
-import NodeWidget from './components/NodeWidget';
+import NodeWidget from './components/widgets/Node/';
 import CommentNodeWidget from './components/CommentNodeWidget';
 
 export default class NodeModelFactory extends AbstractReactFactory {
@@ -19,10 +19,7 @@ export default class NodeModelFactory extends AbstractReactFactory {
     }
 
     return (
-        <NodeWidget
-          engine={this.engine}
-          node={event.model}
-        />
+      <NodeWidget engine={this.engine} node={event.model} />
     );
   }
 }

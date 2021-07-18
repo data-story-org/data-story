@@ -4,7 +4,7 @@ const TerserPlugin = require('terser-webpack-plugin');
 
 const defaultMixConfig = () => {
   return mix
-    .ts('src/core/app.tsx', 'dist/js')
+    .ts('src/core/index.tsx', 'dist/js')
     .react()
     .sass('src/core/sass/app.scss', 'dist/css')
     .options({

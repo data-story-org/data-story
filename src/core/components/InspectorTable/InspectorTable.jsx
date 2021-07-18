@@ -1,4 +1,6 @@
 import React, { useState, FC } from 'react';
+import InspectorTableHeading from './InspectorTableHeading';
+import InspectorTableBody from './InspectorTableBody';
 // import Feature from '../Feature';
 
 // TODO Make InspectorTable definitely-typed
@@ -9,41 +11,6 @@ import React, { useState, FC } from 'react';
 const InspectorTable = ({ features }) => {
   const [truncateAt, setTruncateAt] = useState(100);
 
-  const renderTableHead = () => {
-    if (hasPrimitiveFeatures()) {
-      return (
-        <thead>
-          <tr>
-            <th
-              scope="col"
-              className="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-            >
-              value
-            </th>
-          </tr>
-        </thead>
-      );
-    }
-
-    return (
-      <thead>
-        <tr>
-          {getHeaders().map((heading) => {
-            return (
-              <th
-                key={heading}
-                scope="col"
-                className="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-              >
-                {heading}
-              </th>
-            );
-          })}
-        </tr>
-      </thead>
-    );
-  };
-
   const hasPrimitiveFeatures = () => {
     return (
       features
@@ -51,52 +18,6 @@ const InspectorTable = ({ features }) => {
         .filter((content) => {
           return typeof content != 'object';
         }).length != 0
-    );
-  };
-
-  const renderTableBody = () => {
-    if (hasPrimitiveFeatures()) {
-      return renderPrimitiveTableBody();
-    }
-
-    return (
-      <tbody>
-        {getRows().map((row, rowIndex) => {
-          return (
-            <tr key={rowIndex} className="bg-white">
-              {row.map((column, columnIndex) => {
-                return (
-                  <td
-                    key={columnIndex}
-                    className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-500"
-                  >
-                    {column}
-                  </td>
-                );
-              })}
-            </tr>
-          );
-        })}
-      </tbody>
-    );
-  };
-
-  const renderPrimitiveTableBody = () => {
-    return (
-      <tbody>
-        {getRows().map((row, rowIndex) => {
-          return (
-            <tr key={rowIndex} className="bg-white">
-              <td
-                key={rowIndex}
-                className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-500"
-              >
-                {row}
-              </td>
-            </tr>
-          );
-        })}
-      </tbody>
     );
   };
 
@@ -147,8 +68,14 @@ const InspectorTable = ({ features }) => {
         <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
           <div className="shadow overflow-hidden border-gray-200 sm:rounded-lg">
             <table className="min-w-full divide-y divide-gray-200">
-              {renderTableHead()}
-              {renderTableBody()}
+              <InspectorTableHeading
+                primitiveFeatures={hasPrimitiveFeatures()}
+                headers={getHeaders()}
+              />
+              <InspectorTableBody
+                primitiveFeatures={hasPrimitiveFeatures()}
+                rows={getRows()}
+              />
             </table>
             {getRowCount() == 0 && (
               <div className="flex w-full justify-center p-24 text-gray-300 font-mono text-xl">
