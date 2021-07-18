@@ -4,7 +4,7 @@ import { withStore } from '../../../store';
 import NodeWidgetHeader from './NodeHeader';
 import NodeWidgetInPorts from './NodeInPorts';
 import NodeWidgetOutPorts from './NodeOutPorts';
-import NodeWidgetModal from './NodeModal';
+import NodeWidgetModal from '../../modals/NodeWidget';
 // import NodeModel from '../NodeModel';
 
 /**

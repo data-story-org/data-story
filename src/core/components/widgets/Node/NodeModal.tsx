@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
 import modalStyle from '@data-story-org/core/src/utils/modalStyle';
-import NodeWidgetModal from '../../modals/NodeWidgetModal';
 import { observer } from 'mobx-react';
 import Modal from 'react-modal';
 import NodeModel from '../../../NodeModel';
+import NodeWidgetModal from '../../modals/NodeWidget';
 
 interface Props {
   node: NodeModel;
