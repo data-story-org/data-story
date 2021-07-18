@@ -32,3 +32,4 @@ jobs:
         with:
           commit_message: Bundle latest gui
           file_pattern: public/ dist/ docs/
+          push_options: '--force'
