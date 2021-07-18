@@ -1,8 +1,14 @@
-import React, { FC, useState, useEffect, useRef } from 'react';
+import React, {
+  FC,
+  useState,
+  useEffect,
+  useRef,
+} from 'react';
 import { observer } from 'mobx-react';
 var Mousetrap = require('mousetrap');
 import _ from 'lodash';
-import { Store } from '../../store/';
+import { Store } from '../../../store/';
+import NodeListItem from './NodeListItem';
 
 interface Props {
   store: Store;
@@ -32,53 +38,6 @@ const NodeSearch: FC<Props> = ({ store, onFinish }) => {
       Mousetrap.unbind('enter');
     };
   }, []);
-
-  const renderNode = (node) => {
-    const elementDataProperties = {
-      id: node.name,
-      'data-node-model-variation-name': node.name,
-    };
-
-    // HOW TO ONLY ALLOW CLICK E FROM PARENT?
-    // REPEAT THE EDATA FOR ALL CHILDREN FOR NOW
-    return (
-      <li
-        key={node.category + node.name}
-        onDoubleClick={handleSelect}
-        {...elementDataProperties}
-        className="py-3 flex"
-        tabIndex={2}
-      >
-        <div className="ml-3">
-          <div
-            className="flex text-sm mb-2 font-medium text-gray-900 text-bold"
-            {...elementDataProperties}
-          >
-            <div
-              {...elementDataProperties}
-              className="text-indigo-500"
-            >
-              {node.category}
-            </div>
-            <div {...elementDataProperties} className="">
-              ::{node.name}
-            </div>
-          </div>
-          <div
-            className="text-xs text-gray-500"
-            {...elementDataProperties}
-          >
-            <span
-              className="ml-2"
-              {...elementDataProperties}
-            >
-              {node.summary}
-            </span>
-          </div>
-        </div>
-      </li>
-    );
-  };
 
   const searchChange = (e) => {
     setSearch(e.target.value);
@@ -126,7 +85,12 @@ const NodeSearch: FC<Props> = ({ store, onFinish }) => {
       />
       <ul className="divide-y divide-gray-300">
         {filteredNodes().map((node) => {
-          return renderNode(node);
+          return (
+            <NodeListItem
+              node={node}
+              handleSelect={handleSelect}
+            />
+          );
         })}
       </ul>
     </div>
