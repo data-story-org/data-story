@@ -1,11 +1,13 @@
 import React, { FC } from 'react';
 import { observer } from 'mobx-react';
 import InspectorTable from '../InspectorTable';
-import { useStore } from '../../store/StoreProvider';
+import { Store } from '../../store';
 
-const Inspector: FC = () => {
-  const store = useStore();
+interface Props {
+  store: Store;
+}
 
+const Inspector: FC<Props> = ({ store }) => {
   const id = store.metadata.activeInspector;
   const features = id
     ? store.diagram.engine.model.getNode(id).features
@@ -16,7 +18,7 @@ const Inspector: FC = () => {
       <InspectorTable features={features} />
     </div>
   );
-}
+};
 
 export default observer(Inspector);
 
