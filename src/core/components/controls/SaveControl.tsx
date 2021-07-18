@@ -3,7 +3,7 @@ import { observer } from 'mobx-react';
 import BaseControl from './BaseControl';
 import Modal from 'react-modal';
 import modalStyle from '@data-story-org/core/src/utils/modalStyle';
-import SaveModal from '../modals/SaveModal';
+import SaveModal from '../modals/Save';
 import { Store } from '../../store';
 
 interface Props {
