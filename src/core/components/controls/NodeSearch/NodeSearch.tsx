@@ -9,6 +9,7 @@ var Mousetrap = require('mousetrap');
 import { cloneDeep } from 'lodash';
 import { Store } from '../../../store/';
 import NodeListItem from './NodeListItem';
+import Fuse from 'fuse.js';
 
 interface Props {
   store: Store;
@@ -17,7 +18,11 @@ interface Props {
 
 const NodeSearch: FC<Props> = ({ store, onFinish }) => {
   const [search, setSearch] = useState('');
-  const nameInput = useRef();
+  const [filteredNodes, setFilteredNodes] = useState(
+    store.diagram.availableNodes,
+  );
+
+  const nameInput = useRef(null);
 
   useEffect(() => {
     nameInput.current.focus();
@@ -39,19 +44,24 @@ const NodeSearch: FC<Props> = ({ store, onFinish }) => {
     };
   }, []);
 
+  // Fuzzy-search
+  const fuse = new Fuse(store.diagram.availableNodes, {
+    keys: ['category.name.summary'],
+    findAllMatches: true,
+    ignoreLocation: true,
+    useExtendedSearch: true,
+    threshold: 0.8,
+  });
+
   const searchChange = (e) => {
     setSearch(e.target.value);
-  };
 
-  const filteredNodes = () => {
-    return store.diagram.availableNodes.filter((node) => {
-      let content =
-        node.category + node.name + node.summary;
-
-      return content
-        .toLowerCase()
-        .includes(search.toLowerCase());
-    });
+    const searchPattern = search.replace(/\s/g, '');
+    setFilteredNodes(
+      fuse.search(
+        `${searchPattern} | '${searchPattern} | ^${searchPattern}' | .${searchPattern}`,
+      ),
+    );
   };
 
   const handleSelect = (e) => {
@@ -74,7 +84,6 @@ const NodeSearch: FC<Props> = ({ store, onFinish }) => {
   return (
     <div className="flex flex-col bg-gray-100 -m-5 rounded shadow max-w-xl font-mono text-xs">
       <input
-        autoComplete="off"
         id="node-search"
         value={search}
         onChange={searchChange}
@@ -84,7 +93,7 @@ const NodeSearch: FC<Props> = ({ store, onFinish }) => {
         tabIndex={1}
       />
       <ul className="divide-y divide-gray-300">
-        {filteredNodes().map((node) => {
+        {filteredNodes.map((node) => {
           return (
             <NodeListItem
               node={node}
