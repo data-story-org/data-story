@@ -6,7 +6,7 @@ import React, {
 } from 'react';
 import { observer } from 'mobx-react';
 var Mousetrap = require('mousetrap');
-import _ from 'lodash';
+import { cloneDeep } from 'lodash';
 import { Store } from '../../../store/';
 import NodeListItem from './NodeListItem';
 
@@ -65,7 +65,7 @@ const NodeSearch: FC<Props> = ({ store, onFinish }) => {
     );
     store.addNode(
       // Ensure the parameters will not be shared between two nodes of same type
-      _.cloneDeep(nodeData),
+      cloneDeep(nodeData),
     );
 
     onFinish();
