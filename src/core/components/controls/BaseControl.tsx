@@ -33,6 +33,7 @@ interface Props {
   id?: string;
   title: string;
   icon: string;
+  page?: string;
   onClick?: () => void;
   style?: string;
 }
@@ -48,6 +49,7 @@ const BaseControl: FC<Props> = ({
   id = null,
   title,
   icon,
+  page,
   onClick = BaseOnClick,
   style = BaseControlStyle,
 }) => {

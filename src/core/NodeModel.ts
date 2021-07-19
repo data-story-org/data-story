@@ -8,9 +8,11 @@ import UID from '@data-story-org/core/src/utils/UID';
 import { pickBy } from '@data-story-org/core/src/utils/Obj';
 import NodeParameter from './NodeParameter';
 import { SerializedNodeModel } from './types/SerializedNodeModel';
+import { ReactNode } from 'react';
 
 export interface NodeModelOptions
   extends BasePositionModelOptions {
+  category: ReactNode;
   name: string;
   parameters: any[];
 }
