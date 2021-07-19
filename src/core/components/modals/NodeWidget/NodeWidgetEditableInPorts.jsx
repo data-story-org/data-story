@@ -3,9 +3,8 @@ import { observer } from 'mobx-react';
 import field from '../../fields/factory';
 
 const NodeWidgetModalEditableInPorts = ({
-  node,
-  editExistingPort,
-  saveNewInPort,
+  parameters,
+  handleChange
 }) => {
   return (
     <div>

@@ -1,4 +1,5 @@
 import React from 'react';
+import field from '../../fields/factory';
 
 const NodeWidgetModalBody = ({ parameters, handleChange }) => {
   return (

@@ -1,6 +1,9 @@
 import React from 'react';
 
-const InspectorHeading = ({ primitiveFeatures, rows }) => {
+const InspectorTableBody = ({
+  primitiveFeatures,
+  rows,
+}) => {
   const primitiveTable = (row, rowIndex) => {
     return (
       <td
@@ -30,18 +33,21 @@ const InspectorHeading = ({ primitiveFeatures, rows }) => {
   };
 
   return (
-    <tbody>
-      {getRows().map((row, rowIndex) => {
-        return (
-          <tr key={rowIndex} className="bg-white">
-            {primitiveFeatures &&
-              primitiveTable(row, rowIndex)}
-            {primitiveFeatures || table(row)}
-          </tr>
-        );
-      })}
-    </tbody>
+    <>
+      <tbody>
+        {rows &&
+          rows.map((row, rowIndex) => {
+            return (
+              <tr key={rowIndex} className="bg-white">
+                {primitiveFeatures &&
+                  primitiveTable(row, rowIndex)}
+                {primitiveFeatures || table(row)}
+              </tr>
+            );
+          })}
+      </tbody>
+    </>
   );
 };
 
-export default InspectorHeading;
+export default InspectorTableBody;

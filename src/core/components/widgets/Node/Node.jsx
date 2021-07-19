@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import Modal from 'react-modal';
+import modalStyle from '@data-story-org/core/src/utils/modalStyle';
 import { withStore } from '../../../store';
 
 import NodeWidgetHeader from './NodeHeader';
@@ -49,11 +51,16 @@ const NodeWidget = ({ engine, node, store }) => {
         </div>
       </div>
 
-      <NodeWidgetModal
-        node={node}
+      <Modal
         isOpen={isOpen}
-        closeModal={closeModal}
-      />
+        onRequestClose={closeModal}
+        style={modalStyle}
+      >
+        <NodeWidgetModal
+          node={node}
+          closeModal={closeModal}
+        />
+      </Modal>
     </div>
   );
 };
