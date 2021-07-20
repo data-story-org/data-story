@@ -997,9 +997,9 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@data-story-org/core@data-story-org/core":
-  version "0.1.0"
-  resolved "https://codeload.github.com/data-story-org/core/tar.gz/03304e4fb0f6e67744c8f46fdf4b5570f5e44dc7"
+"@data-story-org/core@data-story-org/core#master":
+  version "0.0.3"
+  resolved "https://codeload.github.com/data-story-org/core/tar.gz/d74fd5a4438385fe6f4a3ca46b4afebfbb6af792"
   dependencies:
     axios "^0.21.1"
     laravel-mix "^6.0.25"
