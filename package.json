@@ -42,7 +42,7 @@
     "@babel/plugin-proposal-decorators": "^7.12.1",
     "@babel/plugin-transform-modules-commonjs": "^7.13.8",
     "@babel/preset-react": "^7.0.0",
-    "@data-story-org/core": "data-story-org/core",
+    "@data-story-org/core": "data-story-org/core#master",
     "@emotion/react": "^11.1.5",
     "@emotion/styled": "^11.3.0",
     "@projectstorm/react-diagrams": "^6.0.2",
