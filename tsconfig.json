@@ -8,8 +8,6 @@
     "sourceMap": true,
     "resolveJsonModule": true,
     "experimentalDecorators": true,
-    "allowJs": true,
-    "checkJs": false,
     "jsx": "react",
     "lib": ["es2019", "dom"],
     "target": "ES6"
