@@ -35,7 +35,7 @@ interface Props {
   store: Store;
 }
 
-const AddNodeControl: FC<Props> = ({store}) => {
+const AddNodeControl: FC<Props> = ({ store }) => {
   useEffect(() => {
     Mousetrap.bind(
       '?', // shift+plus
@@ -78,17 +78,22 @@ const AddNodeControl: FC<Props> = ({store}) => {
 
   return (
     <span>
-      <BaseControl id={id} icon={icon} onClick={onClick} />
+      <BaseControl
+        id={id}
+        title={title}
+        icon={icon}
+        onClick={onClick}
+      />
       <Modal
         isOpen={isOpen}
         onRequestClose={closeModal}
         style={customStyles}
         contentLabel="Example Modal"
       >
-      <NodeSearch store={store} onFinish={closeModal} />
+        <NodeSearch store={store} onFinish={closeModal} />
       </Modal>
     </span>
   );
-}
+};
 
 export default observer(AddNodeControl);

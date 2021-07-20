@@ -7,7 +7,7 @@ import React, {
 } from 'react';
 import { Store } from './RootStore';
 
-const StoreContext = createContext<Store>();
+const StoreContext = createContext<Store>(null);
 export const useStore = (): Store =>
   useContext(StoreContext);
 

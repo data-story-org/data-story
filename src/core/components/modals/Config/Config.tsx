@@ -12,7 +12,7 @@ interface Props {
   closeModal: () => void;
 }
 
-const ConfigModal: FC<Props> = ({ _store, closeModal }) => {
+const ConfigModal: FC<Props> = ({ store, closeModal }) => {
   // not used anywhere
   /* const [storyName, setStoryName] = useState(''); */
 

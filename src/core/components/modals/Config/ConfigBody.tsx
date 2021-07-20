@@ -28,7 +28,6 @@ const ConfigModalBody: FC = () => {
               return (
                 <div
                   className="cursor-pointer hover:text-indigo-600"
-                  href={server}
                   key={server}
                   onClick={() => {
                     window.location.href =
@@ -37,7 +36,14 @@ const ConfigModalBody: FC = () => {
                       server;
                   }}
                 >
-                  <li>{server}</li>
+                  <li>
+                    <a
+                      href="{server}"
+                      className="cursor-pointer hover:text-indigo-600"
+                    >
+                      {server}
+                    </a>
+                  </li>
                 </div>
               );
             })}

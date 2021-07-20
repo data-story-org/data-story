@@ -6,7 +6,7 @@ import NodeModel from '../../NodeModel';
 interface Props {
   store: Store;
   onClickInspectable: (node: NodeModel) => void;
-  inspectableLinkStyle: (node: NodeModel) => void;
+  inspectableLinkStyle: (node: NodeModel) => string;
 }
 
 const ToolbarInspectables: FC<Props> = ({
@@ -20,7 +20,6 @@ const ToolbarInspectables: FC<Props> = ({
         {store.nodesWithInspectables().map((node) => {
           return (
             <span
-              dusk="inspect"
               key={node.getDisplayName() + node.options.id}
               onClick={
                 (e) => onClickInspectable(node)

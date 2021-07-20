@@ -1,9 +1,9 @@
-import React, { FC } from 'react';
+import React, { FC, MutableRefObject } from 'react';
 import NodeModel from '../../../NodeModel';
 
 interface Props {
   node: NodeModel;
-  handleSelect: (event: any) => void;
+  handleSelect: (nodeName: string) => void;
 }
 
 export const NodeListItem: FC<Props> = ({
@@ -19,8 +19,10 @@ export const NodeListItem: FC<Props> = ({
   // REPEAT THE EDATA FOR ALL CHILDREN FOR NOW
   return (
     <li
-      key={node.category + node.name}
-      onDoubleClick={handleSelect}
+      key={node.category + node.name + node.summary}
+      onClick={(_) => {
+        handleSelect(node.name);
+      }}
       {...elementDataProperties}
       className="py-3 flex"
       tabIndex={2}

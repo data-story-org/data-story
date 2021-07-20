@@ -1,5 +1,5 @@
 import React, { useState, useReducer } from 'react';
-import _ from 'lodash';
+import { cloneDeep } from 'lodash';
 import {
   DefaultPortModel,
   NodeModel as DefaultNodeModel,
@@ -25,7 +25,7 @@ import NodeWidgetModalEditableOutPorts from './NodeWidgetEditableOutPorts';
 
 const NodeWidgetModal = ({ node, closeModal }) => {
   const [parameters, setParameters] = useState(
-    _.cloneDeep(node.parameters),
+    cloneDeep(node.parameters),
   );
   const [_ignored, forceUpdate] = useReducer(
     (x) => x + 1,
@@ -92,11 +92,10 @@ const NodeWidgetModal = ({ node, closeModal }) => {
       />
       <NodeWidgetModalEditableInPorts
         parameters={parameters}
-        editExistingPort={editExistingPort}
-        saveNewInPort={saveNewInPort}
+        handleChange={handleChange}
       />
       <NodeWidgetModalEditableOutPorts
-        parameters={parameters}
+        node={node}
         editExistingPort={editExistingPort}
         saveNewInPort={saveNewOutPort}
       />

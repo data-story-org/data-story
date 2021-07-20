@@ -1,3 +1,3 @@
-import InspectorTable from './InspectorTableBody';
+import InspectorTable from './InspectorTable';
 
 export default InspectorTable;

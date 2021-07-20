@@ -77,7 +77,7 @@ const InspectorTable = ({ features }) => {
                 rows={getRows()}
               />
             </table>
-            {getRowCount() == 0 && (
+            {getRowCount() === 0 && (
               <div className="flex w-full justify-center p-24 text-gray-300 font-mono text-xl">
                 No data to show here 😐
               </div>
