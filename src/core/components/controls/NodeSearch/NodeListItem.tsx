@@ -38,7 +38,7 @@ export const NodeListItem: FC<Props> = ({
           >
             {node.category}
           </div>
-          <div {...elementDataProperties} className="">
+          <div {...elementDataProperties} id="node-name" className="">
             ::{node.name}
           </div>
         </div>
