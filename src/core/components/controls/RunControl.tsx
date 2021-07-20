@@ -64,11 +64,13 @@ const RunControl = ({ store }) => {
             allLinks
               .filter((link) => {
                 return (
+                  // @ts-ignore
                   link.sourcePort.options.id == port.id
                 );
               })
               .forEach((link) => {
                 store.diagram.engine.model
+                  // @ts-ignore
                   .getLink(link.options.id)
                   .addLabel(port.features.length);
               });
