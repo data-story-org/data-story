@@ -33,7 +33,8 @@ const NodeSearch: FC<Props> = ({ store, onFinish }) => {
   });
 
   const searchChange = (e) => {
-    setSearch(e.target.value);
+    const value = e.target.value;
+    setSearch(value);
 
     const searchResults = fuse
       .search(search)
