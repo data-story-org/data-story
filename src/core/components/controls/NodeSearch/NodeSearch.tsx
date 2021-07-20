@@ -63,6 +63,7 @@ const NodeSearch: FC<Props> = ({ store, onFinish }) => {
     <div className="flex flex-col bg-gray-100 -m-5 rounded shadow max-w-xl font-mono text-xs">
       <form onSubmit={handleInputSubmit}>
         <input
+          autoComplete="off"
           id="node-search"
           value={search}
           onChange={searchChange}
