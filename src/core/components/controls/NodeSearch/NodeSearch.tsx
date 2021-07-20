@@ -29,6 +29,7 @@ const NodeSearch: FC<Props> = ({ store, onFinish }) => {
   const [filteredNodes, setFilteredNodes] = useState(nodes);
   const fuse = new Fuse(nodes, {
     keys: ['name', 'category', 'summary'],
+    threshold: 0.3,
   });
 
   const searchChange = (e) => {
