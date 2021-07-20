@@ -1,4 +1,4 @@
-import { get } from '@data-story-org/core/src/utils/Obj';
+import { get } from '@data-story-org/core';
 
 export default class Feature {
   constructor(public original: any = null) {}
