@@ -27,11 +27,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - uses: bahmutov/npm-install@v1
+      - uses: actions/setup-node@v2
         with:
-          useRollingCache: true
-          useLockFile: false
-          install-command: yarn --silent
+          node-version: '16'
 
       - name: Test
         run: yarn test --passWithNoTests
