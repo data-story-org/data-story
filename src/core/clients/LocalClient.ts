@@ -2,7 +2,13 @@ import { Server } from '@data-story-org/core';
 import DiagramModel from '../DiagramModel';
 import ClientInterface from './ClientInterface';
 
-const server = new Server();
+const context = {
+	models: {
+		primes: [1, 3, 5, 7, 11, 13]
+	}	
+}
+
+const server = new Server(context);
 
 export default class LocalClient
   implements ClientInterface
