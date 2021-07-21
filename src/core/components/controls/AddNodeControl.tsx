@@ -1,7 +1,7 @@
 import React, { FC, useEffect, useState } from 'react';
 import { observer } from 'mobx-react';
 import BaseControl from './BaseControl';
-import Modal from 'react-modal';
+import ReactModal from 'react-modal';
 import NodeSearch from './NodeSearch';
 import Mousetrap from 'mousetrap';
 import { Store } from '../../store/';
@@ -30,7 +30,7 @@ const customStyles = {
 
 // Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
 if (process.env.NODE_ENV !== 'test')
-  Modal.setAppElement('#app');
+  ReactModal.setAppElement('#app');
 
 interface Props {
   store: Store;
@@ -85,14 +85,20 @@ const AddNodeControl: FC<Props> = ({ store }) => {
         icon={icon}
         onClick={onClick}
       />
-      <Modal
+      <ReactModal
         isOpen={isOpen}
         onRequestClose={closeModal}
         style={customStyles}
+        onAfterOpen={() =>
+          (document.body.style.overflow = 'hidden')
+        }
+        onAfterClose={() =>
+          (document.body.style.overflow = 'unset')
+        }
         contentLabel="Example Modal"
       >
         <NodeSearch store={store} onFinish={closeModal} />
-      </Modal>
+      </ReactModal>
     </span>
   );
 };

@@ -9,6 +9,7 @@ interface Props {
 export const NodeListItem: FC<Props> = ({
   node,
   handleSelect,
+  
 }) => {
   const elementDataProperties = {
     id: node.name,
