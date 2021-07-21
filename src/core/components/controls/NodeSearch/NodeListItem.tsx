@@ -4,12 +4,13 @@ import NodeModel from '../../../NodeModel';
 interface Props {
   node: NodeModel;
   handleSelect: (nodeName: string) => void;
+  selected: boolean;
 }
 
 export const NodeListItem: FC<Props> = ({
   node,
   handleSelect,
-  
+  selected,
 }) => {
   const elementDataProperties = {
     id: node.name,
@@ -25,7 +26,9 @@ export const NodeListItem: FC<Props> = ({
         handleSelect(node.name);
       }}
       {...elementDataProperties}
-      className="py-3 flex"
+      className={`py-3 flex ${
+        selected == true ? 'shadow-2xl' : 'opacity-50'
+      }`}
       tabIndex={2}
     >
       <div className="ml-3">
@@ -39,7 +42,11 @@ export const NodeListItem: FC<Props> = ({
           >
             {node.category}
           </div>
-          <div {...elementDataProperties} id="node-name" className="">
+          <div
+            {...elementDataProperties}
+            id="node-name"
+            className=""
+          >
             ::{node.name}
           </div>
         </div>

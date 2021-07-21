@@ -104,17 +104,12 @@ const NodeSearch: FC<Props> = ({ store, onFinish }) => {
       <ul className="divide-y divide-gray-300">
         {filteredNodes.map((node, i) => {
           return (
-            <div
+            <NodeListItem
+              node={node}
               key={node.category + node.name + node.summary}
-              className={
-                i === cursor ? 'shadow-2xl' : 'opacity-50'
-              }
-            >
-              <NodeListItem
-                node={node}
-                handleSelect={handleSelect}
-              />
-            </div>
+              handleSelect={handleSelect}
+              selected={i === cursor ? true : false}
+            />
           );
         })}
       </ul>
