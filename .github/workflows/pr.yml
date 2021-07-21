@@ -11,6 +11,8 @@ jobs:
     steps:
       - name: Check for new dependencies
         uses: hiwelo/new-dependencies-action@1.0.1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
   lint_review:
     runs-on: ubuntu-latest
