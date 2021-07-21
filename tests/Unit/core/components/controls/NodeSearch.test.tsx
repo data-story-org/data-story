@@ -44,9 +44,10 @@ describe('<NodeSearch />', () => {
     )[0];
 
     expect(firstListItem).toBeInTheDocument;
-    expect(firstListItem.classList.contains('shadow')).toBe(
-      true,
-    );
+    expect(firstListItem).toHaveClass('shadow-2xl');
+    /* expect(firstListItem.classList.contains('shadow')).toBe(
+     *   true,
+     * ); */
   });
 
   it('Uses fuzzy-search and shows the right result', async () => {
