@@ -19,11 +19,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: bahmutov/npm-install@v1
+      - uses: actions/setup-node@v2
         with:
-          useRollingCache: false
-          useLockFile: false
-          install-command: yarn --silent
+          node-version: '16'
+
+      - run: yarn --silent
 
       - name: Build in production environment
         run: yarn run prod
