@@ -35,19 +35,16 @@ describe('<NodeSearch />', () => {
   });
 
   it('Renders choosen choosen node as highlighted', async () => {
-    const { findByText } = render(
+    const { findByRole } = render(
       <NodeSearch store={store} onFinish={jest.fn()} />,
     );
 
-    const firstNodeName = nodes[0].name;
-    const firstNodeElement = await findByText(
-      firstNodeName,
-    );
+    const firstListItem = await findByRole('listitem');
 
-    expect(firstNodeElement).toBeInTheDocument;
-    expect(
-      firstNodeElement.classList.contains('shadow'),
-    ).toBe(true);
+    expect(firstListItem).toBeInTheDocument;
+    expect(firstListItem.classList.contains('shadow')).toBe(
+      true,
+    );
   });
 
   it('Uses fuzzy-search and shows the right result', async () => {
