@@ -35,11 +35,13 @@ describe('<NodeSearch />', () => {
   });
 
   it('Renders choosen choosen node as highlighted', async () => {
-    const { findByRole } = render(
+    const { findAllByRole } = render(
       <NodeSearch store={store} onFinish={jest.fn()} />,
     );
 
-    const firstListItem = await findByRole('listitem');
+    const firstListItem = (
+      await findAllByRole('listitem')
+    )[0];
 
     expect(firstListItem).toBeInTheDocument;
     expect(firstListItem.classList.contains('shadow')).toBe(
