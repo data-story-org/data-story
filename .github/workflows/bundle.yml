@@ -23,7 +23,8 @@ jobs:
         with:
           node-version: '16'
 
-      - run: yarn --silent
+      - name: Install dependencies
+        run: yarn --silent
 
       - name: Build in production environment
         run: yarn run prod
