@@ -39,7 +39,7 @@ interface Props {
 const AddNodeControl: FC<Props> = ({ store }) => {
   useEffect(() => {
     Mousetrap.bind(
-      '?', // shift+plus
+      'plus', // shift+plus
       (e) => {
         e.preventDefault();
         onClick();
