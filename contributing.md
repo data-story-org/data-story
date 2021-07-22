@@ -2,7 +2,7 @@
 
 ## Local development
 
-To have seamless experience of developing [https://github.com/data-story-org/core](data-story-org/core) with [https://github.com/data-story-org/gui](data-story-org/gui)[] in your local environment you have to setup some things:
+To have seamless experience of developing [data-story-org/core](https://github.com/data-story-org/core) with [data-story-org/gui](https://github.com/data-story-org/gui) in your local environment you have to setup some things:
 
 - Right directories structure
 - Git filters to exclude locally linked core dependency from version control
