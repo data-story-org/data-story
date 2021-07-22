@@ -25,7 +25,7 @@ To make git ignore those change and don't cause unnecessary headache let's setup
 
 ```sh
 git config  filter.changeToGitVersion.clean 'sed "s/\"@data-story-org\/core\": .*/\"@data-story-org\/core\": \"data-story-org\/core#master\",/"'
-git config  filter.changeToGitVersion.smudge 'sed "s/\"@data-story-org\/core\": .*/\"@data-story-org\/core#master\": \"link:..\/core\",/"'
+git config  filter.changeToGitVersion.smudge 'sed "s/\"@data-story-org\/core\": .*/\"@data-story-org\/core\": \"link:..\/core\",/"'
 git config  filter.changeToGitVersion.required true
 ```
 
