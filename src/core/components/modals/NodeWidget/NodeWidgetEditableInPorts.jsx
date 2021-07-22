@@ -1,27 +1,44 @@
 import React from 'react';
 import { observer } from 'mobx-react';
-import field from '../../fields/factory';
 
 const NodeWidgetModalEditableInPorts = ({
-  parameters,
-  handleChange
+  node,
+  editExistingPort,
+  saveNewInPort,
 }) => {
   return (
-    <div>
-      <div className="w-full bg-gray-100 px-6 py-2">
-        {Object.values(parameters).map((parameter) => {
-          const Field = field(parameter.fieldType);
-
+    node.options.editableInPorts && (
+      <div className="w-full px-6 py-1 text-gray-500 text-xs font-mono border border-t">
+        <div className="my-2">Ports</div>
+        {Object.values(node.getInPorts()).map((port) => {
           return (
-            <Field
-              key={parameter.name}
-              handleChange={handleChange}
-              options={parameter}
-            />
+            <div
+              key={port.options.id}
+              className="w-full flex items-center"
+            >
+              <div className="w-full rounded">
+                <input
+                  className="w-full px-2 py-1"
+                  type="text"
+                  value={port.options.label}
+                  onChange={editExistingPort}
+                />
+              </div>
+            </div>
           );
         })}
+        <div className="w-full flex items-center">
+          <div className="w-full rounded">
+            <input
+              className="w-full px-2 py-1"
+              type="text"
+              placeholder={'add port...'}
+              onKeyUp={saveNewInPort}
+            />
+          </div>
+        </div>
       </div>
-    </div>
+    )
   );
 };
 

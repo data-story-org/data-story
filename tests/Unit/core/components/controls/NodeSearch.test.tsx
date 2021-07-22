@@ -34,6 +34,19 @@ describe('<NodeSearch />', () => {
     );
   });
 
+  it('Renders choosen choosen node as highlighted', async () => {
+    const { findAllByRole } = render(
+      <NodeSearch store={store} onFinish={jest.fn()} />,
+    );
+
+    const firstListItem = (
+      await findAllByRole('listitem')
+    )[0];
+
+    expect(firstListItem).toBeInTheDocument;
+    expect(firstListItem).toHaveClass('shadow-2xl');
+  });
+
   it('Uses fuzzy-search and shows the right result', async () => {
     const { findByRole } = render(
       <NodeSearch store={store} onFinish={jest.fn()} />,
@@ -49,7 +62,7 @@ describe('<NodeSearch />', () => {
     // Fix this when there are no problems with
     // testing libraries and triggering state
     /* expect(await findByRole('listitem')).toHaveTextContent(
-*   'CreateJSON',
-* ); */
+     *   'CreateJSON',
+     * ); */
   });
 });
