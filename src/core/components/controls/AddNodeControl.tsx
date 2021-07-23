@@ -38,13 +38,17 @@ interface Props {
 
 const AddNodeControl: FC<Props> = ({ store }) => {
   // shift+plus
-  useHotkeys('plus', () => {
-    store.setPage('Workbench');
-  });
+  useHotkeys(
+    '+',
+    () => {
+      onClick();
+    },
+    { splitKey: '-' },
+  );
 
   // shift+plus on swedish keyboard layout
   useHotkeys('?', () => {
-    store.setPage('Inspector');
+    onClick();
   });
 
   const [id, title, icon] = [

@@ -39,17 +39,12 @@ const NodeSearch: FC<Props> = ({ store, onFinish }) => {
     cursor > 0 ? setCursor(cursor - 1) : setCursor(0);
   };
 
-  const hotKeysConfig = {
-    keyup: false,
-    keydown: false,
-  };
-
   useHotkeys(
     'tab',
     () => {
       goDown();
     },
-    { ...hotKeysConfig, enableOnTags: ['INPUT'] },
+    { enableOnTags: ['INPUT'] },
     [cursor],
   );
 
@@ -58,7 +53,7 @@ const NodeSearch: FC<Props> = ({ store, onFinish }) => {
     () => {
       goUp();
     },
-    { ...hotKeysConfig, enableOnTags: ['INPUT'] },
+    { enableOnTags: ['INPUT'] },
     [cursor],
   );
 
