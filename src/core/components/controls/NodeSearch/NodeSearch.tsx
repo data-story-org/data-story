@@ -30,13 +30,15 @@ const NodeSearch: FC<Props> = ({ store, onFinish }) => {
   const nameInput = useRef(null);
 
   const goDown = () => {
-    cursor < filteredNodes.length
+    cursor < filteredNodes.length - 1
       ? setCursor(cursor + 1)
       : setCursor(0);
   };
 
   const goUp = () => {
-    cursor > 0 ? setCursor(cursor - 1) : setCursor(0);
+    cursor > 0
+      ? setCursor(cursor - 1)
+      : setCursor(filteredNodes.length - 1);
   };
 
   useHotkeys(
@@ -52,7 +54,7 @@ const NodeSearch: FC<Props> = ({ store, onFinish }) => {
   useHotkeys(
     'shift+tab',
     (e) => {
-      e.preventDefault();
+      /* e.preventDefault(); */
       goUp();
     },
     { enableOnTags: ['INPUT'] },
