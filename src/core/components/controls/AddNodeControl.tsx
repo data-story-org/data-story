@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useState } from 'react';
 import { observer } from 'mobx-react';
 import BaseControl from './BaseControl';
 import ReactModal from 'react-modal';
@@ -37,20 +37,6 @@ interface Props {
 }
 
 const AddNodeControl: FC<Props> = ({ store }) => {
-  // shift+plus
-  useHotkeys(
-    '+',
-    () => {
-      onClick();
-    },
-    { splitKey: '-' },
-  );
-
-  // shift+plus on swedish keyboard layout
-  useHotkeys('?', () => {
-    onClick();
-  });
-
   const [id, title, icon] = [
     'add-node',
     'Add Node',
@@ -58,6 +44,25 @@ const AddNodeControl: FC<Props> = ({ store }) => {
   ];
 
   const [isOpen, setIsOpen] = useState(false);
+
+  // shift+plus
+  useHotkeys(
+    '+',
+    () => {
+      onClick();
+    },
+    { splitKey: '-' },
+    [isOpen],
+  );
+
+  // shift+plus on swedish keyboard layout
+  useHotkeys(
+    '?',
+    () => {
+      onClick();
+    },
+    [isOpen],
+  );
 
   const onClick = () => {
     setIsOpen(true);

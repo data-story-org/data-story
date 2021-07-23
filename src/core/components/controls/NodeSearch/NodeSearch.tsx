@@ -125,6 +125,7 @@ const NodeSearch: FC<Props> = ({ store, onFinish }) => {
             ref={nameInput}
             className="w-full p-2 rounded appearance-none focus:outline-none focus:bg-white"
             placeholder="model | method | reader | writer ..."
+            nodeIndex={1}
           />
         </form>
       </div>
