@@ -8,6 +8,8 @@ This repo supplies a gui to Data Story
 
 ## Development
 
+See [contributing](contributing.md) for setuping seamless development environment for core and gui.
+
 Build web files
 
 ```

@@ -91,13 +91,14 @@ const NodeWidgetModal = ({ node, closeModal }) => {
         handleChange={handleChange}
       />
       <NodeWidgetModalEditableInPorts
-        parameters={parameters}
-        handleChange={handleChange}
+        node={node}
+        editExistingPort={editExistingPort}
+        saveNewInPort={saveNewInPort}
       />
       <NodeWidgetModalEditableOutPorts
         node={node}
         editExistingPort={editExistingPort}
-        saveNewInPort={saveNewOutPort}
+        saveNewOutPort={saveNewOutPort}
       />
       <NodeWidgetModalActions
         handleCancel={handleCancel}
