@@ -20,7 +20,8 @@ const NodeInspectorLink: FC<Props> = ({
   return (
     node.isInspectable() && (
       <div
-        onClick={(e) => {
+        id="inspector-icon"
+        onClick={(_) => {
           store.goToInspector(nodeId);
         }}
       >

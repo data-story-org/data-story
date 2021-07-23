@@ -4,22 +4,22 @@ on:
   push:
     branches:
       - master
-    tags-ignore: ["v[0-9]+.[0-9]+.[0-9]+*"]
+    tags-ignore: ['v[0-9]+.[0-9]+.[0-9]+*']
     paths:
-      - "**.ts"
-      - "package*"
-      - "yarn*"
-      - "*.json"
-      - "*.js"
-      - "*rc"
-      - ".github/workflows/**.yml"
+      - '**.ts'
+      - 'package*'
+      - 'yarn*'
+      - '*.json'
+      - '*.js'
+      - '*rc'
+      - '.github/workflows/**.yml'
   pull_request:
     branches:
-      - "*"
-    tags-ignore: ["v[0-9]+.[0-9]+.[0-9]+*"]
+      - '*'
+    tags-ignore: ['v[0-9]+.[0-9]+.[0-9]+*']
 
 jobs:
-  test:
+  unit_tests:
     strategy:
       matrix:
         platform: [ubuntu-latest]
@@ -30,9 +30,34 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '16'
+          cache: 'yarn'
 
       - name: Install dependencies
         run: yarn --silent
 
       - name: Test
         run: yarn test
+
+  e2e_tests:
+    strategy:
+      matrix:
+        platform: [ubuntu-latest]
+    runs-on: ${{ matrix.platform }}
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn --silent
+        # env:
+        #   PUPPETEER_PRODUCT: firefox
+
+      - name: Build in production environment
+        run: yarn run prod
+
+      - name: Test
+        run: yarn test:e2e
