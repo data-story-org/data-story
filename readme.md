@@ -27,3 +27,4 @@ Serve public/index.html
 | ALT+PLUS            |     Add node     |
 | ALT+R               |   Run diagram    |
 | SHIFT+click on link |   Select link    |
+ 
