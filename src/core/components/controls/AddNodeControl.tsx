@@ -45,28 +45,29 @@ const AddNodeControl: FC<Props> = ({ store }) => {
 
   const [isOpen, setIsOpen] = useState(false);
 
-  // shift+plus
-  useHotkeys(
-    '+',
-    () => {
-      onClick();
-    },
-    { splitKey: '-' },
-    [isOpen],
-  );
-
-  // shift+plus on swedish keyboard layout
-  useHotkeys(
-    '?',
-    () => {
-      onClick();
-    },
-    [isOpen],
-  );
-
   const onClick = () => {
     setIsOpen(true);
   };
+
+  // shift+plus
+  useHotkeys('*', (e) => {
+    if (e.key === '+') {
+      e.preventDefault();
+      onClick();
+    }
+  });
+
+  // shift+plus on swedish keyboard layout
+  useHotkeys('*', (e) => {
+    if (e.key === '?') {
+      e.preventDefault();
+      onClick();
+    }
+  });
+
+  /* useHotkeys('num_add', () => {
+   *   onClick();
+   * }); */
 
   // Unneeded?
   // const renderIcon = () => {
