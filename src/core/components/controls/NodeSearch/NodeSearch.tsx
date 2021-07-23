@@ -8,7 +8,7 @@ import { observer } from 'mobx-react';
 import { cloneDeep } from 'lodash';
 import { Store } from '../../../store/';
 import NodeListItem from './NodeListItem';
-import Mousetrap from 'mousetrap';
+import { useHotkeys } from 'react-hotkeys-hook';
 import Fuse from 'fuse.js';
 
 interface Props {
@@ -29,17 +29,49 @@ const NodeSearch: FC<Props> = ({ store, onFinish }) => {
   });
   const nameInput = useRef(null);
 
+  const goDown = () => {
+    cursor < filteredNodes.length
+      ? setCursor(cursor + 1)
+      : setCursor(0);
+  };
+
+  const goUp = () => {
+    cursor > 0 ? setCursor(cursor - 1) : setCursor(0);
+  };
+
+  const hotKeysConfig = {
+    keyup: false,
+    keydown: false,
+  };
+
+  useHotkeys(
+    'tab',
+    () => {
+      goDown();
+    },
+    { ...hotKeysConfig, enableOnTags: ['INPUT'] },
+    [cursor],
+  );
+
+  useHotkeys(
+    'shift+tab',
+    () => {
+      goUp();
+    },
+    { ...hotKeysConfig, enableOnTags: ['INPUT'] },
+    [cursor],
+  );
+
   const downHandler = ({ key }) => {
-    if (key === 'ArrowDown' || key === 'Tab') {
-      cursor < filteredNodes.length
-        ? setCursor(cursor + 1)
-        : setCursor(0);
+    if (key === 'ArrowDown') {
+      /* || key === 'Tab') { */
+      goDown();
     }
   };
 
   const upHandler = ({ key }) => {
     if (key === 'ArrowUp') {
-      cursor > 0 ? setCursor(cursor - 1) : setCursor(0);
+      goUp();
     }
   };
 
@@ -96,7 +128,7 @@ const NodeSearch: FC<Props> = ({ store, onFinish }) => {
             onChange={searchChange}
             type="text"
             ref={nameInput}
-            className="w-full p-4 rounded border-transparent mousetrap"
+            className="w-full p-2 rounded appearance-none focus:outline-none focus:bg-white"
             placeholder="model | method | reader | writer ..."
           />
         </form>

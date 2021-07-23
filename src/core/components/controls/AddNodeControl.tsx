@@ -3,8 +3,8 @@ import { observer } from 'mobx-react';
 import BaseControl from './BaseControl';
 import ReactModal from 'react-modal';
 import NodeSearch from './NodeSearch';
-import Mousetrap from 'mousetrap';
 import { Store } from '../../store/';
+import { useHotkeys } from 'react-hotkeys-hook';
 
 const customStyles = {
   content: {
@@ -37,15 +37,15 @@ interface Props {
 }
 
 const AddNodeControl: FC<Props> = ({ store }) => {
-  useEffect(() => {
-    Mousetrap.bind(
-      'plus', // shift+plus
-      (e) => {
-        e.preventDefault();
-        onClick();
-      },
-    );
-  }, []);
+  // shift+plus
+  useHotkeys('plus', () => {
+    store.setPage('Workbench');
+  });
+
+  // shift+plus on swedish keyboard layout
+  useHotkeys('?', () => {
+    store.setPage('Inspector');
+  });
 
   const [id, title, icon] = [
     'add-node',
