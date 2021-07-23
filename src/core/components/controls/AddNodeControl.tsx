@@ -99,12 +99,6 @@ const AddNodeControl: FC<Props> = ({ store }) => {
         isOpen={isOpen}
         onRequestClose={closeModal}
         style={customStyles}
-        onAfterOpen={() =>
-          (document.body.style.overflow = 'hidden')
-        }
-        onAfterClose={() =>
-          (document.body.style.overflow = 'unset')
-        }
         contentLabel="Example Modal"
       >
         <NodeSearch store={store} onFinish={closeModal} />
