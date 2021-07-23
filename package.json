@@ -67,7 +67,7 @@
     "postcss": "^8.1.9",
     "react": "^17.0.2",
     "react-dom": "^16.2.0",
-    "react-hotkeys-hook": "^3.3.2",
+    "react-hotkeys-hook": "^3.3.3",
     "react-modal": "^3.12.1",
     "react-toastify": "^6.2.0",
     "resize-observer-polyfill": "^1.5.1",
