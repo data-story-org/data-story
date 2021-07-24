@@ -18,8 +18,8 @@ export interface NodeModelOptions
 }
 
 export default class NodeModel extends DefaultNodeModel {
-  options: NodeModelOptions;
-  parent: any;
+  declare options: NodeModelOptions;
+  declare parent: any;
   features: [];
   category: string;
   summary: string;
