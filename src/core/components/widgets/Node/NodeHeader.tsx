@@ -8,7 +8,7 @@ const NodeWidgetHeader = ({ node }) => {
         (node.isSelected() ? 'bg-malibu-900' : '')
       }
     >
-      <span className="mx-4">{node.getDisplayName()}</span>
+      <span className="mx-4 subpixel-antialiased">{node.getDisplayName()}</span>
       <i className="fas fa-cog"></i>
     </div>
   );
