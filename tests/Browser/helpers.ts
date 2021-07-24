@@ -5,13 +5,13 @@ export const puppeteerConfig = {
   headless: true,
   devtools: false,
   slowMo: 250,
-  // args: [
-  //   '--no-sandbox',
-  //   '--disable-setuid-sandbox',
-  //   '--disable-gpu',
-  //   '--disable-dev-shm-usage',
-  //   '--disable-web-security',
-  // ],
+  args: [
+    '--no-sandbox',
+    '--disable-setuid-sandbox',
+    '--disable-gpu',
+    '--disable-dev-shm-usage',
+    '--disable-web-security',
+  ],
 };
 
 export const sleep = (ms: number) => {
