@@ -3,9 +3,9 @@ import { observer } from 'mobx-react';
 import Cookie from '../../../utils/Cookie';
 import DiagramModel from '../../../DiagramModel';
 import { Store } from '../../../store';
-import OpenModalHeader from './OpenHeader';
 import OpenModalBody from './OpenBody';
 import OpenModalActions from './OpenActions';
+import BaseModalHeader from '../BaseModalHeader';
 
 interface Props {
   store: Store;
@@ -53,7 +53,7 @@ const OpenModal: FC<Props> = ({ store, closeModal }) => {
 
   return (
     <div>
-      <OpenModalHeader />
+      <BaseModalHeader action="open" />
       <OpenModalBody
         store={store}
         clickStory={clickStory}

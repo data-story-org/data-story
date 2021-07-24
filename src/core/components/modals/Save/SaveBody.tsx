@@ -8,11 +8,11 @@ const SaveModalBody: FC<Props> = ({ handleChange }) => {
   return (
     <div>
       <div className="w-full bg-gray-100 px-6 py-2">
-        <div className="flex flex-col my-4 justify-center align-middle text-gray-500 text-xs font-mono">
+        <div className="flex flex-col my-4 justify-center align-middle text-gray-500 text-xs">
           <span className="my-2">Name</span>
           <input
             onChange={handleChange}
-            className="px-2 py-1 rounded"
+            className="px-2 py-1 rounded font-mono appearance-none focus:outline-none"
             placeholder="descriptive-name.story"
           />
         </div>

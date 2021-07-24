@@ -1,9 +1,9 @@
 import React, { FC, useState } from 'react';
 import { observer } from 'mobx-react';
 import { Store } from '../../..//store';
-import SaveModalHeader from './SaveHeader';
 import SaveModalBody from './SaveBody';
 import SaveModalActions from './SaveActions';
+import BaseModalHeader from '../BaseModalHeader';
 
 interface Props {
   store: Store;
@@ -41,7 +41,7 @@ const SaveModal: FC<Props> = ({
 
   return (
     <div>
-      <SaveModalHeader />
+      <BaseModalHeader action="save" />
       <SaveModalBody handleChange={handleChange} />
       <SaveModalActions
         handleCancel={handleCancel}

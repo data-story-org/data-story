@@ -3,9 +3,9 @@ import { observer } from 'mobx-react';
 /* import Cookie from '../../utils/Cookie';
  * import DiagramModel from '../../DiagramModel'; */
 import { Store } from '../../../store';
-import ConfigModalHeader from './ConfigHeader';
 import ConfigModalBody from './ConfigBody';
 import ConfigModalActions from './ConfigActions';
+import BaseModalHeader from '../BaseModalHeader';
 
 interface Props {
   store: Store;
@@ -38,7 +38,7 @@ const ConfigModal: FC<Props> = ({ store, closeModal }) => {
 
   return (
     <div>
-      <ConfigModalHeader />
+      <BaseModalHeader action="config" />
       <ConfigModalBody />
       <ConfigModalActions handleCancel={handleCancel} />
     </div>
