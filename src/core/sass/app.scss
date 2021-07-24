@@ -91,3 +91,8 @@ foreignObject > div > div {
 ::-webkit-scrollbar-thumb:hover {
   background: #a0aec0;
 }
+
+/* disable tabindex outline */
+*[tabindex]:focus {
+  outline: none;
+}

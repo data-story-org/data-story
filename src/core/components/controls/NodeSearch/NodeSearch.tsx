@@ -8,7 +8,7 @@ import { observer } from 'mobx-react';
 import { cloneDeep } from 'lodash';
 import { Store } from '../../../store/';
 import NodeListItem from './NodeListItem';
-import Mousetrap from 'mousetrap';
+import { useHotkeys } from 'react-hotkeys-hook';
 import Fuse from 'fuse.js';
 
 interface Props {
@@ -29,17 +29,54 @@ const NodeSearch: FC<Props> = ({ store, onFinish }) => {
   });
   const nameInput = useRef(null);
 
+  const goDown = () => {
+    cursor < filteredNodes.length - 1
+      ? setCursor(cursor + 1)
+      : setCursor(0);
+  };
+
+  const goUp = () => {
+    cursor > 0
+      ? setCursor(cursor - 1)
+      : setCursor(filteredNodes.length - 1);
+  };
+
+  useHotkeys(
+    'tab',
+    (e) => {
+      e.preventDefault();
+      goDown();
+    },
+    { enableOnTags: ['INPUT'] },
+    [cursor],
+  );
+
+  useHotkeys(
+    'shift+tab',
+    (e) => {
+      e.preventDefault();
+      goUp();
+    },
+    { enableOnTags: ['INPUT'] },
+    [cursor],
+  );
+
   const downHandler = ({ key }) => {
-    if (key === 'ArrowDown' || key === 'Tab') {
-      cursor < filteredNodes.length
-        ? setCursor(cursor + 1)
-        : setCursor(0);
+    if (key === 'ArrowDown') {
+      goDown();
     }
   };
 
   const upHandler = ({ key }) => {
     if (key === 'ArrowUp') {
-      cursor > 0 ? setCursor(cursor - 1) : setCursor(0);
+      goUp();
+    }
+  };
+
+  const searchSubmitHandler = ({ key }) => {
+    if (key === 'Enter') {
+      const nodeName = filteredNodes[cursor].name;
+      handleSelect(nodeName);
     }
   };
 
@@ -48,16 +85,20 @@ const NodeSearch: FC<Props> = ({ store, onFinish }) => {
 
     window.addEventListener('keydown', downHandler);
     window.addEventListener('keyup', upHandler);
+    window.addEventListener('keyup', searchSubmitHandler);
 
     return () => {
       window.removeEventListener('keydown', downHandler);
       window.removeEventListener('keyup', upHandler);
+      window.removeEventListener(
+        'keyup',
+        searchSubmitHandler,
+      );
     };
   });
 
   const searchChange = (e) => {
-    const value = e.target.value;
-    setSearch(value);
+    setSearch(e.target.value);
     setCursor(0);
 
     const searchResults = fuse
@@ -80,26 +121,20 @@ const NodeSearch: FC<Props> = ({ store, onFinish }) => {
     onFinish();
   };
 
-  const handleInputSubmit = (e) => {
-    const nodeName = filteredNodes[cursor].name;
-    handleSelect(nodeName);
-  };
-
   return (
     <div className="flex flex-col bg-gray-100 -m-5 rounded shadow max-w-xl font-mono text-xs">
       <div className="bg-white shadow p-4">
-        <form onSubmit={handleInputSubmit}>
-          <input
-            autoComplete="off"
-            id="node-search"
-            value={search}
-            onChange={searchChange}
-            type="text"
-            ref={nameInput}
-            className="w-full p-4 rounded border-transparent mousetrap"
-            placeholder="model | method | reader | writer ..."
-          />
-        </form>
+        <input
+          autoComplete="off"
+          id="node-search"
+          value={search}
+          onChange={searchChange}
+          type="text"
+          ref={nameInput}
+          className="w-full p-2 rounded appearance-none focus:outline-none focus:bg-white"
+          placeholder="model | method | reader | writer ..."
+          tabIndex={1}
+        />
       </div>
       <ul className="divide-y divide-gray-300">
         {filteredNodes.map((node, i) => {

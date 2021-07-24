@@ -8,13 +8,25 @@ import 'react-toastify/dist/ReactToastify.css';
 import EngineFactory from '../../core/EngineFactory';
 import Cookie from '../utils/Cookie';
 import { useStore } from '../store/StoreProvider';
-import Mousetrap from 'mousetrap';
 import { Store } from '../store';
 import { showNotification } from '../utils/Notifications';
+import { useHotkeys } from 'react-hotkeys-hook';
 
 const App: FC = () => {
   const store = useStore();
   const [booted, setBooted] = useState(false);
+
+  useHotkeys('shift+d', () => {
+    store.setPage('Workbench');
+  });
+
+  useHotkeys('shift+t', () => {
+    store.setPage('Inspector');
+  });
+
+  useHotkeys('shift+l', () => {
+    store.setPage('Log');
+  });
 
   const renderActivePage = () => {
     let Page = pages(store.metadata.page);
@@ -23,7 +35,6 @@ const App: FC = () => {
 
   useEffect(() => {
     boot();
-    registerKeybindings(store);
     registerExitConfirmation();
   }, []);
 
@@ -78,20 +89,6 @@ const bootDemos = (store: Store) => {
   // // store.metadata.client.save('Working with json', demos.WorkingWithJSON)
   // // store.metadata.client.save('Scraping a map service', demos.ScrapingAMapService)
   // // store.metadata.client.save('Cleanup old github repos', demos.CleanupOldGithubRepos)
-};
-
-const registerKeybindings = (store: Store) => {
-  Mousetrap.bind('shift+d', (e) => {
-    store.setPage('Workbench');
-  });
-
-  Mousetrap.bind('shift+t', (e) => {
-    store.setPage('Inspector');
-  });
-
-  Mousetrap.bind('shift+l', (e) => {
-    store.setPage('Log');
-  });
 };
 
 const registerExitConfirmation = () => {

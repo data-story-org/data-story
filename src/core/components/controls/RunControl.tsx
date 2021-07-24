@@ -1,29 +1,19 @@
 import React, { useEffect } from 'react';
 import { observer } from 'mobx-react';
 import BaseControl from './BaseControl';
-import Mousetrap from 'mousetrap';
 import { showNotification } from '../../utils/Notifications';
+import { useHotkeys } from 'react-hotkeys-hook';
 
 const RunControl = ({ store }) => {
+  useHotkeys('shift+r', () => {
+    onClick();
+  });
+
   const [id, title, icon] = [
     'run',
     'Run story',
     'fas fa-play',
   ];
-
-  useEffect(() => {
-    Mousetrap.bind(
-      '?', // shift+plus
-      (e) => {
-        e.preventDefault();
-        onClick();
-      },
-    );
-
-    Mousetrap.bind('shift+r', (_e) => {
-      onClick();
-    });
-  }, []);
 
   const onClick = () => {
     store.setRunning();

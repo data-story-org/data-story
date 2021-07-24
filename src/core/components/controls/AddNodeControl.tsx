@@ -1,10 +1,10 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useState } from 'react';
 import { observer } from 'mobx-react';
 import BaseControl from './BaseControl';
 import ReactModal from 'react-modal';
 import NodeSearch from './NodeSearch';
-import Mousetrap from 'mousetrap';
 import { Store } from '../../store/';
+import { useHotkeys } from 'react-hotkeys-hook';
 
 const customStyles = {
   content: {
@@ -37,16 +37,6 @@ interface Props {
 }
 
 const AddNodeControl: FC<Props> = ({ store }) => {
-  useEffect(() => {
-    Mousetrap.bind(
-      'plus', // shift+plus
-      (e) => {
-        e.preventDefault();
-        onClick();
-      },
-    );
-  }, []);
-
   const [id, title, icon] = [
     'add-node',
     'Add Node',
@@ -58,6 +48,26 @@ const AddNodeControl: FC<Props> = ({ store }) => {
   const onClick = () => {
     setIsOpen(true);
   };
+
+  // shift+plus
+  useHotkeys('*', (e) => {
+    if (e.key === '+') {
+      e.preventDefault();
+      onClick();
+    }
+  });
+
+  // shift+plus on swedish keyboard layout
+  useHotkeys('*', (e) => {
+    if (e.key === '?') {
+      e.preventDefault();
+      onClick();
+    }
+  });
+
+  /* useHotkeys('num_add', () => {
+   *   onClick();
+   * }); */
 
   // Unneeded?
   // const renderIcon = () => {
@@ -89,12 +99,6 @@ const AddNodeControl: FC<Props> = ({ store }) => {
         isOpen={isOpen}
         onRequestClose={closeModal}
         style={customStyles}
-        onAfterOpen={() =>
-          (document.body.style.overflow = 'hidden')
-        }
-        onAfterClose={() =>
-          (document.body.style.overflow = 'unset')
-        }
         contentLabel="Example Modal"
       >
         <NodeSearch store={store} onFinish={closeModal} />
