@@ -28,7 +28,7 @@ describe('Hotkeys', () => {
     await addNode(node, page);
 
     await expect(page).toMatch(node);
-  });
+  }, 100000);
 
   it('[SHIFT + D] opens diagram', async () => {
     // Go to inpector first
@@ -43,12 +43,12 @@ describe('Hotkeys', () => {
     await page.keyboard.up('Shift');
 
     await expect(page).toMatch('div#diagram');
-  });
+  }, 100000);
 
   it('[SHIFT + T] opens inspector', async () => {
     await page.keyboard.down('Shift');
     await page.keyboard.press('KeyT');
     await page.keyboard.up('Shift');
     await expect(page).toMatch('No data to show here');
-  });
+  }, 100000);
 });
