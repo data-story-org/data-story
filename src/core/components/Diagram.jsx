@@ -34,7 +34,7 @@ const Diagram = ({ store }) => {
   }, [diagramaFocus]);
 
   return (
-    <div id="app-diagram">
+    <div>
       <CanvasWidget
         ref={diagramRef}
         engine={store.diagram.engine}
