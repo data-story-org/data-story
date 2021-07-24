@@ -3,7 +3,7 @@ import 'expect-puppeteer';
 import { setDefaultOptions } from 'expect-puppeteer';
 import { puppeteerConfig, sleep, addNode } from './helpers';
 
-setDefaultOptions({ timeout: 30000 });
+setDefaultOptions({ timeout: 0 });
 
 describe('Hotkeys', () => {
   let browser;
@@ -69,11 +69,16 @@ describe('Hotkeys', () => {
     // await page.keyboard.down('Shift');
     // await page.keyboard.press('KeyD');
     // await page.keyboard.up('Shift');
-    await page.waitForSelector('div#app-diagram', {
-      visible: true,
-    });
+    await page.waitForSelector(
+      'span#Story workbench.text-malibu-600',
+      {
+        visible: true,
+      },
+    );
 
-    await expect(page).toMatch('div#app-diagram');
+    await expect(page).toMatch(
+      'span#Story workbench.text-malibu-600',
+    );
   }, 200000);
 
   afterAll(() => browser.close());

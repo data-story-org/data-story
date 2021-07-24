@@ -8,7 +8,7 @@ interface Props {
 
 const Workbench: FC = ({ store }) => {
   return (
-    <div>
+    <div id="app-workbench">
       <Diagram store={store} />
       {/* <div className="flex justify-between">
 				<div className="flex">
