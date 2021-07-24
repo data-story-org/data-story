@@ -57,28 +57,23 @@ describe('Hotkeys', () => {
   }, 50000);
 
   it('[SHIFT + D] opens diagram', async () => {
-    // // Go to inpector first
-    // await page.keyboard.down('Shift');
-    // await page.keyboard.press('KeyT');
-    // await page.keyboard.up('Shift');
-    // await expect(page).toMatch('No data to show here');
+    // Go to inpector first
+    await page.keyboard.down('Shift');
+    await page.keyboard.press('KeyT');
+    await page.keyboard.up('Shift');
+    await expect(page).toMatch('No data to show here');
 
-    // await sleep(1000);
+    await sleep(1000);
 
-    // // Go to diagram
-    // await page.keyboard.down('Shift');
-    // await page.keyboard.press('KeyD');
-    // await page.keyboard.up('Shift');
-    // await page.waitForSelector(
+    // Go to diagram
+    await page.keyboard.down('Shift');
+    await page.keyboard.press('KeyD');
+    await page.keyboard.up('Shift');
+    await expect(page).not.toMatch('No data to show here');
+
+    // await expect(page).toMatch(
     //   'span#story-workbench.text-malibu-600',
-    //   {
-    //     visible: true,
-    //   },
     // );
-
-    await expect(page).toMatch(
-      'span#story-workbench.text-malibu-600',
-    );
   }, 200000);
 
   afterAll(() => browser.close());
