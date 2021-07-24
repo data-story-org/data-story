@@ -10,8 +10,9 @@ interface Props {
 }
 
 const WorkbenchControl: FC<Props> = ({ store }) => {
-  const [title, icon, page] = [
+  const [title, id, icon, page] = [
     'Story workbench',
+    'story-workbench',
     'fas fa-project-diagram',
     'Workbench',
   ];
@@ -28,6 +29,7 @@ const WorkbenchControl: FC<Props> = ({ store }) => {
   return (
     <BaseControl
       title={title}
+      id={id}
       icon={icon}
       onClick={onClick}
       style={style}
