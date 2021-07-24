@@ -1,23 +1,16 @@
 import puppeteer from 'puppeteer';
 import 'expect-puppeteer';
 import { setDefaultOptions } from 'expect-puppeteer';
+import { puppeteerConfig, sleep, addNode } from './helpers';
 
 setDefaultOptions({ timeout: 0 });
-
-const sleep = (ms: number) => {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-};
 
 describe('App', () => {
   let browser;
   let page;
 
   beforeAll(async () => {
-    browser = await puppeteer.launch({
-      headless: true,
-      devtools: false,
-      slowMo: 250,
-    });
+    browser = await puppeteer.launch(puppeteerConfig);
     page = await browser.newPage();
 
     await page.setViewport({ width: 1366, height: 768 });
@@ -29,21 +22,6 @@ describe('App', () => {
 
     await sleep(5000);
   }, 200000);
-
-  const addNode = async (nodeName: string, page) => {
-    await expect(page).toClick('span#add-node');
-    await page.waitForSelector('input#node-search', {
-      visible: true,
-    });
-    await expect(page).toFill(
-      'input#node-search',
-      nodeName,
-    );
-    await page.keyboard.press('Enter');
-    await page.waitForSelector('div.node', {
-      visible: true,
-    });
-  };
 
   it('Loads and renders react', async () => {
     await expect(page).toMatch('proof of concept');
