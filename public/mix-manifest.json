@@ -1,6 +1,6 @@
 {
-    "/dist/js/index.js": "/dist/js/index.js",
-    "/dist/css/app.css": "/dist/css/app.css",
+    "/js/index.js": "/js/index.js",
+    "/css/app.css": "/css/app.css",
     "/public/mix-manifest.json": "/public/mix-manifest.json",
     "/docs/mix-manifest.json": "/docs/mix-manifest.json",
     "/docs/index.html": "/docs/index.html"
