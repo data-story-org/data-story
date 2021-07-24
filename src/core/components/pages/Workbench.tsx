@@ -6,7 +6,7 @@ interface Props {
   store: Store;
 }
 
-const Workbench: FC = ({ store }) => {
+const Workbench: FC<Props> = ({ store }) => {
   return (
     <div id="app-workbench">
       <Diagram store={store} />
