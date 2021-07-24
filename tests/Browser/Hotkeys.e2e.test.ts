@@ -70,14 +70,14 @@ describe('Hotkeys', () => {
     // await page.keyboard.press('KeyD');
     // await page.keyboard.up('Shift');
     await page.waitForSelector(
-      'span#Story workbench.text-malibu-600',
+      'span#story-workbench.text-malibu-600',
       {
         visible: true,
       },
     );
 
     await expect(page).toMatch(
-      'span#Story workbench.text-malibu-600',
+      'span#story-workbench.text-malibu-600',
     );
   }, 200000);
 
