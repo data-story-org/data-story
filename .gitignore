@@ -65,4 +65,4 @@ jspm_packages/
 .pnp.*
 
 # Ignore font's folder in project root
-/fonts/
+# /fonts
