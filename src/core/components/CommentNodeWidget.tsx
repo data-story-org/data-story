@@ -42,7 +42,7 @@ const CommentNodeWidget: FC<Props> = ({ node }: Props) => {
   return (
     <div
       className={
-        'flex font-mono text-xxs text-gray-200 p-2 border border-gray-500 overflow-auto'
+        'flex text-xxs text-gray-200 p-2 border border-gray-500 overflow-auto'
       }
     >
       <textarea
@@ -50,7 +50,7 @@ const CommentNodeWidget: FC<Props> = ({ node }: Props) => {
         onBlur={() => node.setLocked(false)}
         rows={rows}
         className={
-          'w-full bg-transparent resize-x overflow-auto'
+          'w-full bg-transparent focus:outline-none resize-x overflow-auto'
         }
         value={comment.value}
         onChange={updateComment}
