@@ -3,7 +3,7 @@ import 'expect-puppeteer';
 import { setDefaultOptions } from 'expect-puppeteer';
 import { puppeteerConfig, sleep, addNode } from './helpers';
 
-setDefaultOptions({ timeout: 0 });
+setDefaultOptions({ timeout: 30000 });
 
 describe('Hotkeys', () => {
   let browser;
@@ -28,7 +28,7 @@ describe('Hotkeys', () => {
     await addNode(node, page);
 
     await expect(page).toMatch(node);
-  }, 100000);
+  }, 50000);
 
   it('[SHIFT + T] opens inspector', async () => {
     await page.keyboard.down('Shift');
@@ -36,7 +36,7 @@ describe('Hotkeys', () => {
     await page.keyboard.up('Shift');
 
     await expect(page).toMatch('No data to show here');
-  }, 100000);
+  }, 50000);
 
   it('[SHIFT + L] opens log', async () => {
     await page.keyboard.down('Shift');
@@ -44,7 +44,7 @@ describe('Hotkeys', () => {
     await page.keyboard.up('Shift');
 
     await expect(page).toMatch('this is the log');
-  }, 100000);
+  }, 50000);
 
   it('[SHIFT + R] runs the story', async () => {
     await expect(page).toClick('span#run');
@@ -54,7 +54,7 @@ describe('Hotkeys', () => {
 
     await sleep(100);
     await expect(page).toMatch('Successfully ran story!');
-  }, 100000);
+  }, 50000);
 
   it('[SHIFT + D] opens diagram', async () => {
     // // Go to inpector first
@@ -69,12 +69,12 @@ describe('Hotkeys', () => {
     // await page.keyboard.down('Shift');
     // await page.keyboard.press('KeyD');
     // await page.keyboard.up('Shift');
-    // await page.waitForSelector('div#app-diagram', {
-    //   visible: true,
-    // });
+    await page.waitForSelector('div#app-diagram', {
+      visible: true,
+    });
 
     await expect(page).toMatch('div#app-diagram');
-  }, 100000);
+  }, 200000);
 
   afterAll(() => browser.close());
 });
