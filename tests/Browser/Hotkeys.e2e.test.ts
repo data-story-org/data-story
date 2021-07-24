@@ -41,6 +41,9 @@ describe('Hotkeys', () => {
     await page.keyboard.down('Shift');
     await page.keyboard.press('KeyD');
     await page.keyboard.up('Shift');
+    await page.waitForSelector('div#diagram', {
+      visible: true,
+    });
 
     await expect(page).toMatch('div#diagram');
   }, 100000);
