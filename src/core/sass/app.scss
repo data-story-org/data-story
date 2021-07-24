@@ -4,6 +4,15 @@
 
 @tailwind utilities;
 
+@import '@fontsource/ibm-plex-sans/index.css';
+@import '@fontsource/ibm-plex-sans/400-italic.css';
+
+@import '~@fontsource/ibm-plex-mono/index.css';
+@import '~@fontsource/ibm-plex-mono/400-italic.css';
+
+// @import '~@fontsource/ibm-plex-serif/index.css';
+// @import '~@fontsource/ibm-plex-serif/400-italic.css';
+
 // React Diagrams must have explicit width and height
 .fullsize {
   width: 100vw;
