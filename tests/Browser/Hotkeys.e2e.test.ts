@@ -69,12 +69,12 @@ describe('Hotkeys', () => {
     // await page.keyboard.down('Shift');
     // await page.keyboard.press('KeyD');
     // await page.keyboard.up('Shift');
-    await page.waitForSelector(
-      'span#story-workbench.text-malibu-600',
-      {
-        visible: true,
-      },
-    );
+    // await page.waitForSelector(
+    //   'span#story-workbench.text-malibu-600',
+    //   {
+    //     visible: true,
+    //   },
+    // );
 
     await expect(page).toMatch(
       'span#story-workbench.text-malibu-600',
