@@ -63,11 +63,12 @@ describe('Hotkeys', () => {
     await page.keyboard.up('Shift');
     await expect(page).toMatch('No data to show here');
 
+    await sleep(1000);
+
     // Go to diagram
     await page.keyboard.down('Shift');
     await page.keyboard.press('KeyD');
     await page.keyboard.up('Shift');
-    await sleep(500);
     await page.waitForSelector('div#app-diagram', {
       visible: true,
     });
