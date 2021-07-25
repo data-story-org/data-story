@@ -14,7 +14,7 @@ const InspectorTable = ({ features }) => {
   const hasPrimitiveFeatures = () => {
     return (
       features
-        .map((f) => f.unbox())
+        .map((f) => f.original)
         .filter((content) => {
           return typeof content != 'object';
         }).length != 0
@@ -24,9 +24,9 @@ const InspectorTable = ({ features }) => {
   const getHeaders = () => {
     let keys = features
       .map((i) => {
-        return typeof i.unbox() === 'object' &&
-          i.unbox() != null
-          ? Object.keys(i.unbox())
+        return typeof i.original === 'object' &&
+          i.original != null
+          ? Object.keys(i.original)
           : '__default';
       })
       .flat();
@@ -36,7 +36,7 @@ const InspectorTable = ({ features }) => {
 
   const getRows = () => {
     return features.slice(0, truncateAt).map((feature) => {
-      let content = feature.unbox();
+      let content = feature.original;
 
       if (typeof content != 'object') return content;
 
