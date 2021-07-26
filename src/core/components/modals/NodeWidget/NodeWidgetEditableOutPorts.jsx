@@ -8,7 +8,7 @@ const NodeWidgetModalEditableInPorts = ({
 }) => {
   return (
     node.options.editableOutPorts && (
-      <div className="w-full px-6 py-1 text-gray-500 text-xs font-mono border border-t">
+      <div className="w-full px-6 py-1 text-gray-500 text-xs border border-t">
         <div className="my-2">Ports</div>
         {Object.values(node.getOutPorts()).map((port) => {
           return (

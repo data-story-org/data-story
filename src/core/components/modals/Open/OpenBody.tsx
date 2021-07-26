@@ -14,12 +14,12 @@ const OpenModalBody: FC<Props> = ({
   return (
     <div>
       <div className="w-full bg-gray-100 px-6 py-2">
-        <div className="flex flex-col my-4 justify-center align-middle text-gray-500 text-xs font-mono">
+        <div className="flex flex-col my-4 justify-center align-middle text-gray-500 text-xs">
           <ul>
             {store.metadata.stories.map((story) => {
               return (
                 <li
-                  className="my-1 hover:text-malibu-500 hover:underline cursor-pointer"
+                  className="my-1 hover:text-malibu-500 hover:underline cursor-pointer font-mono"
                   key={story}
                   onClick={() => {
                     clickStory(story);

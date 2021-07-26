@@ -122,7 +122,7 @@ const NodeSearch: FC<Props> = ({ store, onFinish }) => {
   };
 
   return (
-    <div className="flex flex-col bg-gray-100 -m-5 rounded shadow max-w-xl font-mono text-xs">
+    <div className="flex flex-col bg-gray-100 -m-5 rounded shadow max-w-xl text-xs">
       <div className="bg-white shadow p-4">
         <input
           autoComplete="off"

@@ -35,7 +35,7 @@ const NodeWidget = ({ engine, node, store }) => {
 
   return (
     <div
-      className={'flex font-mono text-xxs text-gray-200'}
+      className={'flex text-xxs text-gray-200'}
       onDoubleClick={open}
     >
       <div className="flex-grow-0 max-w-md">

@@ -39,7 +39,7 @@ const Toolbar: FC<Props> = ({ store }) => {
 
   const inspectableLinkStyle = (node = null) => {
     let style =
-      'mr-8 text-gray-200 hover:text-malibu-500 font-mono text-xs cursor-pointer ';
+      'mr-8 text-gray-200 hover:text-malibu-500 text-sm cursor-pointer font-semibold';
 
     if (
       node &&

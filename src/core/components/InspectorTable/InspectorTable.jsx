@@ -78,13 +78,13 @@ const InspectorTable = ({ features }) => {
               />
             </table>
             {getRowCount() === 0 && (
-              <div className="flex w-full justify-center p-24 text-gray-300 font-mono text-xl">
+              <div className="flex w-full justify-center p-24 text-gray-300 text-xl">
                 No data to show here 😐
               </div>
             )}
             {getRowCount() > truncateAt && (
               <div
-                className="flex cursor-pointer justify-center my-12 px-8 py-2 border text-gray-300 font-mono text-xl"
+                className="flex cursor-pointer justify-center my-12 px-8 py-2 border text-gray-300 text-xl"
                 onClick={() => {
                   setTruncateAt(Number.POSITIVE_INFINITY);
                 }}

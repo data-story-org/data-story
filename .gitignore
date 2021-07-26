@@ -63,3 +63,6 @@ jspm_packages/
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# Ignore font's folder in project root
+# /fonts

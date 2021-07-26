@@ -11,7 +11,7 @@ const ConfigModalBody: FC = () => {
   return (
     <div>
       <div className="w-full bg-gray-100 px-6 py-2">
-        <div className="flex flex-col my-4 justify-center align-middle text-gray-500 text-xs font-mono">
+        <div className="flex flex-col my-4 justify-center align-middle text-gray-500 text-xs">
           {/* <String_
 							key={'server'}
 							handleChange={() => {}}
@@ -27,7 +27,7 @@ const ConfigModalBody: FC = () => {
             {servers.map((server) => {
               return (
                 <div
-                  className="cursor-pointer hover:text-indigo-600"
+                  className="cursor-pointer hover:text-indigo-600 font-mono"
                   key={server}
                   onClick={() => {
                     window.location.href =

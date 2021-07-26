@@ -9,7 +9,7 @@ const NodeWidgetOutPorts = ({ node, engine }) => {
         <div className="mr-2">{/* Counterweight */}</div>
         <div className="flex w-full items-center text-gray-200 py-1 border border-gray-900 rounded-lg bg-gray-500">
           <div className="flex items-center justify-between w-full">
-            <span className="flex px-4 flex-1">
+            <span className="flex px-4 flex-1 font-medium subpixel-antialiased">
               {port.options.label}
             </span>
           </div>
