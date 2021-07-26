@@ -12,7 +12,7 @@ mix
   })
   // fonts loading
   .setResourceRoot('../')
-  .copy('fonts', 'public/fonts')
+  .copy('fonts', 'dist/fonts')
   .copy('dist', 'public') // easy dev access
   .copy('dist', 'docs')
   .copy('public/index.html', 'docs/index.html'); // github pages requires dir 'docs'
