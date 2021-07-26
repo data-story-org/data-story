@@ -1119,25 +1119,13 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
-
 "@data-story-org/core@data-story-org/core#master":
   version "0.0.3"
   resolved "https://codeload.github.com/data-story-org/core/tar.gz/b88a6340beeb95516c85947d497d9f7a686b75a4"
-"@csstools/postcss-sass@^4.0.0":
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/@csstools/postcss-sass/-/postcss-sass-4.0.0.tgz#6617c5096a6b71751ee0b87d2326418b9d97effb"
-  integrity sha512-yvm2aaODNJ8PBn43HjYiRvVJcYLEpz5BEKXxQ/7HryqcL+TnAceXZO+khadTEkjw90r8afR5wykTzvVpFeo4vw==
   dependencies:
-    "@csstools/sass-import-resolve" "^1.0.0"
-    postcss "^7.0.14"
-    sass "^1.16.1"
-    source-map "~0.7.3"
-
-"@csstools/sass-import-resolve@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@csstools/sass-import-resolve/-/sass-import-resolve-1.0.0.tgz#32c3cdb2f7af3cd8f0dca357b592e7271f3831b5"
-  integrity sha512-pH4KCsbtBLLe7eqUrw8brcuFO8IZlN36JjdKlOublibVdAIPHCzEnpBWOVUXK5sCf+DpBi8ZtuWtjF0srybdeA==
-
+    axios "^0.21.1"
+    laravel-mix "^6.0.25"
+    prettier "^2.3.2"
 
 "@discoveryjs/json-ext@^0.5.0":
   version "0.5.3"
@@ -6107,7 +6095,7 @@ klona@^2.0.4:
   resolved "https://registry.yarnpkg.com/klona/-/klona-2.0.4.tgz#7bb1e3affb0cb8624547ef7e8f6708ea2e39dfc0"
   integrity sha512-ZRbnvdg/NxqzC7L9Uyqzf4psi1OM4Cuc+sJAkQPjO6XkQIJTNbfK2Rsmbw8fx1p2mkZdp2FZYo2+LwXYY/uwIA==
 
-laravel-mix@^6.0.0, laravel-mix@^6.0.25:
+laravel-mix@^6.0.0:
   version "6.0.25"
   resolved "https://registry.yarnpkg.com/laravel-mix/-/laravel-mix-6.0.25.tgz#6989f3e1a6d4cc0b73732bf02e5355a8f3696156"
   integrity sha512-SDpLGUnXJ8g0rvtiLljSTJSR6awj86M2Jd3MhbtT32TCgwXdtajVLF7Mv2blsPLixGHtynwZgi+UFlYQbquPLg==
@@ -7095,11 +7083,6 @@ picomatch@^2.0.4, picomatch@^2.2.1, picomatch@^2.2.3:
   resolved "https://registry.yarnpkg.com/picomatch/-/picomatch-2.3.0.tgz#f1f061de8f6a4bf022892e2d128234fb98302972"
   integrity sha512-lY1Q/PiJGC2zOv/z391WOTD+Z02bCgsFfvxoXXf6h7kv9o+WmsmzYqrAwY63sNgOxE4xEdq0WyUnXfKeBrSvYw==
 
-pify@^2.3.0:
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/pify/-/pify-2.3.0.tgz#ed141a6ac043a849ea588498e7dca8b15330e90c"
-  integrity sha1-7RQaasBDqEnqWISY59yosVMw6Qw=
-
 pirates@^4.0.1:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/pirates/-/pirates-4.0.1.tgz#643a92caf894566f91b2b986d2c66950a8e2fb87"
@@ -7127,14 +7110,6 @@ portfinder@^1.0.28:
     async "^2.6.2"
     debug "^3.1.1"
     mkdirp "^0.5.5"
-
-postcss-advanced-variables@^3.0.1:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/postcss-advanced-variables/-/postcss-advanced-variables-3.0.1.tgz#260a6ec1fc7256e94798824a742580249926db13"
-  integrity sha512-JqVjfkmqPoazMobVeQYzbt7djcDGJfMlpwBd9abTqmzWR40tvIUMXpTU5w3riqz7h+wYPY7V6GF8BIXL/ybEfg==
-  dependencies:
-    "@csstools/sass-import-resolve" "^1.0.0"
-    postcss "^7.0.6"
 
 postcss-calc@^8.0.0:
   version "8.0.0"
@@ -7180,15 +7155,6 @@ postcss-discard-overridden@^5.0.1:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/postcss-discard-overridden/-/postcss-discard-overridden-5.0.1.tgz#454b41f707300b98109a75005ca4ab0ff2743ac6"
   integrity sha512-Y28H7y93L2BpJhrdUR2SR2fnSsT+3TVx1NmVQLbcnZWwIUpJ7mfcTC6Za9M2PG6w8j7UQRfzxqn8jU2VwFxo3Q==
-
-postcss-import@^14.0.2:
-  version "14.0.2"
-  resolved "https://registry.yarnpkg.com/postcss-import/-/postcss-import-14.0.2.tgz#60eff77e6be92e7b67fe469ec797d9424cae1aa1"
-  integrity sha512-BJ2pVK4KhUyMcqjuKs9RijV5tatNzNa73e/32aBVE/ejYPe37iH+6vAu9WvqUkB5OAYgLHzbSvzHnorybJCm9g==
-  dependencies:
-    postcss-value-parser "^4.0.0"
-    read-cache "^1.0.0"
-    resolve "^1.1.7"
 
 postcss-js@^3.0.3:
   version "3.0.3"
@@ -7299,7 +7265,7 @@ postcss-modules-values@^4.0.0:
   dependencies:
     icss-utils "^5.0.0"
 
-postcss-nested@5.0.5, postcss-nested@^5.0.5:
+postcss-nested@5.0.5:
   version "5.0.5"
   resolved "https://registry.yarnpkg.com/postcss-nested/-/postcss-nested-5.0.5.tgz#f0a107d33a9fab11d7637205f5321e27223e3603"
   integrity sha512-GSRXYz5bccobpTzLQZXOnSOfKl6TwVr5CyAQJUPub4nuRJSOECK5AqurxVgmtxP48p0Kc/ndY/YyS1yqldX0Ew==
@@ -7397,11 +7363,6 @@ postcss-reduce-transforms@^5.0.1:
     cssnano-utils "^2.0.1"
     postcss-value-parser "^4.1.0"
 
-postcss-scss@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/postcss-scss/-/postcss-scss-4.0.0.tgz#6cfe09040f01e3345c9c226894c5913ac5fa9381"
-  integrity sha512-xakgIr5ukOEyXFcsnADKjQtrk8nQyqn5VIEAA+PmPP4kBOpknmjpJMxBNqCR1/x20AS0aSfZkWsSdbMx2Ozm5A==
-
 postcss-selector-parser@^6.0.2, postcss-selector-parser@^6.0.4, postcss-selector-parser@^6.0.5, postcss-selector-parser@^6.0.6:
   version "6.0.6"
   resolved "https://registry.yarnpkg.com/postcss-selector-parser/-/postcss-selector-parser-6.0.6.tgz#2c5bba8174ac2f6981ab631a42ab0ee54af332ea"
@@ -7432,12 +7393,12 @@ postcss-value-parser@^3.3.0:
   resolved "https://registry.yarnpkg.com/postcss-value-parser/-/postcss-value-parser-3.3.1.tgz#9ff822547e2893213cf1c30efa51ac5fd1ba8281"
   integrity sha512-pISE66AbVkp4fDQ7VHBwRNXzAAKJjw4Vw7nWI/+Q3vuly7SNfgYXvm6i5IgFylHGK5sP/xHAbB7N49OS4gWNyQ==
 
-postcss-value-parser@^4.0.0, postcss-value-parser@^4.0.2, postcss-value-parser@^4.1.0:
+postcss-value-parser@^4.0.2, postcss-value-parser@^4.1.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/postcss-value-parser/-/postcss-value-parser-4.1.0.tgz#443f6a20ced6481a2bda4fa8532a6e55d789a2cb"
   integrity sha512-97DXOFbQJhk71ne5/Mt6cOu6yxsSfM0QGQyl0L25Gca4yGWEGJaig7l7gbCX623VqTBNGLRLaVUCnNkcedlRSQ==
 
-postcss@7.0.36, postcss@^7.0.14, postcss@^7.0.6:
+postcss@7.0.36:
   version "7.0.36"
   resolved "https://registry.yarnpkg.com/postcss/-/postcss-7.0.36.tgz#056f8cffa939662a8f5905950c07d5285644dfcb"
   integrity sha512-BebJSIUMwJHRH0HAQoxN4u1CN86glsrwsW0q7T+/m44eXOUAxSNdHRkNZPYz5vVUbg17hFgOQDE7fZk7li3pZw==
@@ -7756,13 +7717,6 @@ react@^17.0.2:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
 
-read-cache@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/read-cache/-/read-cache-1.0.0.tgz#e664ef31161166c9751cdbe8dbcf86b5fb58f774"
-  integrity sha1-5mTvMRYRZsl1HNvo28+GtftY93Q=
-  dependencies:
-    pify "^2.3.0"
-
 readable-stream@^2.0.1, readable-stream@^2.0.2, readable-stream@^2.3.3, readable-stream@^2.3.6:
   version "2.3.7"
   resolved "https://registry.yarnpkg.com/readable-stream/-/readable-stream-2.3.7.tgz#1eca1cf711aef814c04f62252a36a62f6cb23b57"
@@ -7957,7 +7911,7 @@ resolve-url@^0.2.1:
   resolved "https://registry.yarnpkg.com/resolve-url/-/resolve-url-0.2.1.tgz#2c637fe77c893afd2a663fe21aa9080068e2052a"
   integrity sha1-LGN/53yJOv0qZj/iGqkIAGjiBSo=
 
-resolve@^1.1.7, resolve@^1.12.0, resolve@^1.14.2, resolve@^1.20.0, resolve@^1.9.0:
+resolve@^1.12.0, resolve@^1.14.2, resolve@^1.20.0, resolve@^1.9.0:
   version "1.20.0"
   resolved "https://registry.yarnpkg.com/resolve/-/resolve-1.20.0.tgz#629a013fb3f70755d6f0b7935cc1c2c5378b1975"
   integrity sha512-wENBPt4ySzg4ybFQW2TT1zMQucPK95HSh/nq2CFTZVOGut2+pQvSsgtda4d26YrYcr067wjbmzOG8byDPBX63A==
@@ -8065,13 +8019,6 @@ sass@^1.15.2:
   version "1.35.2"
   resolved "https://registry.yarnpkg.com/sass/-/sass-1.35.2.tgz#b732314fcdaf7ef8d0f1698698adc378043cb821"
   integrity sha512-jhO5KAR+AMxCEwIH3v+4zbB2WB0z67V1X0jbapfVwQQdjHZUGUyukpnoM6+iCMfsIUC016w9OPKQ5jrNOS9uXw==
-  dependencies:
-    chokidar ">=3.0.0 <4.0.0"
-
-sass@^1.16.1:
-  version "1.36.0"
-  resolved "https://registry.yarnpkg.com/sass/-/sass-1.36.0.tgz#5912ef9d5d16714171ba11cb17edb274c4bbc07e"
-  integrity sha512-fQzEjipfOv5kh930nu3Imzq3ie/sGDc/4KtQMJlt7RRdrkQSfe37Bwi/Rf/gfuYHsIuE1fIlDMvpyMcEwjnPvg==
   dependencies:
     chokidar ">=3.0.0 <4.0.0"
 
@@ -8344,7 +8291,7 @@ source-map@^0.5.0, source-map@^0.5.7:
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.5.7.tgz#8a039d2d1021d22d1ea14c80d8ea468ba2ef3fcc"
   integrity sha1-igOdLRAh0i0eoUyA2OpGi6LvP8w=
 
-source-map@^0.7.3, source-map@~0.7.2, source-map@~0.7.3:
+source-map@^0.7.3, source-map@~0.7.2:
   version "0.7.3"
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.7.3.tgz#5302f8169031735226544092e64981f751750383"
   integrity sha512-CkCj6giN3S+n9qrYiBTX5gystlENnRW5jZeNLHpe6aue+SrHcG5VYwujhW9s4dY31mEGsxBDrHR6oI69fTXsaQ==
