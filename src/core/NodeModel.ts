@@ -148,6 +148,6 @@ export default class NodeModel extends DefaultNodeModel {
   }
 
   isInspectable() {
-    return Boolean(this.features);
+    return Array.isArray(this.features) && this.features.length;
   }
 }
