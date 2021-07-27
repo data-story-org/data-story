@@ -5,7 +5,7 @@ import {
   NodeModelGenerics,
 } from '@projectstorm/react-diagrams';
 import NodeModel, { NodeModelOptions } from './NodeModel';
-import { SerializedDiagramModel } from './types/SerializedDiagramModel';
+import { SerializedReactDiagram } from './types/SerializedReactDiagram';
 import VERSION from './utils/version';
 
 /**
@@ -22,7 +22,7 @@ export default class DiagramModel extends DefaultDiagramModel {
     return super.addNode(node);
   }
 
-	serialize() {
+	serialize(): SerializedReactDiagram {
 		// The default react-diagrams format
 		let layered = super.serialize();
 
