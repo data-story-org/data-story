@@ -1,11 +1,8 @@
 import {
   DefaultLinkModel,
   DiagramModel as DefaultDiagramModel,
-  DiagramModelGenerics,
-  NodeModelGenerics,
 } from '@projectstorm/react-diagrams';
-import { SerializedNode } from '../../../core/lib/src/types/SerializedNode';
-import NodeModel, { NodeModelOptions } from './NodeModel';
+import NodeModel from './NodeModel';
 import { SerializedReactDiagram } from './types/SerializedReactDiagram';
 import VERSION from './utils/version';
 
@@ -25,7 +22,7 @@ export default class DiagramModel extends DefaultDiagramModel {
 
 	serialize(): SerializedReactDiagram {
 		// The default react-diagrams format
-		let layered = super.serialize();
+		const layered = super.serialize();
 
 		let simplified = {
 				// Default serialization
@@ -43,7 +40,7 @@ export default class DiagramModel extends DefaultDiagramModel {
 		return (simplified as unknown) as SerializedReactDiagram
 	}
 
-	deserializeModel(data, engine) {
+	deserializeModel(data, engine): void {
 
 		// Restore the default react-diagrams layer format
 		data.layers = [

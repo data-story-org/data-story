@@ -13,4 +13,4 @@ export interface SerializedReactDiagram extends SerializedDiagram {
 	nodes: SerializedNode[];
   locked: boolean;
   version: string;
-};
+}
