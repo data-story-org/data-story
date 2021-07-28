@@ -8,6 +8,7 @@ export interface SerializedReactDiagram extends SerializedDiagram {
   offsetY: number;
   zoom: number;
   gridSize: number;
+  layers: any[];
 	links: SerializedLink[];
 	nodes: SerializedNode[];
   locked: boolean;
