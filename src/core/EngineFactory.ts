@@ -3,11 +3,11 @@ import createEngine, {
 } from '@projectstorm/react-diagrams';
 import NodeModelFactory from './NodeModelFactory';
 import DiagramModel from './DiagramModel';
-import { SerializedDiagramModel } from './types/SerializedDiagramModel';
+import { SerializedReactDiagram } from './types/SerializedReactDiagram';
 
 export default class EngineFactory {
   static loadOrCreate(
-    serializedModel?: SerializedDiagramModel,
+    serializedModel?: SerializedReactDiagram,
   ): DiagramEngine {
     return serializedModel
       ? this.load(serializedModel)
@@ -15,7 +15,7 @@ export default class EngineFactory {
   }
 
   static load(
-    serializedModel: SerializedDiagramModel,
+    serializedModel: SerializedReactDiagram,
   ): DiagramEngine {
     const engine = this.getEngine();
     const model = new DiagramModel();

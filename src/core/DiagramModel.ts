@@ -1,11 +1,9 @@
 import {
   DefaultLinkModel,
   DiagramModel as DefaultDiagramModel,
-  DiagramModelGenerics,
-  NodeModelGenerics,
 } from '@projectstorm/react-diagrams';
-import NodeModel, { NodeModelOptions } from './NodeModel';
-import { SerializedDiagramModel } from './types/SerializedDiagramModel';
+import NodeModel from './NodeModel';
+import { SerializedReactDiagram } from './types/SerializedReactDiagram';
 import VERSION from './utils/version';
 
 /**
@@ -22,12 +20,52 @@ export default class DiagramModel extends DefaultDiagramModel {
     return super.addNode(node);
   }
 
-  serialize(): SerializedDiagramModel {
-    return {
-      ...super.serialize(),
-      version: VERSION,
-    };
-  }
+	serialize(): SerializedReactDiagram {
+		// The default react-diagrams format
+		const layered = super.serialize();
+
+		let simplified = {
+				// Default serialization
+				...layered,
+				// Provide links and nodes as simple arrays
+				links: Object.values(layered.layers[0].models),
+				nodes: Object.values(layered.layers[1].models),
+				// Serialized at version
+				version: VERSION,
+		}
+
+		// Cleanup unused keys
+		delete simplified.layers
+
+		return (simplified as unknown) as SerializedReactDiagram
+	}
+
+	deserializeModel(data, engine): void {
+
+		// Restore the default react-diagrams layer format
+		data.layers = [
+				{
+						"id": "diagram-links-layer",
+						"type": "diagram-links",
+						"isSvg": true,
+						"transformed": true,
+						"models": data.links
+				},
+				{
+						"id": "diagram-nodes-layer",
+						"type": "diagram-nodes",
+						"isSvg": false,
+						"transformed": true,
+						"models": data.nodes
+				}            
+		]
+
+		// Cleanup unused keys
+		delete data.links
+		delete data.nodes
+
+		super.deserializeModel(data, engine)
+	}
 
   hasNode(node) {
     return Boolean(node.id && this.getNode(node.id));
