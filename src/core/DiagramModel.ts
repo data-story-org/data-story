@@ -28,7 +28,6 @@ export default class DiagramModel extends DefaultDiagramModel {
 		let layered = super.serialize();
 
 		let simplified = {
-				cock: 123,
 				// Default serialization
 				...layered,
 				// Provide links and nodes as simple arrays
