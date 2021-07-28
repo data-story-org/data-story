@@ -1,6 +1,4 @@
-import { SerializedDiagram } from '@data-story-org/core'
-import { SerializedLink } from '../../../../core/lib/src/types/SerializedLink';
-import { SerializedNode } from '../../../../core/lib/src/types/SerializedNode';
+import { SerializedDiagram, SerializedLink, SerializedNode } from '@data-story-org/core'
 
 export interface SerializedReactDiagram extends SerializedDiagram {
   id: string;
