@@ -53,7 +53,7 @@ jobs:
           node-version: '16'
 
       - name: Install dependencies
-        run: yarn --silent
+        run: yarn install --force
         # env:
         #   PUPPETEER_PRODUCT: firefox
 
