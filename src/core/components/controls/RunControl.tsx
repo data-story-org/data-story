@@ -21,10 +21,12 @@ const RunControl = ({ store }) => {
     store.metadata.client
       .run(store.diagram.engine.model)
       .then((response) => {
-        // TRANSFER FEATURE AT NODES (INSPECTABLES)
-        console.info('Diagram ran', response.data.diagram);
+				// TODO There is a mismatch at which level the cli vs js server returns the diagram
+				const diagram = response.data.diagram ?? response.data
+				console.info('Diagram ran', diagram);
 
-        response.data.diagram.nodes
+        // TRANSFER FEATURE AT NODES (INSPECTABLES)
+        diagram.nodes
           .filter((phpNode) => {
             return phpNode.features;
           })
@@ -38,7 +40,7 @@ const RunControl = ({ store }) => {
 
         // SET FEATURE COUNT ON LINKS
         store.clearLinkLabels(); // Clear old labels
-        response.data.diagram.nodes
+        diagram.nodes
           .map((node) => {
             return node.ports;
           })
