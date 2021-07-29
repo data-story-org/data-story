@@ -3,7 +3,7 @@ import React, {
   useReducer,
   useEffect,
 } from 'react';
-import { cloneDeep } from 'lodash';
+import { cloneDeep, omit } from 'lodash';
 import {
   DefaultPortModel,
   NodeModel as DefaultNodeModel,
@@ -103,15 +103,15 @@ const NodeWidgetModal = ({ node, closeModal }) => {
 
   const handleRepeatableRemove = (param) => (key) => {
     const values = parameters.find(
-      (p) => p.name === param.name,
+      (p) => p.name == param.name,
     ).value;
 
-    const newValues = values;
-    delete newValues[key];
+    const omitedValues = omit(values, [key, key + 1]);
 
     parameters.find((p) => p.name === param.name)['value'] =
       {
-        ...newValues,
+        ...omitedValues,
+        [key]: values[key + 1],
       };
 
     setParameters([...parameters]);
