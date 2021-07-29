@@ -106,13 +106,8 @@ const NodeWidgetModal = ({ node, closeModal }) => {
       (p) => p.name == param.name,
     ).value;
 
-    const omitedValues = omit(values, [key, key + 1]);
-
     parameters.find((p) => p.name === param.name)['value'] =
-      {
-        ...omitedValues,
-        [key]: values[key + 1],
-      };
+      omit(values, [key]);
 
     setParameters([...parameters]);
   };
