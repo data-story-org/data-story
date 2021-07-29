@@ -4,15 +4,27 @@ import Field from '../../fields/Field';
 const NodeWidgetModalBody = ({
   parameters,
   handleChange,
+  handleRepeatableChange,
+  handleRepeatableAdd,
+  handleRepeatableRemove,
 }) => {
   return (
     <div>
       <div className="w-full bg-gray-100 px-6 py-2">
-        {Object.values(parameters).map((parameter) => {
+        {Object.values(parameters).map((parameter, i) => {
           return (
             <Field
-              key={parameter.name}
+              key={`${parameter.name}${i}`}
               handleChange={handleChange}
+              handleRepeatableChange={handleRepeatableChange(
+                parameter,
+              )}
+              handleRepeatableAdd={handleRepeatableAdd(
+                parameter,
+              )}
+              handleRepeatableRemove={handleRepeatableRemove(
+                parameter,
+              )}
               options={parameter}
               fieldType={parameter.fieldType}
               isRepeatable={parameter.isRepeatable}

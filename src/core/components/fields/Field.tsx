@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 
 import BaseFieldHeader from './BaseFieldHeader';
 import withRepeatable from './Repeatable';
@@ -28,13 +28,20 @@ const fields = {
 const Field = ({
   options,
   handleChange,
+  handleRepeatableChange,
+  handleRepeatableAdd,
+  handleRepeatableRemove,
   fieldType,
   isRepeatable,
 }) => {
-  let BaseField = fields[fieldType];
-  if (isRepeatable) {
-    BaseField = withRepeatable(BaseField);
-  }
+  /* let BaseField = fields[fieldType];
+   * if (isRepeatable) {
+   *   BaseField = withRepeatable(BaseField);
+   * } */
+
+  const BaseField = isRepeatable
+    ? useCallback(withRepeatable(fields[fieldType]), [])
+    : fields[fieldType];
 
   return (
     <div className="flex flex-col my-4 justify-center align-middle text-gray-500 text-xs font-mono">
@@ -42,6 +49,9 @@ const Field = ({
       <BaseField
         options={options}
         handleChange={handleChange}
+        handleRepeatableChange={handleRepeatableChange}
+        handleRepeatableAdd={handleRepeatableAdd}
+        handleRepeatableRemove={handleRepeatableRemove}
       />
     </div>
   );

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 const String_ = ({
   options,
@@ -7,9 +7,8 @@ const String_ = ({
 }) => {
   return (
     <input
-      onChange={(e) => {
-        handleChange(e.target.value, options);
-      }}
+      key={`${options.name}`}
+      onChange={handleChange}
       className="p-2 rounded"
       value={repeatableValue ?? options.value}
     />

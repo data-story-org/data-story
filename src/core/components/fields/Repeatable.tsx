@@ -3,60 +3,28 @@ import { FC } from 'react';
 
 const withRepeatable =
   (Field) =>
-  ({ options, handleChange }) => {
-    const [fieldsCount, setFieldsCount] = useState(1);
-    const [isSubmitted, setIsSubmitted] = useState(false);
-    const [values, setValues] = useState({
-      0: '',
-    });
+  ({
+    options,
+    handleRepeatableChange,
+    handleRepeatableAdd,
+    handleRepeatableRemove,
+  }) => {
+    const [fieldsCount, setFieldsCount] = useState(
+      Object.keys(options.value).length,
+    );
 
-    useEffect(() => {
-      if (Array.isArray(options.value)) {
-        const state = Object.assign({}, options.value);
-        setValues(state);
-        setFieldsCount(options.value.length);
-        setIsSubmitted(true);
-      }
-    }, [options]);
-
-    const handleRepeatableChange =
-      (key: number) => (value, parameter) => {
-        const newValues = {
-          ...values,
-          [key]: value,
-        };
-
-        setValues(newValues);
-        setIsSubmitted(false);
-      };
-
-    const handleAddButtonPress = (key: number) => (_e) => {
+    const handleAddButtonPress = (key: number) => (e) => {
       setFieldsCount(fieldsCount + 1);
 
-      setValues({
-        ...values,
-        [key + 1]: '',
-      });
-
-      setIsSubmitted(false);
+      handleRepeatableAdd(key);
     };
 
     const handleRemoveButtonPress =
-      (key: number) => (_e) => {
+      (key: number) => (e) => {
         setFieldsCount(fieldsCount - 1);
 
-        // Fix deleting 0 key
-        const newValues = { ...values };
-        delete newValues[key];
-        setValues(newValues);
-
-        setIsSubmitted(false);
+        handleRepeatableRemove(key);
       };
-
-    const handleSubmit = (parameter) => (_e) => {
-      handleChange(Object.values(values), parameter);
-      setIsSubmitted(true);
-    };
 
     return (
       <div className="flex flex-col space-y-2">
@@ -69,28 +37,20 @@ const withRepeatable =
               <Field
                 options={options}
                 handleChange={handleRepeatableChange(i)}
-                repeatableValue={values[i]}
+                repeatableValue={options.value[i]}
+                autoFocus
               />
 
               <Button
                 symbol="-"
                 clickHandler={handleRemoveButtonPress(i)}
-                showPredicate={i !== 0}
+                showPredicate={i !== 0 || fieldsCount > 1}
               />
 
               <Button
                 symbol="+"
                 clickHandler={handleAddButtonPress(i)}
                 showPredicate={i === fieldsCount - 1}
-              />
-
-              <Button
-                symbol="✅"
-                clickHandler={handleSubmit(options)}
-                showPredicate={
-                  i === fieldsCount - 1 &&
-                  isSubmitted !== true
-                }
               />
             </div>
           );
