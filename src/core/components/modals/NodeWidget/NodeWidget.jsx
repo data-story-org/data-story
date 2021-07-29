@@ -32,12 +32,14 @@ const NodeWidgetModal = ({ node, closeModal }) => {
     0,
   );
 
-  const handleChange = (e, parameter) => {
+  const handleChange = (value, parameter) => {
     const updatedParameters = parameters;
 
     updatedParameters.find((p) => p.name == parameter.name)[
-      e.target.getAttribute('name') ?? 'value'
-    ] = e.target.value;
+      // e.target.getAttribute('name') ?? 'value'
+      // parameter.name
+      'value'
+    ] = value;
 
     setParameters([...updatedParameters]);
   };
@@ -47,7 +49,18 @@ const NodeWidgetModal = ({ node, closeModal }) => {
   };
 
   const handleSave = (_e) => {
-    node.parameters = parameters;
+    const updatedParameters = parameters.map(
+      (parameter) => {
+        if (parameter.isRepeatable) {
+          parameter.repeatableConverter();
+        }
+
+        return parameter;
+      },
+    );
+    // const updatedParameters = parameters;
+
+    node.parameters = updatedParameters;
     closeModal();
   };
 

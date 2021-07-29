@@ -15,6 +15,7 @@ const NodeWidgetModalBody = ({
               handleChange={handleChange}
               options={parameter}
               fieldType={parameter.fieldType}
+              isRepeatable={parameter.isRepeatable}
             />
           );
         })}

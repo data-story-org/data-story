@@ -6,7 +6,7 @@ const Where = ({ options, handleChange }) => {
       <input
         name="attribute"
         onChange={(e) => {
-          handleChange(e, options);
+          handleChange(e.target.value, options);
         }}
         className="flex-1 px-2 py-1 rounded"
         placeholder="attribute"
@@ -16,7 +16,7 @@ const Where = ({ options, handleChange }) => {
         className="flex-1 px-2 py-1"
         name="operator"
         onChange={(e) => {
-          handleChange(e, options);
+          handleChange(e.target.value, options);
         }}
         value={options.operator}
       >
@@ -34,7 +34,7 @@ const Where = ({ options, handleChange }) => {
       </select>
       <input
         onChange={(e) => {
-          handleChange(e, options);
+          handleChange(e.target.value, options);
         }}
         className="flex-1 px-2 py-1 rounded"
         placeholder="value"

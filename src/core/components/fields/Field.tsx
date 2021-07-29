@@ -1,6 +1,7 @@
 import React from 'react';
 
 import BaseFieldHeader from './BaseFieldHeader';
+import withRepeatable from './Repeatable';
 
 import Boolean_ from './Boolean_';
 import Number from './Number';
@@ -24,8 +25,16 @@ const fields = {
   Where,
 };
 
-export default ({ options, handleChange, fieldType }) => {
-  const BaseField = fields[fieldType];
+const Field = ({
+  options,
+  handleChange,
+  fieldType,
+  isRepeatable,
+}) => {
+  let BaseField = fields[fieldType];
+  if (isRepeatable) {
+    BaseField = withRepeatable(BaseField);
+  }
 
   return (
     <div className="flex flex-col my-4 justify-center align-middle text-gray-500 text-xs font-mono">
@@ -37,3 +46,5 @@ export default ({ options, handleChange, fieldType }) => {
     </div>
   );
 };
+
+export default Field;
