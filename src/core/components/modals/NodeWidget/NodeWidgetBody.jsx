@@ -15,7 +15,7 @@ const NodeWidgetModalBody = ({
           return (
             <Field
               key={`${parameter.name}${i}`}
-              handleChange={handleChange}
+              handleChange={handleChange(parameter)}
               handleRepeatableChange={handleRepeatableChange(
                 parameter,
               )}

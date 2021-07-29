@@ -7,16 +7,15 @@ import { NodeModelOptions } from '../../NodeModel';
  *   handleChange: (e: any, o: NodeModelOptions) => void;
  * } */
 
-const JS = ({ options, handleChange }) => {
+const JS = ({ options, handleChange, repeatableValue }) => {
   return (
     <>
       {/* REPLACE WITH SOME EDITOR! */}
       <textarea
-        onChange={(e) => {
-          handleChange(e.target.value, options);
-        }}
+        key={`${options.name}`}
+        onChange={handleChange}
         className="px-2 py-1 rounded h-64"
-        value={options.value}
+        value={repeatableValue ?? options.value}
       />
     </>
   );

@@ -40,10 +40,10 @@ const NodeWidgetModal = ({ node, closeModal }) => {
     // Convert repeatable arrays to the
     // object with a such structure
     // {
-      // 0: 'value',
-      // 1: 'another value',
-      // ...,
-      // n: "yet another value"
+    // 0: 'value',
+    // 1: 'another value',
+    // ...,
+    // n: "yet another value"
     // }
     setParameters(
       parameters.map((parameter) => {
@@ -59,10 +59,10 @@ const NodeWidgetModal = ({ node, closeModal }) => {
     );
   }, [node.parameter]);
 
-  const handleChange = (value, parameter) => {
+  const handleChange = (param) => (value) => {
     const updatedParameters = parameters;
 
-    updatedParameters.find((p) => p.name == parameter.name)[
+    updatedParameters.find((p) => p.name == param.name)[
       // e.target.getAttribute('name') ?? 'value'
       // parameter.name
       'value'

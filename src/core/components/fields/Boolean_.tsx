@@ -1,14 +1,17 @@
 import React from 'react';
 
-const Boolean_ = ({ options, handleChange }) => {
+const Boolean_ = ({
+  options,
+  handleChange,
+  // repeatableValue,
+}) => {
   return (
     <div className="flex my-4 space-x-2 items-center justify-start text-gray-500 text-xs font-mono">
       <span className="my-2">{options.name}</span>
       <input
+        key={`${options.name}`}
         type="checkbox"
-        onChange={(e) => {
-          handleChange(e.target.value, options);
-        }}
+        onChange={handleChange}
         className="px-2 py-1 rounded"
       />
     </div>
