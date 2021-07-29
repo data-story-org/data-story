@@ -29,37 +29,32 @@ const withRepeatable =
     return (
       <div className="flex flex-col space-y-2">
         {[...Array(fieldsCount).keys()].map((i) => {
-          return (
-            <div key={`field-${i}`}>
-              {Object.keys(options.value).includes(
-                `${i}`,
-              ) && (
-                <div className="flex flex-row rounded-lg bg-transparent space-x-1">
-                  <Field
-                    options={options}
-                    handleChange={handleRepeatableChange(i)}
-                    repeatableValue={options.value[i]}
-                  />
+          if (Object.keys(options.value).includes(`${i}`)) {
+            return (
+              <div
+                key={`field-${i}`}
+                className="flex flex-row rounded-lg bg-transparent space-x-1"
+              >
+                <Field
+                  options={options}
+                  handleChange={handleRepeatableChange(i)}
+                  repeatableValue={options.value[i]}
+                />
 
-                  <Button
-                    symbol="-"
-                    clickHandler={handleRemoveButtonPress(
-                      i,
-                    )}
-                    showPredicate={
-                      i !== 0 || fieldsCount > 1
-                    }
-                  />
+                <Button
+                  symbol="-"
+                  clickHandler={handleRemoveButtonPress(i)}
+                  showPredicate={i !== 0 || fieldsCount > 1}
+                />
 
-                  <Button
-                    symbol="+"
-                    clickHandler={handleAddButtonPress(i)}
-                    showPredicate={i === fieldsCount - 1}
-                  />
-                </div>
-              )}
-            </div>
-          );
+                <Button
+                  symbol="+"
+                  clickHandler={handleAddButtonPress(i)}
+                  showPredicate={i === fieldsCount - 1}
+                />
+              </div>
+            );
+          }
         })}
       </div>
     );
