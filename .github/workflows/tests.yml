@@ -35,7 +35,9 @@ jobs:
           cache: 'yarn'
 
       - name: Install dependencies
-        run: yarn --silent
+        run:
+          yarn upgrade @data-story-org/core
+          yarn --silent
 
       - name: Test
         run: yarn test
@@ -51,11 +53,12 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '16'
+          cache: 'yarn'
 
       - name: Install dependencies
         run: 
           yarn upgrade @data-story-org/core
-          yarn install --force
+          yarn --silent
         # env:
         #   PUPPETEER_PRODUCT: firefox
 
