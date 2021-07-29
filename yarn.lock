@@ -7714,10 +7714,10 @@ react-dom@^16.2.0:
     prop-types "^15.6.2"
     scheduler "^0.19.1"
 
-react-hotkeys-hook@^3.3.3:
-  version "3.3.3"
-  resolved "https://registry.yarnpkg.com/react-hotkeys-hook/-/react-hotkeys-hook-3.3.3.tgz#976a4dec807f6f2ca905af42eefe394749b60c43"
-  integrity sha512-V+4PRCZa41Irqcw0nDSeEF7pRIk+o0AH8LyGGF5ZEBTFnTsb6gc+9G3qB4lXHNfEmyMBGLxzPWenQ09JcwCGfQ==
+react-hotkeys-hook@^3.4.0:
+  version "3.4.0"
+  resolved "https://registry.yarnpkg.com/react-hotkeys-hook/-/react-hotkeys-hook-3.4.0.tgz#4d8a81e58eb7ec0d3f6e4fbc4cb0f7830fb6c2aa"
+  integrity sha512-TFtMNb9ALuL3uvtqGpaehwCeua3uYCrG3dKUqd+hEI2UgbVU94ifA1AEeemXSF6K81llPDX1RZvp7teUEQzAPA==
   dependencies:
     hotkeys-js "3.8.7"
 
