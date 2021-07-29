@@ -1014,11 +1014,11 @@
 
 "@data-story-org/core@data-story-org/core#master":
   version "0.0.3"
-  resolved "https://codeload.github.com/data-story-org/core/tar.gz/b88a6340beeb95516c85947d497d9f7a686b75a4"
+  uid "9b44115f50441d134531c928d46c26d5f6bafa79"
+  resolved "https://codeload.github.com/data-story-org/core/tar.gz/9b44115f50441d134531c928d46c26d5f6bafa79"
   dependencies:
     axios "^0.21.1"
-    laravel-mix "^6.0.25"
-    prettier "^2.3.2"
+    laravel-mix "^6.0.27"
 
 "@discoveryjs/json-ext@^0.5.0":
   version "0.5.3"
@@ -5980,7 +5980,7 @@ klona@^2.0.4:
   resolved "https://registry.yarnpkg.com/klona/-/klona-2.0.4.tgz#7bb1e3affb0cb8624547ef7e8f6708ea2e39dfc0"
   integrity sha512-ZRbnvdg/NxqzC7L9Uyqzf4psi1OM4Cuc+sJAkQPjO6XkQIJTNbfK2Rsmbw8fx1p2mkZdp2FZYo2+LwXYY/uwIA==
 
-laravel-mix@^6.0.25, laravel-mix@^6.0.27:
+laravel-mix@^6.0.27:
   version "6.0.27"
   resolved "https://registry.yarnpkg.com/laravel-mix/-/laravel-mix-6.0.27.tgz#56f7902a1162312844fce4f0cd60b86e7b07770c"
   integrity sha512-27KljRLiksseUNFwL3KhsdUKTBzo0JJllJAb1GhASq1JUg7YcP1f0uMj5xtdPBTdx3wOBraRWkGe82oCwpfU7g==
