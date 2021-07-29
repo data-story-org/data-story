@@ -37,5 +37,5 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Bundle latest gui
-          file_pattern: public/ dist/ docs/
+          file_pattern: public/ dist/ docs/ fonts/
           push_options: '--force'
