@@ -59,14 +59,14 @@ const NodeWidgetModal = ({ node, closeModal }) => {
     );
   }, [node.parameter]);
 
-  const handleChange = (param) => (value) => {
+  const handleChange = (param) => (e) => {
     const updatedParameters = parameters;
 
     updatedParameters.find((p) => p.name == param.name)[
       // e.target.getAttribute('name') ?? 'value'
       // parameter.name
       'value'
-    ] = value;
+    ] = e.target.value;
 
     setParameters([...updatedParameters]);
   };
