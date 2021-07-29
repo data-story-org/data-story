@@ -5,9 +5,7 @@ const Where = ({ options, handleChange }) => {
     <div className="flex space-x-2">
       <input
         name="attribute"
-        onChange={(e) => {
-          handleChange(e, options);
-        }}
+        onChange={handleChange}
         className="flex-1 px-2 py-1 rounded"
         placeholder="attribute"
         value={options.attribute}
@@ -15,9 +13,7 @@ const Where = ({ options, handleChange }) => {
       <select
         className="flex-1 px-2 py-1"
         name="operator"
-        onChange={(e) => {
-          handleChange(e, options);
-        }}
+        onChange={handleChange}
         value={options.operator}
       >
         {/* <option value="Contains">
@@ -33,9 +29,7 @@ const Where = ({ options, handleChange }) => {
         <option value="like">LIKE</option>
       </select>
       <input
-        onChange={(e) => {
-          handleChange(e, options);
-        }}
+        onChange={handleChange}
         className="flex-1 px-2 py-1 rounded"
         placeholder="value"
         name="value"

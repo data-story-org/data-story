@@ -1,5 +1,9 @@
-import React, { useState, useReducer } from 'react';
-import { cloneDeep } from 'lodash';
+import React, {
+  useState,
+  useReducer,
+  useEffect,
+} from 'react';
+import { cloneDeep, omit } from 'lodash';
 import {
   DefaultPortModel,
   NodeModel as DefaultNodeModel,
@@ -32,14 +36,80 @@ const NodeWidgetModal = ({ node, closeModal }) => {
     0,
   );
 
-  const handleChange = (e, parameter) => {
+  useEffect(() => {
+    // Convert repeatable arrays to the
+    // object with a such structure
+    // {
+    // 0: 'value',
+    // 1: 'another value',
+    // ...,
+    // n: "yet another value"
+    // }
+    setParameters(
+      parameters.map((parameter) => {
+        if (parameter.isRepeatable) {
+          parameter.value = Object.assign(
+            {},
+            parameter.value,
+          );
+        }
+
+        return parameter;
+      }),
+    );
+  }, [node.parameter]);
+
+  const handleChange = (param) => (e) => {
     const updatedParameters = parameters;
 
-    updatedParameters.find((p) => p.name == parameter.name)[
-      e.target.getAttribute('name') ?? 'value'
+    updatedParameters.find((p) => p.name == param.name)[
+      // e.target.getAttribute('name') ?? 'value'
+      // parameter.name
+      'value'
     ] = e.target.value;
 
     setParameters([...updatedParameters]);
+  };
+
+  const handleRepeatableChange =
+    (param) => (key) => (e) => {
+      const values = parameters.find(
+        (p) => p.name == param.name,
+      ).value;
+
+      parameters.find((p) => p.name == param.name)[
+        'value'
+      ] = {
+        ...values,
+        [key]: e.target.value,
+      };
+
+      setParameters([...parameters]);
+    };
+
+  const handleRepeatableAdd = (param) => (key) => {
+    const values = parameters.find(
+      (p) => p.name == param.name,
+    ).value;
+
+    parameters.find((p) => p.name == param.name)['value'] =
+      {
+        ...values,
+        [key + 1]: '',
+      };
+
+    setParameters([...parameters]);
+  };
+
+  const handleRepeatableRemove = (param) => (key) => {
+    const values = parameters.find(
+      (p) => p.name == param.name,
+    ).value;
+
+    parameters.find((p) => p.name === param.name)['value'] =
+      omit(values, [key]);
+
+    setParameters([...parameters]);
   };
 
   const handleCancel = (_e) => {
@@ -47,7 +117,17 @@ const NodeWidgetModal = ({ node, closeModal }) => {
   };
 
   const handleSave = (_e) => {
-    node.parameters = parameters;
+    const updatedParameters = parameters.map(
+      (parameter) => {
+        if (parameter.isRepeatable) {
+          parameter.repeatableConverter();
+        }
+
+        return parameter;
+      },
+    );
+
+    node.parameters = updatedParameters;
     closeModal();
   };
 
@@ -89,6 +169,9 @@ const NodeWidgetModal = ({ node, closeModal }) => {
       <NodeWidgetModalBody
         parameters={parameters}
         handleChange={handleChange}
+        handleRepeatableChange={handleRepeatableChange}
+        handleRepeatableAdd={handleRepeatableAdd}
+        handleRepeatableRemove={handleRepeatableRemove}
       />
       <NodeWidgetModalEditableInPorts
         node={node}
