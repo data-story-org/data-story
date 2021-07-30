@@ -9,7 +9,6 @@ export class Store {
     engine: null,
     availableNodes: [],
     refresh: 0,
-    latestNodes: [],
     nodeSerial: 1,
   };
 
@@ -49,6 +48,7 @@ export class Store {
   }
 
   addNode(data) {
+		
     this.diagram.engine.model.addNode(
       new NodeModel({
         serial: this.diagram.nodeSerial++,
@@ -109,7 +109,8 @@ export class Store {
 
   setPage(name) {
     this.clearLinkLabels();
-    this.metadata.page = name;
+		const alreadyOnPage = this.metadata.page == name
+    this.metadata.page = alreadyOnPage ? 'Workbench' : name;
   }
 
   setResults(results) {
