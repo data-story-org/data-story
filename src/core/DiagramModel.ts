@@ -25,11 +25,13 @@ export default class DiagramModel extends DefaultDiagramModel {
     const layered = super.serialize();
 
     let simplified = {
-      // Default serialization
+			// Provide links and nodes as simple arrays
+			nodes: Object.values(layered.layers[1].models),
+			links: Object.values(layered.layers[0].models),
+      
+			// Default serialization
       ...layered,
-      // Provide links and nodes as simple arrays
-      links: Object.values(layered.layers[0].models),
-      nodes: Object.values(layered.layers[1].models),
+
       // Serialized at version
       version: VERSION,
     };
