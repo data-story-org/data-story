@@ -48,7 +48,8 @@ export class Store {
   }
 
   addNode(data) {
-		
+		delete data.id // TODO remove id at availableNodes prep
+
     this.diagram.engine.model.addNode(
       new NodeModel({
         serial: this.diagram.nodeSerial++,
