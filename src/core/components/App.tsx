@@ -24,9 +24,13 @@ const App: FC = () => {
     store.setPage('Inspector');
   });
 
+  useHotkeys('shift+j', () => {
+    store.setPage('DiagramJson');
+  });
+
   useHotkeys('shift+l', () => {
     store.setPage('Log');
-  });
+  });	
 
   const renderActivePage = () => {
     let Page = pages(store.metadata.page);
