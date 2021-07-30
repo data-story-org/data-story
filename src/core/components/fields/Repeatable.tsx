@@ -13,6 +13,15 @@ const withRepeatable =
       Object.keys(options.value).length,
     );
 
+    const handleSimpleChange = (key) => (e) => {
+      handleRepeatableChange(key)(e.target.value);
+    };
+
+    const handleChangeWrapper =
+      options.fieldType === 'Row'
+        ? handleRepeatableChange
+        : handleSimpleChange;
+
     const handleAddButtonPress = (key: number) => (e) => {
       setFieldsCount(fieldsCount + 1);
 
@@ -37,7 +46,7 @@ const withRepeatable =
               >
                 <Field
                   options={options}
-                  handleChange={handleRepeatableChange(i)}
+                  handleChange={handleChangeWrapper(i)}
                   repeatableValue={options.value[i]}
                 />
 
