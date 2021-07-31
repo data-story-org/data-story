@@ -36,6 +36,12 @@ const NodeWidgetModal = ({ node, closeModal }) => {
     0,
   );
 
+  const submitHandler = (e) => {
+    if (e.key === 'Enter') {
+      handleSave(e);
+    }
+  };
+
   useEffect(() => {
     // Convert repeatable arrays to the
     // object with a such structure
@@ -57,6 +63,12 @@ const NodeWidgetModal = ({ node, closeModal }) => {
         return parameter;
       }),
     );
+
+    window.addEventListener('keyup', submitHandler);
+
+    return () => {
+      window.removeEventListener('keyup', submitHandler);
+    };
   }, [node.parameter]);
 
   const handleChange = (param) => (e) => {

@@ -14,6 +14,7 @@ const ToolbarInspectables: FC<Props> = ({
   onClickInspectable,
   inspectableLinkStyle,
 }) => {
+
   return (
     store.diagram.engine && (
       <span className="border-l ml-8 pl-8">
