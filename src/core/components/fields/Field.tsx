@@ -12,8 +12,9 @@ import String_ from './String_';
 import Select from './Select';
 import Textarea from './Textarea';
 import Where from './Where';
+import Row from './Row'
 
-const fields = {
+export const fields = {
   Boolean_,
   JS,
   JSON_,
@@ -23,6 +24,7 @@ const fields = {
   String_,
   Textarea,
   Where,
+  Row,
 };
 
 const Field = ({

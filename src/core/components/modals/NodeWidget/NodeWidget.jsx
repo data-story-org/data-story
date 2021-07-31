@@ -72,7 +72,7 @@ const NodeWidgetModal = ({ node, closeModal }) => {
   };
 
   const handleRepeatableChange =
-    (param) => (key) => (e) => {
+    (param) => (key) => (value) => {
       const values = parameters.find(
         (p) => p.name == param.name,
       ).value;
@@ -81,7 +81,7 @@ const NodeWidgetModal = ({ node, closeModal }) => {
         'value'
       ] = {
         ...values,
-        [key]: e.target.value,
+        [key]: value,
       };
 
       setParameters([...parameters]);
@@ -95,7 +95,7 @@ const NodeWidgetModal = ({ node, closeModal }) => {
     parameters.find((p) => p.name == param.name)['value'] =
       {
         ...values,
-        [key + 1]: '',
+        [key + 1]: param.defaultValue,
       };
 
     setParameters([...parameters]);
