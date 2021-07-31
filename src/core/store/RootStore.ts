@@ -48,7 +48,7 @@ export class Store {
   }
 
   addNode(data) {
-		delete data.id // TODO remove id at availableNodes prep
+    delete data.id; // TODO remove id at availableNodes prep
 
     this.diagram.engine.model.addNode(
       new NodeModel({
@@ -110,7 +110,7 @@ export class Store {
 
   setPage(name) {
     this.clearLinkLabels();
-		const alreadyOnPage = this.metadata.page == name
+    const alreadyOnPage = this.metadata.page == name;
     this.metadata.page = alreadyOnPage ? 'Workbench' : name;
   }
 
