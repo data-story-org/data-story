@@ -42,7 +42,9 @@ module.exports = {
     },
   },
   variants: {
-    extend: {},
+    extend: {
+      textTransform: ['hover', 'focus'],
+    },
   },
   plugins: [],
 };

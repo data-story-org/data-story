@@ -5,6 +5,9 @@ interface Props {
   headers: any[];
 }
 
+const style =
+  'px-6 py-3 bg-gray-50 text-left text-xs font-semibold text-malibu-700 uppercase hover:normal-case tracking-wider';
+
 const InspectorTableHeading: FC<Props> = ({
   primitiveFeatures,
   headers,
@@ -13,10 +16,7 @@ const InspectorTableHeading: FC<Props> = ({
     return (
       <thead>
         <tr>
-          <th
-            scope="col"
-            className="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-          >
+          <th scope="col" className={style}>
             value
           </th>
         </tr>
@@ -29,11 +29,7 @@ const InspectorTableHeading: FC<Props> = ({
       <tr>
         {headers.map((heading) => {
           return (
-            <th
-              key={heading}
-              scope="col"
-              className="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-            >
+            <th key={heading} scope="col" className={style}>
               {heading}
             </th>
           );

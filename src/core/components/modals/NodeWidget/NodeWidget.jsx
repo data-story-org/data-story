@@ -37,7 +37,7 @@ const NodeWidgetModal = ({ node, closeModal }) => {
   );
 
   const submitHandler = (e) => {
-    if (e.key === 'Enter') {
+    if (e.key === 'Enter' && e.target.type !== 'textarea') {
       handleSave(e);
     }
   };
