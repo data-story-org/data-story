@@ -66,9 +66,9 @@ export default class NodeModel extends DefaultNodeModel {
 
   serialize(): SerializedNodeModel {
     return {
-			name: this.name,
+      name: this.name,
       ...super.serialize(),
-			
+
       parameters: this.parameters,
       category: this.category,
       summary: this.summary,

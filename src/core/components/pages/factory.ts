@@ -7,7 +7,7 @@ import { withStore } from '../../store';
 
 export const pages = {
   Inspector,
-	DiagramJson,
+  DiagramJson,
   Log,
   Tokens,
   Workbench,

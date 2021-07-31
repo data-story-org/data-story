@@ -1,7 +1,7 @@
 {
-    "/dist/js/index.js": "/dist/js/index.js",
-    "/dist/css/app.css": "/dist/css/app.css",
-    "/public/mix-manifest.json": "/public/mix-manifest.json",
-    "/docs/mix-manifest.json": "/docs/mix-manifest.json",
-    "/docs/index.html": "/docs/index.html"
+  "/dist/js/index.js": "/dist/js/index.js",
+  "/dist/css/app.css": "/dist/css/app.css",
+  "/public/mix-manifest.json": "/public/mix-manifest.json",
+  "/docs/mix-manifest.json": "/docs/mix-manifest.json",
+  "/docs/index.html": "/docs/index.html"
 }
