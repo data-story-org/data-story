@@ -15,6 +15,7 @@ const NodeInspectorLink: FC<Props> = ({
   // Listen to a property to force refresh
   store.diagram.refresh;
 
+  // @ts-ignore
   const node = store.diagram.engine.model.getNode(nodeId);
 
   return (
