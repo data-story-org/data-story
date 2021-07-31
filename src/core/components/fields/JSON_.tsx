@@ -10,6 +10,9 @@ const JSON_ = ({
       {/* REPLACE WITH SOME EDITOR! */}
       <textarea
         key={`${options.name}`}
+        onKeyPress={(e) => {
+          if (e.key === 'Enter') e.preventDefault();
+        }}
         onChange={handleChange}
         className="px-2 py-1 rounded h-64"
         value={repeatableValue ?? options.value}
