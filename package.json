@@ -69,7 +69,7 @@
     "popper.js": "^1.12",
     "postcss": "^8.1.9",
     "react": "^17.0.2",
-    "react-dom": "^16.2.0",
+    "react-dom": "^17.0.2",
     "react-hotkeys-hook": "^3.4.0",
     "react-modal": "^3.12.1",
     "react-toastify": "^7.0.4",
