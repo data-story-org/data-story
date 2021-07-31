@@ -18,16 +18,18 @@ const NodeInspectorLink: FC<Props> = ({
   const node = store.diagram.engine.model.getNode(nodeId);
 
   return (
-    node.isInspectable() && (
-      <div
-        id="inspector-icon"
-        onClick={(_) => {
-          store.goToInspector(nodeId);
-        }}
-      >
-        <i className="mr-2 text-malibu-600 fas fa-search hover:cursor"></i>
-      </div>
-    )
+    <>
+      {node.isInspectable() ? (
+        <div
+          id="inspector-icon"
+          onClick={(_) => {
+            store.goToInspector(nodeId);
+          }}
+        >
+          <i className="mr-2 text-malibu-600 fas fa-search hover:cursor"></i>
+        </div>
+      ) : null}
+    </>
   );
 };
 
