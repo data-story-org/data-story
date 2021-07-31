@@ -36,9 +36,9 @@ module.exports = {
       fontSize: {
         xxs: '.65rem',
       },
-      height: theme => ({
-        "85vh": "85vh",
-      }),			
+      height: (theme) => ({
+        '85vh': '85vh',
+      }),
     },
   },
   variants: {
