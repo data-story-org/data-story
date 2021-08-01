@@ -10,20 +10,11 @@ This repo supplies a gui to Data Story
 
 See [contributing](contributing.md) for setuping seamless development environment for core and gui.
 
-Build web files
-
-```
-yarn && yarn watch
-```
-
-Serve public/index.html
-
-## Hotkeys (MAC)
+## Hotkeys
 
 | Hotkey              |      Action      |
 | ------------------- | :--------------: |
 | ALT+D               |  Go to diagram   |
-| ALT+T               | Go to inspectors |
+| ALT+J               |  Go to diagram JSON |
 | ALT+PLUS            |     Add node     |
 | ALT+R               |   Run diagram    |
-| SHIFT+click on link |   Select link    |
