@@ -1,7 +1,14 @@
 import React, { FC } from 'react';
 
-import SyntaxHighlighter from 'react-syntax-highlighter';
+import { Light as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { nord } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+import {
+  json,
+  javascript,
+} from 'react-syntax-highlighter/dist/esm/languages/hljs/';
+
+SyntaxHighlighter.registerLanguage('json', json);
+SyntaxHighlighter.registerLanguage('javascript', javascript);
 
 interface Props {
   code: string;
