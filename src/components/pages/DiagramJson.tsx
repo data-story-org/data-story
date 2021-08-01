@@ -13,11 +13,7 @@ const DiagramJson: FC<Props> = ({ store }) => {
     <div className="h-85vh">
       <div className="p-4 w-full h-full ">
         <CodeHighlighter
-          code={nonCircularJsonStringify(
-            store.diagram.engine.model.serialize(),
-            null,
-            4,
-          )}
+          code={store.diagram.engine.model.toPrettyJson()}
         />
       </div>
     </div>
