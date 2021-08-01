@@ -2,12 +2,11 @@ import { LocalServer } from './LocalServer'
 import DiagramModel from '../../diagram/models/DiagramModel';
 import ClientInterface from '../ClientInterface';
 import context from './localSampleContext'
-import { BootPayload } from '../../../../core/lib/src/types/BootPayload';
 
 const server = new LocalServer(context);
 
 export default class LocalClient implements ClientInterface {
-  boot(): Promise<BootPayload> {
+  boot(): Promise<any> {
     return server.boot();
   }
 
