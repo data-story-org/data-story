@@ -37,9 +37,10 @@ jobs:
         run: npm install -g yarn
 
       - name: Install dependencies
-        run:
-          yarn --silent
-          yarn upgrade @data-story-org/core
+        run: yarn --silent
+
+      - name: Upgrade core package
+        run: yarn upgrade @data-story-org/core
 
       - name: Test
         run: yarn test
@@ -62,9 +63,11 @@ jobs:
       - name: Install dependencies
         run: 
           yarn --silent
-          yarn upgrade @data-story-org/core
         # env:
         #   PUPPETEER_PRODUCT: firefox
+
+      - name: Upgrade core package
+        run: yarn upgrade @data-story-org/core
 
       - name: Build in production environment
         run: yarn run prod
