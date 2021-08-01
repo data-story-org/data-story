@@ -1012,9 +1012,12 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
-"@data-story-org/core@link:../core":
-  version "0.0.0"
-  uid ""
+"@data-story-org/core@data-story-org/core#master":
+  version "0.0.3"
+  resolved "https://codeload.github.com/data-story-org/core/tar.gz/699185d2803251fdcead7b1758c479b6a9945c7e"
+  dependencies:
+    axios "^0.21.1"
+    laravel-mix "^6.0.27"
 
 "@discoveryjs/json-ext@^0.5.0":
   version "0.5.3"
@@ -7322,7 +7325,7 @@ pretty-time@^1.1.0:
   resolved "https://registry.yarnpkg.com/pretty-time/-/pretty-time-1.1.0.tgz#ffb7429afabb8535c346a34e41873adf3d74dd0e"
   integrity sha512-28iF6xPQrP8Oa6uxE6a1biz+lWeTOAPKggvjB8HAs6nVMKZwf5bG++632Dx614hIWgUPkgivRfG+a8uAXGTIbA==
 
-prismjs@^1.22.0, prismjs@^1.24.1, prismjs@~1.24.0:
+prismjs@^1.22.0, prismjs@~1.24.0:
   version "1.24.1"
   resolved "https://registry.yarnpkg.com/prismjs/-/prismjs-1.24.1.tgz#c4d7895c4d6500289482fa8936d9cdd192684036"
   integrity sha512-mNPsedLuk90RVJioIky8ANZEwYm5w9LcvCXrxHlwf4fNVSn8jEipMybMkWUyyF0JhnC+C4VcOVSBuHRKs1L5Ow==
