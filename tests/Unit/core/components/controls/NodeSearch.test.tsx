@@ -3,8 +3,8 @@ import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom/extend-expect';
 
-import NodeSearch from '../../../../../src/core/components/controls/NodeSearch';
-import { Store } from '../../../../../src/core/store';
+import NodeSearch from '../../../../../src/components/controls/NodeSearch';
+import { Store } from '../../../../../src/store';
 
 // RegExpFilter, Inspector, CreateJSON
 // prettier-ignore
