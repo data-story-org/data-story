@@ -28,10 +28,6 @@ export default class EngineFactory {
 
     engine.setModel(model);
 
-		// Avoid link breakpoint creation when we just want to select it
-		// https://github.com/projectstorm/react-diagrams/issues/49
-		engine.maxNumberPointsPerLink = 0;
-
     return engine;
   }
 
@@ -51,10 +47,6 @@ export default class EngineFactory {
 
     engine.setModel(model);
 
-		// Avoid link breakpoint creation when we just want to select it
-		// https://github.com/projectstorm/react-diagrams/issues/49
-		engine.maxNumberPointsPerLink = 0;		
-
     return engine;
   }
 
@@ -64,6 +56,10 @@ export default class EngineFactory {
     engine
       .getNodeFactories()
       .registerFactory(new NodeModelFactory() as any);
+
+		// Avoid link breakpoint creation when we just want to select it
+		// https://github.com/projectstorm/react-diagrams/issues/49
+		engine.maxNumberPointsPerLink = 0;
 
     return engine;
   }
