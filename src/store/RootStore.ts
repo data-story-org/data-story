@@ -1,5 +1,5 @@
 import { action, observable, makeObservable } from 'mobx';
-import NodeModel from '../NodeModel';
+import NodeModel from '../diagram/models/NodeModel';
 import clientFactory from '../clients/ClientFactory';
 
 export class Store {

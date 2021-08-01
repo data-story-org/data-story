@@ -1,7 +1,7 @@
 import React, { FC, useState } from 'react';
 import { observer } from 'mobx-react';
 import Cookie from '../../../utils/Cookie';
-import DiagramModel from '../../../DiagramModel';
+import DiagramModel from '../../../diagram/models/DiagramModel';
 import { Store } from '../../../store';
 import OpenModalBody from './OpenBody';
 import OpenModalActions from './OpenActions';

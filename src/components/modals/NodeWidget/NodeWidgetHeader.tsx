@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import NodeModel from '../../../NodeModel';
+import NodeModel from '../../../diagram/models/NodeModel';
 
 interface Props {
   node: NodeModel;

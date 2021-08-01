@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { NodeModelOptions } from '../../NodeModel';
+import { NodeModelOptions } from '../../diagram/models/NodeModel';
 
 // TODO Make JS field definitely typed
 /* interface Props {

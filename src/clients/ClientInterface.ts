@@ -1,4 +1,4 @@
-import DiagramModel from '../DiagramModel';
+import DiagramModel from '../diagram/models/DiagramModel';
 import { BootPayload } from '../types/BootPayload';
 
 export default interface ClientInterface {

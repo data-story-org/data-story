@@ -3,8 +3,8 @@ import {
   DiagramModel as DefaultDiagramModel,
 } from '@projectstorm/react-diagrams';
 import NodeModel from './NodeModel';
-import { SerializedReactDiagram } from './types/SerializedReactDiagram';
-import VERSION from './utils/version';
+import { SerializedReactDiagram } from '../../types/SerializedReactDiagram';
+import VERSION from '../../utils/version';
 
 /**
  * Sorts model in execution order based on their dependencies

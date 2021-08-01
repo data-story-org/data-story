@@ -1,7 +1,7 @@
 import React, { FC, useState } from 'react';
 import { observer } from 'mobx-react';
 import { Store } from '../../store';
-import NodeModel from '../../NodeModel';
+import NodeModel from '../../diagram/models/NodeModel';
 
 interface Props {
   store: Store;

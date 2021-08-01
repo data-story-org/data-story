@@ -5,7 +5,7 @@ import pages from './pages/factory';
 import { observer } from 'mobx-react';
 import { ToastContainer, Slide } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import EngineFactory from '../EngineFactory';
+import EngineFactory from '../diagram/factories/EngineFactory';
 import Cookie from '../utils/Cookie';
 import { useStore } from '../store/StoreProvider';
 import { Store } from '../store';

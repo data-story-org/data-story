@@ -7,7 +7,7 @@ import PortModel from './PortModel';
 import { UID } from '@data-story-org/core';
 import { pickBy } from '@data-story-org/core';
 import { NodeParameter } from '@data-story-org/core';
-import { SerializedNodeModel } from './types/SerializedNodeModel';
+import { SerializedNodeModel } from '../../types/SerializedNodeModel';
 import { ReactNode } from 'react';
 
 export interface NodeModelOptions

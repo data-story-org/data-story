@@ -1,6 +1,6 @@
 import React, { FC, useState } from 'react';
 import { observer } from 'mobx-react';
-import NodeModel from '../NodeModel';
+import NodeModel from '../diagram/models/NodeModel';
 
 interface Props {
   node: NodeModel;
