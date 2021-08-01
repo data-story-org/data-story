@@ -1,5 +1,5 @@
 import ServerNode from "../ServerNode";
-import NodeParameter from "../../NodeParameter";
+import { NodeParameter } from '@data-story-org/core';
 
 export default class NODE_NAME extends ServerNode {
 	constructor(options = {}) {
