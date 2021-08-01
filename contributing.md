@@ -30,3 +30,19 @@ git config  filter.changeToGitVersion.required true
 ```
 
 That's all, now it's possible to develop core and gui freely
+
+## Bundling
+
+Build core files
+
+```
+tsc --watch
+```
+
+Build gui files
+
+```
+yarn watch
+```
+
+Serve `gui/public/index.html`

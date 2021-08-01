@@ -34,10 +34,14 @@ jobs:
           node-version: '16'
           cache: 'yarn'
 
+      - name: Install yarn
+        run: npm install -g yarn
+
       - name: Install dependencies
-        run:
-          yarn upgrade @data-story-org/core
-          yarn --silent
+        run: yarn --silent
+
+      - name: Upgrade core package
+        run: yarn upgrade @data-story-org/core
 
       - name: Test
         run: yarn test
@@ -55,12 +59,17 @@ jobs:
           node-version: '16'
           cache: 'yarn'
 
+      - name: Install yarn
+        run: npm install -g yarn
+
       - name: Install dependencies
         run: 
-          yarn upgrade @data-story-org/core
           yarn --silent
         # env:
         #   PUPPETEER_PRODUCT: firefox
+
+      - name: Upgrade core package
+        run: yarn upgrade @data-story-org/core
 
       - name: Build in production environment
         run: yarn run prod

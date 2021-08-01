@@ -26,9 +26,10 @@ jobs:
           node-version: '16'
 
       - name: Install dependencies
-        run:
-          yarn upgrade @data-story-org/core
-          yarn --silent
+        run: yarn install
+
+      - name: Upgrade core package
+        run: yarn upgrade @data-story-org/core
 
       - name: Build in production environment
         run: yarn run prod

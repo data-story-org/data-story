@@ -2,7 +2,7 @@
   "name": "@data-story-org/gui",
   "description": "![tests](https://github.com/ajthinking/data-story/workflows/tests/badge.svg) ![version](https://img.shields.io/packagist/v/ajthinking/data-story?color=blue) ![proofofconcept](https://img.shields.io/badge/proof%20of%20concept-gold)",
   "version": "0.0.19",
-  "main": "src/main.js",
+  "main": "src/index.ts",
   "directories": {
     "doc": "docs",
     "test": "tests"
@@ -28,7 +28,6 @@
     "lint": "eslint src --ext .js,.ts",
     "lint:fix": "eslint src --fix --ext .js,.ts",
     "lint:quiet:fix": "eslint src --quiet --fix --ext .js,.ts",
-    "add-node": "node src/scripts/add-node",
     "dev": "npm run development",
     "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --config=node_modules/laravel-mix/setup/webpack.config.js",
     "watch": "npm run development -- --watch",
@@ -72,6 +71,7 @@
     "react-dom": "^17.0.2",
     "react-hotkeys-hook": "^3.4.0",
     "react-modal": "^3.12.1",
+    "react-syntax-highlighter": "^15.4.4",
     "react-toastify": "^7.0.4",
     "resize-observer-polyfill": "^1.5.1",
     "resolve-url-loader": "^4.0.0",
@@ -96,6 +96,7 @@
     "@types/jest-environment-puppeteer": "^4.4.1",
     "@types/node": "^16.4.8",
     "@types/puppeteer": "^5.4.4",
+    "@types/react-syntax-highlighter": "^13.5.2",
     "@typescript-eslint/eslint-plugin": "^4.28.3",
     "@typescript-eslint/parser": "^4.28.3",
     "babel-jest": "^27.0.6",
