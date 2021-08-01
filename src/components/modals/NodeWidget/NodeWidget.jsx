@@ -3,7 +3,7 @@ import React, {
   useReducer,
   useEffect,
 } from 'react';
-import { cloneDeep, omit } from 'lodash';
+import { cloneDeep } from 'lodash';
 import {
   DefaultPortModel,
   NodeModel as DefaultNodeModel,
@@ -118,8 +118,10 @@ const NodeWidgetModal = ({ node, closeModal }) => {
       (p) => p.name == param.name,
     ).value;
 
+    const { [key]: omit, ...withoutKey } = values;
+
     parameters.find((p) => p.name === param.name)['value'] =
-      omit(values, [key]);
+      withoutKey;
 
     setParameters([...parameters]);
   };
