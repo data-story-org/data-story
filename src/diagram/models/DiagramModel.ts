@@ -22,7 +22,7 @@ export default class DiagramModel extends DefaultDiagramModel {
   }
 
 	toJson(indentation = 0): string {
-		return nonCircularJsonStringify(this, null, indentation);
+		return nonCircularJsonStringify(this.serialize(), null, indentation);
 	}
 
 	toPrettyJson(): string {
