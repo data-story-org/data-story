@@ -21,13 +21,17 @@ export default class DiagramModel extends DefaultDiagramModel {
     return super.addNode(node);
   }
 
-	toJson(indentation = 0): string {
-		return nonCircularJsonStringify(this.serialize(), null, indentation);
-	}
+  toJson(indentation = 0): string {
+    return nonCircularJsonStringify(
+      this.serialize(),
+      null,
+      indentation,
+    );
+  }
 
-	toPrettyJson(): string {
-		return this.toJson(4)
-	}
+  toPrettyJson(): string {
+    return this.toJson(4);
+  }
 
   serialize(): SerializedReactDiagram {
     // The default react-diagrams format
