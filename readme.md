@@ -15,6 +15,6 @@ See [contributing](contributing.md) for setuping seamless development environmen
 | Hotkey              |      Action      |
 | ------------------- | :--------------: |
 | ALT+D               |  Go to diagram   |
-| ALT+J               |  Go to diagram JSON representation   |
+| ALT+J               |  Go to diagram JSON |
 | ALT+PLUS            |     Add node     |
 | ALT+R               |   Run diagram    |
