@@ -36,8 +36,8 @@ jobs:
 
       - name: Install dependencies
         run:
-          yarn upgrade @data-story-org/core
           yarn --silent
+          yarn upgrade @data-story-org/core
 
       - name: Test
         run: yarn test
@@ -57,8 +57,8 @@ jobs:
 
       - name: Install dependencies
         run: 
-          yarn upgrade @data-story-org/core
           yarn --silent
+          yarn upgrade @data-story-org/core
         # env:
         #   PUPPETEER_PRODUCT: firefox
 
