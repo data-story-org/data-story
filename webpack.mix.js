@@ -3,9 +3,9 @@ const tailwindcss = require('tailwindcss');
 
 // bundle into dist/
 mix
-  .ts('src/core/index.tsx', 'dist/js')
+  .ts('src/index.tsx', 'dist/js')
   .react()
-  .sass('src/core/sass/app.scss', 'dist/css')
+  .sass('src/sass/app.scss', 'dist/css')
   .options({
     processCssUrls: true,
     postCss: [tailwindcss('tailwind.config.js')],

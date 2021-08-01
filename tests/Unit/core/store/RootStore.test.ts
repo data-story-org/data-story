@@ -1,4 +1,4 @@
-import { Store } from '../../../../src/core/store';
+import { Store } from '../../../../src/store';
 
 describe('RootStore', () => {
   const store = new Store();
