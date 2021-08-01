@@ -5,7 +5,7 @@ import {
 import NodeModel from './NodeModel';
 import { SerializedReactDiagram } from '../../types/SerializedReactDiagram';
 import VERSION from '../../utils/version';
-import { nonCircularJsonStringify } from '../../../../core/lib/src';
+import { nonCircularJsonStringify } from '@data-story-org/core';
 
 /**
  * Sorts model in execution order based on their dependencies
