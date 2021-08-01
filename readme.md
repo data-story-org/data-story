@@ -10,14 +10,6 @@ This repo supplies a gui to Data Story
 
 See [contributing](contributing.md) for setuping seamless development environment for core and gui.
 
-Build web files
-
-```
-yarn && yarn watch
-```
-
-Serve public/index.html
-
 ## Hotkeys (MAC)
 
 | Hotkey              |      Action      |
