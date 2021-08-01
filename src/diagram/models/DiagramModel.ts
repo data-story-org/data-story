@@ -5,6 +5,7 @@ import {
 import NodeModel from './NodeModel';
 import { SerializedReactDiagram } from '../../types/SerializedReactDiagram';
 import VERSION from '../../utils/version';
+import { nonCircularJsonStringify } from '@data-story-org/core';
 
 /**
  * Sorts model in execution order based on their dependencies
@@ -19,6 +20,14 @@ export default class DiagramModel extends DefaultDiagramModel {
     this.latestNodes.unshift(node);
     return super.addNode(node);
   }
+
+	toJson(indentation = 0): string {
+		return nonCircularJsonStringify(this.serialize(), null, indentation);
+	}
+
+	toPrettyJson(): string {
+		return this.toJson(4)
+	}
 
   serialize(): SerializedReactDiagram {
     // The default react-diagrams format

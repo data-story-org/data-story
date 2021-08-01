@@ -15,14 +15,14 @@ export default class APIClient implements ClientInterface {
 
   run(model): Promise<any> {
     return axios.post(this.root + '/run', {
-      model: nonCircularJsonStringify(model.serialize()),
+      model: model.toJson(),
     });
   }
 
   save(name, model) {
     return axios.post(this.root + '/save', {
       name,
-      model: nonCircularJsonStringify(model.serialize()),
+      model: model.toJson(),
     });
   }
 }
