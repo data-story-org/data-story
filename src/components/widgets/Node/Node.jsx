@@ -7,7 +7,6 @@ import NodeWidgetHeader from './NodeHeader';
 import NodeWidgetInPorts from './NodeInPorts';
 import NodeWidgetOutPorts from './NodeOutPorts';
 import NodeWidgetModal from '../../modals/NodeWidget';
-// import NodeModel from '../NodeModel';
 
 /**
  * Using a observer on this component will break things... :/
