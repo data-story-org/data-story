@@ -32,7 +32,9 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '16'
-          cache: 'yarn'
+
+      - name: Install yarn
+        run: npm install -g yarn
 
       - name: Install dependencies
         run:
@@ -53,7 +55,9 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '16'
-          cache: 'yarn'
+
+      - name: Install yarn
+        run: npm install -g yarn
 
       - name: Install dependencies
         run: 
