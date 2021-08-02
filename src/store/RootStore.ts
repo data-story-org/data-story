@@ -1,6 +1,7 @@
 import { action, observable, makeObservable } from 'mobx';
 import NodeModel from '../diagram/models/NodeModel';
 import clientFactory from '../clients/ClientFactory';
+import { showNotification } from '../utils/Notifications';
 
 export class Store {
   results;
@@ -29,7 +30,6 @@ export class Store {
 
       // Setters
       addNode: action.bound,
-      clearLinkLabels: action.bound,
       increaseNodeSerial: action.bound,
       goToInspector: action.bound,
       refreshDiagram: action.bound,
@@ -43,7 +43,9 @@ export class Store {
       setRunning: action.bound,
       setStories: action.bound,
 
-      // Getters 👇
+			// Notifications
+			showRunFail: action.bound,
+      showRunSuccessful: action.bound,
     });
   }
 
@@ -58,14 +60,6 @@ export class Store {
     );
 
     this.refreshDiagram();
-  }
-
-  clearLinkLabels() {
-    Object.values(
-      this.diagram.engine.model.layers[0].models,
-    ).forEach((link: any) => {
-      link.labels = [];
-    });
   }
 
   goToInspector(id) {
@@ -109,7 +103,7 @@ export class Store {
   }
 
   setPage(name) {
-    this.clearLinkLabels();
+    this.diagram.engine.model.clearLinkLabels();
     const alreadyOnPage = this.metadata.page == name;
     this.metadata.page = alreadyOnPage ? 'Workbench' : name;
   }
@@ -131,6 +125,23 @@ export class Store {
   setStories(stories) {
     this.metadata.stories = stories;
   }
+
+	showRunFail(error) {
+		showNotification({
+			message:
+				'Crap! Could not run story! Check console.',
+			type: 'error',
+		});
+
+		throw error
+	}
+
+	showRunSuccessful() {
+		showNotification({
+			message: 'Successfully ran story!',
+			type: 'success',
+		});
+	}
 }
 
 export const RootStore = ((window as any).store =

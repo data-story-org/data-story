@@ -27,7 +27,7 @@ const SaveModal: FC<Props> = ({
   };
 
   const handleSave = (_e) => {
-    store.clearLinkLabels();
+    store.diagram.engine.model.clearLinkLabels();
 
     store.metadata.client
       .save(storyName, store.diagram.engine.model)
