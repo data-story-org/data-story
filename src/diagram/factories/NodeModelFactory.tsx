@@ -3,6 +3,7 @@ import { AbstractReactFactory } from '@projectstorm/react-canvas-core';
 import NodeModel from '../models/NodeModel';
 import NodeWidget from '../../components/widgets/Node/';
 import CommentNodeWidget from '../../components/widgets/CommentNodeWidget';
+// import OutputNodeWidget from '../../components/widgets/OutputNode';
 
 export default class NodeModelFactory extends AbstractReactFactory {
   constructor() {
@@ -14,12 +15,19 @@ export default class NodeModelFactory extends AbstractReactFactory {
   }
 
   generateReactWidget(event) {
-    if (event.model.name === 'Comment') {
-      return <CommentNodeWidget node={event.model} />;
-    }
+		// Specialiced nodes
+		const types = {
+			Comment: CommentNodeWidget,
+			//Output: OutputNodeWidget, // WIP
+		}
+
+		// Default: NodeWidget
+		const fallback = NodeWidget
+
+		const Type = types[event.model.name] ?? fallback
 
     return (
-      <NodeWidget engine={this.engine} node={event.model} />
+      <Type engine={this.engine} node={event.model} />
     );
   }
 }
