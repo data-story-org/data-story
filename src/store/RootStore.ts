@@ -81,13 +81,12 @@ export class Store {
       .filter((node) => node.isInspectable());
   }
 
-	openNodeModal(nodeId) {
+	openNodeModal(nodeId: string): void {
 		this.metadata.requestOpenNodeModal = nodeId
-		console.log('RootStore mutated!', nodeId)
-		this.refreshDiagram() // no effect
+		this.refreshDiagram()
 	}
 
-	resetOpenNodeModalRequest() {
+	resetOpenNodeModalRequest(): void {
 		this.metadata.requestOpenNodeModal = null
 	}
 
