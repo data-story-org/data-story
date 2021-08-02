@@ -85,7 +85,7 @@ const NodeWidgetModal = ({ node, closeModal }) => {
 
     const autoSaveTimer = setTimeout(() => {
       handleSave(true)(null);
-    }, 1000);
+    }, 500);
 
     return () => clearTimeout(autoSaveTimer);
   }, [node.parameter]);
