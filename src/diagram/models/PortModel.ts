@@ -6,7 +6,7 @@ export default class PortModel extends DefaultPortModel {
       ...options,
       // Make id easier on humans
       id: `Port_${options.name}_on_${options.parent.options.id}}`,
-			featureCount: options.featureCount ?? null
+      featureCount: options.featureCount ?? null,
     });
   }
 }
