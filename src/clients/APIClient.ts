@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { nonCircularJsonStringify } from '@data-story-org/core';
 import ClientInterface from './ClientInterface';
 
 export default class APIClient implements ClientInterface {

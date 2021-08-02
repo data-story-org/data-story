@@ -1,7 +1,6 @@
 import React, { FC } from 'react';
 import { observer } from 'mobx-react';
 import { Store } from '../../store';
-import { nonCircularJsonStringify } from '@data-story-org/core';
 import { CodeHighlighter } from '../../utils/CodeHighlighter';
 
 interface Props {
