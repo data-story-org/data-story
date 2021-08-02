@@ -17,7 +17,13 @@ export default class DiagramModel extends DefaultDiagramModel {
     this.attemptLinkToLatest(node);
     this.smartInspectorNames(node);
     this.latestNodes.unshift(node);
-    return super.addNode(node);
+		
+		let added = super.addNode(node);
+		this.clearSelection()
+		added.setSelected(true)
+		// TODO Now we have selected the new node, next step is a global ENTER listener to open its modal
+
+		return added
   }
 
   toJson(indentation = 0): string {

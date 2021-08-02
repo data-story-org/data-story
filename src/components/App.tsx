@@ -11,6 +11,7 @@ import { useStore } from '../store/StoreProvider';
 import { Store } from '../store';
 import { showNotification } from '../utils/Notifications';
 import { useHotkeys } from 'react-hotkeys-hook';
+import NodeModel from '../diagram/models/NodeModel';
 
 const App: FC = () => {
   const store = useStore();
@@ -30,7 +31,20 @@ const App: FC = () => {
 
   useHotkeys('shift+l', () => {
     store.setPage('Log');
-  });	
+  });
+
+	// Open a selected nodes modal
+	useHotkeys('shift+e', () => {
+		const selection = store.diagram.engine.model.getSelectedEntities()
+		
+		// Must be an unambiguous selection of a single NodeModel entity
+		if(selection.length != 1) return;
+		if(!(selection[0] instanceof NodeModel)) return;
+		
+		const node = selection[0];
+
+		store.openNodeModal(node.id)
+	})
 
   const renderActivePage = () => {
     let Page = pages(store.metadata.page);
