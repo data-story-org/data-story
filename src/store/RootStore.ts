@@ -43,8 +43,8 @@ export class Store {
       setRunning: action.bound,
       setStories: action.bound,
 
-			// Notifications
-			showRunFail: action.bound,
+      // Notifications
+      showRunFail: action.bound,
       showRunSuccessful: action.bound,
     });
   }
@@ -126,20 +126,19 @@ export class Store {
     this.metadata.stories = stories;
   }
 
-	showRunFail(error) {
-		showNotification({
-			message:
-				'Crap! Could not run story! Check console.',
-			type: 'error',
-		});
-	}
+  showRunFail(error) {
+    showNotification({
+      message: 'Crap! Could not run story! Check console.',
+      type: 'error',
+    });
+  }
 
-	showRunSuccessful() {
-		showNotification({
-			message: 'Successfully ran story!',
-			type: 'success',
-		});
-	}
+  showRunSuccessful() {
+    showNotification({
+      message: 'Successfully ran story!',
+      type: 'success',
+    });
+  }
 }
 
 export const RootStore = ((window as any).store =
