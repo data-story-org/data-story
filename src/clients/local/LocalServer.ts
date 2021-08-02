@@ -3,7 +3,7 @@ import DiagramModel from '../../diagram/models/DiagramModel';
 
 export class LocalServer extends Server {
 	boot() {
-		let bootPayload = super.boot()
+		const bootPayload = super.boot()
 		
 		// Inject demo stories into localStorage
 		// Add stories from localStorage to bootPayload
