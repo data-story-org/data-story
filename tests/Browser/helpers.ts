@@ -23,7 +23,8 @@ export const addNode = async (nodeName: string, page) => {
   await page.waitForSelector('input#node-search', {
     visible: true,
   });
-  await expect(page).toFill('input#node-search', nodeName);
+	await page.focus('#node-search')
+	await page.keyboard.type(nodeName)
   await page.keyboard.press('Enter');
   await page.waitForSelector('div.node', {
     visible: true,

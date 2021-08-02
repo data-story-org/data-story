@@ -20,7 +20,11 @@ import NodeWidgetModal from '../../modals/NodeWidget';
  * } */
 
 const NodeWidget = ({ engine, node, store }) => {
-  const [isOpen, setIsOpen] = useState(false);
+	// Hotkeys can trigger a selected nodeWidget to open its modal
+	const hasOpenModalRequest = node.id == store.metadata.requestOpenNodeModal
+  
+	const [isOpen, setIsOpen] = useState(hasOpenModalRequest);
+	const [hasReactedToOpenRequest, setHasReactedToOpenRequest] = useState(false);
 
   const open = () => {
     store.diagram.engine.model.setLocked(true);
@@ -31,6 +35,12 @@ const NodeWidget = ({ engine, node, store }) => {
     store.diagram.engine.model.setLocked(false);
     setIsOpen(false);
   };
+
+	if(hasOpenModalRequest && !hasReactedToOpenRequest) {
+		setHasReactedToOpenRequest(true)
+		store.resetOpenNodeModalRequest()
+		open();
+	}
 
   return (
     <div
