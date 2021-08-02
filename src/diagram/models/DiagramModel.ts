@@ -21,7 +21,6 @@ export default class DiagramModel extends DefaultDiagramModel {
 		const added = super.addNode(node);
 		this.clearSelection()
 		added.setSelected(true)
-		// TODO Now we have selected the new node, next step is a global ENTER listener to open its modal
 
 		return added
   }
