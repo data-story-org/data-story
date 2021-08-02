@@ -132,8 +132,6 @@ export class Store {
 				'Crap! Could not run story! Check console.',
 			type: 'error',
 		});
-
-		throw error
 	}
 
 	showRunSuccessful() {

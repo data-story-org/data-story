@@ -30,6 +30,7 @@ const RunControl = ({ store }) => {
       .catch((error) => {
         store.setNotRunning();
         store.showRunFail(error);
+				throw error
       });			
   };
 
