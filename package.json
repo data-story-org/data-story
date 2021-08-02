@@ -76,7 +76,7 @@
     "resize-observer-polyfill": "^1.5.1",
     "resolve-url-loader": "^4.0.0",
     "sass": "^1.37.0",
-    "sass-loader": "^8.0.0",
+    "sass-loader": "^12.1.0",
     "tailwindcss": "^2.2.4",
     "ts-loader": "^9.2.4",
     "typescript": "^4.2.2"
