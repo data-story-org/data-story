@@ -5,7 +5,6 @@ import {
 import NodeModel from './NodeModel';
 import { SerializedReactDiagram } from '../../types/SerializedReactDiagram';
 import VERSION from '../../utils/version';
-import { nonCircularJsonStringify } from '@data-story-org/core';
 
 /**
  * Sorts model in execution order based on their dependencies
@@ -21,13 +20,9 @@ export default class DiagramModel extends DefaultDiagramModel {
     return super.addNode(node);
   }
 
-  toJson(indentation = 0): string {
-    return nonCircularJsonStringify(
-      this.serialize(),
-      null,
-      indentation,
-    );
-  }
+	toJson(indentation = 0): string {
+		return JSON.stringify(this.serialize(), null, indentation);
+	}
 
   toPrettyJson(): string {
     return this.toJson(4);
@@ -209,4 +204,54 @@ export default class DiagramModel extends DefaultDiagramModel {
       latest.position.y + position * 75,
     );
   }
+
+	syncFeatures(serverDiagram) {
+		// Transfer node features
+		serverDiagram.nodes
+			.forEach((serverNode) => {
+				// TODO how use type node: NodeModel here?
+				let node: any =
+					this.getNode(
+						serverNode.id,
+					);
+					node.features = serverNode.features;
+			});
+
+		// Transfer port feature counts
+		this.clearLinkLabels();
+		serverDiagram.nodes
+			.map((node) => {
+				return node.ports;
+			})
+			.flat()
+			.filter((port) => {
+				return port.features;
+			})
+			.forEach((port) => {
+				let allLinks = Object.values(
+					(this.layers[0] as any).models,
+				);
+
+				allLinks
+					.filter((link) => {
+						return (
+							// @ts-ignore
+							link.sourcePort.options.id == port.id
+						);
+					})
+					.forEach((link) => {
+						// @ts-ignore
+						this.getLink(link.options.id)
+							.addLabel(port.features.length);
+					});
+			});		
+	}
+
+  clearLinkLabels() {
+    Object.values(
+      (this.layers[0] as any).models,
+    ).forEach((link: any) => {
+      link.labels = [];
+    });
+  }	
 }
