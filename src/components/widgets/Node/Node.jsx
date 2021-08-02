@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Modal from 'react-modal';
 import { modalStyle } from '@data-story-org/core';
 import { withStore } from '../../../store';
+import { observer } from 'mobx-react';
 
 import NodeWidgetHeader from './NodeHeader';
 import NodeWidgetInPorts from './NodeInPorts';
@@ -20,11 +21,11 @@ import NodeWidgetModal from '../../modals/NodeWidget';
  * } */
 
 const NodeWidget = ({ engine, node, store }) => {
-	// Hotkeys can trigger a selected nodeWidget to open its modal
-	const hasOpenModalRequest = node.id == store.metadata.requestOpenNodeModal
-  
-	const [isOpen, setIsOpen] = useState(hasOpenModalRequest);
-	const [hasReactedToOpenRequest, setHasReactedToOpenRequest] = useState(false);
+  // Hotkeys can trigger a selected nodeWidget to open its modal
+  const hasOpenModalRequest =
+    node.id == store.metadata.requestOpenNodeModal;
+
+  const [isOpen, setIsOpen] = useState(false);
 
   const open = () => {
     store.diagram.engine.model.setLocked(true);
@@ -36,11 +37,10 @@ const NodeWidget = ({ engine, node, store }) => {
     setIsOpen(false);
   };
 
-	if(hasOpenModalRequest && !hasReactedToOpenRequest) {
-		setHasReactedToOpenRequest(true)
-		store.resetOpenNodeModalRequest()
-		open();
-	}
+  if (hasOpenModalRequest) {
+    store.resetOpenNodeModalRequest();
+    setIsOpen(true);
+  }
 
   return (
     <div
@@ -48,7 +48,7 @@ const NodeWidget = ({ engine, node, store }) => {
       onDoubleClick={open}
     >
       <div className="flex-grow-0 max-w-md">
-        <NodeWidgetHeader node={node} />
+        <NodeWidgetHeader node={node} store={store} />
         <NodeWidgetInPorts
           node={node}
           engine={engine}
