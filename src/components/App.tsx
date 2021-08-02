@@ -34,7 +34,7 @@ const App: FC = () => {
   });
 
 	// Open a selected nodes modal
-	useHotkeys('enter', () => {
+	useHotkeys('shift+e', () => {
 		const selection = store.diagram.engine.model.getSelectedEntities()
 		
 		// Must be an unambiguous selection of a single NodeModel entity
