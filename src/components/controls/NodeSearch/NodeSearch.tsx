@@ -43,7 +43,8 @@ const NodeSearch: FC<Props> = ({ store, onFinish }) => {
 
   useHotkeys(
     'tab, down',
-    () => {
+    (e) => {
+      e.preventDefault();
       goDown();
     },
     { enableOnTags: ['INPUT'] },
@@ -52,7 +53,8 @@ const NodeSearch: FC<Props> = ({ store, onFinish }) => {
 
   useHotkeys(
     'shift+tab, up',
-    () => {
+    (e) => {
+      e.preventDefault();
       goUp();
     },
     { enableOnTags: ['INPUT'] },
@@ -71,11 +73,7 @@ const NodeSearch: FC<Props> = ({ store, onFinish }) => {
 
   useEffect(() => {
     store.diagram.engine.model.setLocked(true);
-    const searchFocusTimer = setTimeout(() => {
-      nameInput.current.focus();
-    }, 500);
-
-    return () => clearTimeout(searchFocusTimer);
+    nameInput.current.focus();
   }, []);
 
   const searchChange = (e) => {
