@@ -70,8 +70,12 @@ const NodeSearch: FC<Props> = ({ store, onFinish }) => {
   );
 
   useEffect(() => {
-    nameInput.current.focus();
     store.diagram.engine.model.setLocked(true);
+    const searchFocusTimer = setTimeout(() => {
+      nameInput.current.focus();
+    }, 500);
+
+    return () => clearTimeout(searchFocusTimer);
   }, []);
 
   const searchChange = (e) => {
