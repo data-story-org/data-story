@@ -50,19 +50,6 @@ const NodeWidgetModal = ({ store, node, closeModal }) => {
     },
   );
 
-  useHotkeys(
-    'shift+enter',
-    (e) => {
-      e.stopPropagation();
-      handleSave(true)(e);
-    },
-    {
-      filter: (e) => e.target.type !== 'textarea',
-      filterPreventDefault: false,
-      enableOnTags: ['INPUT'],
-    },
-  );
-
   useEffect(() => {
     // Convert repeatable arrays to the
     // object with a such structure
@@ -87,7 +74,6 @@ const NodeWidgetModal = ({ store, node, closeModal }) => {
 
     const autoSaveTimer = setTimeout(() => {
       handleSave(true)(null);
-      store.diagram.engine.model.setLocked(false);
     }, 500);
 
     return () => clearTimeout(autoSaveTimer);
