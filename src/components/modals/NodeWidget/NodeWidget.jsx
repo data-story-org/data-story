@@ -46,18 +46,7 @@ const NodeWidgetModal = ({ node, closeModal }) => {
     {
       filter: (e) => e.target.type !== 'textarea',
       filterPreventDefault: false,
-    },
-  );
-
-  useHotkeys(
-    'shift+enter',
-    (e) => {
-      e.stopPropagation();
-      handleSave(true)(e);
-    },
-    {
-      filter: (e) => e.target.type !== 'textarea',
-      filterPreventDefault: false,
+      enableOnTags: ['INPUT'],
     },
   );
 

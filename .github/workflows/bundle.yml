@@ -8,11 +8,11 @@ on:
     paths:
       - "**.ts"
       - "**.tsx"
+      - "**.jsx"
       - "package*"
       - "yarn*"
       - "*.json"
       - "*.js"
-      - "*.jsx"
       - "*rc"
       - ".github/workflows/**.yml"
 
