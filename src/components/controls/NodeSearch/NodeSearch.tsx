@@ -42,59 +42,35 @@ const NodeSearch: FC<Props> = ({ store, onFinish }) => {
   };
 
   useHotkeys(
-    'tab',
-    (e) => {
-      e.preventDefault();
+    'tab, down',
+    () => {
       goDown();
     },
-    { enableOnTags: ['INPUT'] },
+    { enableOnTags: ['INPUT'], filterPreventDefault: true },
     [cursor],
   );
 
   useHotkeys(
-    'shift+tab',
-    (e) => {
-      e.preventDefault();
+    'shift+tab, up',
+    () => {
       goUp();
     },
-    { enableOnTags: ['INPUT'] },
+    { enableOnTags: ['INPUT'], filterPreventDefault: true },
     [cursor],
   );
 
-  const downHandler = ({ key }) => {
-    if (key === 'ArrowDown') {
-      goDown();
-    }
-  };
-
-  const upHandler = ({ key }) => {
-    if (key === 'ArrowUp') {
-      goUp();
-    }
-  };
-
-  const searchSubmitHandler = ({ key }) => {
-    if (key === 'Enter') {
+  useHotkeys(
+    'enter',
+    (e) => {
+      e.stopPropagation();
       const nodeName = filteredNodes[cursor].name;
       handleSelect(nodeName);
-    }
-  };
+    },
+    { enableOnTags: ['INPUT'] },
+  );
 
   useEffect(() => {
     nameInput.current.focus();
-
-    window.addEventListener('keydown', downHandler);
-    window.addEventListener('keyup', upHandler);
-    window.addEventListener('keyup', searchSubmitHandler);
-
-    return () => {
-      window.removeEventListener('keydown', downHandler);
-      window.removeEventListener('keyup', upHandler);
-      window.removeEventListener(
-        'keyup',
-        searchSubmitHandler,
-      );
-    };
   });
 
   const searchChange = (e) => {

@@ -33,18 +33,25 @@ const App: FC = () => {
     store.setPage('Log');
   });
 
-	// Open a selected nodes modal
-	useHotkeys('shift+e', () => {
-		const selection = store.diagram.engine.model.getSelectedEntities()
-		
-		// Must be an unambiguous selection of a single NodeModel entity
-		if(selection.length != 1) return;
-		if(!(selection[0] instanceof NodeModel)) return;
-		
-		const node = selection[0];
+  useHotkeys(
+    'enter',
+    () => {
+      const selection =
+        store.diagram.engine.model.getSelectedEntities();
 
-		store.openNodeModal(node.id)
-	})
+      // Must be an unambiguous selection of a single NodeModel entity
+      if (
+        selection.length === 1 &&
+        selection[0] instanceof NodeModel
+      ) {
+        const node = selection[0];
+        store.openNodeModal(node.id);
+      }
+    },
+    {
+      filterPreventDefault: false,
+    },
+  );
 
   const renderActivePage = () => {
     let Page = pages(store.metadata.page);
