@@ -71,7 +71,8 @@ const NodeSearch: FC<Props> = ({ store, onFinish }) => {
 
   useEffect(() => {
     nameInput.current.focus();
-  });
+    store.diagram.engine.model.setLocked(true);
+  }, []);
 
   const searchChange = (e) => {
     setSearch(e.target.value);
