@@ -46,6 +46,7 @@ const NodeWidgetModal = ({ node, closeModal }) => {
     {
       filter: (e) => e.target.type !== 'textarea',
       filterPreventDefault: false,
+      enableOnTags: ['INPUT'],
     },
   );
 
@@ -58,6 +59,7 @@ const NodeWidgetModal = ({ node, closeModal }) => {
     {
       filter: (e) => e.target.type !== 'textarea',
       filterPreventDefault: false,
+      enableOnTags: ['INPUT'],
     },
   );
 
