@@ -16,8 +16,15 @@ const nodes = [
 
 const store = new Store();
 store.setAvailableNodes(nodes);
+store.setEngine({
+  model: {
+    setLocked: jest.fn(),
+  },
+});
 
 describe('<NodeSearch />', () => {
+  beforeAll(() => {});
+
   it('Renders correctly', async () => {
     const { findByPlaceholderText, findAllByRole } = render(
       <NodeSearch store={store} onFinish={jest.fn()} />,
