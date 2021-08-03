@@ -45,7 +45,8 @@ const NodeSearch: FC<Props> = ({ store, onFinish }) => {
 
   useHotkeys(
     'tab, down',
-    () => {
+    (e) => {
+      e.preventDefault();
       goDown();
     },
     { enableOnTags: ['INPUT'] },
@@ -54,7 +55,8 @@ const NodeSearch: FC<Props> = ({ store, onFinish }) => {
 
   useHotkeys(
     'shift+tab, up',
-    () => {
+    (e) => {
+      e.preventDefault();
       goUp();
     },
     { enableOnTags: ['INPUT'] },
