@@ -2,7 +2,7 @@ import React, { FC, useState, useEffect } from 'react';
 import Header from './Header';
 import Toolbar from './Toolbar';
 import pages from './pages/factory';
-import { observer } from 'mobx-react';
+import { observer } from 'mobx-react-lite';
 import { ToastContainer, Slide } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import EngineFactory from '../diagram/factories/EngineFactory';

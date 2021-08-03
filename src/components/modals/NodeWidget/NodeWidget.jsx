@@ -14,7 +14,7 @@ import {
 // import "ace-builds/src-noconflict/mode-java";
 // import "ace-builds/src-noconflict/theme-github";
 
-import { observer } from 'mobx-react';
+import { observer } from 'mobx-react-lite';
 import { useHotkeys } from 'react-hotkeys-hook';
 import NodeWidgetModalHeader from './NodeWidgetHeader';
 import NodeWidgetModalBody from './NodeWidgetBody';

@@ -1,5 +1,5 @@
 import React, { FC, useState } from 'react';
-import { observer } from 'mobx-react';
+import { observer } from 'mobx-react-lite';
 import Cookie from '../../../utils/Cookie';
 import DiagramModel from '../../../diagram/models/DiagramModel';
 import { Store } from '../../../store';
