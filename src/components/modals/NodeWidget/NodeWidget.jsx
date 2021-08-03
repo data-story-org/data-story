@@ -14,7 +14,8 @@ import {
 // import "ace-builds/src-noconflict/mode-java";
 // import "ace-builds/src-noconflict/theme-github";
 
-import { observer } from 'mobx-react';
+import { observer } from 'mobx-react-lite';
+import { useHotkeys } from 'react-hotkeys-hook';
 import NodeWidgetModalHeader from './NodeWidgetHeader';
 import NodeWidgetModalBody from './NodeWidgetBody';
 import NodeWidgetModalActions from './NodeWidgetActions';
@@ -36,11 +37,18 @@ const NodeWidgetModal = ({ node, closeModal }) => {
     0,
   );
 
-  const submitHandler = (e) => {
-    if (e.key === 'Enter' && e.target.type !== 'textarea') {
-      handleSave(e);
-    }
-  };
+  useHotkeys(
+    'enter',
+    (e) => {
+      e.stopPropagation();
+      handleSave(false)(e);
+    },
+    {
+      filter: (e) => e.target.type !== 'textarea',
+      filterPreventDefault: false,
+      enableOnTags: ['INPUT'],
+    },
+  );
 
   useEffect(() => {
     // Convert repeatable arrays to the
@@ -64,11 +72,11 @@ const NodeWidgetModal = ({ node, closeModal }) => {
       }),
     );
 
-    window.addEventListener('keyup', submitHandler);
+    const autoSaveTimer = setTimeout(() => {
+      handleSave(true)(null);
+    }, 500);
 
-    return () => {
-      window.removeEventListener('keyup', submitHandler);
-    };
+    return () => clearTimeout(autoSaveTimer);
   }, [node.parameter]);
 
   const handleChange = (param) => (e) => {
@@ -130,7 +138,7 @@ const NodeWidgetModal = ({ node, closeModal }) => {
     closeModal();
   };
 
-  const handleSave = (_e) => {
+  const handleSave = (semi) => (_e) => {
     const updatedParameters = parameters.map(
       (parameter) => {
         if (parameter.isRepeatable) {
@@ -142,7 +150,9 @@ const NodeWidgetModal = ({ node, closeModal }) => {
     );
 
     node.parameters = updatedParameters;
-    closeModal();
+    if (!semi) {
+      closeModal();
+    }
   };
 
   const editExistingPort = (e) => {};
@@ -199,7 +209,7 @@ const NodeWidgetModal = ({ node, closeModal }) => {
       />
       <NodeWidgetModalActions
         handleCancel={handleCancel}
-        handleSave={handleSave}
+        handleSave={handleSave(false)}
       />
       {/* <AceEditor
                 mode="json"

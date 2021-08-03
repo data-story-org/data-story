@@ -1,5 +1,5 @@
 import React, { FC, useState } from 'react';
-import { observer } from 'mobx-react';
+import { observer } from 'mobx-react-lite';
 
 import WorkbenchControl from '../controls/WorkbenchControl';
 import OpenControl from '../controls/OpenControl';

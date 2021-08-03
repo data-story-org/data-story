@@ -3,18 +3,8 @@ name: Bundle
 on:
   push:
     branches:
-      - master
+      - '*'
     tags-ignore: ["v[0-9]+.[0-9]+.[0-9]+*"]
-    paths:
-      - "**.ts"
-      - "**.tsx"
-      - "package*"
-      - "yarn*"
-      - "*.json"
-      - "*.js"
-      - "*.jsx"
-      - "*rc"
-      - ".github/workflows/**.yml"
 
 jobs:
   bundle_code:

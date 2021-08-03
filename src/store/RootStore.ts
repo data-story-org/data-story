@@ -17,6 +17,7 @@ export class Store {
     running: false,
     page: 'Workbench',
     activeInspector: null,
+    requestOpenNodeModal: null,
     stories: [],
     activeStory: '',
     client: clientFactory((window as any).config),
@@ -32,7 +33,9 @@ export class Store {
       addNode: action.bound,
       increaseNodeSerial: action.bound,
       goToInspector: action.bound,
+      openNodeModal: action.bound,
       refreshDiagram: action.bound,
+      resetOpenNodeModalRequest: action.bound,
       setActiveInspector: action.bound,
       setActiveStory: action.bound,
       setAvailableNodes: action.bound,
@@ -76,6 +79,15 @@ export class Store {
     return this.diagram.engine.model
       .getNodes()
       .filter((node) => node.isInspectable());
+  }
+
+  openNodeModal(nodeId: string): void {
+    this.metadata.requestOpenNodeModal = nodeId;
+    this.refreshDiagram();
+  }
+
+  resetOpenNodeModalRequest(): void {
+    this.metadata.requestOpenNodeModal = null;
   }
 
   refreshDiagram() {

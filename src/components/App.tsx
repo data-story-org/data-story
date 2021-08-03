@@ -2,7 +2,7 @@ import React, { FC, useState, useEffect } from 'react';
 import Header from './Header';
 import Toolbar from './Toolbar';
 import pages from './pages/factory';
-import { observer } from 'mobx-react';
+import { observer } from 'mobx-react-lite';
 import { ToastContainer, Slide } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import EngineFactory from '../diagram/factories/EngineFactory';
@@ -11,6 +11,7 @@ import { useStore } from '../store/StoreProvider';
 import { Store } from '../store';
 import { showNotification } from '../utils/Notifications';
 import { useHotkeys } from 'react-hotkeys-hook';
+import NodeModel from '../diagram/models/NodeModel';
 
 const App: FC = () => {
   const store = useStore();
@@ -30,7 +31,28 @@ const App: FC = () => {
 
   useHotkeys('shift+l', () => {
     store.setPage('Log');
-  });	
+  });
+
+  useHotkeys(
+    'enter',
+    () => {
+      const selection =
+        store.diagram.engine.model.getSelectedEntities();
+
+      // Must be an unambiguous selection of a single NodeModel entity
+      if (
+        selection.length === 1 &&
+        selection[0] instanceof NodeModel
+      ) {
+        const node = selection[0];
+        store.openNodeModal(node.id);
+      }
+    },
+    {
+      filter: () =>
+        store.diagram.engine.model.options.locked === false,
+    },
+  );
 
   const renderActivePage = () => {
     let Page = pages(store.metadata.page);

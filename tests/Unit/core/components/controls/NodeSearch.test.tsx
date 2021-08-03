@@ -16,6 +16,11 @@ const nodes = [
 
 const store = new Store();
 store.setAvailableNodes(nodes);
+store.setEngine({
+  model: {
+    setLocked: jest.fn(),
+  },
+});
 
 describe('<NodeSearch />', () => {
   it('Renders correctly', async () => {

@@ -17,7 +17,12 @@ export default class DiagramModel extends DefaultDiagramModel {
     this.attemptLinkToLatest(node);
     this.smartInspectorNames(node);
     this.latestNodes.unshift(node);
-    return super.addNode(node);
+
+    const added = super.addNode(node);
+    this.clearSelection();
+    added.setSelected(true);
+
+    return added;
   }
 
   toJson(indentation = 0): string {

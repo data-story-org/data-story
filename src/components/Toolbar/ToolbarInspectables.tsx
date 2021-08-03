@@ -1,5 +1,5 @@
 import React, { FC, useState } from 'react';
-import { observer } from 'mobx-react';
+import { observer } from 'mobx-react-lite';
 import { Store } from '../../store';
 import NodeModel from '../../diagram/models/NodeModel';
 

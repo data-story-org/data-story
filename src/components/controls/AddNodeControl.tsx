@@ -1,5 +1,5 @@
 import React, { FC, useState } from 'react';
-import { observer } from 'mobx-react';
+import { observer } from 'mobx-react-lite';
 import BaseControl from './BaseControl';
 import ReactModal from 'react-modal';
 import NodeSearch from './NodeSearch';
@@ -46,6 +46,7 @@ const AddNodeControl: FC<Props> = ({ store }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const onClick = () => {
+    store.diagram.engine.model.setLocked(true);
     setIsOpen(true);
   };
 
@@ -83,7 +84,7 @@ const AddNodeControl: FC<Props> = ({ store }) => {
   // }
 
   const closeModal = () => {
-    //this.props.store.diagram.engine.model.setLocked(false);
+    store.diagram.engine.model.setLocked(false);
     setIsOpen(false);
   };
 

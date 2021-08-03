@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useCallback } from 'react';
 import ReactDOM from 'react-dom';
 import { CanvasWidget } from '@projectstorm/react-canvas-core';
-import { observer } from 'mobx-react';
+import { observer } from 'mobx-react-lite';
 
 const style = 'fullsize bg-gray-600';
 

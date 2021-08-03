@@ -4,7 +4,7 @@ import React, {
   useEffect,
   useRef,
 } from 'react';
-import { observer } from 'mobx-react';
+import { observer } from 'mobx-react-lite';
 import { cloneDeep } from 'lodash';
 import { Store } from '../../../store/';
 import NodeListItem from './NodeListItem';
@@ -42,7 +42,7 @@ const NodeSearch: FC<Props> = ({ store, onFinish }) => {
   };
 
   useHotkeys(
-    'tab',
+    'tab, down',
     (e) => {
       e.preventDefault();
       goDown();
@@ -52,7 +52,7 @@ const NodeSearch: FC<Props> = ({ store, onFinish }) => {
   );
 
   useHotkeys(
-    'shift+tab',
+    'shift+tab, up',
     (e) => {
       e.preventDefault();
       goUp();
@@ -61,41 +61,20 @@ const NodeSearch: FC<Props> = ({ store, onFinish }) => {
     [cursor],
   );
 
-  const downHandler = ({ key }) => {
-    if (key === 'ArrowDown') {
-      goDown();
-    }
-  };
-
-  const upHandler = ({ key }) => {
-    if (key === 'ArrowUp') {
-      goUp();
-    }
-  };
-
-  const searchSubmitHandler = ({ key }) => {
-    if (key === 'Enter') {
+  useHotkeys(
+    'enter',
+    (e) => {
+      e.stopPropagation();
       const nodeName = filteredNodes[cursor].name;
       handleSelect(nodeName);
-    }
-  };
+    },
+    { enableOnTags: ['INPUT'] },
+  );
 
   useEffect(() => {
+    store.diagram.engine.model.setLocked(true);
     nameInput.current.focus();
-
-    window.addEventListener('keydown', downHandler);
-    window.addEventListener('keyup', upHandler);
-    window.addEventListener('keyup', searchSubmitHandler);
-
-    return () => {
-      window.removeEventListener('keydown', downHandler);
-      window.removeEventListener('keyup', upHandler);
-      window.removeEventListener(
-        'keyup',
-        searchSubmitHandler,
-      );
-    };
-  });
+  }, []);
 
   const searchChange = (e) => {
     setSearch(e.target.value);
