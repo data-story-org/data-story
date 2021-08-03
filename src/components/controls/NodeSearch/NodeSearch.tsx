@@ -76,7 +76,7 @@ const NodeSearch: FC<Props> = ({ store, onFinish }) => {
     }, 500);
 
     return () => clearTimeout(searchFocusTimer);
-  }, []);
+  }, [filteredNodes]);
 
   const searchChange = (e) => {
     setSearch(e.target.value);
