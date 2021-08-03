@@ -28,7 +28,7 @@ import NodeWidgetModalEditableOutPorts from './NodeWidgetEditableOutPorts';
  *   closeModal: () => void;
  * } */
 
-const NodeWidgetModal = ({ store, node, closeModal }) => {
+const NodeWidgetModal = ({ node, closeModal }) => {
   const [parameters, setParameters] = useState(
     cloneDeep(node.parameters),
   );
