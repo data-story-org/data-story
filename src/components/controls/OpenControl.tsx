@@ -1,5 +1,5 @@
 import React, { FC, useState } from 'react';
-import { observer } from 'mobx-react';
+import { observer } from 'mobx-react-lite';
 import BaseControl from './BaseControl';
 import Modal from 'react-modal';
 import { modalStyle } from '@data-story-org/core';
