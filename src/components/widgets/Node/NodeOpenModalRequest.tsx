@@ -18,13 +18,11 @@ const NodeOpenModalRequest: FC<Props> = ({
   const hasOpenModalRequest =
     node.id == store.metadata.requestOpenNodeModal;
 
-  return (
-    <>
-      {hasOpenModalRequest
-        ? handleOpenModalRequest()
-        : null}
-    </>
-  );
+  if (hasOpenModalRequest) {
+    handleOpenModalRequest();
+  }
+
+  return null;
 };
 
 export default observer(NodeOpenModalRequest);
