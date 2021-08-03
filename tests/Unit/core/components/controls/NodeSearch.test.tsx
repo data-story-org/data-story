@@ -23,8 +23,6 @@ store.setEngine({
 });
 
 describe('<NodeSearch />', () => {
-  beforeAll(() => {});
-
   it('Renders correctly', async () => {
     const { findByPlaceholderText, findAllByRole } = render(
       <NodeSearch store={store} onFinish={jest.fn()} />,
