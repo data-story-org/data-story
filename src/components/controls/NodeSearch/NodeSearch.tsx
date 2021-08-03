@@ -46,7 +46,7 @@ const NodeSearch: FC<Props> = ({ store, onFinish }) => {
     () => {
       goDown();
     },
-    { enableOnTags: ['INPUT'], filterPreventDefault: true },
+    { enableOnTags: ['INPUT'] },
     [cursor],
   );
 
@@ -55,7 +55,7 @@ const NodeSearch: FC<Props> = ({ store, onFinish }) => {
     () => {
       goUp();
     },
-    { enableOnTags: ['INPUT'], filterPreventDefault: true },
+    { enableOnTags: ['INPUT'] },
     [cursor],
   );
 
