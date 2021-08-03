@@ -49,7 +49,8 @@ const App: FC = () => {
       }
     },
     {
-      filterPreventDefault: false,
+      filter: () =>
+        store.diagram.engine.model.options.locked === false,
     },
   );
 
