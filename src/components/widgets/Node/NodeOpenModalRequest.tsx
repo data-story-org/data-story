@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 import { observer } from 'mobx-react';
 import NodeModel from '../../../diagram/models/NodeModel';
 import { Store } from '../../../store';
