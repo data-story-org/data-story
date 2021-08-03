@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from 'react';
+import React, { FC } from 'react';
 import { observer } from 'mobx-react';
 import NodeModel from '../../../diagram/models/NodeModel';
 import { Store } from '../../../store';
@@ -14,15 +14,13 @@ const NodeOpenModalRequest: FC<Props> = ({
   node,
   handleOpenModalRequest,
 }) => {
-  useEffect(() => {
-    // Hotkeys can trigger a selected nodeWidget to open its modal
-    const hasOpenModalRequest =
-      node.id == store.metadata.requestOpenNodeModal;
+  // Hotkeys can trigger a selected nodeWidget to open its modal
+  const hasOpenModalRequest =
+    node.id == store.metadata.requestOpenNodeModal;
 
-    if (hasOpenModalRequest) {
-      handleOpenModalRequest();
-    }
-  }, [store, node]);
+  if (hasOpenModalRequest) {
+    handleOpenModalRequest();
+  }
 
   return null;
 };
