@@ -17,6 +17,8 @@ interface Props {
 }
 
 const NodeSearch: FC<Props> = ({ store, onFinish }) => {
+  store.diagram.engine.model.setLocked(true);
+
   const [search, setSearch] = useState('');
   const [cursor, setCursor] = useState(0);
 
@@ -70,13 +72,12 @@ const NodeSearch: FC<Props> = ({ store, onFinish }) => {
   );
 
   useEffect(() => {
-    store.diagram.engine.model.setLocked(true);
     const searchFocusTimer = setTimeout(() => {
       nameInput.current.focus();
     }, 500);
 
     return () => clearTimeout(searchFocusTimer);
-  }, [filteredNodes]);
+  }, [filteredNodes, cursor]);
 
   const searchChange = (e) => {
     setSearch(e.target.value);
