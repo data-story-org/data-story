@@ -989,9 +989,12 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
-"@data-story-org/core@link:../core":
-  version "0.0.0"
-  uid ""
+"@data-story-org/core@data-story-org/core#master":
+  version "0.0.3"
+  resolved "https://codeload.github.com/data-story-org/core/tar.gz/584c11889ef33715592c3fa2ff4d56210c40b19a"
+  dependencies:
+    axios "^0.21.1"
+    laravel-mix "^6.0.27"
 
 "@discoveryjs/json-ext@^0.5.0":
   version "0.5.3"
