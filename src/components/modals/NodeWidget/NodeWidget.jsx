@@ -28,7 +28,7 @@ import NodeWidgetModalEditableOutPorts from './NodeWidgetEditableOutPorts';
  *   closeModal: () => void;
  * } */
 
-const NodeWidgetModal = ({ node, closeModal }) => {
+const NodeWidgetModal = ({ store, node, closeModal }) => {
   const [parameters, setParameters] = useState(
     cloneDeep(node.parameters),
   );
@@ -87,6 +87,7 @@ const NodeWidgetModal = ({ node, closeModal }) => {
 
     const autoSaveTimer = setTimeout(() => {
       handleSave(true)(null);
+      store.diagram.engine.model.setLocked(false);
     }, 500);
 
     return () => clearTimeout(autoSaveTimer);

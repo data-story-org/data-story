@@ -67,6 +67,7 @@ const NodeWidget = ({ engine, node, store }) => {
         style={modalStyle}
       >
         <NodeWidgetModal
+          store={store}
           node={node}
           closeModal={closeModal}
         />
