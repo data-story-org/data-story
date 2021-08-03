@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import Modal from 'react-modal';
 import { modalStyle } from '@data-story-org/core';
 import { withStore } from '../../../store';
-import { observer } from 'mobx-react';
 
 import NodeWidgetHeader from './NodeHeader';
 import NodeWidgetInPorts from './NodeInPorts';
 import NodeWidgetOutPorts from './NodeOutPorts';
+import NodeOpenModalRequest from './NodeOpenModalRequest';
 import NodeWidgetModal from '../../modals/NodeWidget';
 
 /**
@@ -21,10 +21,6 @@ import NodeWidgetModal from '../../modals/NodeWidget';
  * } */
 
 const NodeWidget = ({ engine, node, store }) => {
-  // Hotkeys can trigger a selected nodeWidget to open its modal
-  const hasOpenModalRequest =
-    node.id == store.metadata.requestOpenNodeModal;
-
   const [isOpen, setIsOpen] = useState(false);
 
   const open = () => {
@@ -37,10 +33,10 @@ const NodeWidget = ({ engine, node, store }) => {
     setIsOpen(false);
   };
 
-  if (hasOpenModalRequest) {
+  const handleOpenModalRequest = () => {
     store.resetOpenNodeModalRequest();
     setIsOpen(true);
-  }
+  };
 
   return (
     <div
@@ -60,6 +56,11 @@ const NodeWidget = ({ engine, node, store }) => {
         </div>
       </div>
 
+      <NodeOpenModalRequest
+        store={store}
+        node={node}
+        handleOpenModalRequest={handleOpenModalRequest}
+      />
       <Modal
         isOpen={isOpen}
         onRequestClose={closeModal}
