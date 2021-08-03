@@ -14,13 +14,15 @@ const NodeOpenModalRequest: FC<Props> = ({
   node,
   handleOpenModalRequest,
 }) => {
-  // Hotkeys can trigger a selected nodeWidget to open its modal
-  const hasOpenModalRequest =
-    node.id == store.metadata.requestOpenNodeModal;
+  useEffect(() => {
+    // Hotkeys can trigger a selected nodeWidget to open its modal
+    const hasOpenModalRequest =
+      node.id == store.metadata.requestOpenNodeModal;
 
-  if (hasOpenModalRequest) {
-    handleOpenModalRequest();
-  }
+    if (hasOpenModalRequest) {
+      handleOpenModalRequest();
+    }
+  }, [store, node]);
 
   return null;
 };
