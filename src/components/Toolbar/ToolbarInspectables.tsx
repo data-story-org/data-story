@@ -14,7 +14,6 @@ const ToolbarInspectables: FC<Props> = ({
   onClickInspectable,
   inspectableLinkStyle,
 }) => {
-
   return (
     store.diagram.engine && (
       <span className="border-l ml-8 pl-8">
@@ -22,10 +21,7 @@ const ToolbarInspectables: FC<Props> = ({
           return (
             <span
               key={node.getDisplayName() + node.options.id}
-              onClick={
-                (e) => onClickInspectable(node)
-                /* .bind(node) */
-              }
+              onClick={(e) => onClickInspectable(node)}
               className={inspectableLinkStyle(node)}
             >
               {node.getDisplayName()}

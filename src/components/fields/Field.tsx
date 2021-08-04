@@ -12,7 +12,7 @@ import String_ from './String_';
 import Select from './Select';
 import Textarea from './Textarea';
 import Where from './Where';
-import Row from './Row'
+import Row from './Row';
 
 export const fields = {
   Boolean_,
@@ -36,14 +36,12 @@ const Field = ({
   fieldType,
   isRepeatable,
 }) => {
-  /* let BaseField = fields[fieldType];
-   * if (isRepeatable) {
-   *   BaseField = withRepeatable(BaseField);
-   * } */
-
-  const BaseField = isRepeatable
-    ? useCallback(withRepeatable(fields[fieldType]), [])
-    : fields[fieldType];
+  const BaseField = useCallback(
+    isRepeatable
+      ? withRepeatable(fields[fieldType])
+      : fields[fieldType],
+    [],
+  );
 
   return (
     <div className="flex flex-col my-4 justify-center align-middle text-gray-500 text-xs font-mono">
