@@ -1,0 +1,840 @@
+{
+  "context": "/Users/anders/Code/gui",
+  "mode": "development",
+  "infrastructureLogging": {
+    "level": "none"
+  },
+  "entry": {
+    "/dist/js/index": [
+      "/Users/anders/Code/gui/src/index.tsx"
+    ]
+  },
+  "output": {
+    "path": "/Users/anders/Code/gui",
+    "filename": "[name].js",
+    "publicPath": "/"
+  },
+  "module": {
+    "rules": [
+      {
+        "test": "/\\.html$/",
+        "resourceQuery": {
+          "not": [
+            "/\\?vue/i"
+          ]
+        },
+        "use": [
+          {
+            "loader": "/Users/anders/Code/gui/node_modules/html-loader/dist/cjs.js"
+          }
+        ]
+      },
+      {
+        "test": "/(\\.(png|jpe?g|gif|webp)$|^((?!font).)*\\.svg$)/",
+        "use": [
+          {
+            "loader": "/Users/anders/Code/gui/node_modules/file-loader/dist/cjs.js",
+            "options": {
+              "publicPath": "../"
+            }
+          },
+          {
+            "loader": "/Users/anders/Code/gui/node_modules/img-loader/index.js",
+            "options": {
+              "enabled": true,
+              "gifsicle": {},
+              "mozjpeg": {},
+              "optipng": {},
+              "svgo": {}
+            }
+          }
+        ]
+      },
+      {
+        "test": "/(\\.(woff2?|ttf|eot|otf)$|font.*\\.svg$)/",
+        "use": [
+          {
+            "loader": "/Users/anders/Code/gui/node_modules/file-loader/dist/cjs.js",
+            "options": {
+              "publicPath": "../"
+            }
+          }
+        ]
+      },
+      {
+        "test": "/\\.(cur|ani)$/",
+        "use": [
+          {
+            "loader": "/Users/anders/Code/gui/node_modules/file-loader/dist/cjs.js",
+            "options": {
+              "name": "[name].[ext]?[hash]",
+              "publicPath": "../"
+            }
+          }
+        ]
+      },
+      {
+        "test": "/\\.(cjs|mjs|jsx?|tsx?)$/",
+        "exclude": "/(node_modules|bower_components)/",
+        "use": [
+          {
+            "loader": "/Users/anders/Code/gui/node_modules/babel-loader/lib/index.js",
+            "options": {
+              "cacheDirectory": true,
+              "presets": [
+                {
+                  "dirname": "/Users/anders/Code/gui",
+                  "file": {
+                    "request": "@babel/preset-env",
+                    "resolved": "/Users/anders/Code/gui/node_modules/@babel/preset-env/lib/index.js"
+                  }
+                },
+                {
+                  "options": {
+                    "runtime": "automatic"
+                  },
+                  "dirname": "/Users/anders/Code/gui",
+                  "file": {
+                    "request": "@babel/preset-react",
+                    "resolved": "/Users/anders/Code/gui/node_modules/@babel/preset-react/lib/index.js"
+                  }
+                }
+              ],
+              "plugins": [
+                {
+                  "dirname": "/Users/anders/Code/gui",
+                  "file": {
+                    "request": "@babel/plugin-syntax-dynamic-import",
+                    "resolved": "/Users/anders/Code/gui/node_modules/@babel/plugin-syntax-dynamic-import/lib/index.js"
+                  }
+                },
+                {
+                  "dirname": "/Users/anders/Code/gui",
+                  "file": {
+                    "request": "@babel/plugin-proposal-object-rest-spread",
+                    "resolved": "/Users/anders/Code/gui/node_modules/@babel/plugin-proposal-object-rest-spread/lib/index.js"
+                  }
+                },
+                {
+                  "options": {
+                    "helpers": false
+                  },
+                  "dirname": "/Users/anders/Code/gui",
+                  "file": {
+                    "request": "@babel/plugin-transform-runtime",
+                    "resolved": "/Users/anders/Code/gui/node_modules/@babel/plugin-transform-runtime/lib/index.js"
+                  }
+                }
+              ],
+              "assumptions": {},
+              "targets": {},
+              "cloneInputAst": true,
+              "babelrc": true,
+              "configFile": true,
+              "browserslistConfigFile": false,
+              "passPerPreset": false,
+              "envName": "development",
+              "cwd": "/Users/anders/Code/gui",
+              "root": "/Users/anders/Code/gui",
+              "rootMode": "root",
+              "babelrcRoots": [
+                ".",
+                "/Users/anders/Code/gui"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "test": "/\\.tsx?$/",
+        "loader": "/Users/anders/Code/gui/node_modules/ts-loader/index.js",
+        "exclude": "/node_modules/",
+        "options": {
+          "appendTsSuffixTo": [
+            "/\\.vue$/"
+          ]
+        }
+      },
+      {
+        "test": "/\\.p?css$/",
+        "exclude": [],
+        "oneOf": [
+          {
+            "resourceQuery": "/module/",
+            "use": [
+              {
+                "loader": "/Users/anders/Code/gui/node_modules/style-loader/dist/cjs.js"
+              },
+              {
+                "loader": "/Users/anders/Code/gui/node_modules/css-loader/dist/cjs.js",
+                "options": {
+                  "modules": true
+                }
+              },
+              {
+                "loader": "/Users/anders/Code/gui/node_modules/postcss-loader/dist/cjs.js",
+                "options": {
+                  "postcssOptions": {
+                    "plugins": [
+                      {
+                        "postcssPlugin": "autoprefixer",
+                        "options": {}
+                      }
+                    ],
+                    "hideNothingWarning": true
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "use": [
+              {
+                "loader": "/Users/anders/Code/gui/node_modules/style-loader/dist/cjs.js"
+              },
+              {
+                "loader": "/Users/anders/Code/gui/node_modules/css-loader/dist/cjs.js",
+                "options": {
+                  "modules": {
+                    "auto": true
+                  }
+                }
+              },
+              {
+                "loader": "/Users/anders/Code/gui/node_modules/postcss-loader/dist/cjs.js",
+                "options": {
+                  "postcssOptions": {
+                    "plugins": [
+                      {
+                        "postcssPlugin": "autoprefixer"
+                      }
+                    ],
+                    "hideNothingWarning": true
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "test": "/\\.scss$/",
+        "exclude": [],
+        "oneOf": [
+          {
+            "resourceQuery": "/module/",
+            "use": [
+              {
+                "loader": "/Users/anders/Code/gui/node_modules/style-loader/dist/cjs.js"
+              },
+              {
+                "loader": "/Users/anders/Code/gui/node_modules/css-loader/dist/cjs.js",
+                "options": {
+                  "modules": true
+                }
+              },
+              {
+                "loader": "/Users/anders/Code/gui/node_modules/postcss-loader/dist/cjs.js",
+                "options": {
+                  "postcssOptions": {
+                    "plugins": [
+                      {
+                        "postcssPlugin": "autoprefixer"
+                      }
+                    ],
+                    "hideNothingWarning": true
+                  }
+                }
+              },
+              {
+                "loader": "/Users/anders/Code/gui/node_modules/sass-loader/dist/cjs.js",
+                "options": {
+                  "sassOptions": {
+                    "precision": 8,
+                    "outputStyle": "expanded"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "use": [
+              {
+                "loader": "/Users/anders/Code/gui/node_modules/style-loader/dist/cjs.js"
+              },
+              {
+                "loader": "/Users/anders/Code/gui/node_modules/css-loader/dist/cjs.js",
+                "options": {
+                  "modules": {
+                    "auto": true
+                  }
+                }
+              },
+              {
+                "loader": "/Users/anders/Code/gui/node_modules/postcss-loader/dist/cjs.js",
+                "options": {
+                  "postcssOptions": {
+                    "plugins": [
+                      {
+                        "postcssPlugin": "autoprefixer"
+                      }
+                    ],
+                    "hideNothingWarning": true
+                  }
+                }
+              },
+              null
+            ]
+          }
+        ]
+      },
+      {
+        "test": "/\\.sass$/",
+        "exclude": [],
+        "oneOf": [
+          {
+            "resourceQuery": "/module/",
+            "use": [
+              {
+                "loader": "/Users/anders/Code/gui/node_modules/style-loader/dist/cjs.js"
+              },
+              {
+                "loader": "/Users/anders/Code/gui/node_modules/css-loader/dist/cjs.js",
+                "options": {
+                  "modules": true
+                }
+              },
+              {
+                "loader": "/Users/anders/Code/gui/node_modules/postcss-loader/dist/cjs.js",
+                "options": {
+                  "postcssOptions": {
+                    "plugins": [
+                      {
+                        "postcssPlugin": "autoprefixer"
+                      }
+                    ],
+                    "hideNothingWarning": true
+                  }
+                }
+              },
+              {
+                "loader": "/Users/anders/Code/gui/node_modules/sass-loader/dist/cjs.js",
+                "options": {
+                  "sassOptions": {
+                    "precision": 8,
+                    "outputStyle": "expanded",
+                    "indentedSyntax": true
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "use": [
+              {
+                "loader": "/Users/anders/Code/gui/node_modules/style-loader/dist/cjs.js"
+              },
+              {
+                "loader": "/Users/anders/Code/gui/node_modules/css-loader/dist/cjs.js",
+                "options": {
+                  "modules": {
+                    "auto": true
+                  }
+                }
+              },
+              {
+                "loader": "/Users/anders/Code/gui/node_modules/postcss-loader/dist/cjs.js",
+                "options": {
+                  "postcssOptions": {
+                    "plugins": [
+                      {
+                        "postcssPlugin": "autoprefixer"
+                      }
+                    ],
+                    "hideNothingWarning": true
+                  }
+                }
+              },
+              null
+            ]
+          }
+        ]
+      },
+      {
+        "test": "/\\.less$/",
+        "exclude": [],
+        "oneOf": [
+          {
+            "resourceQuery": "/module/",
+            "use": [
+              {
+                "loader": "/Users/anders/Code/gui/node_modules/style-loader/dist/cjs.js"
+              },
+              {
+                "loader": "/Users/anders/Code/gui/node_modules/css-loader/dist/cjs.js",
+                "options": {
+                  "modules": true
+                }
+              },
+              {
+                "loader": "/Users/anders/Code/gui/node_modules/postcss-loader/dist/cjs.js",
+                "options": {
+                  "postcssOptions": {
+                    "plugins": [
+                      {
+                        "postcssPlugin": "autoprefixer"
+                      }
+                    ],
+                    "hideNothingWarning": true
+                  }
+                }
+              },
+              {
+                "loader": "less-loader"
+              }
+            ]
+          },
+          {
+            "use": [
+              {
+                "loader": "/Users/anders/Code/gui/node_modules/style-loader/dist/cjs.js"
+              },
+              {
+                "loader": "/Users/anders/Code/gui/node_modules/css-loader/dist/cjs.js",
+                "options": {
+                  "modules": {
+                    "auto": true
+                  }
+                }
+              },
+              {
+                "loader": "/Users/anders/Code/gui/node_modules/postcss-loader/dist/cjs.js",
+                "options": {
+                  "postcssOptions": {
+                    "plugins": [
+                      {
+                        "postcssPlugin": "autoprefixer"
+                      }
+                    ],
+                    "hideNothingWarning": true
+                  }
+                }
+              },
+              null
+            ]
+          }
+        ]
+      },
+      {
+        "test": "/\\.styl(us)?$/",
+        "exclude": [],
+        "oneOf": [
+          {
+            "resourceQuery": "/module/",
+            "use": [
+              {
+                "loader": "/Users/anders/Code/gui/node_modules/style-loader/dist/cjs.js"
+              },
+              {
+                "loader": "/Users/anders/Code/gui/node_modules/css-loader/dist/cjs.js",
+                "options": {
+                  "modules": true
+                }
+              },
+              {
+                "loader": "/Users/anders/Code/gui/node_modules/postcss-loader/dist/cjs.js",
+                "options": {
+                  "postcssOptions": {
+                    "plugins": [
+                      {
+                        "postcssPlugin": "autoprefixer"
+                      }
+                    ],
+                    "hideNothingWarning": true
+                  }
+                }
+              },
+              {
+                "loader": "stylus-loader"
+              }
+            ]
+          },
+          {
+            "use": [
+              {
+                "loader": "/Users/anders/Code/gui/node_modules/style-loader/dist/cjs.js"
+              },
+              {
+                "loader": "/Users/anders/Code/gui/node_modules/css-loader/dist/cjs.js",
+                "options": {
+                  "modules": {
+                    "auto": true
+                  }
+                }
+              },
+              {
+                "loader": "/Users/anders/Code/gui/node_modules/postcss-loader/dist/cjs.js",
+                "options": {
+                  "postcssOptions": {
+                    "plugins": [
+                      {
+                        "postcssPlugin": "autoprefixer"
+                      }
+                    ],
+                    "hideNothingWarning": true
+                  }
+                }
+              },
+              null
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "plugins": [
+    {
+      "envPath": "/Users/anders/Code/gui/.env",
+      "additionalEnv": {
+        "NODE_ENV": "development"
+      }
+    },
+    {
+      "mix": {
+        "config": {
+          "production": false,
+          "hmr": false,
+          "hmrOptions": {
+            "https": false,
+            "host": "localhost",
+            "port": "8080"
+          },
+          "postCss": [],
+          "publicPath": "",
+          "runtimeChunkPath": null,
+          "notifications": {
+            "onSuccess": true,
+            "onFailure": true
+          },
+          "sourcemaps": false,
+          "resourceRoot": "../",
+          "fileLoaderDirs": {
+            "images": "images",
+            "fonts": "fonts"
+          },
+          "processCssUrls": true,
+          "terser": {
+            "parallel": true,
+            "terserOptions": {
+              "compress": {
+                "warnings": false
+              },
+              "output": {
+                "comments": false
+              }
+            }
+          },
+          "cssNano": {},
+          "cleanCss": {},
+          "webpackConfig": {},
+          "babelConfig": {
+            "presets": [
+              [
+                "@babel/preset-react",
+                null
+              ]
+            ],
+            "plugins": []
+          },
+          "clearConsole": true,
+          "legacyNodePolyfills": true,
+          "vue": {}
+        },
+        "chunks": {
+          "chunks": {},
+          "entry": null,
+          "runtime": true
+        },
+        "components": {
+          "components": []
+        },
+        "dispatcher": {
+          "events": {
+            "init": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            "internal:gather-dependencies": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            "configReadyForUser": [
+              null
+            ],
+            "loading-entry": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            "loading-rules": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            "loading-plugins": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            "configReady": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ]
+          }
+        },
+        "manifest": {
+          "manifest": {},
+          "name": "mix-manifest.json"
+        },
+        "paths": {
+          "rootPath": "/Users/anders/Code/gui"
+        },
+        "registrar": {
+          "components": {}
+        },
+        "webpackConfig": {},
+        "hot": {},
+        "resolver": {
+          "aliases": {}
+        },
+        "tasks": [
+          {
+            "data": {
+              "from": "dist",
+              "to": {
+                "absolutePath": "/Users/anders/Code/gui/public",
+                "filePath": "public",
+                "segments": {
+                  "path": "public",
+                  "absolutePath": "/Users/anders/Code/gui/public",
+                  "pathWithoutExt": "/Users/anders/Code/gui/public",
+                  "isDir": true,
+                  "isFile": false,
+                  "name": "public",
+                  "ext": "",
+                  "file": "public",
+                  "base": "/Users/anders/Code/gui"
+                }
+              }
+            },
+            "assets": [],
+            "isBeingWatched": false
+          }
+        ],
+        "booted": true,
+        "bundlingJavaScript": true,
+        "initialized": true,
+        "globalStyles": null,
+        "extractingStyles": false
+      }
+    },
+    {},
+    {},
+    {
+      "options": {
+        "clearConsole": true,
+        "showRelated": true
+      },
+      "patched": false
+    },
+    {
+      "profile": false,
+      "modulesCount": 5000,
+      "dependenciesCount": 10000,
+      "showEntries": true,
+      "showModules": true,
+      "showDependencies": true,
+      "showActiveModules": true,
+      "options": {
+        "name": "Mix",
+        "color": "green",
+        "reporters": [
+          "fancy"
+        ],
+        "reporter": null
+      },
+      "reporters": [
+        {}
+      ]
+    },
+    {
+      "_sortedModulesCache": {},
+      "options": {
+        "filename": "[name].css",
+        "ignoreOrder": false,
+        "experimentalUseImportModule": false,
+        "chunkFilename": "[name].css"
+      },
+      "runtimeOptions": {
+        "linkType": "text/css"
+      }
+    },
+    {
+      "options": {
+        "appID": "Laravel Mix",
+        "title": "Laravel Mix",
+        "alwaysNotify": true,
+        "timeout": false,
+        "contentImage": "/Users/anders/Code/gui/node_modules/laravel-mix/icons/laravel.png"
+      },
+      "lastBuildSucceeded": false,
+      "isFirstBuild": true
+    },
+    {
+      "definitions": {
+        "Buffer": [
+          "buffer",
+          "Buffer"
+        ],
+        "process": "process/browser"
+      }
+    }
+  ],
+  "resolve": {
+    "extensions": [
+      "*",
+      ".wasm",
+      ".mjs",
+      ".js",
+      ".jsx",
+      ".json",
+      ".ts",
+      ".tsx"
+    ],
+    "roots": [
+      "/Users/anders/Code/gui"
+    ]
+  },
+  "stats": {
+    "preset": "errors-warnings",
+    "performance": false
+  },
+  "performance": {
+    "hints": false
+  },
+  "optimization": {
+    "splitChunks": {
+      "cacheGroups": {
+        "default": false,
+        "defaultVendors": false
+      }
+    }
+  },
+  "devtool": false,
+  "devServer": {
+    "headers": {
+      "Access-Control-Allow-Origin": "*"
+    },
+    "static": "/Users/anders/Code/gui",
+    "historyApiFallback": true,
+    "compress": true,
+    "firewall": false
+  },
+  "watchOptions": {
+    "ignored": "/node_modules/"
+  }
+}
