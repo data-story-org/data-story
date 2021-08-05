@@ -107,7 +107,7 @@
     "jest-cli": "^27.0.6",
     "jest-puppeteer": "^5.0.4",
     "prettier": "^2.3.2",
-    "puppeteer": "^10.1.0",
+    "puppeteer": "^10.2.0",
     "ts-jest": "^27.0.4"
   }
 }
