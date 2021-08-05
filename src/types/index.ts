@@ -1,2 +1,2 @@
 export { Page } from './Page';
-export { Inspector, InspectorMode } from './Inspector';
+export { Inspector, InspectorMode, INSPECTOR_MODES } from './Inspector';
