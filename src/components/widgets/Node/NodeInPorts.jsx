@@ -1,6 +1,6 @@
 import React from 'react';
 import { observer } from 'mobx-react-lite';
-import NodeInspectorLink from '../../NodeInspectorLink';
+import NodeWidgetInspectIcon from './NodeWidgetInspectIcon';
 import { PortWidget } from '@projectstorm/react-diagrams';
 
 const NodeWidgetInPorts = ({ node, engine, store }) => {
@@ -26,9 +26,9 @@ const NodeWidgetInPorts = ({ node, engine, store }) => {
             <span className="flex px-4 flex-1 font-medium subpixel-antialiased">
               {port.options.label}
             </span>
-            <NodeInspectorLink
+            <NodeWidgetInspectIcon
               store={store}
-              nodeId={node.options.id}
+              node={node}
             />
           </div>
         </div>

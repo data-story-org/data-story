@@ -1,37 +1,35 @@
 import React, { FC } from 'react';
-
 import { observer } from 'mobx-react-lite';
-import { Store } from '../store';
+
+import { Store } from '../../../store';
+import NodeModel from '../../../diagram/models/NodeModel';
 
 interface Props {
   store: Store;
-  nodeId: number;
+  node: NodeModel;
 }
 
-const NodeInspectorLink: FC<Props> = ({
+const NodeWidgetInspectIcon: FC<Props> = ({
   store,
-  nodeId,
+  node,
 }) => {
   // Listen to a property to force refresh
   store.diagram.refresh;
 
-  // @ts-ignore
-  const node = store.diagram.engine.model.getNode(nodeId);
-
   return (
     <>
-      {node.isInspectable() ? (
+      {node.isInspectable() && (
         <div
           id="inspector-icon"
-          onClick={(_) => {
-            store.goToInspector(nodeId);
+          onClick={(e) => {
+            store.goToInspector(node.options.id);
           }}
         >
           <i className="mr-2 text-malibu-600 fas fa-search hover:cursor"></i>
         </div>
-      ) : null}
+      )}
     </>
   );
 };
 
-export default observer(NodeInspectorLink);
+export default observer(NodeWidgetInspectIcon);

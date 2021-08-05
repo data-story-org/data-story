@@ -185,7 +185,7 @@ const NodeWidgetModal = ({ node, closeModal }) => {
   };
 
   return (
-    <div>
+    <div id="node-modal">
       <NodeWidgetModalHeader
         node={node}
         handleCancel={handleCancel}

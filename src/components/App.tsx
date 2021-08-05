@@ -1,4 +1,9 @@
-import React, { FC, useState, useEffect } from 'react';
+import React, {
+  FC,
+  useState,
+  useEffect,
+  useCallback,
+} from 'react';
 import Header from './Header';
 import Toolbar from './Toolbar';
 import pages from './pages/factory';
@@ -54,11 +59,6 @@ const App: FC = () => {
     },
   );
 
-  const renderActivePage = () => {
-    let Page = pages(store.metadata.page);
-    return <Page store={store} />;
-  };
-
   useEffect(() => {
     boot();
     registerExitConfirmation();
@@ -97,11 +97,15 @@ const App: FC = () => {
       });
   };
 
+  const Page = useCallback(pages(store.metadata.page), [
+    store.metadata.page,
+  ]);
+
   return (
     <div>
       <Header />
       <Toolbar store={store} />
-      {booted && renderActivePage()}
+      {booted && <Page store={store} />}
       <ToastContainer style={{ paddingTop: '0px' }} />
     </div>
   );
