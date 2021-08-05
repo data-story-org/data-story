@@ -1,7 +1,12 @@
 import puppeteer from 'puppeteer';
 import 'expect-puppeteer';
 import { setDefaultOptions } from 'expect-puppeteer';
-import { puppeteerConfig, sleep, addNode } from './helpers';
+import {
+  puppeteerConfig,
+  pageSetup,
+  sleep,
+  addNode,
+} from './helpers';
 
 setDefaultOptions({ timeout: 0 });
 
@@ -12,13 +17,7 @@ describe('App', () => {
   beforeAll(async () => {
     browser = await puppeteer.launch(puppeteerConfig);
     page = await browser.newPage();
-
-    await page.setViewport({ width: 1366, height: 768 });
-    await page.setUserAgent('UA-TEST');
-    await page.goto(
-      `file://${process.cwd()}/public/index.html`,
-      { waitUntil: 'networkidle2' },
-    );
+    await pageSetup(page);
 
     await sleep(5000);
   }, 200000);
