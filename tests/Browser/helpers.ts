@@ -9,9 +9,23 @@ export const puppeteerConfig = {
     '--no-sandbox',
     '--disable-setuid-sandbox',
     '--disable-gpu',
+    '--disable-software-rasterizer',
     '--disable-dev-shm-usage',
+    '--allow-running-insecure-content',
     '--disable-web-security',
+    '--no-first-run',
+    '--no-zygote',
+    '--single-process',
   ],
+};
+
+export const pageSetup = async (page) => {
+  await page.setViewport({ width: 1366, height: 768 });
+  await page.setUserAgent('UA-TEST');
+  await page.goto(
+    `file://${process.cwd()}/public/index.html`,
+    { waitUntil: 'networkidle2' },
+  );
 };
 
 export const sleep = (ms: number) => {
@@ -29,4 +43,8 @@ export const addNode = async (nodeName: string, page) => {
   await page.waitForSelector('div.node', {
     visible: true,
   });
+};
+
+export const generateRandomString = () => {
+  return Math.random().toString(36).substring(7);
 };
