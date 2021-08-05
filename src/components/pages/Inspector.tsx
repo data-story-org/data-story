@@ -8,7 +8,7 @@ interface Props {
 }
 
 const Inspector: FC<Props> = ({ store }) => {
-  const id = store.metadata.activeInspector;
+  const id = store.metadata.activeInspector.nodeId;
   const features = id
     ? store.diagram.engine.model.getNode(id).features
     : [];

@@ -1,7 +1,20 @@
 import { action, observable, makeObservable } from 'mobx';
 import NodeModel from '../diagram/models/NodeModel';
-import clientFactory from '../clients/ClientFactory';
+import clientFactory, {
+  Client,
+} from '../clients/ClientFactory';
 import { showNotification } from '../utils/Notifications';
+import { Page, Inspector, InspectorMode } from '../types';
+
+interface Metadata {
+  running: boolean;
+  page: Page;
+  activeInspector: Inspector;
+  requestOpenNodeModal: string;
+  stories: any[];
+  activeStory: string;
+  client: Client;
+}
 
 export class Store {
   results;
@@ -13,7 +26,7 @@ export class Store {
     nodeSerial: 1,
   };
 
-  metadata = {
+  metadata: Metadata = {
     running: false,
     page: 'Workbench',
     activeInspector: null,
@@ -37,6 +50,7 @@ export class Store {
       refreshDiagram: action.bound,
       resetOpenNodeModalRequest: action.bound,
       setActiveInspector: action.bound,
+      setActiveInspectorMode: action.bound,
       setActiveStory: action.bound,
       setAvailableNodes: action.bound,
       setEngine: action.bound,
@@ -66,7 +80,7 @@ export class Store {
   }
 
   goToInspector(id) {
-    this.metadata.activeInspector = id;
+    this.metadata.activeInspector.nodeId = id;
     this.metadata.page = 'Inspector';
   }
 
@@ -103,7 +117,11 @@ export class Store {
   }
 
   setActiveInspector(nodeId) {
-    this.metadata.activeInspector = nodeId;
+    this.metadata.activeInspector.nodeId = nodeId;
+  }
+
+  setActiveInspectorMode(mode: InspectorMode) {
+    this.metadata.activeInspector.mode = mode;
   }
 
   setAvailableNodes(nodes) {

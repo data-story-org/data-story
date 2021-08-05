@@ -1,6 +1,8 @@
 import APIClient from './APIClient';
 import LocalClient from './local/LocalClient';
 
+export type Client = APIClient | LocalClient;
+
 export default (config: {
   client: string;
   server: string;
