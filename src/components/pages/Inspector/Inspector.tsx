@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import { observer } from 'mobx-react-lite';
 import InspectorTable from './InspectorTable';
+import InspectorJSON from './InspectorJSON';
 import { Store } from '../../../store';
 import {
   InspectorMode,
@@ -11,12 +12,16 @@ interface Props {
   store: Store;
 }
 
+type InspectorModeComponents =
+  | typeof InspectorTable
+  | typeof InspectorJSON;
+
 const inspectorComponentsMap = new Map<
   InspectorMode,
-  typeof InspectorTable
+  InspectorModeComponents
 >([
   ['Table', InspectorTable],
-  ['JSON', InspectorTable],
+  ['JSON', InspectorJSON],
 ]);
 
 const Inspector: FC<Props> = ({ store }) => {
@@ -34,24 +39,26 @@ const Inspector: FC<Props> = ({ store }) => {
       store.setActiveInspectorMode(mode);
     };
 
-  const selectedModeStyle = (currMode: InspectorMode) => {
+  const modeStyle = (mode: InspectorMode) => {
     const style =
-      'mr-8 text-gray-200 hover:text-malibu-500 text-sm cursor-pointer font-semibold';
+      'mr-8 text-gray-200 hover:text-malibu-500 text-sm cursor-pointer';
 
-    return currMode &&
-      store.metadata.activeInspector.mode === currMode
-      ? style + 'text-malibu-500'
-      : style;
+    const activeMode = store.metadata.activeInspector.mode;
+
+    return activeMode && activeMode == mode
+      ? style + ' text-malibu-500'
+      : style + ' font-semibold';
   };
 
   return (
     <>
-      <div className="flex w-full bg-gray-600 border-t-2 border-b-2 border-gray-500 shadow shadow-xl">
+      <div className="flex justify-center w-full bg-gray-600 border-t-2 border-b-2 border-gray-500 shadow shadow-xl p-2">
         {INSPECTOR_MODES.map((mode) => {
           return (
             <span
+              key={mode}
               onClick={handleModeSelect(mode)}
-              className={selectedModeStyle(mode)}
+              className={modeStyle(mode)}
             >
               {mode}
             </span>

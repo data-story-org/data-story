@@ -29,7 +29,10 @@ export class Store {
   metadata: Metadata = {
     running: false,
     page: 'Workbench',
-    activeInspector: null,
+    activeInspector: {
+      nodeId: null,
+      mode: 'Table',
+    },
     requestOpenNodeModal: null,
     stories: [],
     activeStory: '',

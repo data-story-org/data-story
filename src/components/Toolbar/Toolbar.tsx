@@ -45,8 +45,8 @@ const Toolbar: FC<Props> = ({ store }) => {
     return node &&
       store.metadata.page == 'Inspector' &&
       store.metadata.activeInspector == node.options.id
-      ? style + 'text-malibu-500'
-      : style;
+      ? style + ' text-malibu-500'
+      : style + ' font-semibold';
   };
 
   return (
