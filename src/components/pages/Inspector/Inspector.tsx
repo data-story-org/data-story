@@ -41,7 +41,7 @@ const Inspector: FC<Props> = ({ store }) => {
 
   const modeStyle = (mode: InspectorMode) => {
     const style =
-      'mr-8 text-gray-200 hover:text-malibu-500 text-sm cursor-pointer';
+      'mr-8 text-gray-200 hover:text-malibu-500 text-lg cursor-pointer';
 
     const activeMode = store.metadata.activeInspector.mode;
 
@@ -52,7 +52,7 @@ const Inspector: FC<Props> = ({ store }) => {
 
   return (
     <>
-      <div className="flex justify-center w-full bg-gray-600 border-t-2 border-b-2 border-gray-500 shadow shadow-xl p-2">
+      <div className="flex justify-center ml-auto shadow shadow-xl p-4">
         {INSPECTOR_MODES.map((mode) => {
           return (
             <span
