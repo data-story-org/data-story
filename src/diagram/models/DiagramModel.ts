@@ -253,11 +253,17 @@ export default class DiagramModel extends DefaultDiagramModel {
       });
   }
 
-  clearLinkLabels() {
+  clearLinkLabels(): void {
     Object.values((this.layers[0] as any).models).forEach(
       (link: any) => {
         link.labels = [];
       },
     );
   }
+
+	clearNodeFeatures(): void {
+		this.getNodes().forEach((node: NodeModel) => {
+			node.features = []
+		})
+	}
 }

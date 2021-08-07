@@ -18,7 +18,7 @@ const NodeWidgetInspectIcon: FC<Props> = ({
 
   return (
     <>
-      {node.isInspectable() && (
+      {node.isInspectable() ? (
         <div
           id="inspector-icon"
           onClick={(e) => {
@@ -27,7 +27,7 @@ const NodeWidgetInspectIcon: FC<Props> = ({
         >
           <i className="mr-2 text-malibu-600 fas fa-search hover:cursor"></i>
         </div>
-      )}
+      ): null}
     </>
   );
 };

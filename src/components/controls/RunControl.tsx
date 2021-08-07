@@ -15,7 +15,8 @@ const RunControl = ({ store }) => {
   ];
 
   const onClick = () => {
-    store.setRunning();
+    store.clearResults();
+		store.setRunning();
 
     store.metadata.client
       .run(store.diagram.engine.model)

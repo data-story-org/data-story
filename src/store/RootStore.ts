@@ -47,6 +47,7 @@ export class Store {
 
       // Setters
       addNode: action.bound,
+			clearResults: action.bound,
       increaseNodeSerial: action.bound,
       goToInspector: action.bound,
       openNodeModal: action.bound,
@@ -150,6 +151,12 @@ export class Store {
       this.metadata.running = false;
     }, 500);
   }
+
+	clearResults() {
+		this.diagram.engine.model.clearNodeFeatures()
+		this.diagram.engine.model.clearLinkLabels()
+		this.refreshDiagram()
+	}
 
   setRunning() {
     this.metadata.running = true;
