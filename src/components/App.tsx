@@ -17,8 +17,12 @@ import { Store } from '../store';
 import { showNotification } from '../utils/Notifications';
 import { useHotkeys } from 'react-hotkeys-hook';
 import NodeModel from '../diagram/models/NodeModel';
+import {
+  withLoading,
+  withLoadingProps,
+} from '../utils/isLoadingHOC';
 
-const App: FC = () => {
+const App: FC<withLoadingProps> = ({ setLoading }) => {
   const store = useStore();
   const [booted, setBooted] = useState(false);
 
@@ -87,6 +91,9 @@ const App: FC = () => {
         store.setStories(Cookie.keys());
 
         setBooted(true);
+        setTimeout(() => {
+          setLoading(false);
+        }, 3500);
       })
       .catch((error) => {
         console.error('Boot error', error);
@@ -127,4 +134,4 @@ const registerExitConfirmation = () => {
   };
 };
 
-export default observer(App);
+export default withLoading(observer(App));
