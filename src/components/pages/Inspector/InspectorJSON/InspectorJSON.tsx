@@ -1,10 +1,13 @@
-import React, { FC } from 'react';
+import React, { FC, useCallback } from 'react';
 import { CodeHighlighter } from '../../../../utils/CodeHighlighter';
 
 export const InspectorJSON = ({ features }) => {
-  const spreadOriginals = features.map((feature) => {
-    return feature.original;
-  });
+  const spreadOriginals = useCallback(
+    features.map((feature) => {
+      return feature.original;
+    }),
+    [features],
+  );
   const prettyJSON = JSON.stringify(
     spreadOriginals,
     null,
