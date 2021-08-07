@@ -1,12 +1,12 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 import { observer } from 'mobx-react-lite';
 import NodeModel from '../../../diagram/models/NodeModel';
-import { Store } from '../../../store';
+import { Store, withStore } from '../../../store';
 
 interface Props {
   store: Store;
   node: NodeModel;
-  handleOpenModalRequest: () => void;
+  handleOpenModalRequest: (store: Store) => void;
 }
 
 const NodeOpenModalRequest: FC<Props> = ({
@@ -14,15 +14,13 @@ const NodeOpenModalRequest: FC<Props> = ({
   node,
   handleOpenModalRequest,
 }) => {
-  // Hotkeys can trigger a selected nodeWidget to open its modal
-  const hasOpenModalRequest =
-    node.id == store.metadata.requestOpenNodeModal;
-
-  if (hasOpenModalRequest) {
-    handleOpenModalRequest();
-  }
+  useEffect(() => {
+    if (node.id === store.metadata.requestOpenNodeModal) {
+      handleOpenModalRequest(store);
+    }
+  }, [node.id, store.metadata.requestOpenNodeModal]);
 
   return null;
 };
 
-export default observer(NodeOpenModalRequest);
+export default withStore(observer(NodeOpenModalRequest));

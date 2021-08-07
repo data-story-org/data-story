@@ -33,9 +33,9 @@ const NodeWidget = ({ engine, node, store }) => {
     setIsOpen(false);
   };
 
-  const handleOpenModalRequest = () => {
-    store.resetOpenNodeModalRequest();
+  const handleOpenModalRequest = (store) => {
     setIsOpen(true);
+    store.resetOpenNodeModalRequest();
   };
 
   return (
@@ -57,7 +57,6 @@ const NodeWidget = ({ engine, node, store }) => {
       </div>
 
       <NodeOpenModalRequest
-        store={store}
         node={node}
         handleOpenModalRequest={handleOpenModalRequest}
       />
