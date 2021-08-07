@@ -1,3 +1,5 @@
+import NodeModel from '../../../../src/diagram/models/NodeModel';
+import EngineFactory from '../../../../src/diagram/factories/EngineFactory';
 import { Store } from '../../../../src/store';
 
 describe('RootStore', () => {
@@ -82,4 +84,15 @@ describe('RootStore', () => {
 
     expect(store.metadata.stories).toEqual(stories);
   });
+
+	it.skip('Can clear results', () => {
+		// const engine = EngineFactory.default()
+		// const node = new NodeModel({id: 'find-me', features: [1,2,3]});
+    // engine.getModel().addNode(node)
+
+		// store.clearResults()
+		
+		// Expect to see that node with zero features
+		// console.log(engine.getModel().getNodes() ...)
+	})
 });
