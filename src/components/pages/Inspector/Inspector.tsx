@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useCallback } from 'react';
 import { observer } from 'mobx-react-lite';
 import InspectorTable from './InspectorTable';
 import InspectorJSON from './InspectorJSON';
@@ -12,13 +12,13 @@ interface Props {
   store: Store;
 }
 
-type InspectorModeComponents =
+type InspectorModeComponent =
   | typeof InspectorTable
   | typeof InspectorJSON;
 
 const inspectorComponentsMap = new Map<
   InspectorMode,
-  InspectorModeComponents
+  InspectorModeComponent
 >([
   ['Table', InspectorTable],
   ['JSON', InspectorJSON],
@@ -31,8 +31,10 @@ const Inspector: FC<Props> = ({ store }) => {
     ? store.diagram.engine.model.getNode(id).features
     : [];
 
-  const InspectorComponent =
-    inspectorComponentsMap.get(mode);
+  const InspectorComponent = useCallback(
+    inspectorComponentsMap.get(mode),
+    [mode],
+  );
 
   const handleModeSelect =
     (mode: InspectorMode) => (_e) => {
