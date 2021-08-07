@@ -152,7 +152,12 @@ export class Store {
   }
 
   setRunning() {
+		this.diagram.engine.model.clearNodeFeatures()
+		this.diagram.engine.model.clearLinkLabels()
+
     this.metadata.running = true;
+
+		this.refreshDiagram()
   }
 
   setStories(stories) {
