@@ -1,4 +1,4 @@
-import Inspector from './Inspector';
+import Inspector from './Inspector'
 import DiagramJson from './DiagramJson';
 import Log from './Log';
 import Tokens from './Tokens';

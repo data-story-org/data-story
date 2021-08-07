@@ -1,22 +1,74 @@
 import React, { FC } from 'react';
 import { observer } from 'mobx-react-lite';
-import InspectorTable from '../InspectorTable';
-import { Store } from '../../store';
+import InspectorTable from './InspectorTable';
+import InspectorJSON from './InspectorJSON';
+import { Store } from '../../../store';
+import {
+  InspectorMode,
+  INSPECTOR_MODES,
+} from '../../../types';
 
 interface Props {
   store: Store;
 }
 
+type InspectorModeComponents =
+  | typeof InspectorTable
+  | typeof InspectorJSON;
+
+const inspectorComponentsMap = new Map<
+  InspectorMode,
+  InspectorModeComponents
+>([
+  ['Table', InspectorTable],
+  ['JSON', InspectorJSON],
+]);
+
 const Inspector: FC<Props> = ({ store }) => {
-  const id = store.metadata.activeInspector;
+  const id = store.metadata.activeInspector.nodeId;
+  const mode = store.metadata.activeInspector.mode;
   const features = id
     ? store.diagram.engine.model.getNode(id).features
     : [];
 
+  const InspectorComponent =
+    inspectorComponentsMap.get(mode);
+
+  const handleModeSelect =
+    (mode: InspectorMode) => (_e) => {
+      store.setActiveInspectorMode(mode);
+    };
+
+  const modeStyle = (mode: InspectorMode) => {
+    const style =
+      'mr-8 text-gray-200 hover:text-malibu-500 text-lg cursor-pointer';
+
+    const activeMode = store.metadata.activeInspector.mode;
+
+    return activeMode && activeMode == mode
+      ? style + ' text-malibu-500'
+      : style + ' font-semibold';
+  };
+
   return (
-    <div className="p-4">
-      <InspectorTable features={features} />
-    </div>
+    <>
+      <div className="flex justify-center ml-auto shadow shadow-xl p-4">
+        {INSPECTOR_MODES.map((mode) => {
+          return (
+            <span
+              key={mode}
+              onClick={handleModeSelect(mode)}
+              className={modeStyle(mode)}
+            >
+              {mode}
+            </span>
+          );
+        })}
+      </div>
+      <div className="p-4">
+        <InspectorComponent features={features} />
+      </div>
+    </>
   );
 };
 

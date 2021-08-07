@@ -16,7 +16,9 @@ describe('RootStore', () => {
     const id = random();
     store.goToInspector(id);
 
-    expect(store.metadata.activeInspector).toEqual(id);
+    expect(store.metadata.activeInspector.nodeId).toEqual(
+      id,
+    );
     expect(store.metadata.page).toEqual('Inspector');
   });
 
@@ -28,11 +30,11 @@ describe('RootStore', () => {
   });
 
   it('Sets the active inspector', () => {
-    const inspector = random();
-    store.setActiveInspector(inspector);
+    const nodeId = random();
+    store.setActiveInspector(nodeId);
 
-    expect(store.metadata.activeInspector).toEqual(
-      inspector,
+    expect(store.metadata.activeInspector.nodeId).toEqual(
+      nodeId,
     );
   });
 

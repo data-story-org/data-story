@@ -9,12 +9,10 @@ interface Props {
 
 const DiagramJson: FC<Props> = ({ store }) => {
   return (
-    <div className="h-85vh">
-      <div className="p-4 w-full h-full ">
-        <CodeHighlighter
-          code={store.diagram.engine.model.toPrettyJson()}
-        />
-      </div>
+    <div className="p-4 w-full h-full ">
+      <CodeHighlighter
+        code={store.diagram.engine.model.toPrettyJson()}
+      />
     </div>
   );
 };
