@@ -38,6 +38,7 @@ export default class EngineFactory {
       .getStateMachine()
       .getCurrentState();
     state.dragNewLink.config.allowLooseLinks = false;
+    state.dragCanvas.config.allowDrag = true;
 
     engine
       .getNodeFactories()

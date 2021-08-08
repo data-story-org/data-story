@@ -63,6 +63,7 @@ export class Store {
       setNotRunning: action.bound,
       setRunning: action.bound,
       setStories: action.bound,
+      setDiagramLocked: action.bound,
 
       // Notifications
       showRunFail: action.bound,
@@ -178,6 +179,14 @@ export class Store {
       message: 'Successfully ran story!',
       type: 'success',
     });
+  }
+
+  setDiagramLocked(locked: boolean) {
+    this.diagram.engine.model.setLocked(locked);
+    let state = this.diagram.engine
+      .getStateMachine()
+      .getCurrentState();
+    state.dragCanvas.config.allowDrag = !locked;
   }
 }
 
