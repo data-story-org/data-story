@@ -261,9 +261,9 @@ export default class DiagramModel extends DefaultDiagramModel {
     );
   }
 
-	clearNodeFeatures(): void {
-		this.getNodes().forEach((node: NodeModel) => {
-			node.features = []
-		})
-	}
+  clearNodeFeatures(): void {
+    this.getNodes().forEach((node: NodeModel) => {
+      node.features = [];
+    });
+  }
 }
