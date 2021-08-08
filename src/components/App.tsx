@@ -93,7 +93,7 @@ const App: FC<withLoadingProps> = ({ setLoading }) => {
         setBooted(true);
         setTimeout(() => {
           setLoading(false);
-        }, 3500);
+        }, 1500);
       })
       .catch((error) => {
         console.error('Boot error', error);
