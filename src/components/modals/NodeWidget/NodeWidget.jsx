@@ -1,6 +1,5 @@
 import React, {
   useState,
-  useReducer,
   useEffect,
 } from 'react';
 import { cloneDeep } from 'lodash';
@@ -24,7 +23,11 @@ import PortModel from '../../../diagram/models/PortModel';
  *   closeModal: () => void;
  * } */
 
-const NodeWidgetModal = ({ node, closeModal }) => {
+const NodeWidgetModal = ({
+  node,
+  closeModal,
+  forceUpdate,
+}) => {
   const [parameters, setParameters] = useState(
     cloneDeep(node.parameters),
   );

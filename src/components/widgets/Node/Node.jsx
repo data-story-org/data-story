@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useReducer } from 'react';
 import Modal from 'react-modal';
 import { modalStyle } from '@data-story-org/core';
 import { withStore } from '../../../store';
@@ -22,6 +22,10 @@ import NodeWidgetModal from '../../modals/NodeWidget';
 
 const NodeWidget = ({ engine, node, store }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [_ignored, forceUpdate] = useReducer(
+    (x) => x + 1,
+    0,
+  );
 
   const open = () => {
     store.diagram.engine.model.setLocked(true);
@@ -72,6 +76,7 @@ const NodeWidget = ({ engine, node, store }) => {
         <NodeWidgetModal
           node={node}
           closeModal={closeModal}
+          forceUpdate={forceUpdate}
         />
       </Modal>
     </div>
