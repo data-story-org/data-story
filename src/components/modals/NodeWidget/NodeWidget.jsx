@@ -1,7 +1,4 @@
-import React, {
-  useState,
-  useEffect,
-} from 'react';
+import React, { useState, useEffect } from 'react';
 import { cloneDeep } from 'lodash';
 import {
   DefaultPortModel,
@@ -16,6 +13,7 @@ import NodeWidgetModalActions from './NodeWidgetActions';
 import NodeWidgetModalEditableInPorts from './NodeWidgetEditableInPorts';
 import NodeWidgetModalEditableOutPorts from './NodeWidgetEditableOutPorts';
 import PortModel from '../../../diagram/models/PortModel';
+import { renameKey } from '../../../utils';
 
 // TODO make NodeWidgetModal definitely-typed
 /* interface Props {
@@ -30,10 +28,6 @@ const NodeWidgetModal = ({
 }) => {
   const [parameters, setParameters] = useState(
     cloneDeep(node.parameters),
-  );
-  const [_ignored, forceUpdate] = useReducer(
-    (x) => x + 1,
-    0,
   );
 
   useHotkeys(
@@ -136,17 +130,13 @@ const NodeWidgetModal = ({
 
     parameter['value'] = withoutKey;
 
+    if (param.isPort) {
+      handleRemovePort(omit);
+    }
     setParameters([...parameters]);
   };
 
   const addPort = (name) => {
-    //   // update options
-    node.options.ports[name] = {
-      in: false,
-      name: name,
-    };
-
-    //   // update actual react-diagrams nodes?
     node.addPort(
       new PortModel({
         in: false,
@@ -154,8 +144,6 @@ const NodeWidgetModal = ({
         parent: node,
       }),
     );
-
-    console.log(node.getOutPorts());
   };
 
   const handlePortsUpdate = (param) => {
@@ -172,6 +160,11 @@ const NodeWidgetModal = ({
     }
   };
 
+  const handleRemovePort = (portName) => {
+    let port = node.getPort(portName);
+    node.removePort(port);
+  };
+
   const handleSave = (semi) => (_e) => {
     const updatedParameters = parameters.map(
       (parameter) => {
@@ -186,8 +179,8 @@ const NodeWidgetModal = ({
     node.parameters = updatedParameters;
     if (!semi) {
       closeModal();
-      updatedParameters.forEach((p) => {
-        handlePortsUpdate(p);
+      updatedParameters.forEach((param) => {
+        handlePortsUpdate(param);
       });
     }
   };
@@ -217,7 +210,6 @@ const NodeWidgetModal = ({
 
     e.target.value = '';
 
-    // Why is this needed?
     forceUpdate();
   };
 
