@@ -85,14 +85,12 @@ describe('RootStore', () => {
     expect(store.metadata.stories).toEqual(stories);
   });
 
-	it.skip('Can clear results', () => {
-		// const engine = EngineFactory.default()
-		// const node = new NodeModel({id: 'find-me', features: [1,2,3]});
+  it.skip('Can clear results', () => {
+    // const engine = EngineFactory.default()
+    // const node = new NodeModel({id: 'find-me', features: [1,2,3]});
     // engine.getModel().addNode(node)
-
-		// store.clearResults()
-		
-		// Expect to see that node with zero features
-		// console.log(engine.getModel().getNodes() ...)
-	})
+    // store.clearResults()
+    // Expect to see that node with zero features
+    // console.log(engine.getModel().getNodes() ...)
+  });
 });
