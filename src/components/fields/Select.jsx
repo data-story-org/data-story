@@ -1,12 +1,16 @@
 import React from 'react';
 
-const Select = ({ options, handleChange }) => {
+const Select = ({
+  options,
+  handleChange,
+  repeatableValue,
+}) => {
   return (
     <select
       key={`${options.name}`}
       onChange={handleChange}
       className="px-2 py-1 rounded"
-      value={options.value}
+      value={repeatableValue ?? options.value}
     >
       {options.options.map((o) => {
         return (
