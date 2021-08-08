@@ -47,7 +47,7 @@ export class Store {
 
       // Setters
       addNode: action.bound,
-			clearResults: action.bound,
+      clearResults: action.bound,
       increaseNodeSerial: action.bound,
       goToInspector: action.bound,
       openNodeModal: action.bound,
@@ -63,6 +63,7 @@ export class Store {
       setNotRunning: action.bound,
       setRunning: action.bound,
       setStories: action.bound,
+      setDiagramLocked: action.bound,
 
       // Notifications
       showRunFail: action.bound,
@@ -152,11 +153,11 @@ export class Store {
     }, 500);
   }
 
-	clearResults() {
-		this.diagram.engine.model.clearNodeFeatures()
-		this.diagram.engine.model.clearLinkLabels()
-		this.refreshDiagram()
-	}
+  clearResults() {
+    this.diagram.engine.model.clearNodeFeatures();
+    this.diagram.engine.model.clearLinkLabels();
+    this.refreshDiagram();
+  }
 
   setRunning() {
     this.metadata.running = true;
@@ -178,6 +179,14 @@ export class Store {
       message: 'Successfully ran story!',
       type: 'success',
     });
+  }
+
+  setDiagramLocked(locked: boolean) {
+    this.diagram.engine.model.setLocked(locked);
+    let state = this.diagram.engine
+      .getStateMachine()
+      .getCurrentState();
+    state.dragCanvas.config.allowDrag = !locked;
   }
 }
 
