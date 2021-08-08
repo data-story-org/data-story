@@ -8,12 +8,6 @@ import {
   DefaultPortModel,
   NodeModel as DefaultNodeModel,
 } from '@projectstorm/react-diagrams';
-import PortModel from '../../../diagram/models/PortModel';
-
-// import AceEditor from "react-ace";
-// import "ace-builds/src-noconflict/mode-json";
-// import "ace-builds/src-noconflict/mode-java";
-// import "ace-builds/src-noconflict/theme-github";
 
 import { observer } from 'mobx-react-lite';
 import { useHotkeys } from 'react-hotkeys-hook';
@@ -233,12 +227,6 @@ const NodeWidgetModal = ({ node, closeModal }) => {
         handleCancel={handleCancel}
         handleSave={handleSave(false)}
       />
-      {/* <AceEditor
-                mode="json"
-                theme="github"
-                name="UNIQUE_ID_OF_DIV"
-                editorProps={{ $blockScrolling: true }}
-                />                                 */}
     </div>
   );
 };
