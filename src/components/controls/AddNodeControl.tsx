@@ -4,10 +4,7 @@ import BaseControl from './BaseControl';
 import ReactModal from 'react-modal';
 import NodeSearch from './NodeSearch';
 import { Store } from '../../store/';
-import {
-  useHotkeys,
-  useIsHotkeyPressed,
-} from 'react-hotkeys-hook';
+import { useHotkeys } from 'react-hotkeys-hook';
 
 const customStyles = {
   content: {
@@ -47,12 +44,11 @@ const AddNodeControl: FC<Props> = ({ store }) => {
   ];
 
   const [isOpen, setIsOpen] = useState(false);
-  const isPressed = useIsHotkeyPressed();
 
   // shift+plus
   useHotkeys('*', (e) => {
     if (e.key === '+') {
-      e.preventDefault()
+      e.preventDefault();
       onClick();
     }
   });
@@ -60,7 +56,7 @@ const AddNodeControl: FC<Props> = ({ store }) => {
   // shift+plus on swedish keyboard layout
   useHotkeys('*', (e) => {
     if (e.key === '?') {
-      e.preventDefault()
+      e.preventDefault();
       onClick();
     }
   });
