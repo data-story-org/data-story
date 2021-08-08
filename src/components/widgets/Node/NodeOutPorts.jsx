@@ -1,10 +1,13 @@
-import React from 'react';
+import React, {
+  useState,
+  useEffect,
+} from 'react';
 import { observer } from 'mobx-react-lite';
 import { PortWidget } from '@projectstorm/react-diagrams';
 
 const NodeWidgetOutPorts = ({ node, engine, store }) => {
-
-	console.log("RENDERING OUT ports", node.getPorts(), node.options.ports)
+	// This component does not react to store or node change?
+	console.log("Rerender NodeWidgetOutPorts", store)
 
   return Object.values(node.getOutPorts()).map((port) => {
     return (
