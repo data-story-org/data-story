@@ -108,3 +108,12 @@ foreignObject > div > div {
 *[tabindex]:focus {
   outline: none;
 }
+
+/* loading styles  */
+.loading-wrapper {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -20px;
+  margin-right: -20px;
+}
