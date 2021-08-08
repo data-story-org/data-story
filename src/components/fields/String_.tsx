@@ -11,6 +11,7 @@ const String_ = ({
       onChange={handleChange}
       className="p-2 rounded"
       value={repeatableValue ?? options.value}
+			placeholder={options.placeholder ?? 'hehehehe'}
     />
   );
 };

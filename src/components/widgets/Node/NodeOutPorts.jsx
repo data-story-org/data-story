@@ -2,7 +2,10 @@ import React from 'react';
 import { observer } from 'mobx-react-lite';
 import { PortWidget } from '@projectstorm/react-diagrams';
 
-const NodeWidgetOutPorts = ({ node, engine }) => {
+const NodeWidgetOutPorts = ({ node, engine, store }) => {
+
+	console.log("RENDERING OUT ports", node.getPorts(), node.options.ports)
+
   return Object.values(node.getOutPorts()).map((port) => {
     return (
       <div className="flex w-full" key={port.options.name}>
