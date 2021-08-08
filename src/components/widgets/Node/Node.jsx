@@ -23,8 +23,6 @@ import NodeWidgetModal from '../../modals/NodeWidget';
 const NodeWidget = ({ engine, node, store }) => {
   const [isOpen, setIsOpen] = useState(false);
 
-	console.log("RENDERING NodeWidget", node.options.ports)
-
   const open = () => {
     store.diagram.engine.model.setLocked(true);
     setIsOpen(true);
@@ -53,10 +51,10 @@ const NodeWidget = ({ engine, node, store }) => {
           store={store}
         />
         <NodeWidgetOutPorts
-					node={node}
-					engine={engine}
-          store={store}					
-				/>
+          node={node}
+          engine={engine}
+          store={store}
+        />
         <div className="w-32">
           {/* Enforce min width with this div*/}
         </div>

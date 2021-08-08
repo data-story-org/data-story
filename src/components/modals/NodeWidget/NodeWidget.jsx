@@ -87,47 +87,21 @@ const NodeWidgetModal = ({ node, closeModal }) => {
     setParameters([...updatedParameters]);
   };
 
-	const updaterepeatablePorts = (parameter) => {
-		const portsColumn = 'port'
-
-		const portNames = Object.values(parameter.value).map(v => v[portsColumn].value).filter(f=>f)
-
-		// console.log(node, "Should have ports " + portNames.join(','))
-
-		portNames.forEach(name => {
-			// update options
-			node.options.ports[name] = {
-				in: false,
-				name: name,
-			}
-
-			// update actual react-diagrams nodes?
-			node.addPort(new PortModel({
-				in: false,
-				name: name,
-				parent: node,
-			}))
-
-			forceUpdate();
-		})
-		
-	}
-
   const handleRepeatableChange =
     (param) => (key) => (value) => {
       const values = parameters.find(
         (p) => p.name == param.name,
       ).value;
 
-			const parameter = parameters.find((p) => p.name == param.name)
-			parameter['value'] = {
+      const parameter = parameters.find(
+        (p) => p.name == param.name,
+      );
+      parameter['value'] = {
         ...values,
         [key]: value,
       };
 
       setParameters([...parameters]);
-
-			updaterepeatablePorts(parameter)
     };
 
   const handleRepeatableAdd = (param) => (key) => {
@@ -135,15 +109,15 @@ const NodeWidgetModal = ({ node, closeModal }) => {
       (p) => p.name == param.name,
     ).value;
 
-		const parameter = parameters.find((p) => p.name == param.name)
-		parameter['value'] = {
-			...values,
-			[key + 1]: param.defaultValue,
-		};
+    const parameter = parameters.find(
+      (p) => p.name == param.name,
+    );
+    parameter['value'] = {
+      ...values,
+      [key + 1]: param.defaultValue,
+    };
 
     setParameters([...parameters]);
-
-		updaterepeatablePorts(parameter)
   };
 
   const handleRepeatableRemove = (param) => (key) => {
@@ -153,17 +127,46 @@ const NodeWidgetModal = ({ node, closeModal }) => {
 
     const { [key]: omit, ...withoutKey } = values;
 
-		const parameter = parameters.find((p) => p.name == param.name)
+    const parameter = parameters.find(
+      (p) => p.name == param.name,
+    );
 
     parameter['value'] = withoutKey;
 
     setParameters([...parameters]);
-
-		updaterepeatablePorts(parameter)
   };
 
-  const handleCancel = (_e) => {
-    closeModal();
+  const addPort = (name) => {
+    //   // update options
+    node.options.ports[name] = {
+      in: false,
+      name: name,
+    };
+
+    //   // update actual react-diagrams nodes?
+    node.addPort(
+      new PortModel({
+        in: false,
+        name: name,
+        parent: node,
+      }),
+    );
+
+    console.log(node.getOutPorts());
+  };
+
+  const handlePortsUpdate = (param) => {
+    if (param.isPort) {
+      if (param.isRepeatable) {
+        param.repeatableConverter();
+        param['value'].forEach((value) => {
+          addPort(value);
+        });
+      } else {
+        addPort(param.value);
+      }
+      forceUpdate();
+    }
   };
 
   const handleSave = (semi) => (_e) => {
@@ -180,7 +183,14 @@ const NodeWidgetModal = ({ node, closeModal }) => {
     node.parameters = updatedParameters;
     if (!semi) {
       closeModal();
+      updatedParameters.forEach((p) => {
+        handlePortsUpdate(p);
+      });
     }
+  };
+
+  const handleCancel = (_e) => {
+    closeModal();
   };
 
   const editExistingPort = (e) => {};

@@ -1,14 +1,7 @@
-import React, {
-  useState,
-  useEffect,
-} from 'react';
-import { observer } from 'mobx-react-lite';
+import React from 'react';
 import { PortWidget } from '@projectstorm/react-diagrams';
 
-const NodeWidgetOutPorts = ({ node, engine, store }) => {
-	// This component does not react to store or node change?
-	console.log("Rerender NodeWidgetOutPorts", store)
-
+const NodeWidgetOutPorts = ({ node, engine }) => {
   return Object.values(node.getOutPorts()).map((port) => {
     return (
       <div className="flex w-full" key={port.options.name}>
@@ -39,4 +32,4 @@ const NodeWidgetOutPorts = ({ node, engine, store }) => {
   });
 };
 
-export default observer(NodeWidgetOutPorts);
+export default NodeWidgetOutPorts;
