@@ -16,6 +16,7 @@ import NodeWidgetModalBody from './NodeWidgetBody';
 import NodeWidgetModalActions from './NodeWidgetActions';
 import NodeWidgetModalEditableInPorts from './NodeWidgetEditableInPorts';
 import NodeWidgetModalEditableOutPorts from './NodeWidgetEditableOutPorts';
+import PortModel from '../../../diagram/models/PortModel';
 
 // TODO make NodeWidgetModal definitely-typed
 /* interface Props {
@@ -94,12 +95,19 @@ const NodeWidgetModal = ({ node, closeModal }) => {
 		// console.log(node, "Should have ports " + portNames.join(','))
 
 		portNames.forEach(name => {
-			// console.log(name)
+			// update options
 			node.options.ports[name] = {
 				in: false,
 				name: name,
-				// parent: node
 			}
+
+			// update actual react-diagrams nodes?
+			node.addPort(new PortModel({
+				in: false,
+				name: name,
+				parent: node,
+			}))
+
 			forceUpdate();
 		})
 		
