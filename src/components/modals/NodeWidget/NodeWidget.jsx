@@ -130,9 +130,7 @@ const NodeWidgetModal = ({
 
     parameter['value'] = withoutKey;
 
-    if (param.isPort) {
-      handleRemovePort(omit);
-    }
+    handleRemovePort(param, omit);
     setParameters([...parameters]);
   };
 
@@ -150,19 +148,32 @@ const NodeWidgetModal = ({
     if (param.isPort) {
       if (param.isRepeatable) {
         param.repeatableConverter();
-        param['value'].forEach((value) => {
-          addPort(value);
-        });
+        // Handling for the row fieldType
+        if (param.fieldType === 'Row') {
+          param['value'].forEach((row) => {
+            Object.keys(row).forEach((param) => {
+              console.log(row[param]['value']);
+              addPort(row[param]['value']);
+            });
+          });
+        } else {
+          param['value'].forEach((value) => {
+            addPort(value);
+          });
+        }
       } else {
         addPort(param.value);
       }
+
       forceUpdate();
     }
   };
 
-  const handleRemovePort = (portName) => {
-    let port = node.getPort(portName);
-    node.removePort(port);
+  const handleRemovePort = (param, toOmit) => {
+    if (param.isPort) {
+      let port = node.getPort(toOmit);
+      node.removePort(port);
+    }
   };
 
   const handleSave = (semi) => (_e) => {
