@@ -40,7 +40,7 @@
   },
   "dependencies": {
     "@data-story-org/core": "data-story-org/core#master",
-    "@emotion/react": "^11.1.5",
+    "@emotion/react": "^11.4.1",
     "@emotion/styled": "^11.3.0",
     "@fontsource/ibm-plex-mono": "^4.5.0",
     "@fontsource/ibm-plex-sans": "^4.5.0",
