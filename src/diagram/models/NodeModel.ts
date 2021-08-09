@@ -32,7 +32,7 @@ export default class NodeModel extends DefaultNodeModel {
   id: string;
 
   constructor(options) {
-		console.log("RUNNING NodeModel constructor")
+		// console.log("RUNNING NodeModel constructor")
     // Make id easier on humans
     const id =
       options.id ??
