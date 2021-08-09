@@ -146,21 +146,11 @@ const NodeWidgetModal = ({
 
   const handlePortsUpdate = (param) => {
     if (param.isPort) {
-      if (param.isRepeatable) {
+      if (param.isRepeatable && param.fieldType !== 'Row') {
         param.repeatableConverter();
-        // Handling for the row fieldType
-        if (param.fieldType === 'Row') {
-          param['value'].forEach((row) => {
-            Object.keys(row).forEach((param) => {
-              console.log(row[param]['value']);
-              addPort(row[param]['value']);
-            });
-          });
-        } else {
-          param['value'].forEach((value) => {
-            addPort(value);
-          });
-        }
+        param['value'].forEach((value) => {
+          addPort(value);
+        });
       } else {
         addPort(param.value);
       }
