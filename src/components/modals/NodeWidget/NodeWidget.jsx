@@ -161,7 +161,11 @@ const NodeWidgetModal = ({
 
   const handleRemovePort = (param, toOmit) => {
     if (param.isPort) {
-      let port = node.getPort(toOmit);
+      const port = node.getPort(toOmit);
+      const links = port.getLinks();
+      for (const link in links) {
+        links[link].remove();
+      }
       node.removePort(port);
     }
   };
