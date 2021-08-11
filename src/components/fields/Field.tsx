@@ -12,6 +12,7 @@ import String_ from './String_';
 import Select from './Select';
 import Textarea from './Textarea';
 import Where from './Where';
+import Port from './Port';
 import Row from './Row';
 
 export const fields = {
@@ -24,6 +25,7 @@ export const fields = {
   String_,
   Textarea,
   Where,
+  Port,
   Row,
 };
 
