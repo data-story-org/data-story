@@ -1,13 +1,14 @@
-name: Bundle
+name: Github-Pages
 
 on:
   push:
     branches:
-      - '*'
+      - master
+      - main
     tags-ignore: ["v[0-9]+.[0-9]+.[0-9]+*"]
 
 jobs:
-  bundle_code:
+  deploy_to_github_pages:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -24,9 +25,9 @@ jobs:
       - name: Build in production environment
         run: yarn run prod
 
-      - name: Commit changes
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: Bundle latest gui
-          file_pattern: public/
-          push_options: '--force'
+      - name: Deploy on Github Pages
+        run: |
+          git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+          yarn github-pages:deploy -u "github-actions-bot <support+actions@github.com>"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

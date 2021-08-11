@@ -36,7 +36,8 @@
     "prod": "npm run production",
     "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --config=node_modules/laravel-mix/setup/webpack.config.js",
     "test": "jest --testPathIgnorePatterns=.*e2e.test.*",
-    "test:e2e": "jest --passWithNoTests --detectOpenHandles -c jest.e2e.config.js"
+    "test:e2e": "jest --passWithNoTests --detectOpenHandles -c jest.e2e.config.js",
+    "github-pages:deploy": "gh-pages -d docs"
   },
   "dependencies": {
     "@data-story-org/core": "data-story-org/core#master",
@@ -105,6 +106,7 @@
     "eslint": "^7.32.0",
     "eslint-plugin-jest": "^24.3.6",
     "eslint-plugin-react": "^7.24.0",
+    "gh-pages": "^3.2.3",
     "jest": "^27.0.6",
     "jest-cli": "^27.0.6",
     "jest-puppeteer": "^5.0.4",
