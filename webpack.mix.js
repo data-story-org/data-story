@@ -14,5 +14,4 @@ mix
   .setResourceRoot('../')
   .copy('fonts', 'dist/fonts')
   .copy('dist', 'public') // easy dev access
-  .copy('dist', 'docs')
-  .copy('public/index.html', 'docs/index.html'); // github pages requires dir 'docs'
+  .copy('public', 'docs'); 
