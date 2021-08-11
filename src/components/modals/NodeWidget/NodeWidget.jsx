@@ -130,7 +130,7 @@ const NodeWidgetModal = ({
 
     parameter['value'] = withoutKey;
 
-    if (param.isPort) {
+    if (param.fieldType === 'Port') {
       handleRemovePort(omit);
     }
     setParameters([...parameters]);
@@ -147,8 +147,8 @@ const NodeWidgetModal = ({
   };
 
   const handlePortsUpdate = (param) => {
-    if (param.isPort) {
-      if (param.isRepeatable && param.fieldType !== 'Row') {
+    if (param.fieldType === 'Port') {
+      if (param.isRepeatable) {
         param.repeatableConverter();
         param['value'].forEach((value) => {
           addPort(value);
