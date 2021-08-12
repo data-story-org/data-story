@@ -13,5 +13,4 @@ mix
   // fonts loading
   .setResourceRoot('../')
   .copy('fonts', 'dist/fonts')
-  .copy('dist', 'public') // easy dev access
-  .copy('public', 'docs');
+  .copy('dist', 'public');
