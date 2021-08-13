@@ -1,9 +1,16 @@
-import React, { useEffect } from 'react';
+import React, { FC, useEffect } from 'react';
 import { observer } from 'mobx-react-lite';
-import BaseControl from './BaseControl';
 import { useHotkeys } from 'react-hotkeys-hook';
 
-const RunControl = ({ store }) => {
+import BaseControl from './BaseControl';
+import { withLoadingProps } from '../../utils/isLoadingHOC';
+import { Store } from '../../store';
+
+interface Props extends withLoadingProps {
+  store: Store;
+}
+
+const RunControl: FC<Props> = ({ store, setLoading }) => {
   useHotkeys('shift+r', () => {
     onClick();
   });
@@ -15,24 +22,27 @@ const RunControl = ({ store }) => {
   ];
 
   const onClick = () => {
+    setLoading(true);
     store.clearResults();
-		store.setRunning();
+    store.setRunning();
 
     store.metadata.client
       .run(store.diagram.engine.model)
       .then((result) => {
-				const diagram = store.diagram.engine.model
-				const serverDiagram = result.data.diagram
-				diagram.syncFeatures(serverDiagram);
-				store.setNotRunning();
-				store.showRunSuccessful();
+        const diagram = store.diagram.engine.model;
+        const serverDiagram = result.data.diagram;
+        diagram.syncFeatures(serverDiagram);
+        store.setNotRunning();
+        setLoading(false);
+        store.showRunSuccessful();
         store.refreshDiagram();
-			})
+      })
       .catch((error) => {
         store.setNotRunning();
         store.showRunFail(error);
-				throw error
-      });			
+        setLoading(false);
+        throw error;
+      });
   };
 
   return (

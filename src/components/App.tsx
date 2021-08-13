@@ -111,7 +111,7 @@ const App: FC<withLoadingProps> = ({ setLoading }) => {
   return (
     <div>
       <Header />
-      <Toolbar store={store} />
+      <Toolbar store={store} setLoading={setLoading} />
       {booted && <Page store={store} />}
       <ToastContainer style={{ paddingTop: '0px' }} />
     </div>
