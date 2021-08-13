@@ -62,7 +62,7 @@ const AddNodeControl: FC<Props> = ({ store }) => {
   });
 
   const onClick = () => {
-    /* store.setDiagramLocked(true); */
+    store.setDiagramLocked(true);
     setIsOpen(true);
   };
 

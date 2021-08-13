@@ -186,7 +186,9 @@ export class Store {
     let state = this.diagram.engine
       .getStateMachine()
       .getCurrentState();
-    state.dragCanvas.config.allowDrag = !locked;
+    if (state.dragCanvas !== undefined) {
+      state.dragCanvas.config.allowDrag = !locked;
+    }
   }
 }
 
