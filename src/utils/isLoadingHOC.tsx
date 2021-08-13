@@ -13,7 +13,7 @@ export const AnimationLoader = () => {
 };
 
 export interface withLoadingProps {
-  setLoading: (loading: boolean) => void;
+  setLoading?: (loading: boolean) => void;
 }
 
 export const withLoading =
