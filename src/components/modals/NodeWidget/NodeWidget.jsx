@@ -160,8 +160,8 @@ const NodeWidgetModal = ({
   };
 
   const handleRemovePort = (portName) => {
-    const port = node.getPort(portName);
-    if (port !== undefined) {
+    if (portName in node.ports) {
+      const port = node.getPort(portName);
       const links = port.getLinks();
       for (const link in links) {
         links[link].remove();
@@ -184,11 +184,22 @@ const NodeWidgetModal = ({
     node.parameters = updatedParameters;
     if (!semi) {
       closeModal();
-      // Pre-deleting existing ports created before
-      // so it's possible to update configure outputs
+
+      // Pre-deleting updated ports so it's
+      // possible to update configured outputs
       const minimumPortIndex = node.options.ports.length;
+      const updatedPortsNames = updatedParameters
+        .filter((param) => param.fieldType === 'Port')
+        .map((param) => param.value)
+        .flat();
       Object.keys(node.ports).forEach((p, i) => {
-        if (i + 1 > minimumPortIndex) handleRemovePort(p);
+        const portIndex = i + 1;
+        if (
+          portIndex > minimumPortIndex &&
+          !updatedPortsNames.includes(p)
+        ) {
+          handleRemovePort(p);
+        }
       });
 
       // Dynamic creation of output ports
