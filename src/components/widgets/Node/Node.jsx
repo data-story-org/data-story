@@ -77,6 +77,7 @@ const NodeWidget = ({ engine, node, store }) => {
           node={node}
           closeModal={closeModal}
           forceUpdate={forceUpdate}
+          store={store}
         />
       </Modal>
     </div>

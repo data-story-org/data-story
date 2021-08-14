@@ -25,6 +25,7 @@ const NodeWidgetModal = ({
   node,
   closeModal,
   forceUpdate,
+  store,
 }) => {
   const [parameters, setParameters] = useState(
     cloneDeep(node.parameters),
@@ -196,9 +197,8 @@ const NodeWidgetModal = ({
         .map((param) => param.value)
         .flat();
       Object.keys(node.ports).forEach((p, i) => {
-        const portIndex = i + 1;
         if (
-          portIndex > minimumPortIndex &&
+          i >= minimumPortIndex &&
           !updatedPortsNames.includes(p)
         ) {
           handleRemovePort(p);
@@ -207,15 +207,13 @@ const NodeWidgetModal = ({
 
       // Dynamic creation of output ports
       updatedParameters.forEach((param) => {
-        if (
-          param.fieldType === 'Port' &&
-          !updatedPortsNames.includes(param.value)
-        ) {
+        if (param.fieldType === 'Port') {
           handlePortsUpdate(param);
         }
       });
 
       forceUpdate();
+      store.diagram.engine.repaintCanvas();
     }
   };
 
