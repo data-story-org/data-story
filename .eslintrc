@@ -19,6 +19,14 @@
     "plugin:jest/recommended"
   ],
   "rules": {
-    "@typescript-eslint/ban-types": "warn"
-  }
+    "@typescript-eslint/ban-types": "warn",
+  },
+  "overrides": [
+    {
+      "files": ["**/*.tsx"],
+      "rules": {
+        "react/prop-types": "off",
+      }
+    }
+  ]
 }
