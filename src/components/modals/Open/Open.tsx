@@ -38,7 +38,7 @@ const OpenModal: FC<Props> = ({ store, closeModal }) => {
       const engine = store.diagram.engine;
       const model = new DiagramModel();
       model.deserializeModel(
-        Cookie.getObject(name),
+        store.metadata.client.load(name),
         engine,
       );
       engine.setModel(model);

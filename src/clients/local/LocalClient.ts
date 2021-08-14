@@ -16,6 +16,10 @@ export default class LocalClient
     return server.run(model.serialize());
   }
 
+  load(name: string) {
+    return server.load(name);
+  }	
+
   save(name: string, model: DiagramModel): Promise<{}> {
     return server.save(name, model);
   }
