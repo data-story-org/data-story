@@ -94,11 +94,15 @@ const NodeWidgetModal = ({
       const parameter = parameters.find(
         (p) => p.name == param.name,
       );
+      const previousValue = parameter['value'][key];
       parameter['value'] = {
         ...values,
         [key]: value,
       };
 
+      if (param.fieldType === 'Port') {
+        handleRemovePort(previousValue);
+      }
       setParameters([...parameters]);
     };
 
@@ -148,12 +152,15 @@ const NodeWidgetModal = ({
   };
 
   const handlePortsUpdate = (param) => {
-    const portsNames = Object.keys(node.ports);
+    let portsNames = Object.keys(node.ports);
 
     if (param.isRepeatable) {
       param['value'].forEach((value) => {
+        portsNames = Object.keys(node.ports);
         if (!portsNames.includes(value)) {
+          console.log(value);
           addPort(value);
+          console.log(Object.keys(node.ports));
         }
       });
     } else {
@@ -166,11 +173,8 @@ const NodeWidgetModal = ({
   const handleRemovePort = (portName) => {
     if (portName in node.ports) {
       const port = node.getPort(portName);
-      const links = port.getLinks();
-      for (const link in links) {
-        links[link].remove();
-      }
-      node.removePort(port);
+      node.removePortAndLinks(port);
+      console.log(port);
     }
   };
 
@@ -188,22 +192,6 @@ const NodeWidgetModal = ({
     node.parameters = updatedParameters;
     if (!semi) {
       closeModal();
-
-      // Pre-deleting updated ports so it's
-      // possible to update configured outputs
-      const minimumPortIndex = node.options.ports.length;
-      const updatedPortsNames = updatedParameters
-        .filter((param) => param.fieldType === 'Port')
-        .map((param) => param.value)
-        .flat();
-      Object.keys(node.ports).forEach((p, i) => {
-        if (
-          i >= minimumPortIndex &&
-          !updatedPortsNames.includes(p)
-        ) {
-          handleRemovePort(p);
-        }
-      });
 
       // Dynamic creation of output ports
       updatedParameters.forEach((param) => {
