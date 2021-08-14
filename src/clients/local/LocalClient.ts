@@ -16,7 +16,7 @@ export default class LocalClient
     return server.run(model.serialize());
   }
 
-  load(name: string) {
+  load(name: string): string {
     return server.load(name);
   }	
 
