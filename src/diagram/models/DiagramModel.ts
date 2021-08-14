@@ -41,7 +41,7 @@ export default class DiagramModel extends DefaultDiagramModel {
     // The default react-diagrams format
     const layered = super.serialize();
 
-    let simplified = {
+    const simplified = {
       // Provide links and nodes as simple arrays
       nodes: Object.values(layered.layers[1].models),
       links: Object.values(layered.layers[0].models),
@@ -218,7 +218,7 @@ export default class DiagramModel extends DefaultDiagramModel {
     // Transfer node features
     serverDiagram.nodes.forEach((serverNode) => {
       // TODO how use type node: NodeModel here?
-      let node: any = this.getNode(serverNode.id);
+      const node: any = this.getNode(serverNode.id);
       node.features = serverNode.features;
     });
 
@@ -233,7 +233,7 @@ export default class DiagramModel extends DefaultDiagramModel {
         return port.features;
       })
       .forEach((port) => {
-        let allLinks = Object.values(
+        const allLinks = Object.values(
           (this.layers[0] as any).models,
         );
 

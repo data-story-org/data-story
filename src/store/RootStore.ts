@@ -183,7 +183,7 @@ export class Store {
 
   setDiagramLocked(locked: boolean) {
     this.diagram.engine.model.setLocked(locked);
-    let state = this.diagram.engine
+    const state = this.diagram.engine
       .getStateMachine()
       .getCurrentState();
     if (state.dragCanvas !== undefined) {
