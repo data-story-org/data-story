@@ -20,6 +20,7 @@
   ],
   "rules": {
     "@typescript-eslint/ban-types": "warn",
+    "@typescript-eslint/ban-ts-comment": "warn",
   },
   "overrides": [
     {
