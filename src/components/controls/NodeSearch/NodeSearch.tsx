@@ -78,6 +78,8 @@ const NodeSearch: FC<Props> = ({ store, onFinish }) => {
   }, []);
 
   const searchChange = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
     setSearch(e.target.value);
     setCursor(0);
 
