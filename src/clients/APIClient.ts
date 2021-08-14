@@ -18,6 +18,10 @@ export default class APIClient implements ClientInterface {
     });
   }
 
+	load(name: string): string {
+		throw "Not implemented"
+	}
+
   save(name, model) {
     return axios.post(this.root + '/save', {
       name,
