@@ -32,8 +32,8 @@ jobs:
       - name: Format with prettier
         run: yarn format
 
-      # - name: Fix all fixable eslint warnings
-      #   run: npm run lint:quiet:fix
+      - name: Fix all fixable eslint warnings
+        run: yarn lint:quiet:fix
 
       # - name: Get all unfixable eslint errors
       #   uses: wearerequired/lint-action@v1
