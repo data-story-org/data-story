@@ -40,8 +40,13 @@ const NodeWidgetModal = ({
     {
       filter: (e) => e.target.type !== 'textarea',
       filterPreventDefault: false,
-      enableOnTags: ['INPUT'],
+      enableOnTags:
+        node.options.ports.length ===
+        Object.keys(node.ports).length
+          ? ['INPUT']
+          : [''],
     },
+    [node.ports, node.options.ports, store],
   );
 
   useEffect(() => {
@@ -68,7 +73,7 @@ const NodeWidgetModal = ({
 
     const autoSaveTimer = setTimeout(() => {
       handleSave(true)(null);
-    }, 500);
+    }, 1500);
 
     return () => clearTimeout(autoSaveTimer);
   }, [node.parameter]);
@@ -149,6 +154,8 @@ const NodeWidgetModal = ({
         parent: node,
       }),
     );
+
+    forceUpdate();
   };
 
   const handlePortsUpdate = (param) => {
@@ -157,10 +164,11 @@ const NodeWidgetModal = ({
     if (param.isRepeatable) {
       param['value'].forEach((value) => {
         portsNames = Object.keys(node.ports);
-        if (!portsNames.includes(value)) {
-          console.log(value);
+        if (
+          !portsNames.includes(value) &&
+          value !== param.defaultValue
+        ) {
           addPort(value);
-          console.log(Object.keys(node.ports));
         }
       });
     } else {
@@ -174,7 +182,6 @@ const NodeWidgetModal = ({
     if (portName in node.ports) {
       const port = node.getPort(portName);
       node.removePortAndLinks(port);
-      console.log(port);
     }
   };
 
@@ -184,24 +191,18 @@ const NodeWidgetModal = ({
         if (parameter.isRepeatable) {
           parameter.repeatableConverter();
         }
+        if (parameter.fieldType === 'Port') {
+          handlePortsUpdate(parameter);
+        }
 
         return parameter;
       },
     );
-
     node.parameters = updatedParameters;
+
+    store.diagram.engine.repaintCanvas();
     if (!semi) {
       closeModal();
-
-      // Dynamic creation of output ports
-      updatedParameters.forEach((param) => {
-        if (param.fieldType === 'Port') {
-          handlePortsUpdate(param);
-        }
-      });
-
-      forceUpdate();
-      store.diagram.engine.repaintCanvas();
     }
   };
 
@@ -212,7 +213,7 @@ const NodeWidgetModal = ({
   const editExistingPort = (e) => {};
 
   const saveNewInPort = (e) => {
-    return saveNewPort(e, true);
+    saveNewPort(e, true);
   };
 
   const saveNewOutPort = (e) => {
@@ -220,17 +221,18 @@ const NodeWidgetModal = ({
   };
 
   const saveNewPort = (e, isInPort) => {
-    if (e.key != 'Enter') return;
-    node.addPort(
-      new DefaultPortModel({
-        in: isInPort,
-        name: e.target.value,
-      }),
-    );
+    // if (e.key != 'Enter') return;
+    // node.addPort(
+    //   new DefaultPortModel({
+    //     in: isInPort,
+    //     name: e.target.value,
+    //   }),
+    // );
 
-    e.target.value = '';
+    // e.target.value = '';
+    console.log('useles');
 
-    forceUpdate();
+    // forceUpdate();
   };
 
   return (
