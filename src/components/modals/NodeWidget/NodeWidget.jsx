@@ -147,14 +147,17 @@ const NodeWidgetModal = ({
   };
 
   const handlePortsUpdate = (param) => {
-    if (param.fieldType === 'Port') {
-      if (param.isRepeatable) {
-        param.repeatableConverter();
-        param['value'].forEach((value) => {
+    const portsNames = Object.keys(node.ports);
+
+    if (param.isRepeatable) {
+      param['value'].forEach((value) => {
+        if (!portsNames.includes(value)) {
           addPort(value);
-        });
-      } else {
-        addPort(param.value);
+        }
+      });
+    } else {
+      if (!portsNames.includes(value)) {
+        addPort(value);
       }
     }
   };
@@ -204,7 +207,12 @@ const NodeWidgetModal = ({
 
       // Dynamic creation of output ports
       updatedParameters.forEach((param) => {
-        handlePortsUpdate(param);
+        if (
+          param.fieldType === 'Port' &&
+          !updatedPortsNames.includes(param.value)
+        ) {
+          handlePortsUpdate(param);
+        }
       });
 
       forceUpdate();
