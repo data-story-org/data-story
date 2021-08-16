@@ -18,7 +18,7 @@ export default class LocalClient
 
   load(name: string): string {
     return server.load(name);
-  }	
+  }
 
   save(name: string, model: DiagramModel): Promise<{}> {
     return server.save(name, model);

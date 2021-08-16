@@ -106,9 +106,7 @@ export default class NodeModel extends DefaultNodeModel {
     });
   }
 
-  removePortAndLinks(
-    port: PortModel,
-  ): void {
+  removePortAndLinks(port: PortModel): void {
     const links = port.getLinks();
     for (const link in links) {
       links[link].remove();
