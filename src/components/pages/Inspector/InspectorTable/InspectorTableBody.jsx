@@ -22,7 +22,7 @@ const InspectorTableBody = ({
             {row}
           </span>
         ) : (
-          { row }
+          <>{row}</>
         )}
       </td>
     );
@@ -45,7 +45,7 @@ const InspectorTableBody = ({
                   {column}
                 </span>
               ) : (
-                { column }
+                <>{column}</>
               )}
             </td>
           );
