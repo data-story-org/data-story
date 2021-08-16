@@ -189,20 +189,23 @@ const NodeWidgetModal = ({
         if (parameter.isRepeatable) {
           parameter.repeatableConverter();
         }
-        if (parameter.fieldType === 'Port') {
-          handlePortsUpdate(parameter);
+
+        if (!semi) {
+          if (parameter.fieldType === 'Port') {
+            handlePortsUpdate(parameter);
+          }
         }
 
         return parameter;
       },
     );
+    node.parameters = updatedParameters;
 
-    forceUpdate();
-    store.diagram.engine.repaintCanvas();
     if (!semi) {
       closeModal();
+      forceUpdate();
+      store.diagram.engine.repaintCanvas();
     }
-    node.parameters = updatedParameters;
   };
 
   const handleCancel = (_e) => {

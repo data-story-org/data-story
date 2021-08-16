@@ -1,7 +1,9 @@
 import React, { FC, useState } from 'react';
 import { observer } from 'mobx-react-lite';
-import BaseControl from './BaseControl';
+import { useHotkeys } from 'react-hotkeys-hook';
 import Modal from 'react-modal';
+
+import BaseControl from './BaseControl';
 import { modalStyle } from '@data-story-org/core';
 import SaveModal from '../modals/Save';
 import { Store } from '../../store';
@@ -17,12 +19,17 @@ const SaveControl: FC<Props> = ({ store }) => {
     store.metadata.activeStory,
   );
 
+  useHotkeys('shift+s', () => {
+    onClick();
+  });
+
   const onClick = () => {
+    store.setDiagramLocked(true);
     setIsOpen(true);
   };
 
   const closeModal = () => {
-    //this.props.store.diagram.engine.model.setLocked(false);
+    store.setDiagramLocked(false);
     setIsOpen(false);
   };
 

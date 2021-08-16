@@ -8,8 +8,9 @@ import InspectorTableBody from './InspectorTableBody';
  *   features: Feature[];
  * } */
 
-const InspectorTable = ({ features }) => {
+const InspectorTable = ({ features, handleModeSelect }) => {
   const [truncateAt, setTruncateAt] = useState(100);
+  useState(false);
 
   const hasPrimitiveFeatures = () => {
     return (
@@ -20,6 +21,8 @@ const InspectorTable = ({ features }) => {
         }).length != 0
     );
   };
+
+  let isComplexObject;
 
   const getHeaders = () => {
     let keys = features
@@ -44,14 +47,20 @@ const InspectorTable = ({ features }) => {
         if (
           content == null ||
           !content.hasOwnProperty(header)
-        )
+        ) {
+          isComplexObject = true;
           return 'N/A';
+        }
 
-        if (typeof content[header] === 'object')
+        if (typeof content[header] === 'object') {
+          isComplexObject = true;
           return 'OBJECT';
+        }
 
-        if (typeof content[header] === 'array')
+        if (typeof content[header] === 'array') {
+          isComplexObject = true;
           return 'ARRAY';
+        }
 
         return content[header];
       });
@@ -75,6 +84,10 @@ const InspectorTable = ({ features }) => {
               <InspectorTableBody
                 primitiveFeatures={hasPrimitiveFeatures()}
                 rows={getRows()}
+                isComplexObject={isComplexObject}
+                handleSelectJsonMode={handleModeSelect(
+                  'JSON',
+                )}
               />
             </table>
             {getRowCount() === 0 && (

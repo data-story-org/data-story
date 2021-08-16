@@ -68,7 +68,10 @@ const Inspector: FC<Props> = ({ store }) => {
         })}
       </div>
       <div className="p-4">
-        <InspectorComponent features={features} />
+        <InspectorComponent
+          features={features}
+          handleModeSelect={handleModeSelect}
+        />
       </div>
     </>
   );

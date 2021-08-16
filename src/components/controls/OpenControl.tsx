@@ -5,6 +5,7 @@ import Modal from 'react-modal';
 import { modalStyle } from '@data-story-org/core';
 import OpenModal from '../modals/Open';
 import { Store } from '../../store';
+import { useHotkeys } from 'react-hotkeys-hook';
 
 interface Props {
   store: Store;
@@ -14,12 +15,17 @@ const OpenControl: FC<Props> = ({ store }) => {
   const [title, icon] = ['Open story', 'fas fa-folder'];
   const [isOpen, setIsOpen] = useState(false);
 
+  useHotkeys('shift+o', () => {
+    onClick();
+  });
+
   const onClick = () => {
+    store.setDiagramLocked(true);
     setIsOpen(true);
   };
 
   const closeModal = () => {
-    //this.props.store.diagram.engine.model.setLocked(false);
+    store.setDiagramLocked(false);
     setIsOpen(false);
   };
 
