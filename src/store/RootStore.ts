@@ -140,7 +140,10 @@ export class Store {
   setPage(name) {
     this.diagram.engine.model.clearLinkLabels();
     const alreadyOnPage = this.metadata.page == name;
-    this.metadata.page = alreadyOnPage ? 'Workbench' : name;
+    this.metadata.page =
+      alreadyOnPage && name !== 'Inspector'
+        ? 'Workbench'
+        : name;
   }
 
   setResults(results) {

@@ -30,7 +30,8 @@ const Toolbar: FC<Props> = ({ store, setLoading }) => {
   const onClickInspectable = (node) => {
     if (
       store.metadata.page == 'Inspector' &&
-      store.metadata.activeInspector == node.options.id
+      store.metadata.activeInspector.nodeId ==
+        node.options.id
     ) {
       return store.setPage('Workbench');
     }
