@@ -1,8 +1,12 @@
 import React from 'react';
 
+const linkStyle = 'hover:underline cursor-pointer';
+
 const InspectorTableBody = ({
   primitiveFeatures,
   rows,
+  isComplexObject,
+  handleSelectJsonMode,
 }) => {
   const primitiveTable = (row, rowIndex) => {
     return (
@@ -10,7 +14,16 @@ const InspectorTableBody = ({
         key={rowIndex}
         className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-500"
       >
-        {row}
+        {isComplexObject ? (
+          <span
+            className={linkStyle}
+            onClick={handleselectJsonMode}
+          >
+            {row}
+          </span>
+        ) : (
+          { row }
+        )}
       </td>
     );
   };
@@ -24,7 +37,16 @@ const InspectorTableBody = ({
               key={columnIndex}
               className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-500"
             >
-              {column}
+              {isComplexObject ? (
+                <span
+                  className={linkStyle}
+                  onClick={handleSelectJsonMode}
+                >
+                  {column}
+                </span>
+              ) : (
+                { column }
+              )}
             </td>
           );
         })}
@@ -39,9 +61,9 @@ const InspectorTableBody = ({
           rows.map((row, rowIndex) => {
             return (
               <tr key={rowIndex} className="bg-white">
-                {primitiveFeatures &&
-                  primitiveTable(row, rowIndex)}
-                {primitiveFeatures || table(row)}
+                {primitiveFeatures
+                  ? primitiveTable(row, rowIndex)
+                  : table(row)}
               </tr>
             );
           })}
