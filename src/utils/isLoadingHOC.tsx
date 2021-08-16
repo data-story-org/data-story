@@ -29,13 +29,17 @@ export const withLoading =
       setIsLoading(isComponentLoading);
     };
 
-    const blur = {
+    const loadingStyle = {
       filter: 'blur(3px)',
     };
 
+    isLoading
+      ? (document.body.style.cursor = 'progress')
+      : (document.body.style.cursor = '');
+
     return (
       <>
-        <div style={isLoading ? blur : {}}>
+        <div style={isLoading ? loadingStyle : {}}>
           <WrappedComponent
             {...(props as P)}
             setLoading={setLoadingState}
