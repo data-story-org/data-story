@@ -32,6 +32,7 @@ export default class NodeModel extends DefaultNodeModel {
   id: string;
 
   constructor(options) {
+    // console.log("RUNNING NodeModel constructor")
     // Make id easier on humans
     const id =
       options.id ??
@@ -103,6 +104,16 @@ export default class NodeModel extends DefaultNodeModel {
     return pickBy(this.getPorts(), function (port, key) {
       return !port.options.in;
     });
+  }
+
+  removePortAndLinks(
+    port: PortModel,
+  ): void {
+    const links = port.getLinks();
+    for (const link in links) {
+      links[link].remove();
+    }
+    this.removePort(port);
   }
 
   dependencies() {

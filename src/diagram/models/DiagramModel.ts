@@ -132,10 +132,10 @@ export default class DiagramModel extends DefaultDiagramModel {
   }
 
   smartInspectorNames(node) {
-    if (node.options.name != 'Inspect') return;
+    if (node.options.name !== 'Inspect') return;
 
     const nameParam = node.options.parameters.find(
-      (n) => n.name == 'node_name',
+      (n) => n.name === 'node_name',
     );
 
     const sourceLink: any =
@@ -145,7 +145,7 @@ export default class DiagramModel extends DefaultDiagramModel {
       sourceLink.sourcePort.options.name ?? false;
 
     // It must be a specific name to make sense
-    if (!sourcePortName || sourcePortName == 'Output')
+    if (!sourcePortName || sourcePortName === 'Output')
       return;
 
     nameParam.value = sourcePortName;

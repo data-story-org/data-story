@@ -1,5 +1,4 @@
 import React from 'react';
-import { observer } from 'mobx-react-lite';
 import { PortWidget } from '@projectstorm/react-diagrams';
 
 const NodeWidgetOutPorts = ({ node, engine }) => {
@@ -33,4 +32,4 @@ const NodeWidgetOutPorts = ({ node, engine }) => {
   });
 };
 
-export default observer(NodeWidgetOutPorts);
+export default NodeWidgetOutPorts;

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useReducer } from 'react';
 import Modal from 'react-modal';
 import { modalStyle } from '@data-story-org/core';
 import { withStore } from '../../../store';
@@ -22,6 +22,10 @@ import NodeWidgetModal from '../../modals/NodeWidget';
 
 const NodeWidget = ({ engine, node, store }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [_ignored, forceUpdate] = useReducer(
+    (x) => x + 1,
+    0,
+  );
 
   const open = () => {
     store.setDiagramLocked(true);
@@ -51,7 +55,11 @@ const NodeWidget = ({ engine, node, store }) => {
           engine={engine}
           store={store}
         />
-        <NodeWidgetOutPorts node={node} engine={engine} />
+        <NodeWidgetOutPorts
+          node={node}
+          engine={engine}
+          store={store}
+        />
         <div className="w-32">
           {/* Enforce min width with this div*/}
         </div>
@@ -69,6 +77,8 @@ const NodeWidget = ({ engine, node, store }) => {
         <NodeWidgetModal
           node={node}
           closeModal={closeModal}
+          forceUpdate={forceUpdate}
+          store={store}
         />
       </Modal>
     </div>

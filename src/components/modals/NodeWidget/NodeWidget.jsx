@@ -1,26 +1,14 @@
-import React, {
-  useState,
-  useReducer,
-  useEffect,
-} from 'react';
+import React, { useEffect, useState } from 'react';
 import { cloneDeep } from 'lodash';
-import {
-  DefaultPortModel,
-  NodeModel as DefaultNodeModel,
-} from '@projectstorm/react-diagrams';
-
-// import AceEditor from "react-ace";
-// import "ace-builds/src-noconflict/mode-json";
-// import "ace-builds/src-noconflict/mode-java";
-// import "ace-builds/src-noconflict/theme-github";
-
 import { observer } from 'mobx-react-lite';
 import { useHotkeys } from 'react-hotkeys-hook';
-import NodeWidgetModalHeader from './NodeWidgetHeader';
-import NodeWidgetModalBody from './NodeWidgetBody';
+
+import PortModel from '../../../diagram/models/PortModel';
 import NodeWidgetModalActions from './NodeWidgetActions';
+import NodeWidgetModalBody from './NodeWidgetBody';
 import NodeWidgetModalEditableInPorts from './NodeWidgetEditableInPorts';
 import NodeWidgetModalEditableOutPorts from './NodeWidgetEditableOutPorts';
+import NodeWidgetModalHeader from './NodeWidgetHeader';
 
 // TODO make NodeWidgetModal definitely-typed
 /* interface Props {
@@ -28,14 +16,20 @@ import NodeWidgetModalEditableOutPorts from './NodeWidgetEditableOutPorts';
  *   closeModal: () => void;
  * } */
 
-const NodeWidgetModal = ({ node, closeModal }) => {
+const NodeWidgetModal = ({
+  node,
+  closeModal,
+  forceUpdate,
+  store,
+}) => {
   const [parameters, setParameters] = useState(
     cloneDeep(node.parameters),
   );
-  const [_ignored, forceUpdate] = useReducer(
-    (x) => x + 1,
-    0,
-  );
+
+  // const hasPorts = useCallback(() => {
+  //   const isPort = (param) => param.fieldType === 'Port';
+  //   return node.parameters.some(isPort);
+  // }, []);
 
   useHotkeys(
     'enter',
@@ -46,8 +40,13 @@ const NodeWidgetModal = ({ node, closeModal }) => {
     {
       filter: (e) => e.target.type !== 'textarea',
       filterPreventDefault: false,
-      enableOnTags: ['INPUT'],
+      enableOnTags:
+        node.options.ports.length ===
+        Object.keys(node.ports).length
+          ? ['INPUT']
+          : [''],
     },
+    [node.ports, node.options.ports],
   );
 
   useEffect(() => {
@@ -97,13 +96,18 @@ const NodeWidgetModal = ({ node, closeModal }) => {
         (p) => p.name == param.name,
       ).value;
 
-      parameters.find((p) => p.name == param.name)[
-        'value'
-      ] = {
+      const parameter = parameters.find(
+        (p) => p.name == param.name,
+      );
+      const previousValue = parameter['value'][key];
+      parameter['value'] = {
         ...values,
         [key]: value,
       };
 
+      if (param.fieldType === 'Port') {
+        handleRemovePort(previousValue);
+      }
       setParameters([...parameters]);
     };
 
@@ -112,11 +116,16 @@ const NodeWidgetModal = ({ node, closeModal }) => {
       (p) => p.name == param.name,
     ).value;
 
-    parameters.find((p) => p.name == param.name)['value'] =
-      {
-        ...values,
-        [key + 1]: param.defaultValue,
-      };
+    const parameter = parameters.find(
+      (p) => p.name == param.name,
+    );
+    parameter['value'] = {
+      ...values,
+      [key + 1]:
+        param.fieldType === 'Port'
+          ? ''
+          : param.defaultValue,
+    };
 
     setParameters([...parameters]);
   };
@@ -128,14 +137,50 @@ const NodeWidgetModal = ({ node, closeModal }) => {
 
     const { [key]: omit, ...withoutKey } = values;
 
-    parameters.find((p) => p.name === param.name)['value'] =
-      withoutKey;
+    const parameter = parameters.find(
+      (p) => p.name == param.name,
+    );
 
+    parameter['value'] = withoutKey;
+
+    if (param.fieldType === 'Port') {
+      handleRemovePort(omit);
+    }
     setParameters([...parameters]);
   };
 
-  const handleCancel = (_e) => {
-    closeModal();
+  const addPort = (name) => {
+    node.addPort(
+      new PortModel({
+        in: false,
+        name: name,
+        parent: node,
+      }),
+    );
+  };
+
+  const handlePortsUpdate = (param) => {
+    let portsNames = Object.keys(node.ports);
+
+    if (param.isRepeatable) {
+      param['value'].forEach((value) => {
+        portsNames = Object.keys(node.ports);
+        if (!portsNames.includes(value)) {
+          addPort(value);
+        }
+      });
+    } else {
+      if (!portsNames.includes(value)) {
+        addPort(value);
+      }
+    }
+  };
+
+  const handleRemovePort = (portName) => {
+    if (portName in node.ports) {
+      const port = node.getPort(portName);
+      node.removePortAndLinks(port);
+    }
   };
 
   const handleSave = (semi) => (_e) => {
@@ -144,44 +189,49 @@ const NodeWidgetModal = ({ node, closeModal }) => {
         if (parameter.isRepeatable) {
           parameter.repeatableConverter();
         }
+        if (parameter.fieldType === 'Port') {
+          handlePortsUpdate(parameter);
+        }
 
         return parameter;
       },
     );
 
-    node.parameters = updatedParameters;
+    forceUpdate();
+    store.diagram.engine.repaintCanvas();
     if (!semi) {
       closeModal();
     }
+    node.parameters = updatedParameters;
+  };
+
+  const handleCancel = (_e) => {
+    closeModal();
   };
 
   const editExistingPort = (e) => {};
 
   const saveNewInPort = (e) => {
-    return saveNewPort(e, true);
+    saveNewPort(e, true);
   };
 
   const saveNewOutPort = (e) => {
     saveNewPort(e, false);
   };
 
-  // blurNewOutPort(e) {
-  //     saveNewPort(e, false)
-  // }
-
   const saveNewPort = (e, isInPort) => {
-    if (e.key != 'Enter') return;
-    node.addPort(
-      new DefaultPortModel({
-        in: isInPort,
-        name: e.target.value,
-      }),
-    );
+    // if (e.key != 'Enter') return;
+    // node.addPort(
+    //   new DefaultPortModel({
+    //     in: isInPort,
+    //     name: e.target.value,
+    //   }),
+    // );
 
-    e.target.value = '';
+    // e.target.value = '';
+    console.log('useles');
 
-    // Why is this needed?
-    forceUpdate();
+    // forceUpdate();
   };
 
   return (
@@ -211,12 +261,6 @@ const NodeWidgetModal = ({ node, closeModal }) => {
         handleCancel={handleCancel}
         handleSave={handleSave(false)}
       />
-      {/* <AceEditor
-                mode="json"
-                theme="github"
-                name="UNIQUE_ID_OF_DIV"
-                editorProps={{ $blockScrolling: true }}
-                />                                 */}
     </div>
   );
 };
