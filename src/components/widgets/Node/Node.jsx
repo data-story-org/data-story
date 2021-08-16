@@ -28,16 +28,17 @@ const NodeWidget = ({ engine, node, store }) => {
   );
 
   const open = () => {
-    store.diagram.engine.model.setLocked(true);
+    store.setDiagramLocked(true);
     setIsOpen(true);
   };
 
   const closeModal = () => {
-    store.diagram.engine.model.setLocked(false);
+    store.setDiagramLocked(false);
     setIsOpen(false);
   };
 
   const handleOpenModalRequest = (store) => {
+    store.setDiagramLocked(true);
     setIsOpen(true);
     store.resetOpenNodeModalRequest();
   };

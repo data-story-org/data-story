@@ -10,15 +10,16 @@ import DiagramJsonControl from '../controls/DiagramJsonControl';
 import ConfigControl from '../controls/ConfigControl';
 import AddNodeControl from '../controls/AddNodeControl';
 import TokensControl from '../controls/TokensControl';
+import { withLoadingProps } from '../../utils/isLoadingHOC';
 import { Store } from '../../store';
 
 import ToolbarInspectables from './ToolbarInspectables';
 
-interface Props {
+interface Props extends withLoadingProps {
   store: Store;
 }
 
-const Toolbar: FC<Props> = ({ store }) => {
+const Toolbar: FC<Props> = ({ store, setLoading }) => {
   // this.state = {
   //   progressTick: 0,
   // }
@@ -57,7 +58,7 @@ const Toolbar: FC<Props> = ({ store }) => {
         <ConfigControl store={store} />
         <OpenControl store={store} />
         <SaveControl store={store} />
-        <RunControl store={store} />
+        <RunControl store={store} setLoading={setLoading} />
         {/* <TokensControl  />
                     <LogControl  /> */}
         <AddNodeControl store={store} />

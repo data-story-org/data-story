@@ -45,11 +45,6 @@ const AddNodeControl: FC<Props> = ({ store }) => {
 
   const [isOpen, setIsOpen] = useState(false);
 
-  const onClick = () => {
-    store.diagram.engine.model.setLocked(true);
-    setIsOpen(true);
-  };
-
   // shift+plus
   useHotkeys('*', (e) => {
     if (e.key === '+') {
@@ -66,25 +61,13 @@ const AddNodeControl: FC<Props> = ({ store }) => {
     }
   });
 
-  /* useHotkeys('num_add', () => {
-   *   onClick();
-   * }); */
-
-  // Unneeded?
-  // const renderIcon = () => {
-  //   return (
-  //     <span
-  //       title={this.title}
-  //       className={this.style()}
-  //       onClick={this.onClick.bind(this)}
-  //     >
-  //       <i className={this.icon}></i>
-  //     </span>
-  //   );
-  // }
+  const onClick = () => {
+    store.setDiagramLocked(true);
+    setIsOpen(true);
+  };
 
   const closeModal = () => {
-    store.diagram.engine.model.setLocked(false);
+    store.setDiagramLocked(false);
     setIsOpen(false);
   };
 

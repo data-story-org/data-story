@@ -6,14 +6,14 @@ export const AnimationLoader = () => {
   return (
     <div className="loading-wrapper" id="loading">
       <FadeIn>
-        <ScaleLoader color="#000000" />
+        <ScaleLoader color="lightgray" />
       </FadeIn>
     </div>
   );
 };
 
 export interface withLoadingProps {
-  setLoading: (loading: boolean) => void;
+  setLoading?: (loading: boolean) => void;
 }
 
 export const withLoading =

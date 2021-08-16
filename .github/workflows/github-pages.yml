@@ -1,0 +1,33 @@
+name: Github-Pages
+
+on:
+  push:
+    branches:
+      - master
+      - main
+    tags-ignore: ["v[0-9]+.[0-9]+.[0-9]+*"]
+
+jobs:
+  deploy_to_github_pages:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Upgrade core package
+        run: yarn upgrade @data-story-org/core
+
+      - name: Build in production environment
+        run: yarn run prod
+
+      - name: Deploy on Github Pages
+        run: |
+          git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+          yarn github-pages:deploy -u "github-actions-bot <support+actions@github.com>"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

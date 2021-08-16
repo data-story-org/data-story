@@ -65,18 +65,21 @@ const NodeSearch: FC<Props> = ({ store, onFinish }) => {
     'enter',
     (e) => {
       e.stopPropagation();
-      const nodeName = filteredNodes[cursor].name;
-      handleSelect(nodeName);
+      if (filteredNodes[cursor] !== undefined) {
+        const nodeName = filteredNodes[cursor].name;
+        handleSelect(nodeName);
+      }
     },
     { enableOnTags: ['INPUT'] },
   );
 
   useEffect(() => {
-    store.diagram.engine.model.setLocked(true);
     nameInput.current.focus();
   }, []);
 
   const searchChange = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
     setSearch(e.target.value);
     setCursor(0);
 

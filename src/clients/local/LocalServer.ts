@@ -11,6 +11,11 @@ export class LocalServer extends Server {
     return bootPayload;
   }
 
+	load(name: string): string {
+    // @ts-ignore
+    return JSON.parse(localStorage.getItem(name));
+	}
+
   async save(name: string, model: DiagramModel) {
     // @ts-ignore
     localStorage.setItem(name, model.toJson());
