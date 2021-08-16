@@ -1,19 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { cloneDeep } from 'lodash';
-import {
-  DefaultPortModel,
-  NodeModel as DefaultNodeModel,
-} from '@projectstorm/react-diagrams';
-
 import { observer } from 'mobx-react-lite';
 import { useHotkeys } from 'react-hotkeys-hook';
-import NodeWidgetModalHeader from './NodeWidgetHeader';
-import NodeWidgetModalBody from './NodeWidgetBody';
+
+import PortModel from '../../../diagram/models/PortModel';
 import NodeWidgetModalActions from './NodeWidgetActions';
+import NodeWidgetModalBody from './NodeWidgetBody';
 import NodeWidgetModalEditableInPorts from './NodeWidgetEditableInPorts';
 import NodeWidgetModalEditableOutPorts from './NodeWidgetEditableOutPorts';
-import PortModel from '../../../diagram/models/PortModel';
-import { renameKey } from '../../../utils';
+import NodeWidgetModalHeader from './NodeWidgetHeader';
 
 // TODO make NodeWidgetModal definitely-typed
 /* interface Props {
@@ -31,6 +26,11 @@ const NodeWidgetModal = ({
     cloneDeep(node.parameters),
   );
 
+  // const hasPorts = useCallback(() => {
+  //   const isPort = (param) => param.fieldType === 'Port';
+  //   return node.parameters.some(isPort);
+  // }, []);
+
   useHotkeys(
     'enter',
     (e) => {
@@ -46,7 +46,7 @@ const NodeWidgetModal = ({
           ? ['INPUT']
           : [''],
     },
-    [node.ports, node.options.ports, store],
+    [node.ports, node.options.ports],
   );
 
   useEffect(() => {
@@ -73,7 +73,7 @@ const NodeWidgetModal = ({
 
     const autoSaveTimer = setTimeout(() => {
       handleSave(true)(null);
-    }, 1500);
+    }, 500);
 
     return () => clearTimeout(autoSaveTimer);
   }, [node.parameter]);
@@ -121,7 +121,10 @@ const NodeWidgetModal = ({
     );
     parameter['value'] = {
       ...values,
-      [key + 1]: param.defaultValue,
+      [key + 1]:
+        param.fieldType === 'Port'
+          ? ''
+          : param.defaultValue,
     };
 
     setParameters([...parameters]);
@@ -154,8 +157,6 @@ const NodeWidgetModal = ({
         parent: node,
       }),
     );
-
-    forceUpdate();
   };
 
   const handlePortsUpdate = (param) => {
@@ -164,10 +165,7 @@ const NodeWidgetModal = ({
     if (param.isRepeatable) {
       param['value'].forEach((value) => {
         portsNames = Object.keys(node.ports);
-        if (
-          !portsNames.includes(value) &&
-          value !== param.defaultValue
-        ) {
+        if (!portsNames.includes(value)) {
           addPort(value);
         }
       });
@@ -198,12 +196,13 @@ const NodeWidgetModal = ({
         return parameter;
       },
     );
-    node.parameters = updatedParameters;
 
+    forceUpdate();
     store.diagram.engine.repaintCanvas();
     if (!semi) {
       closeModal();
     }
+    node.parameters = updatedParameters;
   };
 
   const handleCancel = (_e) => {
