@@ -1,4 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, {
+  useEffect,
+  useState,
+  useCallback,
+} from 'react';
 import { cloneDeep } from 'lodash';
 import { observer } from 'mobx-react-lite';
 import { useHotkeys } from 'react-hotkeys-hook';
@@ -26,10 +30,10 @@ const NodeWidgetModal = ({
     cloneDeep(node.parameters),
   );
 
-  // const hasPorts = useCallback(() => {
-  //   const isPort = (param) => param.fieldType === 'Port';
-  //   return node.parameters.some(isPort);
-  // }, []);
+  const hasPorts = useCallback(() => {
+    const isPort = (param) => param.fieldType === 'Port';
+    return node.parameters.some(isPort);
+  }, []);
 
   useHotkeys(
     'enter',
@@ -40,13 +44,9 @@ const NodeWidgetModal = ({
     {
       filter: (e) => e.target.type !== 'textarea',
       filterPreventDefault: false,
-      enableOnTags:
-        node.options.ports.length ===
-        Object.keys(node.ports).length
-          ? ['INPUT']
-          : [''],
+      enableOnTags: hasPorts() ? [''] : ['INPUT'],
     },
-    [node.ports, node.options.ports],
+    [hasPorts],
   );
 
   useEffect(() => {
