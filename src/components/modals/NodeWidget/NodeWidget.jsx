@@ -6,6 +6,7 @@ import React, {
 import { cloneDeep } from 'lodash';
 import { observer } from 'mobx-react-lite';
 import { useHotkeys } from 'react-hotkeys-hook';
+import { repeatableConverter } from '@data-story-org/core';
 
 import PortModel from '../../../diagram/models/PortModel';
 import NodeWidgetModalActions from './NodeWidgetActions';
@@ -184,21 +185,19 @@ const NodeWidgetModal = ({
   };
 
   const handleSave = (semi) => (_e) => {
-    const updatedParameters = parameters.map(
-      (parameter) => {
-        if (parameter.isRepeatable) {
-          parameter.repeatableConverter();
-        }
+    const updatedParameters = parameters.map((param) => {
+      if (param.isRepeatable) {
+        param.value = repeatableConverter(param.value);
+      }
 
-        if (!semi) {
-          if (parameter.fieldType === 'Port') {
-            handlePortsUpdate(parameter);
-          }
+      if (!semi) {
+        if (param.fieldType === 'Port') {
+          handlePortsUpdate(param);
         }
+      }
 
-        return parameter;
-      },
-    );
+      return param;
+    });
     node.parameters = updatedParameters;
 
     if (!semi) {
