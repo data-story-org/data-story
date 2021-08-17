@@ -1,8 +1,4 @@
-import React, {
-  useEffect,
-  useState,
-  useCallback,
-} from 'react';
+import React, { useEffect, useState } from 'react';
 import { cloneDeep } from 'lodash';
 import { observer } from 'mobx-react-lite';
 import { useHotkeys } from 'react-hotkeys-hook';
@@ -16,10 +12,10 @@ import NodeWidgetModalEditableOutPorts from './NodeWidgetEditableOutPorts';
 import NodeWidgetModalHeader from './NodeWidgetHeader';
 
 // TODO make NodeWidgetModal definitely-typed
-/* interface Props {
- *   node: NodeModel;
- *   closeModal: () => void;
- * } */
+// interface Props {
+//   node: NodeModel;
+//   closeModal: () => void;
+// }
 
 const NodeWidgetModal = ({
   node,
@@ -31,11 +27,6 @@ const NodeWidgetModal = ({
     cloneDeep(node.parameters),
   );
 
-  const hasPorts = useCallback(() => {
-    const isPort = (param) => param.fieldType === 'Port';
-    return node.parameters.some(isPort);
-  }, []);
-
   useHotkeys(
     'enter',
     (e) => {
@@ -45,9 +36,8 @@ const NodeWidgetModal = ({
     {
       filter: (e) => e.target.type !== 'textarea',
       filterPreventDefault: false,
-      enableOnTags: hasPorts() ? [''] : ['INPUT'],
+      enableOnTags: ['INPUT'],
     },
-    [hasPorts],
   );
 
   useEffect(() => {
@@ -171,6 +161,7 @@ const NodeWidgetModal = ({
         }
       });
     } else {
+      const value = param.value;
       if (!portsNames.includes(value)) {
         addPort(value);
       }
@@ -181,6 +172,7 @@ const NodeWidgetModal = ({
     if (portName in node.ports) {
       const port = node.getPort(portName);
       node.removePortAndLinks(port);
+      store.diagram.engine.repaintCanvas();
     }
   };
 
@@ -231,7 +223,7 @@ const NodeWidgetModal = ({
     // );
 
     // e.target.value = '';
-    console.log('useles');
+    console.log('useless');
 
     // forceUpdate();
   };
