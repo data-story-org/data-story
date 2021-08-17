@@ -20,7 +20,6 @@ import NodeWidgetModalHeader from './NodeWidgetHeader';
 const NodeWidgetModal = ({
   node,
   closeModal,
-  forceUpdate,
   store,
 }) => {
   const [parameters, setParameters] = useState(
@@ -194,7 +193,6 @@ const NodeWidgetModal = ({
 
     if (!semi) {
       closeModal();
-      forceUpdate();
       store.diagram.engine.repaintCanvas();
     }
   };
