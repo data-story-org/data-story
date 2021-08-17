@@ -22,10 +22,6 @@ import NodeWidgetModal from '../../modals/NodeWidget';
 
 const NodeWidget = ({ engine, node, store }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [_ignored, forceUpdate] = useReducer(
-    (x) => x + 1,
-    0,
-  );
 
   const open = () => {
     store.setDiagramLocked(true);
@@ -77,7 +73,6 @@ const NodeWidget = ({ engine, node, store }) => {
         <NodeWidgetModal
           node={node}
           closeModal={closeModal}
-          forceUpdate={forceUpdate}
           store={store}
         />
       </Modal>
