@@ -1051,8 +1051,8 @@
 
 "@data-story-org/core@data-story-org/core#master":
   version "0.0.3"
-  uid "279fe53904a0e9756c37860daa2818f5137fe4ab"
-  resolved "https://codeload.github.com/data-story-org/core/tar.gz/279fe53904a0e9756c37860daa2818f5137fe4ab"
+  uid "43d916723723c82c1512caaf9597c8499255a540"
+  resolved "https://codeload.github.com/data-story-org/core/tar.gz/43d916723723c82c1512caaf9597c8499255a540"
   dependencies:
     axios "^0.21.1"
     laravel-mix "^6.0.27"
