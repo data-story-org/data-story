@@ -1,6 +1,6 @@
 import React, { useState, useReducer } from 'react';
 import Modal from 'react-modal';
-import { modalStyle } from '@data-story-org/core';
+import { modalStyle } from '../../../utils/modalStyle';
 import { withStore } from '../../../store';
 
 import NodeWidgetHeader from './NodeHeader';

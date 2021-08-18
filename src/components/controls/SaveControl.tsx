@@ -2,9 +2,9 @@ import React, { FC, useState } from 'react';
 import { observer } from 'mobx-react-lite';
 import { useHotkeys } from 'react-hotkeys-hook';
 import Modal from 'react-modal';
+import { modalStyle } from '../../utils/modalStyle';
 
 import BaseControl from './BaseControl';
-import { modalStyle } from '@data-story-org/core';
 import SaveModal from '../modals/Save';
 import { Store } from '../../store';
 

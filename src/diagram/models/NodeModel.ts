@@ -4,8 +4,7 @@ import {
 } from '@projectstorm/react-diagrams';
 import { BasePositionModelOptions } from '@projectstorm/react-canvas-core';
 import PortModel from './PortModel';
-import { UID } from '@data-story-org/core';
-import { pickBy } from '@data-story-org/core';
+import { UID, pickBy } from '@data-story-org/core/utils';
 import { NodeParameter } from '@data-story-org/core';
 import { SerializedNodeModel } from '../../types/SerializedNodeModel';
 import { ReactNode } from 'react';
