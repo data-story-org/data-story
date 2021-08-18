@@ -21,8 +21,14 @@ jobs:
       - name: Upgrade core package
         run: yarn upgrade @data-story-org/core
 
+      - name: Debug ls
+        run: ls
+
       - name: Build in production environment
         run: yarn run prod
+
+      - name: Debug ls 2
+        run: ls
 
       - name: Commit changes
         uses: stefanzweifel/git-auto-commit-action@v4
