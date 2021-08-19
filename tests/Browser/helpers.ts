@@ -33,7 +33,10 @@ export const sleep = (ms: number) => {
   return new Promise((resolve) => setTimeout(resolve, ms));
 };
 
-export const addNode = async (nodeName: string, page: Page) => {
+export const addNode = async (
+  nodeName: string,
+  page: Page,
+) => {
   await expect(page).toClick('span#add-node');
   await page.waitForSelector('input#node-search', {
     visible: true,
@@ -45,7 +48,6 @@ export const addNode = async (nodeName: string, page: Page) => {
     visible: true,
   });
 };
-
 
 export const generateRandomString = () => {
   return Math.random().toString(36).substring(7);
