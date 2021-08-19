@@ -53,7 +53,7 @@ describe('Dynamic ports', () => {
 
     await expect(page).toMatch(randomValue1);
     await expect(page).toMatch(randomValue2);
-  }, 100000);
+  }, 50000);
 
   afterAll(() => browser.close());
 });
