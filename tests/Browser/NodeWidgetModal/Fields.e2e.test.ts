@@ -7,17 +7,11 @@ import {
   sleep,
   addNode,
   generateRandomString,
+  repeatablesLength,
 } from '../helpers';
 import { sample } from 'lodash';
 
 setDefaultOptions({ timeout: 0 });
-
-const repeatableRowSelector = '.flex.flex-row.space-x-1';
-
-const repeatablesLength = async (el) => {
-  const repeatables = await el.$$(repeatableRowSelector);
-  return repeatables.length;
-};
 
 describe('Fields', () => {
   let browser;

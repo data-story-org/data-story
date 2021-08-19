@@ -48,3 +48,11 @@ export const addNode = async (nodeName: string, page) => {
 export const generateRandomString = () => {
   return Math.random().toString(36).substring(7);
 };
+
+export const repeatableRowSelector =
+  '.flex.flex-row.space-x-1';
+
+export const repeatablesLength = async (el) => {
+  const repeatables = await el.$$(repeatableRowSelector);
+  return repeatables.length;
+};
