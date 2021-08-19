@@ -30,17 +30,30 @@ describe('Dynamic ports', () => {
     await addNode(node, page);
 
     await page.keyboard.press('Enter');
-    await page.waitForSelector('#node-modal', {
-      visible: true,
-    });
+    const modal = await expect(page).toMatchElement(
+      '#node-modal',
+    );
 
-    await page.focus(`input[value="port"]`);
-    const newName = generateRandomString();
-    await page.keyboard.type(newName);
+    const randomValue1 = generateRandomString();
+    const randomValue2 = generateRandomString();
+
+    await expect(page).toFill(
+      'input[placeholder="port"][value="port"]',
+      randomValue1,
+    );
+
+    await expect(modal).toClick('span', { text: '+' });
+    expect(await repeatablesLength(modal)).toBe(2);
+
+    await expect(page).toFill(
+      'input[placeholder="port"][value=""]',
+      randomValue2,
+    );
     await page.keyboard.press('Enter');
 
-    await expect(page).toMatch(newName);
-  });
+    await expect(page).toMatch(randomValue1);
+    await expect(page).toMatch(randomValue2);
+  }, 100000);
 
   afterAll(() => browser.close());
 });
