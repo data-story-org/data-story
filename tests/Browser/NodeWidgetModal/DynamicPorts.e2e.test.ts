@@ -61,13 +61,14 @@ describe('Dynamic ports', () => {
       '#node-modal',
     );
 
+    // Delete first port
     await expect(modal).toClick('span', { text: '-' });
     expect(await repeatablesLength(modal)).toBe(1);
     await page.keyboard.press('Enter');
 
     await expect(page).not.toMatch(randomValue1);
     await expect(page).toMatch(randomValue2);
-  });
+  }, 50000);
 
   afterAll(() => browser.close());
 });
