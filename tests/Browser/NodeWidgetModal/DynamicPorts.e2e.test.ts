@@ -19,6 +19,9 @@ describe('Dynamic ports', () => {
 
   const possibleNodesNames = ['Filter'];
 
+  const randomValue1 = generateRandomString();
+  const randomValue2 = generateRandomString();
+
   beforeAll(async () => {
     browser = await puppeteer.launch(puppeteerConfig);
     page = await browser.newPage();
@@ -33,9 +36,6 @@ describe('Dynamic ports', () => {
     const modal = await expect(page).toMatchElement(
       '#node-modal',
     );
-
-    const randomValue1 = generateRandomString();
-    const randomValue2 = generateRandomString();
 
     await expect(page).toFill(
       'input[placeholder="port"][value="port"]',
@@ -54,6 +54,20 @@ describe('Dynamic ports', () => {
     await expect(page).toMatch(randomValue1);
     await expect(page).toMatch(randomValue2);
   }, 50000);
+
+  test('Dynamic ports can be removed', async () => {
+    await page.keyboard.press('Enter');
+    const modal = await expect(page).toMatchElement(
+      '#node-modal',
+    );
+
+    await expect(modal).toClick('span', { text: '-' });
+    expect(await repeatablesLength(modal)).toBe(1);
+    await page.keyboard.press('Enter');
+
+    await expect(page).not.toMatch(randomValue1);
+    await expect(page).toMatch(randomValue2);
+  });
 
   afterAll(() => browser.close());
 });
