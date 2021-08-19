@@ -74,7 +74,7 @@ describe('Dynamic ports', () => {
     await expect(page).toMatch(randomValue1);
     await expect(page).toMatch(randomValue2);
 
-    await page.keyboard.press('Enter');
+    await expect(page).toClick('span', { text: node });
     const modal = await expect(page).toMatchElement(
       '#node-modal',
     );
@@ -88,7 +88,7 @@ describe('Dynamic ports', () => {
 
     await expect(page).not.toMatch(randomValue1);
     await expect(page).not.toMatch(randomValue2);
-  }, 200000);
+  }, 100000);
 
   afterEach(() => browser.close());
 });
