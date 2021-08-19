@@ -1,11 +1,11 @@
-import puppeteer from 'puppeteer';
 import 'expect-puppeteer';
 import { setDefaultOptions } from 'expect-puppeteer';
+import puppeteer from 'puppeteer';
 import {
-  puppeteerConfig,
-  pageSetup,
-  sleep,
   addNode,
+  pageSetup,
+  puppeteerConfig,
+  sleep,
 } from './helpers';
 
 setDefaultOptions({ timeout: 0 });

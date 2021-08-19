@@ -1,15 +1,14 @@
-import puppeteer from 'puppeteer';
 import 'expect-puppeteer';
 import { setDefaultOptions } from 'expect-puppeteer';
+import { sample } from 'lodash';
+import puppeteer from 'puppeteer';
 import {
-  puppeteerConfig,
-  pageSetup,
-  sleep,
   addNode,
   generateRandomString,
+  pageSetup,
+  puppeteerConfig,
   repeatablesLength,
 } from '../helpers';
-import { sample } from 'lodash';
 
 setDefaultOptions({ timeout: 0 });
 
