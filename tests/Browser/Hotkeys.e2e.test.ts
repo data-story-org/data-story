@@ -1,18 +1,18 @@
-import puppeteer from 'puppeteer';
 import 'expect-puppeteer';
 import { setDefaultOptions } from 'expect-puppeteer';
+import puppeteer from 'puppeteer';
 import {
-  puppeteerConfig,
-  pageSetup,
-  sleep,
   addNode,
+  pageSetup,
+  puppeteerConfig,
+  sleep,
 } from './helpers';
 
 setDefaultOptions({ timeout: 0 });
 
 describe('Hotkeys', () => {
-  let browser;
-  let page;
+  let browser: puppeteer.Browser;
+  let page: puppeteer.Page;
 
   beforeAll(async () => {
     browser = await puppeteer.launch(puppeteerConfig);
@@ -100,6 +100,22 @@ describe('Hotkeys', () => {
     await page.keyboard.up('Shift');
     await expect(page).not.toMatch('No data to show here');
   }, 200000);
+
+  test('[SHIFT + O] show open story modal', async () => {
+    await page.keyboard.down('Shift');
+    await page.keyboard.press('KeyO');
+    await page.keyboard.up('Shift');
+
+    await expect(page).toMatch('open');
+  }, 50000);
+
+  test('[SHIFT + S] show save story modal', async () => {
+    await page.keyboard.down('Shift');
+    await page.keyboard.press('KeyS');
+    await page.keyboard.up('Shift');
+
+    await expect(page).toMatch('save');
+  }, 50000);
 
   afterAll(() => browser.close());
 });

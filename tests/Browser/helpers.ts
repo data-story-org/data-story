@@ -1,4 +1,5 @@
 import 'expect-puppeteer';
+import { Page } from 'puppeteer';
 
 export const puppeteerConfig = {
   // product: 'firefox',
@@ -32,7 +33,10 @@ export const sleep = (ms: number) => {
   return new Promise((resolve) => setTimeout(resolve, ms));
 };
 
-export const addNode = async (nodeName: string, page) => {
+export const addNode = async (
+  nodeName: string,
+  page: Page,
+) => {
   await expect(page).toClick('span#add-node');
   await page.waitForSelector('input#node-search', {
     visible: true,
@@ -47,4 +51,12 @@ export const addNode = async (nodeName: string, page) => {
 
 export const generateRandomString = () => {
   return Math.random().toString(36).substring(7);
+};
+
+export const repeatableRowSelector =
+  '.flex.flex-row.space-x-1';
+
+export const repeatablesLength = async (el) => {
+  const repeatables = await el.$$(repeatableRowSelector);
+  return repeatables.length;
 };
