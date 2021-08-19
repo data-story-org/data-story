@@ -76,7 +76,6 @@ describe('Dynamic ports', () => {
 
     await expect(page).toClick('span', {
       text: node,
-      button: 'right',
       clickCount: 2,
     });
     const modal = await expect(page).toMatchElement(
