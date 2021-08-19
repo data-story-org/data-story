@@ -11,8 +11,8 @@ import {
 setDefaultOptions({ timeout: 0 });
 
 describe('Hotkeys', () => {
-  let browser;
-  let page;
+  let browser: puppeteer.Browser;
+  let page: puppeteer.Page;
 
   beforeAll(async () => {
     browser = await puppeteer.launch(puppeteerConfig);

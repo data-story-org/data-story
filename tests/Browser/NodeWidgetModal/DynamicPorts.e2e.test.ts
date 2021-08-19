@@ -14,8 +14,8 @@ import { sample } from 'lodash';
 setDefaultOptions({ timeout: 0 });
 
 describe('Dynamic ports', () => {
-  let browser;
-  let page;
+  let browser: puppeteer.Browser;
+  let page: puppeteer.Page;
 
   const possibleNodesNames = ['Filter'];
 
