@@ -63,6 +63,11 @@ const App: FC<withLoadingProps> = ({ setLoading }) => {
     },
   );
 
+  useHotkeys('left', (key) => {
+		const direction = {x: -1, y: 0}
+    store.navigateDiagram(direction)
+  });
+
   useEffect(() => {
     boot();
     registerExitConfirmation();

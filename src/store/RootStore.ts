@@ -50,6 +50,7 @@ export class Store {
       clearResults: action.bound,
       increaseNodeSerial: action.bound,
       goToInspector: action.bound,
+			navigateDiagram: action.bound,
       openNodeModal: action.bound,
       refreshDiagram: action.bound,
       resetOpenNodeModalRequest: action.bound,
@@ -183,6 +184,32 @@ export class Store {
       type: 'success',
     });
   }
+	
+	navigateDiagram(direction: {x: number, y: number}) {
+		
+		const selection = this.diagram.engine.model.getSelectedEntities()
+
+		if (selection.length !== 1 || !(selection[0] instanceof NodeModel)) return
+
+		const current = selection[0]
+		const currentPosition = current.getPosition()
+
+		this.diagram.engine.model.clearSelection()
+		
+		const candidates = this.diagram.engine.model.getNodes().filter(candidate => candidate.options.id != current.options.id)
+
+		const sorted = candidates.sort((n1, n2) => {
+			const distanceN1 = (n1.getPosition().x - currentPosition.x) * direction.x 
+			const distanceN2 = (n2.getPosition().x - currentPosition.x) * direction.x 
+
+			if(distanceN1 > distanceN2) return 1;
+			if(distanceN1 < distanceN2) return -1;
+		})
+
+		if(sorted.length) {
+			sorted[0].setSelected(true)
+		}
+	}
 
   setDiagramLocked(locked: boolean) {
     this.diagram.engine.model.setLocked(locked);
