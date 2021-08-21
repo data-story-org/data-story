@@ -1,17 +1,13 @@
 import React from 'react';
 
-const String_ = ({
-  options,
-  handleChange,
-  repeatableValue,
-}) => {
+const String_ = ({options, handleChange}) => {
   return (
     <input
       key={`${options.name}`}
       onChange={handleChange}
       className="p-2 rounded"
-      value={repeatableValue ?? options.value}
-			placeholder={options.placeholder ?? 'hehehehe'}
+      value={options.value}
+			placeholder={options.placeholder ?? ''}
     />
   );
 };

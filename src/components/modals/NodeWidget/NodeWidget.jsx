@@ -223,7 +223,7 @@ const NodeWidgetModal = ({
 
     // forceUpdate();
   };
-
+	
   return (
     <div id="node-modal">
       <NodeWidgetModalHeader

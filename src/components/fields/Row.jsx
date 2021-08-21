@@ -2,16 +2,12 @@ import React from 'react';
 
 import { fields } from './Field';
 
-const Row = ({
-  options,
-  handleChange,
-  repeatableValue,
-}) => {
+const Row = ({options, handleChange}) => {
   const handleRowChange = (param) => (e) => {
     const value = {
-      ...repeatableValue,
+      ...options.value,
       [param.name]: {
-        ...repeatableValue[param.name],
+        ...options.value[param.name],
         value: e.target.value,
       },
     };
@@ -21,17 +17,14 @@ const Row = ({
 
   return (
     <>
-      {Object.values(repeatableValue).map((p, i) => {
+      {Object.values(options.value).map((p, i) => {
         const Field = fields[p.fieldType];
 
         return (
           <div key={`field-${p.name}-${i}`}>
             <Field
-              options={options}
+              options={{options, value: options.value[i]}}
               handleChange={handleRowChange(p)}
-              repeatableValue={
-                repeatableValue[p.name]['value']
-              }
             />
           </div>
         );

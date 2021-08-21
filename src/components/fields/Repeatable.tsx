@@ -30,9 +30,7 @@ const withRepeatable =
 
     const handleRemoveButtonPress =
       (key: number) => (e) => {
-        /* setFieldsCount(fieldsCount - 1); */
-
-        handleRepeatableRemove(key);
+				handleRepeatableRemove(key);
       };
 
     return (
@@ -45,9 +43,8 @@ const withRepeatable =
                 className="flex flex-row rounded-lg bg-transparent space-x-1"
               >
                 <Field
-                  options={options}
+                  options={{...options, value: options.value[i]}}
                   handleChange={handleChangeWrapper(i)}
-                  repeatableValue={options.value[i]}
                 />
 
                 <Button
