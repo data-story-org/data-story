@@ -5,7 +5,7 @@ import React, {
   useRef,
 } from 'react';
 import { observer } from 'mobx-react-lite';
-import { cloneDeep } from 'lodash';
+import cloneDeep from 'lodash/cloneDeep';
 import { Store } from '../../../store/';
 import NodeListItem from './NodeListItem';
 import { useHotkeys } from 'react-hotkeys-hook';

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { cloneDeep } from 'lodash';
+import cloneDeep from 'lodash/cloneDeep';
 import { observer } from 'mobx-react-lite';
 import { useHotkeys } from 'react-hotkeys-hook';
 import { repeatableConverter } from '@data-story-org/core';
@@ -15,11 +15,7 @@ import NodeWidgetModalHeader from './NodeWidgetHeader';
 //   closeModal: () => void;
 // }
 
-const NodeWidgetModal = ({
-  node,
-  closeModal,
-  store,
-}) => {
+const NodeWidgetModal = ({ node, closeModal, store }) => {
   const [parameters, setParameters] = useState(
     cloneDeep(node.parameters),
   );
