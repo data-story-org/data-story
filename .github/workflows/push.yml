@@ -46,3 +46,6 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Apply formatting changes
+          push_options: '--force'
+          status_options: '--untracked-files=no'
+          skip_dirty_check: true
