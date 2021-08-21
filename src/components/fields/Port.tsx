@@ -2,11 +2,7 @@ import React, { useCallback } from 'react';
 
 import { fields } from './Field';
 
-const Port = ({
-  options,
-  handleChange,
-  repeatableValue,
-}) => {
+const Port = ({options, handleChange}) => {
   const Field = useCallback(
     fields[options.wrappedPortType],
     [],
@@ -16,7 +12,6 @@ const Port = ({
     <Field
       options={options}
       handleChange={handleChange}
-      repeatableValue={repeatableValue}
     />
   );
 };

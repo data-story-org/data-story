@@ -1,5 +1,4 @@
-import React, { FC } from 'react';
-import { NodeModelOptions } from '../../diagram/models/NodeModel';
+import React from 'react';
 
 // TODO Make JS field definitely typed
 /* interface Props {
@@ -7,7 +6,7 @@ import { NodeModelOptions } from '../../diagram/models/NodeModel';
  *   handleChange: (e: any, o: NodeModelOptions) => void;
  * } */
 
-const JS = ({ options, handleChange, repeatableValue }) => {
+const JS = ({ options, handleChange }) => {
   return (
     <>
       {/* REPLACE WITH SOME EDITOR! */}
@@ -15,7 +14,7 @@ const JS = ({ options, handleChange, repeatableValue }) => {
         key={`${options.name}`}
         onChange={handleChange}
         className="px-2 py-1 rounded h-64"
-        value={repeatableValue ?? options.value}
+        value={options.value}
       />
     </>
   );
