@@ -2,7 +2,7 @@ import React from 'react';
 
 import { fields } from './Field';
 
-const Row = ({options, handleChange}) => {
+const Row = ({ options, handleChange }) => {
   const handleRowChange = (param) => (e) => {
     const value = {
       ...options.value,
@@ -23,7 +23,7 @@ const Row = ({options, handleChange}) => {
         return (
           <div key={`field-${p.name}-${i}`}>
             <Field
-              options={{options, value: options.value[i]}}
+              options={{ options, value: p.value }}
               handleChange={handleRowChange(p)}
             />
           </div>
