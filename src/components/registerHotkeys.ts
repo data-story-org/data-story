@@ -1,7 +1,8 @@
 import { useHotkeys } from 'react-hotkeys-hook';
 import NodeModel from '../diagram/models/NodeModel';
+import { Store } from '../store';
 
-export const registerHotkeys = (store): void => {
+export const registerHotkeys = (store: Store): void => {
   useHotkeys('shift+d', () => {
     store.setPage('Workbench');
   });
@@ -40,12 +41,12 @@ export const registerHotkeys = (store): void => {
   );
 
   useHotkeys('left', () => {
-		const direction = {x: -1, y: 0}
-    store.navigateDiagram(direction)
+    const direction = { x: -1, y: 0 };
+    store.navigateDiagram(direction);
   });
 
   useHotkeys('right', () => {
-		const direction = {x: 1, y: 0}
-    store.navigateDiagram(direction)
-  });	
-}
+    const direction = { x: 1, y: 0 };
+    store.navigateDiagram(direction);
+  });
+};

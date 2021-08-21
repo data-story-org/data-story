@@ -50,7 +50,7 @@ export class Store {
       clearResults: action.bound,
       increaseNodeSerial: action.bound,
       goToInspector: action.bound,
-			navigateDiagram: action.bound,
+      navigateDiagram: action.bound,
       openNodeModal: action.bound,
       refreshDiagram: action.bound,
       resetOpenNodeModalRequest: action.bound,
@@ -184,44 +184,59 @@ export class Store {
       type: 'success',
     });
   }
-	
-	navigateDiagram(direction: {x: number, y: number}): void {
-		
-		const selection = this.diagram.engine.model.getSelectedEntities()
 
-		if (selection.length !== 1 || !(selection[0] instanceof NodeModel)) return
+  navigateDiagram(direction: {
+    x: number;
+    y: number;
+  }): void {
+    const selection =
+      this.diagram.engine.model.getSelectedEntities();
 
-		const current = selection[0]
-		const currentPosition = current.getPosition()
-		
-		const getOffset = (n1: NodeModel,n2: NodeModel) => {
-			return {
-				x: n1.getPosition().x - n2.getPosition().x,
-				y: n1.getPosition().y - n2.getPosition().y
-			}
-		}
-		const candidates = this.diagram.engine.model.getNodes().filter(candidate => {
-			// self is not a candidate!
-			if (candidate.options.id === current.options.id) return false
-			// must be in the correct direction
-			const offset = getOffset(candidate, current)
-			if(Math.sign(offset.x) !== Math.sign(direction.x)) return false
-			return true
-		})
+    if (
+      selection.length !== 1 ||
+      !(selection[0] instanceof NodeModel)
+    )
+      return;
 
-		const sorted = candidates.sort((n1, n2) => {
-			const distanceN1 = (n1.getPosition().x - currentPosition.x) * direction.x 
-			const distanceN2 = (n2.getPosition().x - currentPosition.x) * direction.x 
+    const current = selection[0];
+    const currentPosition = current.getPosition();
 
-			if(distanceN1 > distanceN2) return 1;
-			if(distanceN1 < distanceN2) return -1;
-		})
+    const getOffset = (n1: NodeModel, n2: NodeModel) => {
+      return {
+        x: n1.getPosition().x - n2.getPosition().x,
+        y: n1.getPosition().y - n2.getPosition().y,
+      };
+    };
+    const candidates = this.diagram.engine.model
+      .getNodes()
+      .filter((candidate) => {
+        // self is not a candidate!
+        if (candidate.options.id === current.options.id)
+          return false;
+        // must be in the correct direction
+        const offset = getOffset(candidate, current);
+        if (Math.sign(offset.x) !== Math.sign(direction.x))
+          return false;
+        return true;
+      });
 
-		if(sorted.length) {
-			this.diagram.engine.model.clearSelection()
-			sorted[0].setSelected(true)
-		}
-	}
+    const sorted = candidates.sort((n1, n2) => {
+      const distanceN1 =
+        (n1.getPosition().x - currentPosition.x) *
+        direction.x;
+      const distanceN2 =
+        (n2.getPosition().x - currentPosition.x) *
+        direction.x;
+
+      if (distanceN1 > distanceN2) return 1;
+      if (distanceN1 < distanceN2) return -1;
+    });
+
+    if (sorted.length) {
+      this.diagram.engine.model.clearSelection();
+      sorted[0].setSelected(true);
+    }
+  }
 
   setDiagramLocked(locked: boolean) {
     this.diagram.engine.model.setLocked(locked);
