@@ -7,8 +7,6 @@ import { repeatableConverter } from '@data-story-org/core';
 import PortModel from '../../../diagram/models/PortModel';
 import NodeWidgetModalActions from './NodeWidgetActions';
 import NodeWidgetModalBody from './NodeWidgetBody';
-import NodeWidgetModalEditableInPorts from './NodeWidgetEditableInPorts';
-import NodeWidgetModalEditableOutPorts from './NodeWidgetEditableOutPorts';
 import NodeWidgetModalHeader from './NodeWidgetHeader';
 
 // TODO make NodeWidgetModal definitely-typed
@@ -221,7 +219,7 @@ const NodeWidgetModal = ({ node, closeModal, store }) => {
 
     // forceUpdate();
   };
-
+	
   return (
     <div id="node-modal">
       <NodeWidgetModalHeader
@@ -234,16 +232,6 @@ const NodeWidgetModal = ({ node, closeModal, store }) => {
         handleRepeatableChange={handleRepeatableChange}
         handleRepeatableAdd={handleRepeatableAdd}
         handleRepeatableRemove={handleRepeatableRemove}
-      />
-      <NodeWidgetModalEditableInPorts
-        node={node}
-        editExistingPort={editExistingPort}
-        saveNewInPort={saveNewInPort}
-      />
-      <NodeWidgetModalEditableOutPorts
-        node={node}
-        editExistingPort={editExistingPort}
-        saveNewOutPort={saveNewOutPort}
       />
       <NodeWidgetModalActions
         handleCancel={handleCancel}
