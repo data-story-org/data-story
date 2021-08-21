@@ -22653,6 +22653,13 @@ var App = function App(_ref) {
     };
     store.navigateDiagram(direction);
   });
+  (0,react_hotkeys_hook__WEBPACK_IMPORTED_MODULE_10__.useHotkeys)('right', function (key) {
+    var direction = {
+      x: 1,
+      y: 0
+    };
+    store.navigateDiagram(direction);
+  });
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     boot();
     registerExitConfirmation();
@@ -26111,9 +26118,19 @@ var Store = /*#__PURE__*/function () {
       if (selection.length !== 1 || !(selection[0] instanceof _diagram_models_NodeModel__WEBPACK_IMPORTED_MODULE_0__.default)) return;
       var current = selection[0];
       var currentPosition = current.getPosition();
-      this.diagram.engine.model.clearSelection();
+
+      var getOffset = function getOffset(n1, n2) {
+        return {
+          x: n1.getPosition().x - n2.getPosition().x,
+          y: n1.getPosition().y - n2.getPosition().y
+        };
+      };
+
       var candidates = this.diagram.engine.model.getNodes().filter(function (candidate) {
-        return candidate.options.id != current.options.id;
+        if (candidate.options.id === current.options.id) return false;
+        var offset = getOffset(candidate, current);
+        if (Math.sign(offset.x) !== Math.sign(direction.x)) return false;
+        return true;
       });
       var sorted = candidates.sort(function (n1, n2) {
         var distanceN1 = (n1.getPosition().x - currentPosition.x) * direction.x;
@@ -26123,6 +26140,7 @@ var Store = /*#__PURE__*/function () {
       });
 
       if (sorted.length) {
+        this.diagram.engine.model.clearSelection();
         sorted[0].setSelected(true);
       }
     }

@@ -193,10 +193,21 @@ export class Store {
 
 		const current = selection[0]
 		const currentPosition = current.getPosition()
-
-		this.diagram.engine.model.clearSelection()
 		
-		const candidates = this.diagram.engine.model.getNodes().filter(candidate => candidate.options.id != current.options.id)
+		const getOffset = (n1: NodeModel,n2: NodeModel) => {
+			return {
+				x: n1.getPosition().x - n2.getPosition().x,
+				y: n1.getPosition().y - n2.getPosition().y
+			}
+		}
+		const candidates = this.diagram.engine.model.getNodes().filter(candidate => {
+			// self is not a candidate!
+			if (candidate.options.id === current.options.id) return false
+			// must be in the correct direction
+			const offset = getOffset(candidate, current)
+			if(Math.sign(offset.x) !== Math.sign(direction.x)) return false
+			return true
+		})
 
 		const sorted = candidates.sort((n1, n2) => {
 			const distanceN1 = (n1.getPosition().x - currentPosition.x) * direction.x 
@@ -207,6 +218,7 @@ export class Store {
 		})
 
 		if(sorted.length) {
+			this.diagram.engine.model.clearSelection()
 			sorted[0].setSelected(true)
 		}
 	}
