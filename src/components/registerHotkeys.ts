@@ -40,12 +40,12 @@ export const registerHotkeys = (store): void => {
   );
 
   useHotkeys('left', () => {
-		const direction = {x: -1, y: 0}
-    store.navigateDiagram(direction)
+    const direction = { x: -1, y: 0 };
+    store.navigateDiagram(direction);
   });
 
   useHotkeys('right', () => {
-		const direction = {x: 1, y: 0}
-    store.navigateDiagram(direction)
-  });	
-}
+    const direction = { x: 1, y: 0 };
+    store.navigateDiagram(direction);
+  });
+};
