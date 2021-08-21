@@ -22577,15 +22577,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Toolbar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Toolbar */ "./src/components/Toolbar/index.ts");
 /* harmony import */ var _pages_factory__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./pages/factory */ "./src/components/pages/factory.ts");
 /* harmony import */ var mobx_react_lite__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! mobx-react-lite */ "./node_modules/mobx-react-lite/es/index.js");
-/* harmony import */ var react_toastify__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! react-toastify */ "./node_modules/react-toastify/dist/react-toastify.esm.js");
+/* harmony import */ var react_toastify__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react-toastify */ "./node_modules/react-toastify/dist/react-toastify.esm.js");
 /* harmony import */ var react_toastify_dist_ReactToastify_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-toastify/dist/ReactToastify.css */ "./node_modules/react-toastify/dist/ReactToastify.css");
 /* harmony import */ var _diagram_factories_EngineFactory__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../diagram/factories/EngineFactory */ "./src/diagram/factories/EngineFactory.ts");
 /* harmony import */ var _utils_Cookie__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../utils/Cookie */ "./src/utils/Cookie.ts");
 /* harmony import */ var _store_StoreProvider__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../store/StoreProvider */ "./src/store/StoreProvider.tsx");
 /* harmony import */ var _utils_Notifications__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../utils/Notifications */ "./src/utils/Notifications.ts");
-/* harmony import */ var react_hotkeys_hook__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-hotkeys-hook */ "./node_modules/react-hotkeys-hook/dist/react-hotkeys-hook.esm.js");
-/* harmony import */ var _diagram_models_NodeModel__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../diagram/models/NodeModel */ "./src/diagram/models/NodeModel.ts");
-/* harmony import */ var _utils_isLoadingHOC__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../utils/isLoadingHOC */ "./src/utils/isLoadingHOC.tsx");
+/* harmony import */ var _utils_isLoadingHOC__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../utils/isLoadingHOC */ "./src/utils/isLoadingHOC.tsx");
+/* harmony import */ var _registerHotkeys__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./registerHotkeys */ "./src/components/registerHotkeys.ts");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -22612,7 +22611,6 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-
 var App = function App(_ref) {
   var setLoading = _ref.setLoading;
   var store = (0,_store_StoreProvider__WEBPACK_IMPORTED_MODULE_8__.useStore)();
@@ -22622,44 +22620,7 @@ var App = function App(_ref) {
       booted = _useState2[0],
       setBooted = _useState2[1];
 
-  (0,react_hotkeys_hook__WEBPACK_IMPORTED_MODULE_10__.useHotkeys)('shift+d', function () {
-    store.setPage('Workbench');
-  });
-  (0,react_hotkeys_hook__WEBPACK_IMPORTED_MODULE_10__.useHotkeys)('shift+t', function () {
-    store.setPage('Inspector');
-  });
-  (0,react_hotkeys_hook__WEBPACK_IMPORTED_MODULE_10__.useHotkeys)('shift+j', function () {
-    store.setPage('DiagramJson');
-  });
-  (0,react_hotkeys_hook__WEBPACK_IMPORTED_MODULE_10__.useHotkeys)('shift+l', function () {
-    store.setPage('Log');
-  });
-  (0,react_hotkeys_hook__WEBPACK_IMPORTED_MODULE_10__.useHotkeys)('enter', function () {
-    var selection = store.diagram.engine.model.getSelectedEntities();
-
-    if (selection.length === 1 && selection[0] instanceof _diagram_models_NodeModel__WEBPACK_IMPORTED_MODULE_11__.default) {
-      var node = selection[0];
-      store.openNodeModal(node.id);
-    }
-  }, {
-    filter: function filter() {
-      return store.diagram.engine.model.options.locked === false;
-    }
-  });
-  (0,react_hotkeys_hook__WEBPACK_IMPORTED_MODULE_10__.useHotkeys)('left', function () {
-    var direction = {
-      x: -1,
-      y: 0
-    };
-    store.navigateDiagram(direction);
-  });
-  (0,react_hotkeys_hook__WEBPACK_IMPORTED_MODULE_10__.useHotkeys)('right', function () {
-    var direction = {
-      x: 1,
-      y: 0
-    };
-    store.navigateDiagram(direction);
-  });
+  (0,_registerHotkeys__WEBPACK_IMPORTED_MODULE_11__.registerHotkeys)(store);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     boot();
     registerExitConfirmation();
@@ -22694,7 +22655,7 @@ var App = function App(_ref) {
     setLoading: setLoading
   }), booted && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Page, {
     store: store
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_toastify__WEBPACK_IMPORTED_MODULE_13__.ToastContainer, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_toastify__WEBPACK_IMPORTED_MODULE_12__.ToastContainer, {
     style: {
       paddingTop: '0px'
     }
@@ -22709,7 +22670,7 @@ var registerExitConfirmation = function registerExitConfirmation() {
   };
 };
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_utils_isLoadingHOC__WEBPACK_IMPORTED_MODULE_12__.withLoading)((0,mobx_react_lite__WEBPACK_IMPORTED_MODULE_4__.observer)(App)));
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_utils_isLoadingHOC__WEBPACK_IMPORTED_MODULE_10__.withLoading)((0,mobx_react_lite__WEBPACK_IMPORTED_MODULE_4__.observer)(App)));
 
 /***/ }),
 
@@ -24952,6 +24913,64 @@ var pages = {
   var page = pages[pageName];
   return page;
 });
+
+/***/ }),
+
+/***/ "./src/components/registerHotkeys.ts":
+/*!*******************************************!*\
+  !*** ./src/components/registerHotkeys.ts ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "registerHotkeys": () => (/* binding */ registerHotkeys)
+/* harmony export */ });
+/* harmony import */ var react_hotkeys_hook__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-hotkeys-hook */ "./node_modules/react-hotkeys-hook/dist/react-hotkeys-hook.esm.js");
+/* harmony import */ var _diagram_models_NodeModel__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../diagram/models/NodeModel */ "./src/diagram/models/NodeModel.ts");
+
+
+var registerHotkeys = function registerHotkeys(store) {
+  (0,react_hotkeys_hook__WEBPACK_IMPORTED_MODULE_0__.useHotkeys)('shift+d', function () {
+    store.setPage('Workbench');
+  });
+  (0,react_hotkeys_hook__WEBPACK_IMPORTED_MODULE_0__.useHotkeys)('shift+t', function () {
+    store.setPage('Inspector');
+  });
+  (0,react_hotkeys_hook__WEBPACK_IMPORTED_MODULE_0__.useHotkeys)('shift+j', function () {
+    store.setPage('DiagramJson');
+  });
+  (0,react_hotkeys_hook__WEBPACK_IMPORTED_MODULE_0__.useHotkeys)('shift+l', function () {
+    store.setPage('Log');
+  });
+  (0,react_hotkeys_hook__WEBPACK_IMPORTED_MODULE_0__.useHotkeys)('enter', function () {
+    var selection = store.diagram.engine.model.getSelectedEntities();
+
+    if (selection.length === 1 && selection[0] instanceof _diagram_models_NodeModel__WEBPACK_IMPORTED_MODULE_1__.default) {
+      var node = selection[0];
+      store.openNodeModal(node.id);
+    }
+  }, {
+    filter: function filter() {
+      return store.diagram.engine.model.options.locked === false;
+    }
+  });
+  (0,react_hotkeys_hook__WEBPACK_IMPORTED_MODULE_0__.useHotkeys)('left', function () {
+    var direction = {
+      x: -1,
+      y: 0
+    };
+    store.navigateDiagram(direction);
+  });
+  (0,react_hotkeys_hook__WEBPACK_IMPORTED_MODULE_0__.useHotkeys)('right', function () {
+    var direction = {
+      x: 1,
+      y: 0
+    };
+    store.navigateDiagram(direction);
+  });
+};
 
 /***/ }),
 
