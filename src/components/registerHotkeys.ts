@@ -1,7 +1,7 @@
 import { useHotkeys } from 'react-hotkeys-hook';
 import NodeModel from '../diagram/models/NodeModel';
 
-export const registerHotkeys = (store) => {
+export const registerHotkeys = (store): void => {
   useHotkeys('shift+d', () => {
     store.setPage('Workbench');
   });
