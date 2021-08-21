@@ -63,12 +63,12 @@ const App: FC<withLoadingProps> = ({ setLoading }) => {
     },
   );
 
-  useHotkeys('left', (key) => {
+  useHotkeys('left', () => {
 		const direction = {x: -1, y: 0}
     store.navigateDiagram(direction)
   });
 
-  useHotkeys('right', (key) => {
+  useHotkeys('right', () => {
 		const direction = {x: 1, y: 0}
     store.navigateDiagram(direction)
   });	

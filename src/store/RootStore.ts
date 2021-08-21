@@ -185,7 +185,7 @@ export class Store {
     });
   }
 	
-	navigateDiagram(direction: {x: number, y: number}) {
+	navigateDiagram(direction: {x: number, y: number}): void {
 		
 		const selection = this.diagram.engine.model.getSelectedEntities()
 

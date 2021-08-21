@@ -22646,14 +22646,14 @@ var App = function App(_ref) {
       return store.diagram.engine.model.options.locked === false;
     }
   });
-  (0,react_hotkeys_hook__WEBPACK_IMPORTED_MODULE_10__.useHotkeys)('left', function (key) {
+  (0,react_hotkeys_hook__WEBPACK_IMPORTED_MODULE_10__.useHotkeys)('left', function () {
     var direction = {
       x: -1,
       y: 0
     };
     store.navigateDiagram(direction);
   });
-  (0,react_hotkeys_hook__WEBPACK_IMPORTED_MODULE_10__.useHotkeys)('right', function (key) {
+  (0,react_hotkeys_hook__WEBPACK_IMPORTED_MODULE_10__.useHotkeys)('right', function () {
     var direction = {
       x: 1,
       y: 0
