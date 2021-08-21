@@ -1,6 +1,6 @@
-import NodeModel from '../../../../src/diagram/models/NodeModel';
-import EngineFactory from '../../../../src/diagram/factories/EngineFactory';
-import { Store } from '../../../../src/store';
+import NodeModel from '../../../src/diagram/models/NodeModel';
+import EngineFactory from '../../../src/diagram/factories/EngineFactory';
+import { Store } from '../../../src/store';
 
 describe('RootStore', () => {
   const store = new Store();
