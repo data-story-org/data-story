@@ -25,9 +25,9 @@
   "homepage": "https://github.com/ajthinking/data-story#readme",
   "scripts": {
     "format": "prettier --write \"./**/*.(js|ts|json|md|css|less|scss)\"",
-    "lint": "eslint src --ext .js,.ts",
-    "lint:fix": "eslint src --fix --ext .js,.ts",
-    "lint:quiet:fix": "eslint src --quiet --fix --ext .js,.ts",
+    "lint": "eslint src --ext .js,.ts -c ./config/.eslintrc",
+    "lint:fix": "npm run lint -- --fix",
+    "lint:quiet:fix": "npm run lint:fix -- --quiet",
     "dev": "npm run development",
     "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --config=node_modules/laravel-mix/setup/webpack.config.js",
     "watch": "npm run development -- --watch",
