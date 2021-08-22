@@ -53,6 +53,7 @@ export default class NodeModel extends DefaultNodeModel {
     this.nodeReact = options.nodeReact;
     this.parameters = options.parameters;
     this.nodeType = options.nodeType;
+    this.features = options.features ?? [];
 
     const ports = options.ports ?? [];
     ports.forEach((port) => {
