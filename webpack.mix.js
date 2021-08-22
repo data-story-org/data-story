@@ -8,7 +8,7 @@ mix
   .sass('src/sass/app.scss', 'dist/css')
   .options({
     processCssUrls: true,
-    postCss: [tailwindcss('./src/sass/tailwind.config.js')],
+    postCss: [tailwindcss('./config/tailwind.config.js')],
   })
   // fonts loading
   .setResourceRoot('../')
