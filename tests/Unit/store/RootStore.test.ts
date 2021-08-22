@@ -1,14 +1,11 @@
 import NodeModel from '../../../src/diagram/models/NodeModel';
 import EngineFactory from '../../../src/diagram/factories/EngineFactory';
 import { Store } from '../../../src/store';
+import { generateRandomString } from '../../Browser/helpers';
 
 describe('RootStore', () => {
   const store = new Store();
   const random = () => `${Math.random}`;
-
-  // it("Adds node", () => {
-
-  // })
 
   // it("Clears link labels", () => {
   //    store.diagram.engine.model.layers[0].models = ;
@@ -83,6 +80,23 @@ describe('RootStore', () => {
     store.setStories(stories);
 
     expect(store.metadata.stories).toEqual(stories);
+  });
+
+  it('Adds node', () => {
+    const engine = EngineFactory.default();
+    store.setEngine(engine);
+
+    const name = generateRandomString();
+    store.addNode({
+      name: name,
+    });
+
+    const nodeExist = store.diagram.engine
+      .getModel()
+      .getNodes()
+      .some((node) => node.name === name);
+
+    expect(nodeExist).toBe(true);
   });
 
   it('Can clear results', () => {
