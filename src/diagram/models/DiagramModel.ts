@@ -267,13 +267,14 @@ export default class DiagramModel extends DefaultDiagramModel {
     });
   }
 
-	findByName(name: string): NodeModel | null {
-    const searchables: NodeModel[] = this.getNodes() as NodeModel[]
-		 
-		// Add ports to searchables!
+  findByName(name: string): NodeModel | null {
+    const searchables: NodeModel[] =
+      this.getNodes() as NodeModel[];
+
+    // Add ports to searchables!
 
     return searchables.find(
       (entity) => entity.name == name,
-    );		
-	}
+    );
+  }
 }
