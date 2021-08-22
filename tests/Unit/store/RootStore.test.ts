@@ -107,13 +107,13 @@ describe('RootStore', () => {
       name: 'find-me',
       features: [1, 2, 3],
     });
-    store.clearResults();
-
     const node = store.diagram.engine
       .getModel()
       .getNodes()
       .find((node) => node.name === 'find-me');
+    expect(node.features).toStrictEqual([1, 2, 3]);
 
+    store.clearResults();
     expect(node.features).toStrictEqual([]);
   });
 });
