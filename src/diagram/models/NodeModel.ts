@@ -14,6 +14,7 @@ export interface NodeModelOptions
   category: ReactNode;
   name: string;
   parameters: any[];
+  ports: PortModel[];
 }
 
 export default class NodeModel extends DefaultNodeModel {
@@ -53,7 +54,8 @@ export default class NodeModel extends DefaultNodeModel {
     this.parameters = options.parameters;
     this.nodeType = options.nodeType;
 
-    options.ports.forEach((port) => {
+    const ports = options.ports ?? [];
+    ports.forEach((port) => {
       this.addPort(
         new PortModel({
           in: port.in,

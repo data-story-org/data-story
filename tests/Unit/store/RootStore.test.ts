@@ -85,12 +85,21 @@ describe('RootStore', () => {
     expect(store.metadata.stories).toEqual(stories);
   });
 
-  it.skip('Can clear results', () => {
-    // const engine = EngineFactory.default()
-    // const node = new NodeModel({id: 'find-me', features: [1,2,3]});
-    // engine.getModel().addNode(node)
-    // store.clearResults()
-    // Expect to see that node with zero features
-    // console.log(engine.getModel().getNodes() ...)
+  it('Can clear results', () => {
+    const engine = EngineFactory.default();
+    store.setEngine(engine);
+
+    store.addNode({
+      name: 'find-me',
+      features: [1, 2, 3],
+    });
+    store.clearResults();
+
+    const node = store.diagram.engine
+      .getModel()
+      .getNodes()
+      .find((node) => node.name === 'find-me');
+
+    expect(node.features).toStrictEqual([]);
   });
 });
