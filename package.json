@@ -113,5 +113,10 @@
     "prettier": "^2.3.2",
     "puppeteer": "^10.2.0",
     "ts-jest": "^27.0.4"
+  },
+  "prettier": {
+    "printWidth": 60,
+    "trailingComma": "all",
+    "singleQuote": true
   }
 }
