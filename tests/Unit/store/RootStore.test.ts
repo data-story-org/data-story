@@ -1,14 +1,11 @@
 import NodeModel from '../../../src/diagram/models/NodeModel';
 import EngineFactory from '../../../src/diagram/factories/EngineFactory';
 import { Store } from '../../../src/store';
+import { generateRandomString } from '../../Browser/helpers';
 
 describe('RootStore', () => {
   const store = new Store();
   const random = () => `${Math.random}`;
-
-  // it("Adds node", () => {
-
-  // })
 
   // it("Clears link labels", () => {
   //    store.diagram.engine.model.layers[0].models = ;
@@ -85,12 +82,38 @@ describe('RootStore', () => {
     expect(store.metadata.stories).toEqual(stories);
   });
 
-  it.skip('Can clear results', () => {
-    // const engine = EngineFactory.default()
-    // const node = new NodeModel({id: 'find-me', features: [1,2,3]});
-    // engine.getModel().addNode(node)
-    // store.clearResults()
-    // Expect to see that node with zero features
-    // console.log(engine.getModel().getNodes() ...)
+  it('Adds node', () => {
+    const engine = EngineFactory.default();
+    store.setEngine(engine);
+
+    const name = generateRandomString();
+    store.addNode({
+      name: name,
+    });
+
+    const nodeExist = store.diagram.engine
+      .getModel()
+      .getNodes()
+      .some((node) => node.name === name);
+
+    expect(nodeExist).toBe(true);
+  });
+
+  it('Can clear results', () => {
+    const engine = EngineFactory.default();
+    store.setEngine(engine);
+
+    store.addNode({
+      name: 'find-me',
+      features: [1, 2, 3],
+    });
+    const node = store.diagram.engine
+      .getModel()
+      .getNodes()
+      .find((node) => node.name === 'find-me');
+    expect(node.features).toStrictEqual([1, 2, 3]);
+
+    store.clearResults();
+    expect(node.features).toStrictEqual([]);
   });
 });

@@ -7,6 +7,7 @@ module.exports = {
   ],
   transform: {
     '\\.js$': 'babel-jest',
+    '\\.jsx$': 'babel-jest',
   },
   // FIXME remove this when jest will
   // support package.json "exports"
