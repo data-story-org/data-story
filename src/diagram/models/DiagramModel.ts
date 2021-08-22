@@ -246,7 +246,7 @@ export default class DiagramModel extends DefaultDiagramModel {
           })
           .forEach((link) => {
             // @ts-ignore
-            this.getLink(link.options.id).addLabel(
+						port.features.length && this.getLink(link.options.id).addLabel(
               port.features.length,
             );
           });
