@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/ajthinking/data-story#readme",
   "scripts": {
-    "format": "prettier --write \"./**/*.(js|ts|json|md|css|less|scss)\"",
+    "format": "prettier --write \"./**/*.(js|ts|json|md|css|less|scss)\" --config ./config/.prettierrc --ignore-path ./config/.prettierignore",
     "lint": "eslint src --ext .js,.ts -c ./config/.eslintrc",
     "lint:fix": "npm run lint -- --fix",
     "lint:quiet:fix": "npm run lint:fix -- --quiet",
@@ -113,10 +113,5 @@
     "prettier": "^2.3.2",
     "puppeteer": "^10.2.0",
     "ts-jest": "^27.0.4"
-  },
-  "prettier": {
-    "printWidth": 60,
-    "trailingComma": "all",
-    "singleQuote": true
   }
 }
