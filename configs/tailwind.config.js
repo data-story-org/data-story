@@ -4,7 +4,7 @@ module.exports = {
   purge: [
     './src/components/**/*.tsx',
     './src/components/**/*.jsx',
-    './src/public/**/*.html',
+    './public/**/*.html',
   ],
   important: true,
   darkMode: false, // or 'media' or 'class'

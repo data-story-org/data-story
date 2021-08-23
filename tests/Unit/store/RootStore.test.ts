@@ -87,16 +87,13 @@ describe('RootStore', () => {
     store.setEngine(engine);
 
     const name = generateRandomString();
-    store.addNode({
-      name: name,
-    });
+    store.addNode({ name });
 
-    const nodeExist = store.diagram.engine
+    const node = store.diagram.engine
       .getModel()
-      .getNodes()
-      .some((node) => node.name === name);
+      .findByName(name);
 
-    expect(nodeExist).toBe(true);
+    expect(node).toBeInstanceOf(NodeModel);
   });
 
   it('Can clear results', () => {
@@ -109,8 +106,8 @@ describe('RootStore', () => {
     });
     const node = store.diagram.engine
       .getModel()
-      .getNodes()
-      .find((node) => node.name === 'find-me');
+      .findByName('find-me');
+
     expect(node.features).toStrictEqual([1, 2, 3]);
 
     store.clearResults();
