@@ -1,16 +1,16 @@
-const mix = require('laravel-mix');
-const tailwindcss = require('tailwindcss');
+const mix = require("laravel-mix");
+const tailwindcss = require("tailwindcss");
 
 // bundle into dist/
 mix
-  .ts('src/index.tsx', 'dist/js')
+  .ts("src/index.tsx", "dist/js")
   .react()
-  .sass('src/sass/app.scss', 'dist/css')
+  .sass("src/sass/app.scss", "dist/css")
   .options({
     processCssUrls: true,
-    postCss: [tailwindcss('./config/tailwind.config.js')],
+    postCss: [tailwindcss("./configs/tailwind.config.js")],
   })
   // fonts loading
-  .setResourceRoot('../')
-  .copy('fonts', 'dist/fonts')
-  .copy('dist', 'public');
+  .setResourceRoot("../")
+  .copy("fonts", "dist/fonts")
+  .copy("dist", "public");
