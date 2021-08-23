@@ -14,3 +14,6 @@ mix
   .setResourceRoot('../')
   .copy('fonts', 'dist/fonts')
   .copy('dist', 'public');
+
+// Disable mix-manifest.json
+Mix.manifest.refresh = _ => void 0
