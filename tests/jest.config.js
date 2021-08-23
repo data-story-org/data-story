@@ -1,3 +1,8 @@
+const babelJestConfig = [
+  'babel-jest',
+  { configFile: './tests/babel.config.json' },
+];
+
 module.exports = {
   preset: 'ts-jest',
   testEnvironment: 'jsdom',
@@ -6,8 +11,8 @@ module.exports = {
     '/node_modules/(?!@data-story-org/core)',
   ],
   transform: {
-    '\\.js$': 'babel-jest',
-    '\\.jsx$': 'babel-jest',
+    '\\.js$': babelJestConfig,
+    '\\.jsx$': babelJestConfig,
   },
   // FIXME remove this when jest will
   // support package.json "exports"
