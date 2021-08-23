@@ -1,11 +1,12 @@
 import React from 'react';
 
-const Textarea = ({options, handleChange}) => {
+const Textarea = ({ options, handleChange }) => {
   return (
-    <textarea
+    <input
+      type="textarea"
       key={`${options.name}`}
       onChange={handleChange}
-      className="px-2 py-1 rounded h-64"
+      className="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none h-64"
       value={options.value}
     />
   );

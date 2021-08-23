@@ -27,9 +27,8 @@ const NodeWidgetModal = ({ node, closeModal, store }) => {
       handleSave(false)(e);
     },
     {
-      filter: (e) => e.target.type !== 'textarea',
       filterPreventDefault: false,
-      enableOnTags: ['INPUT'],
+      enableOnTags: ['INPUT', 'TEXTAREA'],
     },
   );
 
@@ -219,7 +218,7 @@ const NodeWidgetModal = ({ node, closeModal, store }) => {
 
     // forceUpdate();
   };
-	
+
   return (
     <div id="node-modal">
       <NodeWidgetModalHeader
