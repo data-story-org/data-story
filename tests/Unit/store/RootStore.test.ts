@@ -89,9 +89,7 @@ describe('RootStore', () => {
     const name = generateRandomString();
     store.addNode({ name });
 
-    const node = store.diagram.engine
-      .getModel()
-      .findByName(name);
+    const node = store.getModel().findByName(name);
 
     expect(node).toBeInstanceOf(NodeModel);
   });
@@ -104,9 +102,7 @@ describe('RootStore', () => {
       name: 'find-me',
       features: [1, 2, 3],
     });
-    const node = store.diagram.engine
-      .getModel()
-      .findByName('find-me');
+    const node = store.getModel().findByName('find-me');
 
     expect(node.features).toStrictEqual([1, 2, 3]);
 
