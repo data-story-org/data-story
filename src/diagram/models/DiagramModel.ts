@@ -3,7 +3,7 @@ import {
   DiagramModel as DefaultDiagramModel,
 } from '@projectstorm/react-diagrams';
 import { NodeModel } from './NodeModel';
-import { SerializedReactDiagram } from '../../types/SerializedReactDiagram';
+import { SerializedReactDiagram } from '../../types';
 import VERSION from '../../utils/version';
 
 /**

@@ -1,5 +1,5 @@
 import { DiagramModel } from '../diagram/models';
-import { BootPayload } from '../types/BootPayload';
+import { BootPayload } from '../types';
 
 export default interface ClientInterface {
   boot(options: object): Promise<BootPayload>;
