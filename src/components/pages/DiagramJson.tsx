@@ -11,7 +11,7 @@ const DiagramJson: FC<Props> = ({ store }) => {
   return (
     <div className="p-4 w-full h-full ">
       <CodeHighlighter
-        code={store.diagram.engine.model.toPrettyJson()}
+        code={store.getModel().toPrettyJson()}
       />
     </div>
   );
