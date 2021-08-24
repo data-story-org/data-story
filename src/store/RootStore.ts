@@ -1,7 +1,5 @@
 import { action, observable, makeObservable } from 'mobx';
-import clientFactory, {
-  Client,
-} from '../clients/ClientFactory';
+import { Client, ClientFactory } from '../clients';
 import { showNotification } from '../utils/Notifications';
 import { Page, Inspector, InspectorMode } from '../types';
 import { DiagramEngine } from '@projectstorm/react-diagrams';
@@ -44,7 +42,7 @@ export class Store {
     requestOpenNodeModal: null,
     stories: [],
     activeStory: '',
-    client: clientFactory((window as any).config),
+    client: ClientFactory((window as any).config),
   };
 
   constructor() {

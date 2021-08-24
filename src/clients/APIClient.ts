@@ -1,7 +1,7 @@
 import axios from 'axios';
-import ClientInterface from './ClientInterface';
+import { ClientInterface } from './ClientInterface';
 
-export default class APIClient implements ClientInterface {
+export class APIClient implements ClientInterface {
   public root = 'http://localhost:3000'; // https://data-story-server.herokuapp.com
 
   constructor(root: string) {
