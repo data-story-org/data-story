@@ -2,15 +2,15 @@ import {
   DefaultLinkModel,
   DiagramModel as DefaultDiagramModel,
 } from '@projectstorm/react-diagrams';
-import NodeModel from './NodeModel';
-import { SerializedReactDiagram } from '../../types/SerializedReactDiagram';
+import { NodeModel } from './NodeModel';
+import { SerializedReactDiagram } from '../../types';
 import VERSION from '../../utils/version';
 
 /**
  * Sorts model in execution order based on their dependencies
  * Can attach data to links
  */
-export default class DiagramModel extends DefaultDiagramModel {
+export class DiagramModel extends DefaultDiagramModel {
   latestNodes: NodeModel[] = [];
 
   addNode(node) {

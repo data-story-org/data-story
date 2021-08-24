@@ -1,6 +1,6 @@
 import React, { FC, useEffect } from 'react';
 import { observer } from 'mobx-react-lite';
-import NodeModel from '../../../diagram/models/NodeModel';
+import { NodeModel } from '../../../diagram/models';
 import { Store, withStore } from '../../../store';
 
 interface Props {

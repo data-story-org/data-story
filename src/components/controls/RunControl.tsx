@@ -27,9 +27,9 @@ const RunControl: FC<Props> = ({ store, setLoading }) => {
     store.setRunning();
 
     store.metadata.client
-      .run(store.diagram.engine.model)
+      .run(store.getModel())
       .then((result) => {
-        const diagram = store.diagram.engine.model;
+        const diagram = store.getModel();
         const serverDiagram = result.data.diagram;
         diagram.syncFeatures(serverDiagram);
         store.setNotRunning();

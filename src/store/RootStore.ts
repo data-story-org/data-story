@@ -1,10 +1,9 @@
 import { action, observable, makeObservable } from 'mobx';
-import NodeModel from '../diagram/models/NodeModel';
-import clientFactory, {
-  Client,
-} from '../clients/ClientFactory';
+import { Client, ClientFactory } from '../clients';
 import { showNotification } from '../utils/Notifications';
 import { Page, Inspector, InspectorMode } from '../types';
+import { DiagramEngine } from '@projectstorm/react-diagrams';
+import { DiagramModel, NodeModel } from '../diagram/models';
 
 interface Metadata {
   running: boolean;
@@ -16,10 +15,17 @@ interface Metadata {
   client: Client;
 }
 
+interface Diagram {
+  engine: DiagramEngine;
+  availableNodes: NodeModel[];
+  refresh: number;
+  nodeSerial: number;
+}
+
 export class Store {
   results;
 
-  diagram = {
+  diagram: Diagram = {
     engine: null,
     availableNodes: [],
     refresh: 0,
@@ -36,7 +42,7 @@ export class Store {
     requestOpenNodeModal: null,
     stories: [],
     activeStory: '',
-    client: clientFactory((window as any).config),
+    client: ClientFactory((window as any).config),
   };
 
   constructor() {
@@ -66,6 +72,9 @@ export class Store {
       setStories: action.bound,
       setDiagramLocked: action.bound,
 
+      // Getters
+      getModel: action.bound,
+
       // Notifications
       showRunFail: action.bound,
       showRunSuccessful: action.bound,
@@ -75,7 +84,7 @@ export class Store {
   addNode(data) {
     delete data.id; // TODO remove id at availableNodes prep
 
-    this.diagram.engine.model.addNode(
+    this.getModel().addNode(
       new NodeModel({
         serial: this.diagram.nodeSerial++,
         ...data,
@@ -96,9 +105,9 @@ export class Store {
     this.diagram.refresh;
 
     // Get all nodes with features
-    return this.diagram.engine.model
-      .getNodes()
-      .filter((node) => node.isInspectable());
+    const nodes = this.getModel().getNodes() as NodeModel[];
+
+    return nodes.filter((node) => node.isInspectable());
   }
 
   openNodeModal(nodeId: string): void {
@@ -139,7 +148,8 @@ export class Store {
   }
 
   setPage(name) {
-    this.diagram.engine.model.clearLinkLabels();
+    this.getModel().clearLinkLabels();
+
     const alreadyOnPage = this.metadata.page == name;
     this.metadata.page =
       alreadyOnPage && name !== 'Inspector'
@@ -158,8 +168,12 @@ export class Store {
   }
 
   clearResults() {
-    this.diagram.engine.model.clearNodeFeatures();
-    this.diagram.engine.model.clearLinkLabels();
+    const model =
+      this.diagram.engine.getModel() as DiagramModel;
+
+    model.clearNodeFeatures();
+    model.clearLinkLabels();
+
     this.refreshDiagram();
   }
 
@@ -189,8 +203,7 @@ export class Store {
     x: number;
     y: number;
   }): void {
-    const selection =
-      this.diagram.engine.model.getSelectedEntities();
+    const selection = this.getModel().getSelectedEntities();
 
     if (
       selection.length !== 1 ||
@@ -207,18 +220,19 @@ export class Store {
         y: n1.getPosition().y - n2.getPosition().y,
       };
     };
-    const candidates = this.diagram.engine.model
-      .getNodes()
-      .filter((candidate) => {
-        // self is not a candidate!
-        if (candidate.options.id === current.options.id)
-          return false;
-        // must be in the correct direction
-        const offset = getOffset(candidate, current);
-        if (Math.sign(offset.x) !== Math.sign(direction.x))
-          return false;
-        return true;
-      });
+
+    const nodes = this.getModel().getNodes() as NodeModel[];
+
+    const candidates = nodes.filter((candidate) => {
+      // self is not a candidate!
+      if (candidate.options.id === current.options.id)
+        return false;
+      // must be in the correct direction
+      const offset = getOffset(candidate, current);
+      if (Math.sign(offset.x) !== Math.sign(direction.x))
+        return false;
+      return true;
+    });
 
     const sorted = candidates.sort((n1, n2) => {
       const distanceN1 =
@@ -233,19 +247,28 @@ export class Store {
     });
 
     if (sorted.length) {
-      this.diagram.engine.model.clearSelection();
+      this.getModel().clearSelection();
       sorted[0].setSelected(true);
     }
   }
 
   setDiagramLocked(locked: boolean) {
-    this.diagram.engine.model.setLocked(locked);
+    this.getModel().setLocked(locked);
+
     const state = this.diagram.engine
       .getStateMachine()
       .getCurrentState();
+
+    // Little problems with state types
+    // @ts-ignore
     if (state.dragCanvas !== undefined) {
+      //@ts-ignore
       state.dragCanvas.config.allowDrag = !locked;
     }
+  }
+
+  getModel(): DiagramModel {
+    return this.diagram.engine.getModel() as DiagramModel;
   }
 }
 

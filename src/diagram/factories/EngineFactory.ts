@@ -1,11 +1,11 @@
 import createEngine, {
   DiagramEngine,
 } from '@projectstorm/react-diagrams';
-import NodeModelFactory from './NodeModelFactory';
-import DiagramModel from '../models/DiagramModel';
-import { SerializedReactDiagram } from '../../types/SerializedReactDiagram';
+import { NodeModelFactory } from './NodeModelFactory';
+import { DiagramModel } from '../models';
+import { SerializedReactDiagram } from '../../types';
 
-export default class EngineFactory {
+export class EngineFactory {
   static loadOrCreate(
     serializedModel?: SerializedReactDiagram,
   ): DiagramEngine {

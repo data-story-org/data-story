@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { observer } from 'mobx-react-lite';
 
 import { Store } from '../../../store';
-import NodeModel from '../../../diagram/models/NodeModel';
+import { NodeModel } from '../../../diagram/models';
 
 interface Props {
   store: Store;
@@ -27,7 +27,7 @@ const NodeWidgetInspectIcon: FC<Props> = ({
         >
           <i className="mr-2 text-malibu-600 fas fa-search hover:cursor"></i>
         </div>
-      ): null}
+      ) : null}
     </>
   );
 };

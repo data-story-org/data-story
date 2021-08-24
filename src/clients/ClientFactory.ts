@@ -1,9 +1,9 @@
-import APIClient from './APIClient';
-import LocalClient from './local/LocalClient';
+import { APIClient } from './APIClient';
+import { LocalClient } from './local/LocalClient';
 
 export type Client = APIClient | LocalClient;
 
-export default (config: {
+export const ClientFactory = (config: {
   client: string;
   server: string;
 }): APIClient | LocalClient => {

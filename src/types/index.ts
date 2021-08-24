@@ -4,3 +4,6 @@ export {
   InspectorMode,
   INSPECTOR_MODES,
 } from './Inspector';
+export { SerializedNodeModel } from './SerializedNodeModel';
+export { SerializedReactDiagram } from './SerializedReactDiagram';
+export { BootPayload } from './BootPayload';

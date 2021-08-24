@@ -7,6 +7,7 @@ import {
   InspectorMode,
   INSPECTOR_MODES,
 } from '../../../types';
+import { NodeModel } from '../../../diagram/models';
 
 interface Props {
   store: Store;
@@ -28,7 +29,11 @@ const Inspector: FC<Props> = ({ store }) => {
   const id = store.metadata.activeInspector.nodeId;
   const mode = store.metadata.activeInspector.mode;
   const features = id
-    ? store.diagram.engine.model.getNode(id).features
+    ? (
+        store.diagram.engine
+          .getModel()
+          .getNode(`${id}`) as NodeModel
+      ).features
     : [];
 
   const InspectorComponent = useCallback(

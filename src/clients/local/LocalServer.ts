@@ -1,5 +1,5 @@
 import { Server } from '@data-story-org/core';
-import DiagramModel from '../../diagram/models/DiagramModel';
+import { DiagramModel } from '../../diagram/models';
 
 export class LocalServer extends Server {
   boot() {

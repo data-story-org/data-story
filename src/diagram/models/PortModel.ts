@@ -1,6 +1,6 @@
 import { DefaultPortModel } from '@projectstorm/react-diagrams';
 
-export default class PortModel extends DefaultPortModel {
+export class PortModel extends DefaultPortModel {
   constructor(options) {
     super({
       ...options,

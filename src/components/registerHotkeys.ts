@@ -1,5 +1,5 @@
 import { useHotkeys } from 'react-hotkeys-hook';
-import NodeModel from '../diagram/models/NodeModel';
+import { NodeModel } from '../diagram/models';
 import { Store } from '../store';
 
 export const registerHotkeys = (store: Store): void => {
@@ -22,8 +22,9 @@ export const registerHotkeys = (store: Store): void => {
   useHotkeys(
     'enter',
     () => {
-      const selection =
-        store.diagram.engine.model.getSelectedEntities();
+      const selection = store
+        .getModel()
+        .getSelectedEntities();
 
       // Must be an unambiguous selection of a single NodeModel entity
       if (
@@ -36,7 +37,7 @@ export const registerHotkeys = (store: Store): void => {
     },
     {
       filter: () =>
-        store.diagram.engine.model.options.locked === false,
+        store.getModel().getOptions().locked === false,
     },
   );
 
