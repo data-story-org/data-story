@@ -148,7 +148,7 @@ export class Store {
   }
 
   setPage(name) {
-    const model = this.getModel().clearLinkLabels();
+    this.getModel().clearLinkLabels();
 
     const alreadyOnPage = this.metadata.page == name;
     this.metadata.page =
