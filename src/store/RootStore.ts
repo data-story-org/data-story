@@ -1,12 +1,11 @@
 import { action, observable, makeObservable } from 'mobx';
-import NodeModel from '../diagram/models/NodeModel';
 import clientFactory, {
   Client,
 } from '../clients/ClientFactory';
 import { showNotification } from '../utils/Notifications';
 import { Page, Inspector, InspectorMode } from '../types';
 import { DiagramEngine } from '@projectstorm/react-diagrams';
-import DiagramModel from '../diagram/models/DiagramModel';
+import { DiagramModel, NodeModel } from '../diagram/models';
 
 interface Metadata {
   running: boolean;

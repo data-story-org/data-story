@@ -1,5 +1,5 @@
 import { LocalServer } from './LocalServer';
-import DiagramModel from '../../diagram/models/DiagramModel';
+import { DiagramModel } from '../../diagram/models';
 import ClientInterface from '../ClientInterface';
 import context from './localSampleContext';
 

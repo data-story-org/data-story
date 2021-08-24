@@ -1,5 +1,5 @@
 import { useHotkeys } from 'react-hotkeys-hook';
-import NodeModel from '../diagram/models/NodeModel';
+import { NodeModel } from '../diagram/models';
 import { Store } from '../store';
 
 export const registerHotkeys = (store: Store): void => {

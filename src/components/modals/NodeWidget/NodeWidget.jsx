@@ -4,7 +4,7 @@ import { observer } from 'mobx-react-lite';
 import { useHotkeys } from 'react-hotkeys-hook';
 import { repeatableConverter } from '@data-story-org/core';
 
-import PortModel from '../../../diagram/models/PortModel';
+import { PortModel } from '../../../diagram/models';
 import NodeWidgetModalActions from './NodeWidgetActions';
 import NodeWidgetModalBody from './NodeWidgetBody';
 import NodeWidgetModalHeader from './NodeWidgetHeader';
