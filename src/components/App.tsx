@@ -10,7 +10,7 @@ import pages from './pages/factory';
 import { observer } from 'mobx-react-lite';
 import { ToastContainer, Slide } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import EngineFactory from '../diagram/factories/EngineFactory';
+import { EngineFactory } from '../diagram/factories';
 import Cookie from '../utils/Cookie';
 import { useStore } from '../store/StoreProvider';
 import { Store } from '../store';
@@ -25,7 +25,7 @@ const App: FC<withLoadingProps> = ({ setLoading }) => {
   const store = useStore();
   const [booted, setBooted] = useState(false);
 
-	registerHotkeys(store)
+  registerHotkeys(store);
 
   useEffect(() => {
     boot();
