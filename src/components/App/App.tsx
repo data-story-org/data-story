@@ -25,8 +25,6 @@ const App: FC<withLoadingProps> = ({ setLoading }) => {
   const store = useStore();
   const [booted, setBooted] = useState(false);
 
-  /* registerHotkeys(store); */
-
   useEffect(() => {
     boot();
     registerExitConfirmation();
