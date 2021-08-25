@@ -1,8 +1,14 @@
+import React, { FC } from 'react';
+import { observer } from 'mobx-react-lite';
 import { useHotkeys } from 'react-hotkeys-hook';
-import { NodeModel } from '../diagram/models';
-import { Store } from '../store';
+import { NodeModel } from '../../diagram/models';
+import { Store } from '../../store';
 
-export const registerHotkeys = (store: Store): void => {
+interface Props {
+  store: Store;
+}
+
+const AppHotkeys: FC<Props> = ({ store }) => {
   useHotkeys('shift+d', () => {
     store.setPage('Workbench');
   });
@@ -50,4 +56,8 @@ export const registerHotkeys = (store: Store): void => {
     const direction = { x: 1, y: 0 };
     store.navigateDiagram(direction);
   });
+
+  return null;
 };
+
+export default observer(AppHotkeys);

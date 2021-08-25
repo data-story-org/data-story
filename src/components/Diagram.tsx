@@ -1,20 +1,22 @@
-import React, { useRef } from 'react';
-import ReactDOM from 'react-dom';
+import React, { FC, useRef } from 'react';
 import { CanvasWidget } from '@projectstorm/react-canvas-core';
 import { observer } from 'mobx-react-lite';
-
+import { Store } from '../store';
 const style = 'fullsize bg-gray-600';
 
-const Diagram = ({ store }) => {
+interface Props {
+  store: Store;
+}
+
+const Diagram: FC<Props> = ({ store }) => {
   const diagramRef = useRef();
+  store.diagram.refresh;
 
   return (
     <div id="app-diagram">
       <CanvasWidget
         ref={diagramRef}
         engine={store.diagram.engine}
-        refresh={store.diagram.refresh}
-        allowLooseLinks={false}
         className={style}
       />
     </div>

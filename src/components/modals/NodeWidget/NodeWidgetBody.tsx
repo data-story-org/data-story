@@ -1,7 +1,22 @@
-import React from 'react';
+import React, { FC } from 'react';
 import Field from '../../fields/Field';
+import { NodeParameter } from '@data-story-org/core';
 
-const NodeWidgetModalBody = ({
+interface Props {
+  parameters: NodeParameter[];
+  handleChange: (param: NodeParameter) => (e) => void;
+  handleRepeatableChange: (
+    param: NodeParameter,
+  ) => (key: number) => (value: any) => void;
+  handleRepeatableAdd: (
+    param: NodeParameter,
+  ) => (key: number) => void;
+  handleRepeatableRemove: (
+    param: NodeParameter,
+  ) => (key: number) => void;
+}
+
+const NodeWidgetModalBody: FC<Props> = ({
   parameters,
   handleChange,
   handleRepeatableChange,
@@ -14,8 +29,7 @@ const NodeWidgetModalBody = ({
         {Object.values(parameters).map((parameter, i) => {
           return (
             <Field
-              id={`field-${parameter.name}`}
-              key={`${parameter.name}${i}`}
+              key={`field-${parameter.name}{i}`}
               handleChange={handleChange(parameter)}
               handleRepeatableChange={handleRepeatableChange(
                 parameter,

@@ -1,8 +1,15 @@
-import React from 'react';
+import React, { FC } from 'react';
+
+interface Props {
+  primitiveFeatures: boolean;
+  rows: any[];
+  isComplexObject: boolean;
+  handleSelectJsonMode: (e: any) => void;
+}
 
 const linkStyle = 'hover:underline cursor-pointer';
 
-const InspectorTableBody = ({
+const InspectorTableBody: FC<Props> = ({
   primitiveFeatures,
   rows,
   isComplexObject,
@@ -17,7 +24,7 @@ const InspectorTableBody = ({
         {isComplexObject ? (
           <span
             className={linkStyle}
-            onClick={handleselectJsonMode}
+            onClick={handleSelectJsonMode}
           >
             {row}
           </span>
