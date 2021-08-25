@@ -1,7 +1,4 @@
-import {
-  NodeModel as DefaultNodeModel,
-  NodeModelGenerics,
-} from '@projectstorm/react-diagrams';
+import { NodeModel as DefaultNodeModel } from '@projectstorm/react-diagrams';
 import { BasePositionModelOptions } from '@projectstorm/react-canvas-core';
 import { PortModel } from './PortModel';
 import { UID, pickBy } from '@data-story-org/core/utils';
@@ -99,13 +96,13 @@ export class NodeModel extends DefaultNodeModel {
   getInPorts() {
     return pickBy(this.getPorts(), function (port) {
       return port.options.in;
-    });
+    }) as PortModel;
   }
 
   getOutPorts() {
     return pickBy(this.getPorts(), function (port, key) {
       return !port.options.in;
-    });
+    }) as PortModel;
   }
 
   removePortAndLinks(port: PortModel): void {

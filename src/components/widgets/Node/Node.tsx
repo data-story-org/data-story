@@ -1,26 +1,28 @@
-import React, { useState, useReducer } from 'react';
+import React, { useState, useReducer, FC } from 'react';
 import Modal from 'react-modal';
 import { modalStyle } from '../../../utils/modalStyle';
-import { withStore } from '../../../store';
+import { Store, withStore } from '../../../store';
 
 import NodeWidgetHeader from './NodeHeader';
 import NodeWidgetInPorts from './NodeInPorts';
 import NodeWidgetOutPorts from './NodeOutPorts';
 import NodeOpenModalRequest from './NodeOpenModalRequest';
 import NodeWidgetModal from '../../modals/NodeWidget';
+import { DiagramEngine } from '@projectstorm/react-diagrams';
+import { NodeModel } from '../../../diagram/models';
 
 /**
  * Using a observer on this component will break things... :/
  * Instead put store dependent functionality in child components
  */
 
-// TODO Fix type definitions for NodeWidget component
-/* interface Props {
- *   engine: DiagramEngine;
- *   node: NodeModel;
- * } */
+interface Props {
+  engine: DiagramEngine;
+  node: NodeModel;
+  store: Store;
+}
 
-const NodeWidget = ({ engine, node, store }) => {
+const NodeWidget: FC<Props> = ({ engine, node, store }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const open = () => {
@@ -45,17 +47,13 @@ const NodeWidget = ({ engine, node, store }) => {
       onDoubleClick={open}
     >
       <div className="flex-grow-0 max-w-md">
-        <NodeWidgetHeader node={node} store={store} />
+        <NodeWidgetHeader node={node} />
         <NodeWidgetInPorts
           node={node}
           engine={engine}
           store={store}
         />
-        <NodeWidgetOutPorts
-          node={node}
-          engine={engine}
-          store={store}
-        />
+        <NodeWidgetOutPorts node={node} engine={engine} />
         <div className="w-32">
           {/* Enforce min width with this div*/}
         </div>
