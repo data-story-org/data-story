@@ -4,28 +4,28 @@ import React, {
   useEffect,
   useCallback,
 } from 'react';
-import Header from './Header';
-import Toolbar from './Toolbar';
-import pages from './pages/factory';
+import Header from '../Header';
+import Toolbar from '../Toolbar';
+import pages from '../pages/factory';
 import { observer } from 'mobx-react-lite';
 import { ToastContainer, Slide } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { EngineFactory } from '../diagram/factories';
-import Cookie from '../utils/Cookie';
-import { useStore } from '../store/StoreProvider';
-import { Store } from '../store';
-import { showNotification } from '../utils/Notifications';
+import { EngineFactory } from '../../diagram/factories';
+import Cookie from '../../utils/Cookie';
+import { useStore } from '../../store/StoreProvider';
+import { Store } from '../../store';
+import { showNotification } from '../../utils/Notifications';
 import {
   withLoading,
   withLoadingProps,
-} from '../utils/isLoadingHOC';
-import { registerHotkeys } from './registerHotkeys';
+} from '../../utils/isLoadingHOC';
+import AppHotkeys from './AppHotkeys';
 
 const App: FC<withLoadingProps> = ({ setLoading }) => {
   const store = useStore();
   const [booted, setBooted] = useState(false);
 
-  registerHotkeys(store);
+  /* registerHotkeys(store); */
 
   useEffect(() => {
     boot();
@@ -78,6 +78,7 @@ const App: FC<withLoadingProps> = ({ setLoading }) => {
       <Toolbar store={store} setLoading={setLoading} />
       {booted && <Page store={store} />}
       <ToastContainer style={{ paddingTop: '0px' }} />
+      <AppHotkeys store={store} />
     </div>
   );
 };
