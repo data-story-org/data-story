@@ -1,14 +1,20 @@
-import React, { useState, FC } from 'react';
-import InspectorTableHeading from './InspectorTableHeading';
+import React, { FC, useState } from 'react';
+import { Feature } from '@data-story-org/core';
 import InspectorTableBody from './InspectorTableBody';
-// import Feature from '../Feature';
+import InspectorTableHeading from './InspectorTableHeading';
+import { InspectorMode } from '../../../../types';
 
-// TODO Make InspectorTable definitely-typed
-/* interface Props {
- *   features: Feature[];
- * } */
+interface Props {
+  features: Feature[];
+  handleModeSelect: (
+    mode: InspectorMode,
+  ) => (e: any) => void;
+}
 
-const InspectorTable = ({ features, handleModeSelect }) => {
+const InspectorTable: FC<Props> = ({
+  features,
+  handleModeSelect,
+}) => {
   const [truncateAt, setTruncateAt] = useState(100);
   useState(false);
 
@@ -22,7 +28,7 @@ const InspectorTable = ({ features, handleModeSelect }) => {
     );
   };
 
-  let isComplexObject;
+  let isComplexObject: boolean;
 
   const getHeaders = () => {
     let keys = features
@@ -57,7 +63,7 @@ const InspectorTable = ({ features, handleModeSelect }) => {
           return 'OBJECT';
         }
 
-        if (typeof content[header] === 'array') {
+        if (Array.isArray(content[header])) {
           isComplexObject = true;
           return 'ARRAY';
         }
