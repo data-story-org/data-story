@@ -10,7 +10,7 @@ export interface NodeModelOptions
   extends BasePositionModelOptions {
   category: ReactNode;
   name: string;
-  parameters: any[];
+  parameters: NodeParameter[];
   ports: PortModel[];
 }
 

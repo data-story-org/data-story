@@ -1,6 +1,14 @@
-import React from 'react';
+import React, { FC } from 'react';
 
-const BaseFieldHeader = ({ name, description }) => {
+interface Props {
+  name: string;
+  description: string;
+}
+
+const BaseFieldHeader: FC<Props> = ({
+  name,
+  description,
+}) => {
   return (
     <span className="my-2 font-sans font-medium text-sm">
       <div className="">
