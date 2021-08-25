@@ -1,21 +1,32 @@
-import React, { useEffect, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import cloneDeep from 'lodash/cloneDeep';
 import { observer } from 'mobx-react-lite';
 import { useHotkeys } from 'react-hotkeys-hook';
-import { repeatableConverter } from '@data-story-org/core';
+import {
+  NodeParameter,
+  repeatableConverter,
+} from '@data-story-org/core';
 
-import { PortModel } from '../../../diagram/models';
+import {
+  NodeModel,
+  PortModel,
+} from '../../../diagram/models';
 import NodeWidgetModalActions from './NodeWidgetActions';
 import NodeWidgetModalBody from './NodeWidgetBody';
 import NodeWidgetModalHeader from './NodeWidgetHeader';
+import { Store } from '../../../store';
 
-// TODO make NodeWidgetModal definitely-typed
-// interface Props {
-//   node: NodeModel;
-//   closeModal: () => void;
-// }
+interface Props {
+  node: NodeModel;
+  closeModal: () => void;
+  store: Store;
+}
 
-const NodeWidgetModal = ({ node, closeModal, store }) => {
+const NodeWidgetModal: FC<Props> = ({
+  node,
+  closeModal,
+  store,
+}) => {
   const [parameters, setParameters] = useState(
     cloneDeep(node.parameters),
   );
@@ -42,7 +53,7 @@ const NodeWidgetModal = ({ node, closeModal, store }) => {
     // n: "yet another value"
     // }
     setParameters(
-      parameters.map((parameter) => {
+      parameters.map((parameter: NodeParameter) => {
         if (parameter.isRepeatable) {
           parameter.value = Object.assign(
             {},
@@ -61,7 +72,7 @@ const NodeWidgetModal = ({ node, closeModal, store }) => {
     return () => clearTimeout(autoSaveTimer);
   }, [node.parameter]);
 
-  const handleChange = (param) => (e) => {
+  const handleChange = (param: NodeParameter) => (e) => {
     const updatedParameters = parameters;
 
     updatedParameters.find((p) => p.name == param.name)[
@@ -74,7 +85,9 @@ const NodeWidgetModal = ({ node, closeModal, store }) => {
   };
 
   const handleRepeatableChange =
-    (param) => (key) => (value) => {
+    (param: NodeParameter) =>
+    (key: number) =>
+    (value: any) => {
       const values = parameters.find(
         (p) => p.name == param.name,
       ).value;
@@ -94,45 +107,47 @@ const NodeWidgetModal = ({ node, closeModal, store }) => {
       setParameters([...parameters]);
     };
 
-  const handleRepeatableAdd = (param) => (key) => {
-    const values = parameters.find(
-      (p) => p.name == param.name,
-    ).value;
+  const handleRepeatableAdd =
+    (param: NodeParameter) => (key: number) => {
+      const values = parameters.find(
+        (p) => p.name == param.name,
+      ).value;
 
-    const parameter = parameters.find(
-      (p) => p.name == param.name,
-    );
-    parameter['value'] = {
-      ...values,
-      [key + 1]:
-        param.fieldType === 'Port'
-          ? ''
-          : param.defaultValue,
+      const parameter = parameters.find(
+        (p) => p.name == param.name,
+      );
+      parameter['value'] = {
+        ...values,
+        [key + 1]:
+          param.fieldType === 'Port'
+            ? ''
+            : param.defaultValue,
+      };
+
+      setParameters([...parameters]);
     };
 
-    setParameters([...parameters]);
-  };
+  const handleRepeatableRemove =
+    (param: NodeParameter) => (key: number) => {
+      const values = parameters.find(
+        (p) => p.name == param.name,
+      ).value;
 
-  const handleRepeatableRemove = (param) => (key) => {
-    const values = parameters.find(
-      (p) => p.name == param.name,
-    ).value;
+      const { [key]: omit, ...withoutKey } = values;
 
-    const { [key]: omit, ...withoutKey } = values;
+      const parameter = parameters.find(
+        (p) => p.name == param.name,
+      );
 
-    const parameter = parameters.find(
-      (p) => p.name == param.name,
-    );
+      parameter['value'] = withoutKey;
 
-    parameter['value'] = withoutKey;
+      if (param.fieldType === 'Port') {
+        handleRemovePort(omit);
+      }
+      setParameters([...parameters]);
+    };
 
-    if (param.fieldType === 'Port') {
-      handleRemovePort(omit);
-    }
-    setParameters([...parameters]);
-  };
-
-  const addPort = (name) => {
+  const addPort = (name: string) => {
     node.addPort(
       new PortModel({
         in: false,
@@ -142,12 +157,12 @@ const NodeWidgetModal = ({ node, closeModal, store }) => {
     );
   };
 
-  const handlePortsUpdate = (param) => {
-    let portsNames = Object.keys(node.ports);
+  const handlePortsUpdate = (param: NodeParameter) => {
+    let portsNames = Object.keys(node.getPorts());
 
     if (param.isRepeatable) {
       param['value'].forEach((value) => {
-        portsNames = Object.keys(node.ports);
+        portsNames = Object.keys(node.getPorts());
         if (!portsNames.includes(value)) {
           addPort(value);
         }
@@ -160,28 +175,30 @@ const NodeWidgetModal = ({ node, closeModal, store }) => {
     }
   };
 
-  const handleRemovePort = (portName) => {
-    if (portName in node.ports) {
+  const handleRemovePort = (portName: string) => {
+    if (portName in node.getPorts()) {
       const port = node.getPort(portName);
-      node.removePortAndLinks(port);
+      node.removePortAndLinks(port as PortModel);
       store.diagram.engine.repaintCanvas();
     }
   };
 
-  const handleSave = (semi) => (_e) => {
-    const updatedParameters = parameters.map((param) => {
-      if (param.isRepeatable) {
-        param.value = repeatableConverter(param.value);
-      }
-
-      if (!semi) {
-        if (param.fieldType === 'Port') {
-          handlePortsUpdate(param);
+  const handleSave = (semi: boolean) => (_e) => {
+    const updatedParameters = parameters.map(
+      (param: NodeParameter) => {
+        if (param.isRepeatable) {
+          param.value = repeatableConverter(param.value);
         }
-      }
 
-      return param;
-    });
+        if (!semi) {
+          if (param.fieldType === 'Port') {
+            handlePortsUpdate(param);
+          }
+        }
+
+        return param;
+      },
+    );
     node.parameters = updatedParameters;
 
     if (!semi) {
@@ -192,31 +209,6 @@ const NodeWidgetModal = ({ node, closeModal, store }) => {
 
   const handleCancel = (_e) => {
     closeModal();
-  };
-
-  const editExistingPort = (e) => {};
-
-  const saveNewInPort = (e) => {
-    saveNewPort(e, true);
-  };
-
-  const saveNewOutPort = (e) => {
-    saveNewPort(e, false);
-  };
-
-  const saveNewPort = (e, isInPort) => {
-    // if (e.key != 'Enter') return;
-    // node.addPort(
-    //   new DefaultPortModel({
-    //     in: isInPort,
-    //     name: e.target.value,
-    //   }),
-    // );
-
-    // e.target.value = '';
-    console.log('useless');
-
-    // forceUpdate();
   };
 
   return (
