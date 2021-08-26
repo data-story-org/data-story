@@ -20,25 +20,33 @@ const NodeSearch: FC<Props> = ({ store, onFinish }) => {
   const [search, setSearch] = useState('');
   const [cursor, setCursor] = useState(0);
 
+  const nameInput = useRef(null);
+  const currentSearch = useRef(null);
+
   // Fuzzy-search
   const nodes = store.diagram.availableNodes;
-  const [filteredNodes, setFilteredNodes] = useState(nodes);
+  const [filteredNodes, setFilteredNodes] = useState(
+    cloneDeep(nodes),
+  );
   const fuse = new Fuse(nodes, {
     keys: ['name', 'category', 'summary'],
     threshold: 0.3,
   });
-  const nameInput = useRef(null);
 
   const goDown = () => {
     cursor < filteredNodes.length - 1
       ? setCursor(cursor + 1)
       : setCursor(0);
+
+    currentSearch.current.scrollIntoView();
   };
 
   const goUp = () => {
     cursor > 0
       ? setCursor(cursor - 1)
       : setCursor(filteredNodes.length - 1);
+
+    currentSearch.current.scrollIntoView();
   };
 
   useHotkeys(
@@ -73,22 +81,27 @@ const NodeSearch: FC<Props> = ({ store, onFinish }) => {
     { enableOnTags: ['INPUT'] },
   );
 
+  // Focus search input
   useEffect(() => {
     nameInput.current.focus();
   }, []);
 
+  // Handle search changes
+  useEffect(() => {
+    search.length > 0
+      ? setFilteredNodes(
+          fuse.search(search).map((result) => {
+            return result.item;
+          }),
+        )
+      : setFilteredNodes(nodes);
+  }, [search]);
+
   const searchChange = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    setSearch(e.target.value);
     setCursor(0);
-
-    const searchResults = fuse
-      .search(search)
-      .map((result) => {
-        return result.item;
-      });
-    setFilteredNodes(searchResults);
+    setSearch(e.target.value);
   };
 
   const handleSelect = (nodeName: string) => {
@@ -121,12 +134,16 @@ const NodeSearch: FC<Props> = ({ store, onFinish }) => {
       <ul className="divide-y divide-gray-300">
         {filteredNodes.map((node, i) => {
           return (
-            <NodeListItem
-              node={node}
+            <div
               key={node.category + node.name + node.summary}
-              handleSelect={handleSelect}
-              selected={i === cursor ? true : false}
-            />
+              ref={i === cursor ? currentSearch : null}
+            >
+              <NodeListItem
+                node={node}
+                handleSelect={handleSelect}
+                selected={i === cursor ? true : false}
+              />
+            </div>
           );
         })}
       </ul>
