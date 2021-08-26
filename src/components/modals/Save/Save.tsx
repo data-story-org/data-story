@@ -4,6 +4,7 @@ import { Store } from '../../..//store';
 import SaveModalBody from './SaveBody';
 import SaveModalActions from './SaveActions';
 import BaseModalHeader from '../BaseModalHeader';
+import { useHotkeys } from 'react-hotkeys-hook';
 
 interface Props {
   store: Store;
@@ -18,6 +19,17 @@ const SaveModal: FC<Props> = ({
   setStoryName,
   closeModal,
 }: Props) => {
+  useHotkeys(
+    'enter',
+    (e) => {
+      e.stopPropagation();
+      handleSave(e);
+    },
+    {
+      enableOnTags: ['INPUT'],
+    },
+  );
+
   const handleChange = (e) => {
     setStoryName(e.target.value);
   };
