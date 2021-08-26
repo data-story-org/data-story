@@ -20,6 +20,9 @@ const NodeSearch: FC<Props> = ({ store, onFinish }) => {
   const [search, setSearch] = useState('');
   const [cursor, setCursor] = useState(0);
 
+  const nameInput = useRef(null);
+  const currentSearch = useRef(null);
+
   // Fuzzy-search
   const nodes = store.diagram.availableNodes;
   const [filteredNodes, setFilteredNodes] = useState(
@@ -29,18 +32,21 @@ const NodeSearch: FC<Props> = ({ store, onFinish }) => {
     keys: ['name', 'category', 'summary'],
     threshold: 0.3,
   });
-  const nameInput = useRef(null);
 
   const goDown = () => {
     cursor < filteredNodes.length - 1
       ? setCursor(cursor + 1)
       : setCursor(0);
+
+    currentSearch.current.scrollIntoView();
   };
 
   const goUp = () => {
     cursor > 0
       ? setCursor(cursor - 1)
       : setCursor(filteredNodes.length - 1);
+
+    currentSearch.current.scrollIntoView();
   };
 
   useHotkeys(
