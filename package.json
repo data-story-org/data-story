@@ -47,7 +47,7 @@
     "@fontsource/ibm-plex-sans": "^4.5.1",
     "@fontsource/ibm-plex-serif": "^4.5.0",
     "@projectstorm/react-diagrams": "^6.6.1",
-    "autoprefixer": "^10.0.2",
+    "autoprefixer": "^10.3.4",
     "axios": "^0.21",
     "babel-loader": "^8.2.2",
     "bootstrap": "^4.0.0",
