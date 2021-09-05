@@ -20,6 +20,7 @@ import {
   withLoadingProps,
 } from '../../utils/isLoadingHOC';
 import AppHotkeys from './AppHotkeys';
+import { demos } from '@data-story-org/core'
 
 const App: FC<withLoadingProps> = ({ setLoading }) => {
   const store = useStore();
@@ -82,9 +83,9 @@ const App: FC<withLoadingProps> = ({ setLoading }) => {
 };
 
 const bootDemos = (store: Store) => {
-  // for (const name of Object.keys(demos)) {
-  //   //store.metadata.client.save(name, demos[name])
-  // }
+  for (const name of Object.keys(demos)) {
+    //store.metadata.client.save(name, demos[name])
+  }
   // // store.metadata.client.save('With parameters', demos.WithParameters)
   // // store.metadata.client.save('Working with json', demos.WorkingWithJSON)
   // // store.metadata.client.save('Scraping a map service', demos.ScrapingAMapService)
