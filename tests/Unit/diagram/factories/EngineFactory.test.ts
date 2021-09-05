@@ -7,14 +7,16 @@ import { EngineFactory } from '../../../../src/diagram/factories';
 
 describe('EngineFactory', () => {
   it('can make a default engine', () => {
-    expect(EngineFactory.loadOrCreate(null)).toBeInstanceOf(DiagramEngine)
+    expect(EngineFactory.loadOrCreate(null)).toBeInstanceOf(
+      DiagramEngine,
+    );
   });
 
   // it('can make a engine with headless model', () => {
-	// 	const diagram = DiagramBuilder.begin()/* add some nodes here */.finish()
-	// 	const serializedDiagram = diagram.serialize()
-	// 	const engine = EngineFactory.loadOrCreate(serializedDiagram)
+  // 	const diagram = DiagramBuilder.begin()/* add some nodes here */.finish()
+  // 	const serializedDiagram = diagram.serialize()
+  // 	const engine = EngineFactory.loadOrCreate(serializedDiagram)
 
   //   expect(engine).toBeInstanceOf(DiagramEngine)
-  // });	
+  // });
 });
