@@ -1049,7 +1049,7 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
-"@data-story-org/core@^0.1.0":
+"@data-story-org/core@latest":
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/@data-story-org/core/-/core-0.1.0.tgz#0e420ca4e734fe52f15ade1503763a0681813b5d"
   integrity sha512-zI9MiJUygnYdKkJtWiiArBf3MIfr77g3Xjd69XJiCOD5uzmLkgr6xojsCqgy8L2Gmblf8oTGIueRxdC2tD6UNA==
