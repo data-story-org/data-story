@@ -24,7 +24,7 @@ Then in gui you most likely want to change dependency on core repo to your local
 To make git ignore those change and don't cause unnecessary headache let's setup our filters
 
 ```sh
-git config  filter.changeToGitVersion.clean 'sed "s/\"@data-story-org\/core\": .*/\"@data-story-org\/core\": \"data-story-org\/core#master\",/"'
+git config  filter.changeToGitVersion.clean 'sed "s/\"@data-story-org\/core\": .*/\"@data-story-org\/core\": \"@data-story-org\/core@latest\",/"'
 git config  filter.changeToGitVersion.smudge 'sed "s/\"@data-story-org\/core\": .*/\"@data-story-org\/core\": \"link:..\/core\",/"'
 git config  filter.changeToGitVersion.required true
 ```
