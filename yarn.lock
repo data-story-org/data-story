@@ -1049,13 +1049,14 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
-"@data-story-org/core@data-story-org/core#master":
-  version "0.0.3"
-  uid a84dd16a765372c3b519e4a53d2bcd79e5ccc512
-  resolved "https://codeload.github.com/data-story-org/core/tar.gz/a84dd16a765372c3b519e4a53d2bcd79e5ccc512"
+"@data-story-org/core@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@data-story-org/core/-/core-0.1.0.tgz#0e420ca4e734fe52f15ade1503763a0681813b5d"
+  integrity sha512-zI9MiJUygnYdKkJtWiiArBf3MIfr77g3Xjd69XJiCOD5uzmLkgr6xojsCqgy8L2Gmblf8oTGIueRxdC2tD6UNA==
   dependencies:
     axios "^0.21.1"
-    laravel-mix "^6.0.27"
+    browser-or-node "^1.3.0"
+    laravel-mix "^6.0.28"
 
 "@discoveryjs/json-ext@^0.5.0":
   version "0.5.3"
@@ -2605,6 +2606,11 @@ brorand@^1.0.1, brorand@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/brorand/-/brorand-1.1.0.tgz#12c25efe40a45e3c323eb8675a0a0ce57b22371f"
   integrity sha1-EsJe/kCkXjwyPrhnWgoM5XsiNx8=
+
+browser-or-node@^1.3.0:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/browser-or-node/-/browser-or-node-1.3.0.tgz#f2a4e8568f60263050a6714b2cc236bb976647a7"
+  integrity sha512-0F2z/VSnLbmEeBcUrSuDH5l0HxTXdQQzLjkmBR4cYfvg1zJrKSlmIZFqyFR8oX0NrwPhy3c3HQ6i3OxMbew4Tg==
 
 browser-process-hrtime@^1.0.0:
   version "1.0.0"
@@ -6048,7 +6054,7 @@ klona@^2.0.4:
   resolved "https://registry.yarnpkg.com/klona/-/klona-2.0.4.tgz#7bb1e3affb0cb8624547ef7e8f6708ea2e39dfc0"
   integrity sha512-ZRbnvdg/NxqzC7L9Uyqzf4psi1OM4Cuc+sJAkQPjO6XkQIJTNbfK2Rsmbw8fx1p2mkZdp2FZYo2+LwXYY/uwIA==
 
-laravel-mix@^6.0.27, laravel-mix@^6.0.28:
+laravel-mix@^6.0.28:
   version "6.0.28"
   resolved "https://registry.yarnpkg.com/laravel-mix/-/laravel-mix-6.0.28.tgz#5479c83a610f8884ae279dfe003c533ab16fccb5"
   integrity sha512-aF90/0MSWcwafvsnUUA6fjhQ21Y2ci1p1huyZKUJpzIBEpuO0qTu1smHxITsk0h/6UaflHKFp7F8jjKuMvVAtg==
