@@ -55,6 +55,7 @@
     "cross-env": "^7.0",
     "dagre": "^0.8.5",
     "file-saver": "^2.0.5",
+    "flatted": "^3.2.2",
     "fuse.js": "^6.4.6",
     "jexcel": "^4.6.1",
     "jquery": "^3.2",

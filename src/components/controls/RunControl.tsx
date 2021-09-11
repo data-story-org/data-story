@@ -30,7 +30,7 @@ const RunControl: FC<Props> = ({ store, setLoading }) => {
       .run(store.getModel())
       .then((result) => {
         const diagram = store.getModel();
-        const serverDiagram = result.data.diagram;
+        const serverDiagram = result['data']['diagram']; // result.data.diagram;
         diagram.syncFeatures(serverDiagram);
         store.setNotRunning();
         setLoading(false);
