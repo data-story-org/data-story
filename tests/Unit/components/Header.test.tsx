@@ -3,6 +3,7 @@ import { render } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 
 import Header from '../../../src/components/Header';
+import { Store } from '../../../src/store';
 
 describe('<Header />', () => {
   window.config = {
@@ -11,7 +12,8 @@ describe('<Header />', () => {
   };
 
   it('Renders correctly', async () => {
-    const { findByText } = render(<Header />);
+		const store = new Store();
+    const { findByText } = render(<Header store={store} />);
 
     expect(await findByText(window.config.appName))
       .toBeInTheDocument;
