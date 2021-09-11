@@ -1,10 +1,15 @@
-# Data Story - GUI
-
-## Description
-
-This repo supplies a gui to Data Story
 
 <img src="https://user-images.githubusercontent.com/3457668/117117786-3d48a900-ad90-11eb-91eb-520f7919d7fa.png">
+
+*Visual programming | Process design | Workflows | ETL | Data manipulation*
+
+:point_right: This repo provides the *gui* for DataStory. See also:
+
+[data-story-org/core](https://github.com/data-story-org/core)
+
+[data-story-org/x-to-y](https://github.com/data-story-org/x-to-y)
+
+[Demo](https://data-story-org.github.io/gui)
 
 ## Development
 
