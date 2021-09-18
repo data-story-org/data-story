@@ -1,8 +1,7 @@
 import React, { FC } from 'react';
 import { Store } from '../../store';
-import { withLoadingProps } from '../../utils/isLoadingHOC';
 
-interface Props extends withLoadingProps {
+interface Props {
   store: Store;
 }
 

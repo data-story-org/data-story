@@ -1,10 +1,9 @@
 import React, { FC } from 'react';
 import ActiveStory from './ActiveStory'
 import * as globalWindow from '../../types/globalWindow'
-import { withLoadingProps } from '../../utils/isLoadingHOC';
 import { Store } from '../../store';
 
-interface Props extends withLoadingProps {
+interface Props {
   store: Store;
 }
 
