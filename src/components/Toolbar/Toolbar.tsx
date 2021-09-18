@@ -5,7 +5,7 @@ import WorkbenchControl from '../controls/WorkbenchControl';
 import OpenControl from '../controls/OpenControl';
 import SaveControl from '../controls/SaveControl';
 import RunControl from '../controls/RunControl';
-import LogControl from '../controls/LogControl';
+import HelpControl from '../controls/HelpControl';
 import DiagramJsonControl from '../controls/DiagramJsonControl';
 import ConfigControl from '../controls/ConfigControl';
 import AddNodeControl from '../controls/AddNodeControl';
@@ -58,12 +58,14 @@ const Toolbar: FC<Props> = ({ store, setLoading }) => {
         <WorkbenchControl store={store} />
         <DiagramJsonControl store={store} />
         <ConfigControl store={store} />
+				<HelpControl store={store} />
         <OpenControl store={store} />
         <SaveControl store={store} />
         <RunControl store={store} setLoading={setLoading} />
         {/* <TokensControl  />
                     <LogControl  /> */}
         <AddNodeControl store={store} />
+				
         <ToolbarInspectables
           store={store}
           onClickInspectable={onClickInspectable}

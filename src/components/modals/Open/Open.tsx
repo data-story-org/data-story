@@ -37,8 +37,10 @@ const OpenModal: FC<Props> = ({ store, closeModal }) => {
     try {
       const engine = store.diagram.engine;
       const model = new DiagramModel();
+			const serializedModel = store.metadata.client.load(name)
+			console.log(serializedModel)
       model.deserializeModel(
-        store.metadata.client.load(name),
+				serializedModel,
         engine,
       );
       engine.setModel(model);
