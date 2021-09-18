@@ -2,7 +2,7 @@
 
 _Visual programming | Process design | Workflows | ETL | Data manipulation_
 
-:point_right: This repo provides the _gui_ for DataStory. See also:
+:point*right: This repo provides the \_gui* for DataStory. See also:
 
 [data-story-org/core](https://github.com/data-story-org/core)
 
