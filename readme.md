@@ -1,9 +1,8 @@
-
 <img src="https://user-images.githubusercontent.com/3457668/117117786-3d48a900-ad90-11eb-91eb-520f7919d7fa.png">
 
-*Visual programming | Process design | Workflows | ETL | Data manipulation*
+_Visual programming | Process design | Workflows | ETL | Data manipulation_
 
-:point_right: This repo provides the *gui* for DataStory. See also:
+:point*right: This repo provides the \_gui* for DataStory. See also:
 
 [data-story-org/core](https://github.com/data-story-org/core)
 
