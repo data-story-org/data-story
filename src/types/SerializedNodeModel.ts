@@ -11,13 +11,12 @@ export type SerializedNodeModel = {
   editableOutPorts: boolean;
   key?: string; // what?
   name: string;
-  nodeReact: string; // what?
   parameters: {
     fieldType: string;
     value: string;
     name: string;
   }[];
-  summary: string; // what?
+  summary: string;
   nodeType: string;
   selected: any;
   extras: any;
