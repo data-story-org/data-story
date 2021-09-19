@@ -23,14 +23,11 @@ export class NodeModel extends DefaultNodeModel {
   editableInPorts: false;
   editableOutPorts: false;
   name: string;
-  nodeReact: 'Node';
   parameters: NodeParameter[];
   nodeType: string;
   id: string;
 
   constructor(options) {
-    // console.log("RUNNING NodeModel constructor")
-    // Make id easier on humans
     const id =
       options.id ??
       `Node_${options.name}_${options.serial}_${UID()}`;
@@ -47,7 +44,6 @@ export class NodeModel extends DefaultNodeModel {
     this.editableInPorts = options.editableInPorts;
     this.editableOutPorts = options.editableOutPorts;
     this.name = options.name;
-    this.nodeReact = options.nodeReact;
     this.parameters = options.parameters;
     this.nodeType = options.nodeType;
     this.features = options.features ?? [];
@@ -62,6 +58,8 @@ export class NodeModel extends DefaultNodeModel {
         }),
       );
     });
+
+		console.log(this, options)
   }
 
   serialize(): SerializedNodeModel {
@@ -74,7 +72,6 @@ export class NodeModel extends DefaultNodeModel {
       summary: this.summary,
       editableInPorts: this.editableInPorts,
       editableOutPorts: this.editableOutPorts,
-      nodeReact: this.nodeReact,
       nodeType: this.nodeType,
     };
   }
