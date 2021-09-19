@@ -4,6 +4,12 @@ import { showNotification } from '../utils/Notifications';
 import { Page, Inspector, InspectorMode } from '../types';
 import { DiagramEngine } from '@projectstorm/react-diagrams';
 import { DiagramModel, NodeModel } from '../diagram/models';
+import {
+  Demo,
+  demos,
+  Node as HeadlessNode,
+} from '@data-story-org/core';
+import { EngineFactory } from '../diagram/factories';
 
 interface Metadata {
   running: boolean;
@@ -13,6 +19,7 @@ interface Metadata {
   stories: any[];
   activeStory: string;
   client: Client;
+  demos: Demo[];
 }
 
 interface Diagram {
@@ -43,6 +50,7 @@ export class Store {
     stories: [],
     activeStory: '',
     client: ClientFactory((window as any).config),
+    demos: [],
   };
 
   constructor() {
@@ -52,8 +60,10 @@ export class Store {
       metadata: observable,
 
       // Setters
+      addDemos: action.bound,
       addNode: action.bound,
       clearResults: action.bound,
+      importDemo: action.bound,
       increaseNodeSerial: action.bound,
       goToInspector: action.bound,
       navigateDiagram: action.bound,
@@ -81,6 +91,10 @@ export class Store {
     });
   }
 
+  addDemos(demos: Demo[]) {
+    this.metadata.demos = demos;
+  }
+
   addNode(data) {
     delete data.id; // TODO remove id at availableNodes prep
 
@@ -97,6 +111,14 @@ export class Store {
   goToInspector(id) {
     this.metadata.activeInspector.nodeId = id;
     this.metadata.page = 'Inspector';
+  }
+
+  importDemo(name) {
+    // Naive implementation assuming all nodes are added in simple left to right configuration
+    const demo = demos.find((demo) => demo.name == name);
+    demo.diagram.history.forEach((headlessNode) => {
+      this.addNode(headlessNode.serialize());
+    });
   }
 
   nodesWithInspectables() {
