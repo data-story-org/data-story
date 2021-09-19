@@ -40,6 +40,9 @@ jobs:
       - name: Install dependencies
         run: yarn --silent
 
+      - name: Use latest core package
+        run: yarn upgrade @data-story-org/core
+
       - name: Test
         run: yarn test
 
@@ -64,6 +67,9 @@ jobs:
           yarn --silent
         # env:
         #   PUPPETEER_PRODUCT: firefox
+
+      - name: Use latest core package
+        run: yarn upgrade @data-story-org/core
 
       - name: Build in production environment
         run: yarn run prod

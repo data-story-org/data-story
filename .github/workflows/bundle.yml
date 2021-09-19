@@ -18,6 +18,9 @@ jobs:
       - name: Install dependencies
         run: yarn install
 
+      - name: Use latest core package
+        run: yarn upgrade @data-story-org/core
+
       - name: Build in production environment
         run: yarn run prod
 
