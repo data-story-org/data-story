@@ -32,6 +32,8 @@ object-assign
  * Licensed under the MIT license.
  */
 
+/*! (c) 2020 Andrea Giammarchi */
+
 /**
  * @license
  * Lodash <https://lodash.com/>
