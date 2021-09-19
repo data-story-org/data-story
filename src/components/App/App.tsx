@@ -21,9 +21,7 @@ import {
 } from '../../utils/isLoadingHOC';
 import AppHotkeys from './AppHotkeys';
 import { SerializedReactDiagram } from '../../types';
-import { Demo, demos } from '@data-story-org/core'
-
-
+import { Demo, demos } from '@data-story-org/core';
 
 const App: FC<withLoadingProps> = ({ setLoading }) => {
   const store = useStore();
@@ -50,7 +48,7 @@ const App: FC<withLoadingProps> = ({ setLoading }) => {
           ),
         );
 
-        store.addDemos(demos)
+        store.addDemos(demos);
 
         store.setAvailableNodes(
           response.data.availableNodes,
