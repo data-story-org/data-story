@@ -11,10 +11,14 @@ const OpenModalBody: FC<Props> = ({
   store,
   clickStory,
 }) => {
+	console.log(store.metadata.demos)
   return (
     <div>
       <div className="w-full bg-gray-100 px-6 py-2">
         <div className="flex flex-col my-4 justify-center align-middle text-gray-500 text-xs">
+					<span className="my-2 font-sans font-medium text-sm text-indigo-500">
+						Your Diagrams
+					</span>
           <ul>
             {store.metadata.stories.map((story) => {
               return (
@@ -29,7 +33,7 @@ const OpenModalBody: FC<Props> = ({
                 </li>
               );
             })}
-          </ul>
+          </ul>				
         </div>
       </div>
     </div>
