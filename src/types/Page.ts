@@ -1,5 +1,5 @@
 export type Page =
-	| 'Splash'
+  | 'Splash'
   | 'Workbench'
   | 'Inspector'
   | 'DiagramJSON'

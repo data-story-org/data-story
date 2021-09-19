@@ -1,7 +1,7 @@
 import Inspector from './Inspector';
 import DiagramJson from './DiagramJson';
 import Log from './Log';
-import Splash from './Splash'
+import Splash from './Splash';
 import Tokens from './Tokens';
 import Workbench from './Workbench';
 
@@ -9,7 +9,7 @@ export const pages = {
   Inspector,
   DiagramJson,
   Log,
-	Splash,
+  Splash,
   Tokens,
   Workbench,
 };
