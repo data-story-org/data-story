@@ -4,7 +4,7 @@ import { showNotification } from '../utils/Notifications';
 import { Page, Inspector, InspectorMode } from '../types';
 import { DiagramEngine } from '@projectstorm/react-diagrams';
 import { DiagramModel, NodeModel } from '../diagram/models';
-import { demos, Node as HeadlessNode } from '@data-story-org/core';
+import { Demo, demos, Node as HeadlessNode } from '@data-story-org/core';
 import { EngineFactory } from '../diagram/factories';
 
 interface Metadata {
@@ -15,7 +15,7 @@ interface Metadata {
   stories: any[];
   activeStory: string;
   client: Client;
-	demos: {};
+	demos: Demo[];
 }
 
 interface Diagram {
@@ -46,7 +46,7 @@ export class Store {
     stories: [],
     activeStory: '',
     client: ClientFactory((window as any).config),
-		demos: {},
+		demos: [],
   };
 
   constructor() {
@@ -59,7 +59,7 @@ export class Store {
 			addDemos: action.bound,
       addNode: action.bound,
       clearResults: action.bound,
-			importHeadless: action.bound,
+			importDemo: action.bound,
       increaseNodeSerial: action.bound,
       goToInspector: action.bound,
       navigateDiagram: action.bound,
@@ -87,7 +87,7 @@ export class Store {
     });
   }
 
-	addDemos(demos) {
+	addDemos(demos: Demo[]) {
 		this.metadata.demos = demos
 	}
 
@@ -109,9 +109,10 @@ export class Store {
     this.metadata.page = 'Inspector';
   }
 
-	importHeadless(name) {
+	importDemo(name) {
 		// Naive implementation assuming all nodes are added in simple left to right configuration
-		demos[name].history.forEach(headlessNode => {
+		const demo = demos.find(demo => demo.name == name)
+		demo.diagram.history.forEach(headlessNode => {
 			this.addNode(headlessNode.serialize())
 		});
 	}

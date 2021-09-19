@@ -8,10 +8,17 @@ interface Props {
 }
 
 const Header: FC<Props> = ({store}) => {
+	const onClick = () => {
+		store.setPage('Splash');	
+	}
+
   return (
     <div className="w-full">
       <div className="w-full p-4 bg-gray-700 font-sans shadow shadow-lg">
-        <span className="text-xl text-malibu-500 font-medium subpixel-antialiased">
+        <span
+					className="text-xl text-malibu-500 hover:text-malibu-600 cursor-pointer font-medium subpixel-antialiased"
+					onClick={onClick}
+				>
           {window.config.appName}
         </span>
 				<ActiveStory store={store} />
