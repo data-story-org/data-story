@@ -1,14 +1,11 @@
 import { BootPayload } from '@data-story-org/core/lib/src/types/BootPayload';
 import axios from 'axios';
 import { DiagramModel } from '../diagram/models';
-import { ClientInterface } from './ClientInterface';
+import {
+  ClientInterface,
+  RunResult,
+} from './ClientInterface';
 import { parse } from 'flatted';
-
-interface RunResult {
-  data: {
-    diagram: DiagramModel;
-  };
-}
 
 export class APIClient implements ClientInterface {
   public root = 'http://localhost:3000'; // https://data-story-server.herokuapp.com

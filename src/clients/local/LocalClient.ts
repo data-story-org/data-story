@@ -1,17 +1,23 @@
 import { LocalServer } from './LocalServer';
 import { DiagramModel } from '../../diagram/models';
-import { ClientInterface } from '../ClientInterface';
+import {
+  ClientInterface,
+  RunResult,
+} from '../ClientInterface';
 import context from './localSampleContext';
+import { BootPayload } from '@data-story-org/core';
 
 const server = new LocalServer(context);
 
 export class LocalClient implements ClientInterface {
-  boot(): Promise<any> {
+  async boot(): Promise<BootPayload> {
     return server.boot();
   }
 
-  run(model: DiagramModel): Promise<{}> {
-    return server.run(model.serialize());
+  async run(model: DiagramModel): Promise<RunResult> {
+    return (await server.run(
+      model.serialize(),
+    )) as RunResult;
   }
 
   load(name: string): string {
