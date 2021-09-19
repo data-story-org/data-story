@@ -20,7 +20,10 @@ import {
   withLoadingProps,
 } from '../../utils/isLoadingHOC';
 import AppHotkeys from './AppHotkeys';
+import { SerializedReactDiagram } from '../../types';
 import { Demo, demos } from '@data-story-org/core'
+
+
 
 const App: FC<withLoadingProps> = ({ setLoading }) => {
   const store = useStore();
@@ -42,7 +45,8 @@ const App: FC<withLoadingProps> = ({ setLoading }) => {
       .then((response) => {
         store.setEngine(
           EngineFactory.loadOrCreate(
-            response.data.serializedModel ?? null,
+            response.data
+              .serializedModel as SerializedReactDiagram,
           ),
         );
 

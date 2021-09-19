@@ -5,6 +5,7 @@ import { useHotkeys } from 'react-hotkeys-hook';
 import BaseControl from './BaseControl';
 import { withLoadingProps } from '../../utils/isLoadingHOC';
 import { Store } from '../../store';
+import { RunResult } from '../../clients/ClientInterface';
 
 interface Props extends withLoadingProps {
   store: Store;
@@ -28,9 +29,9 @@ const RunControl: FC<Props> = ({ store, setLoading }) => {
 
     store.metadata.client
       .run(store.getModel())
-      .then((result) => {
+      .then((result: RunResult) => {
         const diagram = store.getModel();
-        const serverDiagram = result.data.diagram;
+        const serverDiagram = result.diagram;
         diagram.syncFeatures(serverDiagram);
         store.setNotRunning();
         setLoading(false);

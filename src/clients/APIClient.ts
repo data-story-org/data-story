@@ -1,5 +1,11 @@
+import { BootPayload } from '@data-story-org/core/lib/src/types/BootPayload';
 import axios from 'axios';
-import { ClientInterface } from './ClientInterface';
+import { DiagramModel } from '../diagram/models';
+import {
+  ClientInterface,
+  RunResult,
+} from './ClientInterface';
+import { parse } from 'flatted';
 
 export class APIClient implements ClientInterface {
   public root = 'http://localhost:3000'; // https://data-story-server.herokuapp.com
@@ -8,14 +14,27 @@ export class APIClient implements ClientInterface {
     if (root) this.root = root;
   }
 
-  boot(options: object): Promise<any> {
-    return axios.post(this.root + '/boot', options);
+  async boot(options: object): Promise<BootPayload> {
+    const response = await axios.post(
+      this.root + '/boot',
+      options,
+    );
+
+    return response.data;
   }
 
-  run(model): Promise<any> {
-    return axios.post(this.root + '/run', {
-      model: model.toJson(),
-    });
+  async run(model: DiagramModel): Promise<RunResult> {
+    const response = await axios.post(
+      this.root + '/run',
+      {
+        model: model.serialize(),
+      },
+      {
+        transformResponse: (res) => parse(res),
+      },
+    );
+
+    return response.data as RunResult;
   }
 
   load(name: string): string {
