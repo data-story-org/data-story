@@ -1,16 +1,20 @@
 import React, { FC } from 'react';
-import * as globalWindow from '../types/globalWindow'
+import ActiveStory from './ActiveStory'
+import * as globalWindow from '../../types/globalWindow'
+import { Store } from '../../store';
 
-const Header: FC = () => {
+interface Props {
+  store: Store;
+}
+
+const Header: FC<Props> = ({store}) => {
   return (
     <div className="w-full">
       <div className="w-full p-4 bg-gray-700 font-sans shadow shadow-lg">
         <span className="text-xl text-malibu-500 font-medium subpixel-antialiased">
           {window.config.appName}
-          <span className="ml-2 text-sm text-gray-400 font-normal subpixel-antialiased">
-            {window.config.appDesc}
-          </span>
         </span>
+				<ActiveStory store={store} />
       </div>
     </div>
   );
