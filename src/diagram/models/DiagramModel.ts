@@ -5,6 +5,7 @@ import {
 import { NodeModel } from './NodeModel';
 import { SerializedReactDiagram } from '../../types';
 import VERSION from '../../utils/version';
+import { stringify } from 'flatted';
 
 /**
  * Sorts model in execution order based on their dependencies
@@ -26,11 +27,7 @@ export class DiagramModel extends DefaultDiagramModel {
   }
 
   toJson(indentation = 0): string {
-    return JSON.stringify(
-      this.serialize(),
-      null,
-      indentation,
-    );
+    return stringify(this.serialize(), null, indentation);
   }
 
   toPrettyJson(): string {
