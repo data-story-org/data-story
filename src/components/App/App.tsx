@@ -21,7 +21,7 @@ import {
 } from '../../utils/isLoadingHOC';
 import AppHotkeys from './AppHotkeys';
 import { SerializedReactDiagram } from '../../types';
-import { Demo, demos } from '@data-story-org/core';
+import { demos } from '@data-story-org/core';
 
 const App: FC<withLoadingProps> = ({ setLoading }) => {
   const store = useStore();
