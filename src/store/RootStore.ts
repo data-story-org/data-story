@@ -5,7 +5,7 @@ import { Page, Inspector, InspectorMode } from '../types';
 import { DiagramEngine } from '@projectstorm/react-diagrams';
 import { DiagramModel, NodeModel } from '../diagram/models';
 import {
-  Demo,
+  DataStory,
   demos,
   Node as HeadlessNode,
 } from '@data-story-org/core';
@@ -19,7 +19,7 @@ interface Metadata {
   stories: any[];
   activeStory: string;
   client: Client;
-  demos: Demo[];
+  demos: DataStory[];
 }
 
 interface Diagram {
@@ -91,7 +91,7 @@ export class Store {
     });
   }
 
-  addDemos(demos: Demo[]) {
+  addDemos(demos: DataStory[]) {
     this.metadata.demos = demos;
   }
 
