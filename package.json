@@ -99,7 +99,7 @@
     "@types/jest-environment-puppeteer": "^4.4.1",
     "@types/node": "^16.6.1",
     "@types/puppeteer": "^5.4.4",
-    "@types/react": "^17.0.17",
+    "@types/react": "^17.0.22",
     "@types/react-syntax-highlighter": "^13.5.2",
     "@typescript-eslint/eslint-plugin": "^4.29.1",
     "@typescript-eslint/parser": "^4.29.1",
