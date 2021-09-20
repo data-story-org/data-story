@@ -1,5 +1,6 @@
 import { Server } from '@data-story-org/core';
 import { DiagramModel } from '../../diagram/models';
+import { SerializedReactDiagram } from '../../types';
 
 export class LocalServer extends Server {
   boot() {
@@ -14,6 +15,7 @@ export class LocalServer extends Server {
   load(name: string): string {
     // @ts-ignore
     return JSON.parse(localStorage.getItem(name));
+  load(name: string): SerializedReactDiagram {
   }
 
   async save(name: string, model: DiagramModel) {
