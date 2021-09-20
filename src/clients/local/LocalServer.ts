@@ -1,6 +1,11 @@
-import { Server } from '@data-story-org/core';
+import {
+  Server,
+  DataStory,
+  Diagram,
+} from '@data-story-org/core';
 import { DiagramModel } from '../../diagram/models';
 import { SerializedReactDiagram } from '../../types';
+import { parse, stringify } from 'flatted';
 
 export class LocalServer extends Server {
   boot() {
@@ -12,15 +17,25 @@ export class LocalServer extends Server {
     return bootPayload;
   }
 
-  load(name: string): string {
-    // @ts-ignore
-    return JSON.parse(localStorage.getItem(name));
   load(name: string): SerializedReactDiagram {
+    const story: DataStory<SerializedReactDiagram> = parse(
+      localStorage.getItem(name),
+    );
+    return story.diagram;
   }
 
   async save(name: string, model: DiagramModel) {
-    // @ts-ignore
-    localStorage.setItem(name, model.toJson());
+    localStorage.setItem(
+      name,
+      stringify(
+        new DataStory<SerializedReactDiagram>(
+          name,
+          '',
+          [''],
+          model.serialize(),
+        ),
+      ),
+    );
 
     return new Promise((success) => {
       return success(true);
