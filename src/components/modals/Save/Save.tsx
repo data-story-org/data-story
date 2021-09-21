@@ -1,24 +1,29 @@
 import React, { FC, useState } from 'react';
+import { useHotkeys } from 'react-hotkeys-hook';
 import { observer } from 'mobx-react-lite';
 import { Store } from '../../..//store';
 import SaveModalBody from './SaveBody';
 import SaveModalActions from './SaveActions';
 import BaseModalHeader from '../BaseModalHeader';
-import { useHotkeys } from 'react-hotkeys-hook';
+import { SaveStoryI } from './SaveStoryI';
+import { DataStory } from '@data-story-org/core';
+import { SerializedReactDiagram } from '../../../types';
 
 interface Props {
   store: Store;
-  storyName: string;
-  setStoryName: (story: string) => void;
   closeModal: () => void;
 }
 
 const SaveModal: FC<Props> = ({
   store,
-  storyName,
-  setStoryName,
   closeModal,
 }: Props) => {
+  const [story, setStory] = useState<SaveStoryI>({
+    name: store.metadata.activeStory,
+    desc: '',
+    tags: {},
+  });
+
   useHotkeys(
     'enter',
     (e) => {
@@ -30,8 +35,32 @@ const SaveModal: FC<Props> = ({
     },
   );
 
-  const handleChange = (e) => {
-    setStoryName(e.target.value);
+  const handleChange =
+    (field: string, tagKey: number = 0) =>
+    (e) => {
+      field === 'tags'
+        ? setStory({
+            ...story,
+            [field]: {
+              ...story.tags,
+              [tagKey]: e.target.value,
+            },
+          })
+        : setStory({
+            ...story,
+            [field]: e.target.value,
+          });
+    };
+
+  const addTag = (e) => {
+    console.log('aga');
+    setStory({
+      ...story,
+      tags: {
+        ...story.tags,
+        [Object.keys(story.tags).length]: '',
+      },
+    });
   };
 
   const handleCancel = (_e) => {
@@ -41,8 +70,15 @@ const SaveModal: FC<Props> = ({
   const handleSave = (_e) => {
     store.getModel().clearLinkLabels();
 
+    const dataStory = new DataStory<SerializedReactDiagram>(
+      story.name,
+      story.desc,
+      Object.values(story.tags),
+      store.getModel().serialize(),
+    );
+
     store.metadata.client
-      .save(storyName, store.getModel())
+      .save(dataStory)
       .then(() => {
         closeModal();
       })
@@ -54,7 +90,11 @@ const SaveModal: FC<Props> = ({
   return (
     <div>
       <BaseModalHeader action="save" />
-      <SaveModalBody handleChange={handleChange} />
+      <SaveModalBody
+        handleChange={handleChange}
+        addTag={addTag}
+        story={story}
+      />
       <SaveModalActions
         handleCancel={handleCancel}
         handleSave={handleSave}

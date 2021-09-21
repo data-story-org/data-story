@@ -15,9 +15,6 @@ interface Props {
 const SaveControl: FC<Props> = ({ store }) => {
   const [title, icon] = ['Save story', 'fas fa-save'];
   const [isOpen, setIsOpen] = useState(false);
-  const [defaultStory, setDefaultStory] = useState(
-    store.metadata.activeStory,
-  );
 
   useHotkeys('shift+s', () => {
     onClick();
@@ -45,12 +42,7 @@ const SaveControl: FC<Props> = ({ store }) => {
         onRequestClose={closeModal}
         style={modalStyle}
       >
-        <SaveModal
-          store={store}
-          storyName={defaultStory}
-          setStoryName={setDefaultStory}
-          closeModal={closeModal}
-        />
+        <SaveModal store={store} closeModal={closeModal} />
       </Modal>
     </span>
   );
