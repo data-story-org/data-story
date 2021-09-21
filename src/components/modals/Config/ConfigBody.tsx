@@ -29,16 +29,10 @@ const ConfigModalBody: FC = () => {
                 <div
                   className="cursor-pointer hover:text-indigo-600 font-mono"
                   key={server}
-                  onClick={() => {
-                    window.location.href =
-                      window.location.hostname +
-                      '?client=APIClient&server=' +
-                      server;
-                  }}
                 >
                   <li>
                     <a
-                      href="{server}"
+                      href={`?client=APIClient&server=${server}`}
                       className="cursor-pointer hover:text-indigo-600"
                     >
                       {server}
