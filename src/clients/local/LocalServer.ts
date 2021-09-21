@@ -4,7 +4,7 @@ import {
   Diagram,
 } from '@data-story-org/core';
 import { DiagramModel } from '../../diagram/models';
-import { SerializedReactDiagram } from '../../types';
+import { SerializedReactDiagram, Story } from '../../types';
 import { parse, stringify } from 'flatted';
 
 export class LocalServer extends Server {
@@ -18,24 +18,12 @@ export class LocalServer extends Server {
   }
 
   load(name: string): SerializedReactDiagram {
-    const story: DataStory<SerializedReactDiagram> = parse(
-      localStorage.getItem(name),
-    );
+    const story: Story = parse(localStorage.getItem(name));
     return story.diagram;
   }
 
-  async save(name: string, model: DiagramModel) {
-    localStorage.setItem(
-      name,
-      stringify(
-        new DataStory<SerializedReactDiagram>(
-          name,
-          '',
-          [''],
-          model.serialize(),
-        ),
-      ),
-    );
+  async save(story: Story) {
+    localStorage.setItem(story.name, stringify(story));
 
     return new Promise((success) => {
       return success(true);

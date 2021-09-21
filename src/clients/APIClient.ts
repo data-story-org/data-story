@@ -6,7 +6,7 @@ import {
   RunResult,
 } from './ClientInterface';
 import { parse } from 'flatted';
-import { SerializedReactDiagram } from '../types';
+import { SerializedReactDiagram, Story } from '../types';
 
 export class APIClient implements ClientInterface {
   public root = 'http://localhost:3000'; // https://data-story-server.herokuapp.com
@@ -42,10 +42,9 @@ export class APIClient implements ClientInterface {
     throw 'Not implemented';
   }
 
-  save(name, model) {
+  save(story: Story) {
     return axios.post(this.root + '/save', {
-      name,
-      model: model.toJson(),
+      story,
     });
   }
 }
