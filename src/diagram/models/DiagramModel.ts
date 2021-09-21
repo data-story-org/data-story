@@ -31,7 +31,7 @@ export class DiagramModel extends DefaultDiagramModel {
   }
 
   toPrettyJson(): string {
-    return this.toJson(4);
+    return JSON.stringify(this.serialize(), null, 4);
   }
 
   serialize(): SerializedReactDiagram {
