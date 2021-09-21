@@ -1,7 +1,12 @@
 import { action, observable, makeObservable } from 'mobx';
 import { Client, ClientFactory } from '../clients';
 import { showNotification } from '../utils/Notifications';
-import { Page, Inspector, InspectorMode } from '../types';
+import {
+  Page,
+  Inspector,
+  InspectorMode,
+  SerializedReactDiagram,
+} from '../types';
 import { DiagramEngine } from '@projectstorm/react-diagrams';
 import { DiagramModel, NodeModel } from '../diagram/models';
 import {
@@ -16,7 +21,7 @@ interface Metadata {
   page: Page;
   activeInspector: Inspector;
   requestOpenNodeModal: string;
-  stories: any[];
+  stories: DataStory<SerializedReactDiagram>[];
   activeStory: string;
   client: Client;
   demos: DataStory[];
