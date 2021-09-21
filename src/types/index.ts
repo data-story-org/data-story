@@ -7,3 +7,4 @@ export {
 export { SerializedNodeModel } from './SerializedNodeModel';
 export { SerializedReactDiagram } from './SerializedReactDiagram';
 export { BootPayload } from './BootPayload';
+export * from './DataStory';

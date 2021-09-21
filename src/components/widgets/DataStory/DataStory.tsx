@@ -1,8 +1,11 @@
 import React, { FC } from 'react';
 import { DataStory } from '@data-story-org/core';
+import { SerializedReactDiagram } from '../../../types';
+
+type Story = DataStory<SerializedReactDiagram> | DataStory;
 
 interface Props {
-  story: DataStory;
+  story: Story;
   storyLoadHandler: (storyName: string) => void;
 }
 
@@ -17,7 +20,7 @@ export const DataStoryWidget: FC<Props> = ({
       onClick={() => storyLoadHandler(story.name)}
     >
       <div className="px-6 py-4">
-        <div className="font-bold text-xl mb-2">
+        <div className="text-black font-bold text-xl mb-2">
           {story.name}
         </div>
         <p className="text-gray-700 text-base">
@@ -26,14 +29,14 @@ export const DataStoryWidget: FC<Props> = ({
       </div>
       <div className="px-6 pt-4 pb-2">
         {story.tags.map((tag: string) => {
-          return (
+          return tag ? (
             <span
               key={tag}
               className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"
             >
               {tag}
             </span>
-          );
+          ) : null;
         })}
       </div>
     </div>
