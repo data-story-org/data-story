@@ -77,6 +77,11 @@ const SaveModal: FC<Props> = ({
       store.getModel().serialize(),
     );
 
+    store.setStories([
+      ...store.metadata.stories,
+      dataStory,
+    ]);
+
     store.metadata.client
       .save(dataStory)
       .then(() => {
