@@ -9,6 +9,9 @@ interface Props {
 }
 
 const Splash: FC<Props> = ({ store }) => {
+  const userHaveStories =
+    store.metadata.stories.length !== 0;
+
   const onClickDemo = (name: string) => {
     loadDemo(store, name);
     store.setPage('Workbench');
@@ -27,15 +30,36 @@ const Splash: FC<Props> = ({ store }) => {
       <div className="px-10 py-5 bg-gray-600  grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5">
         {store.metadata.demos.map((demo, i) => {
           return (
-            <div key={`i-${demo.name}`}>
+            <div key={`${i}-${demo.name}`}>
               <DataStoryWidget
                 story={demo}
-                storyLoadHandler={onClick}
+                storyLoadHandler={onClickDemo}
               />
             </div>
           );
         })}
       </div>
+
+      {userHaveStories ? (
+        <>
+          <div className="pt-5 bg-gray-600 text-gray-300 items-center text-lg font-black flex justify-around">
+            Your stories:
+          </div>
+
+          <div className="px-10 py-5 bg-gray-600  grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5">
+            {store.metadata.stories.map((story, i) => {
+              return (
+                <div key={`${i}-${story.name}`}>
+                  <DataStoryWidget
+                    story={story}
+                    storyLoadHandler={onClickSaved}
+                  />
+                </div>
+              );
+            })}
+          </div>
+        </>
+      ) : null}
     </div>
   );
 };
