@@ -1,28 +1,22 @@
 import React, { FC } from 'react';
 import { observer } from 'mobx-react-lite';
 import { Store } from '../../store';
-import { DiagramModel } from '../../diagram/models';
 import { DataStoryWidget } from '../widgets/DataStory';
+import { loadDemo, loadStory } from '../../utils';
 
 interface Props {
   store: Store;
 }
 
 const Splash: FC<Props> = ({ store }) => {
-  const onClick = (name: string) => {
-    try {
-      const engine = store.diagram.engine;
-      const model = new DiagramModel();
+  const onClickDemo = (name: string) => {
+    loadDemo(store, name);
+    store.setPage('Workbench');
+  };
 
-      engine.setModel(model);
-      store.importDemo(name);
-      store.setPage('Workbench');
-    } catch (e) {
-      alert(
-        `Could not create engine for demo ${name}. See console for details.`,
-      );
-      console.error(e);
-    }
+  const onClickSaved = (name: string) => {
+    loadStory(store, name);
+    store.setPage('Workbench');
   };
 
   return (
