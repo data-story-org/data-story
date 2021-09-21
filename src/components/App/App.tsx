@@ -22,6 +22,7 @@ import {
 import AppHotkeys from './AppHotkeys';
 import { SerializedReactDiagram } from '../../types';
 import { demos } from '@data-story-org/core';
+import { parse } from 'flatted';
 
 const App: FC<withLoadingProps> = ({ setLoading }) => {
   const store = useStore();
@@ -53,7 +54,12 @@ const App: FC<withLoadingProps> = ({ setLoading }) => {
         store.setAvailableNodes(
           response.data.availableNodes,
         );
-        store.setStories(Cookie.keys());
+
+        store.setStories(
+          Cookie.keys().map((storyName) => {
+            return parse(localStorage.getItem(storyName));
+          }),
+        );
 
         setBooted(true);
         setTimeout(() => {
