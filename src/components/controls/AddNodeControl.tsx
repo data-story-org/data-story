@@ -11,6 +11,7 @@ const customStyles = {
     maxWidth: '450px',
     top: '110px',
     left: '120px',
+    padding: '0.25rem',
     //top                   : '25%',
     //left                  : '25%',
     //right                 : 'auto',
