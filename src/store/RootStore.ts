@@ -175,8 +175,6 @@ export class Store {
   }
 
   setPage(name) {
-    this.getModel().clearLinkLabels();
-
     const alreadyOnPage = this.metadata.page == name;
     this.metadata.page =
       alreadyOnPage && name !== 'Inspector'
