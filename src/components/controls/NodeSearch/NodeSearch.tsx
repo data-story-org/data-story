@@ -19,7 +19,6 @@ interface Props {
 const NodeSearch: FC<Props> = ({ store, onFinish }) => {
   const [search, setSearch] = useState('');
   const [cursor, setCursor] = useState(0);
-
   const nameInput = useRef(null);
   const currentSearch = useRef(null);
 
@@ -38,7 +37,12 @@ const NodeSearch: FC<Props> = ({ store, onFinish }) => {
       ? setCursor(cursor + 1)
       : setCursor(0);
 
-    currentSearch.current.scrollIntoView();
+    currentSearch.current.scrollIntoView(false, {
+      block: 'center',
+      inline: 'center',
+    });
+
+    nameInput.current.focus();
   };
 
   const goUp = () => {
@@ -46,7 +50,12 @@ const NodeSearch: FC<Props> = ({ store, onFinish }) => {
       ? setCursor(cursor - 1)
       : setCursor(filteredNodes.length - 1);
 
-    currentSearch.current.scrollIntoView();
+    currentSearch.current.scrollIntoView(false, {
+      block: 'center',
+      inline: 'center',
+    });
+
+    nameInput.current.focus();
   };
 
   useHotkeys(
@@ -117,8 +126,8 @@ const NodeSearch: FC<Props> = ({ store, onFinish }) => {
   };
 
   return (
-    <div className="flex flex-col bg-gray-100 -m-5 rounded shadow max-w-xl text-xs">
-      <div className="bg-white shadow p-4">
+    <div className="flex flex-col bg-gray-100 rounded shadow max-w-full text-sm">
+      <div className="sticky top-0 z-50 bg-white shadow p-4 m-1">
         <input
           autoComplete="off"
           id="node-search"
@@ -126,7 +135,7 @@ const NodeSearch: FC<Props> = ({ store, onFinish }) => {
           onChange={searchChange}
           type="text"
           ref={nameInput}
-          className="w-full p-2 rounded appearance-none focus:outline-none focus:bg-white"
+          className="w-full p-2 rounded appearance-none focus:outline-none focus:bg-white font-medium tracking-tighter antialiased"
           placeholder="model | method | reader | writer ..."
           tabIndex={1}
         />
