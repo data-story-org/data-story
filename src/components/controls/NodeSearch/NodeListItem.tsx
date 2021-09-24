@@ -27,7 +27,9 @@ export const NodeListItem: FC<Props> = ({
       }}
       {...elementDataProperties}
       className={`py-3 flex ${
-        selected == true ? 'shadow-2xl' : 'opacity-50'
+        selected === true
+          ? 'shadow-2xl saturate-100'
+          : 'opacity-40 shadow-2xl shadow-inner hue-rotate-60'
       }`}
       tabIndex={2}
     >
