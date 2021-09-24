@@ -19,7 +19,6 @@ interface Props {
 const NodeSearch: FC<Props> = ({ store, onFinish }) => {
   const [search, setSearch] = useState('');
   const [cursor, setCursor] = useState(0);
-
   const nameInput = useRef(null);
   const currentSearch = useRef(null);
 
@@ -38,7 +37,12 @@ const NodeSearch: FC<Props> = ({ store, onFinish }) => {
       ? setCursor(cursor + 1)
       : setCursor(0);
 
-    currentSearch.current.scrollIntoView();
+    currentSearch.current.scrollIntoView(false, {
+      block: 'center',
+      inline: 'center',
+    });
+
+    nameInput.current.focus();
   };
 
   const goUp = () => {
@@ -46,7 +50,12 @@ const NodeSearch: FC<Props> = ({ store, onFinish }) => {
       ? setCursor(cursor - 1)
       : setCursor(filteredNodes.length - 1);
 
-    currentSearch.current.scrollIntoView();
+    currentSearch.current.scrollIntoView(false, {
+      block: 'center',
+      inline: 'center',
+    });
+
+    nameInput.current.focus();
   };
 
   useHotkeys(
