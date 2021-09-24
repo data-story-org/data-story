@@ -70,7 +70,7 @@ const App: FC<withLoadingProps> = ({ setLoading }) => {
         console.error('Boot error', error);
         showNotification({
           message: 'Could not Boot! Check console.',
-          type: 'success',
+          type: 'error',
         });
       });
   };
