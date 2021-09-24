@@ -21,7 +21,8 @@ import {
 } from '../../utils/isLoadingHOC';
 import AppHotkeys from './AppHotkeys';
 import { SerializedReactDiagram } from '../../types';
-import { Demo, demos } from '@data-story-org/core';
+import { demos } from '@data-story-org/core';
+import { parse } from 'flatted';
 
 const App: FC<withLoadingProps> = ({ setLoading }) => {
   const store = useStore();
@@ -53,7 +54,12 @@ const App: FC<withLoadingProps> = ({ setLoading }) => {
         store.setAvailableNodes(
           response.data.availableNodes,
         );
-        store.setStories(Cookie.keys());
+
+        store.setStories(
+          Cookie.keys().map((storyName) => {
+            return parse(localStorage.getItem(storyName));
+          }),
+        );
 
         setBooted(true);
         setTimeout(() => {
@@ -64,7 +70,7 @@ const App: FC<withLoadingProps> = ({ setLoading }) => {
         console.error('Boot error', error);
         showNotification({
           message: 'Could not Boot! Check console.',
-          type: 'success',
+          type: 'error',
         });
       });
   };

@@ -1,11 +1,16 @@
 import { action, observable, makeObservable } from 'mobx';
 import { Client, ClientFactory } from '../clients';
 import { showNotification } from '../utils/Notifications';
-import { Page, Inspector, InspectorMode } from '../types';
+import {
+  Page,
+  Inspector,
+  InspectorMode,
+  SerializedReactDiagram,
+} from '../types';
 import { DiagramEngine } from '@projectstorm/react-diagrams';
 import { DiagramModel, NodeModel } from '../diagram/models';
 import {
-  Demo,
+  Story,
   demos,
   Node as HeadlessNode,
 } from '@data-story-org/core';
@@ -16,10 +21,10 @@ interface Metadata {
   page: Page;
   activeInspector: Inspector;
   requestOpenNodeModal: string;
-  stories: any[];
+  stories: Story<SerializedReactDiagram>[];
   activeStory: string;
   client: Client;
-  demos: Demo[];
+  demos: Story[];
 }
 
 interface Diagram {
@@ -91,7 +96,7 @@ export class Store {
     });
   }
 
-  addDemos(demos: Demo[]) {
+  addDemos(demos: Story[]) {
     this.metadata.demos = demos;
   }
 

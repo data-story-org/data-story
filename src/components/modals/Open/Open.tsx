@@ -6,6 +6,7 @@ import { Store } from '../../../store';
 import OpenModalBody from './OpenBody';
 import OpenModalActions from './OpenActions';
 import BaseModalHeader from '../BaseModalHeader';
+import { loadStory } from '../../../utils';
 
 interface Props {
   store: Store;
@@ -34,23 +35,9 @@ const OpenModal: FC<Props> = ({ store, closeModal }) => {
    * }; */
 
   const clickStory = (name) => {
-    try {
-      const engine = store.diagram.engine;
-      const model = new DiagramModel();
-			const serializedModel = store.metadata.client.load(name)
-			console.log(serializedModel)
-      model.deserializeModel(
-				serializedModel,
-        engine,
-      );
-      engine.setModel(model);
-      closeModal();
-    } catch (e) {
-      alert(
-        `Could not create engine for story ${name}. See console for details.`,
-      );
-      console.error(e);
-    }
+    loadStory(store, name);
+
+    closeModal();
   };
 
   return (

@@ -19,7 +19,6 @@ const ConfigControl: FC<Props> = ({ store }) => {
   };
 
   const closeModal = () => {
-    //this.props.store.diagram.engine.model.setLocked(false);
     setIsOpen(false);
   };
 

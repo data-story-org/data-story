@@ -6,6 +6,7 @@ import {
 } from '../ClientInterface';
 import context from './localSampleContext';
 import { BootPayload } from '@data-story-org/core';
+import { SerializedReactDiagram, Story } from '../../types';
 
 const server = new LocalServer(context);
 
@@ -20,11 +21,11 @@ export class LocalClient implements ClientInterface {
     )) as RunResult;
   }
 
-  load(name: string): string {
+  load(name: string): SerializedReactDiagram {
     return server.load(name);
   }
 
-  save(name: string, model: DiagramModel): Promise<{}> {
-    return server.save(name, model);
+  save(story: Story): Promise<{}> {
+    return server.save(story);
   }
 }
