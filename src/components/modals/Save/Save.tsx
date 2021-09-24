@@ -6,7 +6,7 @@ import SaveModalBody from './SaveBody';
 import SaveModalActions from './SaveActions';
 import BaseModalHeader from '../BaseModalHeader';
 import { SaveStoryI } from './SaveStoryI';
-import { DataStory } from '@data-story-org/core';
+import { Story } from '@data-story-org/core';
 import { SerializedReactDiagram } from '../../../types';
 
 interface Props {
@@ -70,7 +70,7 @@ const SaveModal: FC<Props> = ({
   const handleSave = (_e) => {
     store.getModel().clearLinkLabels();
 
-    const dataStory = new DataStory<SerializedReactDiagram>(
+    const dataStory = new Story<SerializedReactDiagram>(
       story.name,
       story.desc,
       Object.values(story.tags),

@@ -1,8 +1,10 @@
 import React, { FC } from 'react';
-import { DataStory } from '@data-story-org/core';
+import { Story as DefaultStory } from '@data-story-org/core';
 import { SerializedReactDiagram } from '../../../types';
 
-type Story = DataStory<SerializedReactDiagram> | DataStory;
+type Story =
+  | DefaultStory<SerializedReactDiagram>
+  | DefaultStory;
 
 interface Props {
   story: Story;

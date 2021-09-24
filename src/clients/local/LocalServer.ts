@@ -1,9 +1,4 @@
-import {
-  Server,
-  DataStory,
-  Diagram,
-} from '@data-story-org/core';
-import { DiagramModel } from '../../diagram/models';
+import { Server, Diagram } from '@data-story-org/core';
 import { SerializedReactDiagram, Story } from '../../types';
 import { parse, stringify } from 'flatted';
 

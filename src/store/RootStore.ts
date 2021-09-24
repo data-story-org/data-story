@@ -10,7 +10,7 @@ import {
 import { DiagramEngine } from '@projectstorm/react-diagrams';
 import { DiagramModel, NodeModel } from '../diagram/models';
 import {
-  DataStory,
+  Story,
   demos,
   Node as HeadlessNode,
 } from '@data-story-org/core';
@@ -21,10 +21,10 @@ interface Metadata {
   page: Page;
   activeInspector: Inspector;
   requestOpenNodeModal: string;
-  stories: DataStory<SerializedReactDiagram>[];
+  stories: Story<SerializedReactDiagram>[];
   activeStory: string;
   client: Client;
-  demos: DataStory[];
+  demos: Story[];
 }
 
 interface Diagram {
@@ -96,7 +96,7 @@ export class Store {
     });
   }
 
-  addDemos(demos: DataStory[]) {
+  addDemos(demos: Story[]) {
     this.metadata.demos = demos;
   }
 
