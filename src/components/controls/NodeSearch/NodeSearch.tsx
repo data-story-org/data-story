@@ -135,7 +135,7 @@ const NodeSearch: FC<Props> = ({ store, onFinish }) => {
           onChange={searchChange}
           type="text"
           ref={nameInput}
-          className="w-full p-2 rounded appearance-none focus:outline-none focus:bg-white"
+          className="w-full p-2 rounded appearance-none focus:outline-none focus:bg-white font-medium tracking-tighter antialiased"
           placeholder="model | method | reader | writer ..."
           tabIndex={1}
         />
