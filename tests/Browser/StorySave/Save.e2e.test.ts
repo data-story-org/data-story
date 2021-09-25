@@ -17,6 +17,8 @@ const saveStory = async (
   desc: string,
   tags: string[],
 ) => {
+  await expect(page).toMatch('save');
+
   await expect(page).toFill(
     'input[placeholder="descriptive story name"]',
     name,
@@ -32,8 +34,6 @@ const saveStory = async (
       tag,
     );
   });
-
-  await expect(page).toClick('button', { text: 'Save' });
 };
 
 describe('Stories saving', () => {
@@ -59,7 +59,6 @@ describe('Stories saving', () => {
     await page.keyboard.press('KeyS');
     await page.keyboard.up('Shift');
 
-    await expect(page).toMatch('save');
     const modal = await expect(page).toMatchElement(
       '#story-save',
     );
@@ -71,6 +70,7 @@ describe('Stories saving', () => {
     });
 
     await saveStory(modal, storyName, storyDesc, storyTags);
+    await expect(page).toClick('button', { text: 'Save' });
 
     await page.keyboard.down('Shift');
     await page.keyboard.press('KeyO');
