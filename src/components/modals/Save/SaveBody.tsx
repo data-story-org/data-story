@@ -16,7 +16,7 @@ const SaveModalBody: FC<Props> = ({
   addTag,
 }) => {
   return (
-    <div>
+    <div id="story-save">
       <div className="bg-gray-100 px-6 py-2">
         <div className="flex flex-col my-4 justify-center align-middle text-gray-500 text-xs">
           <span className="my-2 font-sans font-medium text-sm text-indigo-500">
