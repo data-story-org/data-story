@@ -9,8 +9,6 @@ const store = new Store();
 
 describe('<Toolbar />', () => {
   it('Renders correctly', () => {
-     render(
-      <Toolbar store={store} />,
-    );
+    render(<Toolbar store={store} />);
   });
 });

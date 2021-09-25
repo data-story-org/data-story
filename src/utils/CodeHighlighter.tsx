@@ -8,7 +8,10 @@ import {
 } from 'react-syntax-highlighter/dist/esm/languages/hljs/';
 
 SyntaxHighlighter.registerLanguage('json', json);
-SyntaxHighlighter.registerLanguage('javascript', javascript);
+SyntaxHighlighter.registerLanguage(
+  'javascript',
+  javascript,
+);
 
 interface Props {
   code: string;

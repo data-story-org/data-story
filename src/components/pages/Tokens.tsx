@@ -23,6 +23,6 @@ const Tokens: FC = () => {
       </div>
     </div>
   );
-}
+};
 
 export default observer(Tokens);

@@ -28,7 +28,6 @@ export const StoreProvider: StoreComponent = ({
 };
 
 // HOC to be used with both class and functional components
-export const withStore =
-  (Component) => (props) => {
-    return <Component {...props} store={useStore()} />;
-  };
+export const withStore = (Component) => (props) => {
+  return <Component {...props} store={useStore()} />;
+};

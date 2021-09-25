@@ -1,6 +1,6 @@
 import React from 'react';
 
-const JSON_ = ({options, handleChange}) => {
+const JSON_ = ({ options, handleChange }) => {
   return (
     <>
       {/* REPLACE WITH SOME EDITOR! */}

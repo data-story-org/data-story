@@ -1,4 +1,4 @@
-import React, {FC} from 'react';
+import React, { FC } from 'react';
 import { observer } from 'mobx-react-lite';
 import { Store } from '../../store/';
 import BaseControl, {
@@ -33,7 +33,7 @@ interface Props {
   store: Store;
 }
 
-const LogControl: FC<Props> = ({store}) => {
+const LogControl: FC<Props> = ({ store }) => {
   const [title, icon, page] = [
     'Log',
     'fas fa-file-alt',

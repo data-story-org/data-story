@@ -63,7 +63,7 @@ const Toolbar: FC<Props> = ({ store, setLoading }) => {
         {/* <TokensControl  />
                     <LogControl  /> */}
         <AddNodeControl store={store} />
-				
+
         <ToolbarInspectables
           store={store}
           onClickInspectable={onClickInspectable}

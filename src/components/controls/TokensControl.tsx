@@ -1,4 +1,4 @@
-import React, {FC} from 'react';
+import React, { FC } from 'react';
 import { observer } from 'mobx-react-lite';
 import { Store } from '../../store/';
 import BaseControl, {
@@ -9,7 +9,7 @@ interface Props {
   store: Store;
 }
 
-const TokensControl: FC<Props> = ({store}) => {
+const TokensControl: FC<Props> = ({ store }) => {
   const [title, icon, page] = [
     'Tokens',
     'fas fa-key',
@@ -34,6 +34,6 @@ const TokensControl: FC<Props> = ({store}) => {
       style={style}
     />
   );
-}
+};
 
 export default observer(TokensControl);

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Number = ({options, handleChange}) => {
+const Number = ({ options, handleChange }) => {
   return (
     <input
       key={`${options.name}`}

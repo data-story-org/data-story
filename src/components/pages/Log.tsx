@@ -7,6 +7,6 @@ const Log: FC = () => {
       <div className="p-4">HOHOHO this is the log</div>
     </div>
   );
-}
+};
 
 export default observer(Log);

@@ -5,10 +5,14 @@ interface Props {
   store: Store;
 }
 
-const ActiveStory: FC<Props> = ({store}) => {
-	return (<span className="ml-2 text-sm text-gray-400 font-normal subpixel-antialiased">
-		{store.metadata.activeStory ? store.metadata.activeStory : 'untitled'}
-	</span>)
-}
+const ActiveStory: FC<Props> = ({ store }) => {
+  return (
+    <span className="ml-2 text-sm text-gray-400 font-normal subpixel-antialiased">
+      {store.metadata.activeStory
+        ? store.metadata.activeStory
+        : 'untitled'}
+    </span>
+  );
+};
 
-export default ActiveStory
+export default ActiveStory;
