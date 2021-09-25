@@ -53,7 +53,6 @@ const SaveModal: FC<Props> = ({
     };
 
   const addTag = (e) => {
-    console.log('aga');
     setStory({
       ...story,
       tags: {

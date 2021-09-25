@@ -15,6 +15,8 @@ export const loadStory = (
 
     model.deserializeModel(serializedModel, engine);
     engine.setModel(model);
+
+    store.setDiagramLocked(false);
   } catch (e) {
     alert(
       `Could not create engine for story ${storyName}. See console for details.`,
