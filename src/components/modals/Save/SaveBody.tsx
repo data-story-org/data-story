@@ -50,7 +50,7 @@ const SaveModalBody: FC<Props> = ({
                   key={i}
                   onChange={handleChange('tags', i)}
                   className="rounded-full px-3 py-2 w-1/5 text-gray-700 text-center border appearance-none focus:outline-none"
-                  placeholder="story tags"
+                  placeholder="story tag"
                   value={tag}
                 />
               );
