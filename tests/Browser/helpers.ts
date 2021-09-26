@@ -5,7 +5,7 @@ export const puppeteerConfig = {
   // product: 'firefox',
   headless: true,
   devtools: false,
-  slowMo: 250,
+  slowMo: 50,
   args: [
     '--no-sandbox',
     '--disable-setuid-sandbox',
