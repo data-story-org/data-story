@@ -12,7 +12,7 @@ import { sample } from 'lodash';
 setDefaultOptions({ timeout: 0 });
 
 const saveStory = async (
-  page: ElementHandle,
+  page: puppeteer.Page,
   name: string,
   desc: string,
   tags: string[],
@@ -27,13 +27,16 @@ const saveStory = async (
     'input[placeholder="story description"]',
     desc,
   );
-  tags.forEach(async (tag) => {
+
+  for (const tag of tags) {
     await expect(page).toClick('span', { text: '+' });
     await expect(page).toFill(
       'input[placeholder="story tag"][value=""]',
       tag,
     );
-  });
+  }
+
+  await expect(page).toClick('button', { text: 'Save' });
 };
 
 describe('Stories saving', () => {
@@ -62,6 +65,7 @@ describe('Stories saving', () => {
     const modal = await expect(page).toMatchElement(
       '#story-save',
     );
+    expect(modal).not.toBeNull();
 
     const storyName = generateRandomString();
     const storyDesc = generateRandomString();
@@ -69,19 +73,21 @@ describe('Stories saving', () => {
       return generateRandomString();
     });
 
-    await saveStory(modal, storyName, storyDesc, storyTags);
-    await expect(page).toClick('button', { text: 'Save' });
+    await saveStory(page, storyName, storyDesc, storyTags);
 
     await page.keyboard.down('Shift');
     await page.keyboard.press('KeyO');
     await page.keyboard.up('Shift');
 
-    await expect(page).toMatch(storyName);
-    await expect(page).toMatch(storyDesc);
-    // storyTags.forEach(async (tag) => {
-    //   await expect(page).toMatch(tag);
-    // });
-  }, 200000);
+    const story = await expect(page).toMatchElement(
+      '#data-story',
+    );
+    await expect(story).toMatch(storyName);
+    await expect(story).toMatch(storyDesc);
+    for (const tag of storyTags) {
+      await expect(story).toMatch(tag);
+    }
+  }, 100000);
 
   afterAll(() => browser.close());
 });
