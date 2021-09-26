@@ -69,6 +69,6 @@ export const openModal = async (page: Page) => {
 
 export const saveModal = async (page: Page) => {
   await page.keyboard.down('Shift');
-  await page.keyboard.press('KeyO');
+  await page.keyboard.press('KeyS');
   await page.keyboard.up('Shift');
 };
