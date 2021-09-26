@@ -94,11 +94,24 @@ describe('Stories saving', () => {
     }
   }, 100000);
 
-  test('Stories can be restored', async () => {
+  test('Stories can be restored from open modal', async () => {
     await expect(page).toClick('div#data-story');
 
     for (const node of storyNodes) {
       await expect(page).toMatch(node);
     }
-  }, 100000);
+  }, 10000);
+
+  test('Stories can be restored from splash screen', async () => {
+    await expect(page).toClick('span', {
+      text: 'DataStory',
+    });
+    await expect(page).toClick('div#data-story', {
+      text: storyName,
+    });
+
+    for (const node of storyNodes) {
+      await expect(page).toMatch(node);
+    }
+  }, 10000);
 });
