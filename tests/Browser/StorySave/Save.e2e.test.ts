@@ -56,16 +56,22 @@ describe('Stories saving', () => {
   const storyTags = [...Array(3)].map(() => {
     return generateRandomString();
   });
+  let storyNodes: string[];
 
   beforeAll(async () => {
+    storyNodes = [...Array(3)].map(() => {
+      return sample(possibleNodesNames);
+    });
+
     browser = await puppeteer.launch(puppeteerConfig);
     page = await browser.newPage();
     await pageSetup(page);
   }, 50000);
 
   test('Stories can be saved', async () => {
-    const node = sample(possibleNodesNames);
-    await addNode(node, page);
+    for (const node of storyNodes) {
+      await addNode(node, page);
+    }
 
     await saveModal(page);
 
@@ -88,5 +94,11 @@ describe('Stories saving', () => {
     }
   }, 100000);
 
-  afterAll(() => browser.close());
+  test('Stories can be restored', async () => {
+    await expect(page).toClick('div#data-story');
+
+    for (const node of storyNodes) {
+      await expect(page).toMatch(node);
+    }
+  }, 100000);
 });
