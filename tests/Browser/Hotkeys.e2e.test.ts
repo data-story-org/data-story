@@ -3,8 +3,10 @@ import { setDefaultOptions } from 'expect-puppeteer';
 import puppeteer from 'puppeteer';
 import {
   addNode,
+  openModal,
   pageSetup,
   puppeteerConfig,
+  saveModal,
   sleep,
 } from './helpers';
 
@@ -102,17 +104,13 @@ describe('Hotkeys', () => {
   }, 200000);
 
   test('[SHIFT + O] show open story modal', async () => {
-    await page.keyboard.down('Shift');
-    await page.keyboard.press('KeyO');
-    await page.keyboard.up('Shift');
+    await openModal(page);
 
     await expect(page).toMatch('open');
   }, 50000);
 
   test('[SHIFT + S] show save story modal', async () => {
-    await page.keyboard.down('Shift');
-    await page.keyboard.press('KeyS');
-    await page.keyboard.up('Shift');
+    await saveModal(page);
 
     await expect(page).toMatch('save');
   }, 50000);

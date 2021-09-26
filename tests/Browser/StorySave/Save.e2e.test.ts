@@ -6,6 +6,8 @@ import {
   pageSetup,
   addNode,
   generateRandomString,
+  openModal,
+  saveModal,
 } from '../helpers';
 import { sample } from 'lodash';
 
@@ -58,9 +60,7 @@ describe('Stories saving', () => {
     const node = sample(possibleNodesNames);
     await addNode(node, page);
 
-    await page.keyboard.down('Shift');
-    await page.keyboard.press('KeyS');
-    await page.keyboard.up('Shift');
+    await saveModal(page);
 
     const modal = await expect(page).toMatchElement(
       '#story-save',
@@ -75,13 +75,11 @@ describe('Stories saving', () => {
 
     await saveStory(page, storyName, storyDesc, storyTags);
 
-    await page.keyboard.down('Shift');
-    await page.keyboard.press('KeyO');
-    await page.keyboard.up('Shift');
-
+    await openModal(page);
     const story = await expect(page).toMatchElement(
       '#data-story',
     );
+
     await expect(story).toMatch(storyName);
     await expect(story).toMatch(storyDesc);
     for (const tag of storyTags) {
