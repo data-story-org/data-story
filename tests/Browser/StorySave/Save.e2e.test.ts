@@ -44,11 +44,18 @@ const saveStory = async (
 describe('Stories saving', () => {
   let browser: puppeteer.Browser;
   let page: puppeteer.Page;
+
   const possibleNodesNames = [
     'CreateJSON',
     'HTTPRequest',
     'Inspect',
   ];
+
+  const storyName = generateRandomString();
+  const storyDesc = generateRandomString();
+  const storyTags = [...Array(3)].map(() => {
+    return generateRandomString();
+  });
 
   beforeAll(async () => {
     browser = await puppeteer.launch(puppeteerConfig);
@@ -66,12 +73,6 @@ describe('Stories saving', () => {
       '#story-save',
     );
     expect(modal).not.toBeNull();
-
-    const storyName = generateRandomString();
-    const storyDesc = generateRandomString();
-    const storyTags = [...Array(3)].map(() => {
-      return generateRandomString();
-    });
 
     await saveStory(page, storyName, storyDesc, storyTags);
 
