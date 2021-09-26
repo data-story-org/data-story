@@ -47,7 +47,10 @@ describe('Fields', () => {
       await expect(page).toMatch(newName);
     }, 100000);
 
-    afterAll(() => browser.close());
+    afterAll(async () => {
+      await page.close();
+      await browser.close();
+    });
   });
 
   describe('Repeatables', () => {
@@ -124,6 +127,9 @@ describe('Fields', () => {
       await expect(page).toMatch(randomValue2);
     }, 200000);
 
-    afterEach(() => browser.close());
+    afterEach(async () => {
+      await page.close();
+      await browser.close();
+    });
   });
 });

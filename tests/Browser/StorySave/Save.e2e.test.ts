@@ -114,4 +114,9 @@ describe('Stories saving', () => {
       await expect(page).toMatch(node);
     }
   }, 10000);
+
+  afterAll(async () => {
+    await page.close();
+    await browser.close();
+  });
 });

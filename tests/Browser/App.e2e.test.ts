@@ -54,5 +54,8 @@ describe('App', () => {
     await expect(page).toMatch('todos');
   }, 100000);
 
-  afterAll(() => browser.close());
+  afterAll(async () => {
+    await page.close();
+    await browser.close();
+  });
 });

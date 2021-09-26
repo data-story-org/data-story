@@ -92,5 +92,8 @@ describe('Dynamic ports', () => {
     await expect(page).not.toMatch(randomValue2);
   }, 100000);
 
-  afterEach(() => browser.close());
+  afterEach(async () => {
+    await page.close();
+    await browser.close();
+  });
 });

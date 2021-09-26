@@ -115,5 +115,8 @@ describe('Hotkeys', () => {
     await expect(page).toMatch('save');
   }, 50000);
 
-  afterAll(() => browser.close());
+  afterAll(async () => {
+    await page.close();
+    await browser.close();
+  });
 });
