@@ -18,6 +18,7 @@ export const DataStoryWidget: FC<Props> = ({
   return (
     <div
       key={story.name}
+      id="data-story"
       className="cursor-pointer rounded bg-gray-400 hover:shadow-xl overflow-hidden shadow-lg"
       onClick={() => storyLoadHandler(story.name)}
     >

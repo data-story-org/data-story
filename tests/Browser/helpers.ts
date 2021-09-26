@@ -5,7 +5,7 @@ export const puppeteerConfig = {
   // product: 'firefox',
   headless: true,
   devtools: false,
-  slowMo: 250,
+  slowMo: 50,
   args: [
     '--no-sandbox',
     '--disable-setuid-sandbox',
@@ -59,4 +59,16 @@ export const repeatableRowSelector =
 export const repeatablesLength = async (el) => {
   const repeatables = await el.$$(repeatableRowSelector);
   return repeatables.length;
+};
+
+export const openModal = async (page: Page) => {
+  await page.keyboard.down('Shift');
+  await page.keyboard.press('KeyO');
+  await page.keyboard.up('Shift');
+};
+
+export const saveModal = async (page: Page) => {
+  await page.keyboard.down('Shift');
+  await page.keyboard.press('KeyS');
+  await page.keyboard.up('Shift');
 };
