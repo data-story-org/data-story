@@ -17,6 +17,10 @@ export class LocalServer extends Server {
     return story.diagram;
   }
 
+  async delete(storyName: string) {
+    localStorage.removeItem(storyName);
+  }
+
   async save(story: Story) {
     localStorage.setItem(story.name, stringify(story));
 

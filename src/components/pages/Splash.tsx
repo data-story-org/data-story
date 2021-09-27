@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { observer } from 'mobx-react-lite';
 import { Store } from '../../store';
-import { DataStoryWidget } from '../widgets/DataStory';
+import DataStoryWidget from '../widgets/DataStory';
 import { loadDemo, loadStory } from '../../utils';
 
 interface Props {
@@ -32,6 +32,7 @@ const Splash: FC<Props> = ({ store }) => {
           return (
             <div key={`${i}-${demo.name}`}>
               <DataStoryWidget
+                store={store}
                 story={demo}
                 storyLoadHandler={onClickDemo}
               />
@@ -51,6 +52,7 @@ const Splash: FC<Props> = ({ store }) => {
               return (
                 <div key={`${i}-${story.name}`}>
                   <DataStoryWidget
+                    store={store}
                     story={story}
                     storyLoadHandler={onClickSaved}
                   />

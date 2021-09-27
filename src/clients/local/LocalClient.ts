@@ -25,7 +25,11 @@ export class LocalClient implements ClientInterface {
     return server.load(name);
   }
 
-  save(story: Story): Promise<{}> {
+  async save(story: Story): Promise<{}> {
     return server.save(story);
+  }
+
+  async delete(storyName: string): Promise<void> {
+    server.delete(storyName);
   }
 }

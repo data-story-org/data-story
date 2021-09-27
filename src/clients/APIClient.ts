@@ -47,4 +47,8 @@ export class APIClient implements ClientInterface {
       story,
     });
   }
+
+  async delete(storyName: string) {
+    throw 'not implemented';
+  }
 }
