@@ -26,6 +26,8 @@ const DataStoryWidget: FC<Props> = ({
   story,
   storyLoadHandler,
 }) => {
+  const isStoryDemo = story instanceof DefaultStory;
+
   return (
     <div
       key={story.name}
@@ -34,10 +36,12 @@ const DataStoryWidget: FC<Props> = ({
       onClick={() => storyLoadHandler(story.name)}
     >
       <div className="px-6 py-4 relative">
-        <DataStoryWidgetActions
-          store={store}
-          story={story}
-        />
+        {!isStoryDemo && (
+          <DataStoryWidgetActions
+            store={store}
+            story={story}
+          />
+        )}
 
         <DataStoryWidgetName storyName={story.name} />
         <DataStoryWidgetDescription
