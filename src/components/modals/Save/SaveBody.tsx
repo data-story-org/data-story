@@ -43,7 +43,7 @@ const SaveModalBody: FC<Props> = ({
           <span className="my-2 font-sans font-medium text-sm text-indigo-500">
             Tags
           </span>
-          <div className="grid-cols-3">
+          <div>
             {Object.values(story.tags).map((tag, i) => {
               return (
                 <input
