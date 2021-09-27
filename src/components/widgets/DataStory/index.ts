@@ -1,3 +1,1 @@
-import DataStoryWidget from './Story';
-
-export default DataStoryWidget;
+export * from './Story';
