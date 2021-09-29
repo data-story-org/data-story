@@ -10,10 +10,11 @@ interface Story {
 interface Props {
   store: Store;
   story: Story;
+  onEdit: () => void;
 }
 
 export const DataStoryWidgetActions: FC<Props> = observer(
-  ({ store, story }) => {
+  ({ store, story, onEdit }) => {
     return (
       <div className="absolute top-0 right-0 m-4">
         <div className="flex space-x-2">
@@ -22,10 +23,11 @@ export const DataStoryWidgetActions: FC<Props> = observer(
             onClick={(e) => {
               e.preventDefault();
               e.stopPropagation();
-              console.log('editing story');
+
+              onEdit();
             }}
           >
-            <i className="far fa-edit"></i>
+            <i className="fa fa-pencil-square"></i>
           </span>
 
           <span
@@ -34,7 +36,6 @@ export const DataStoryWidgetActions: FC<Props> = observer(
               e.preventDefault();
               e.stopPropagation();
 
-              console.log('deleting story');
               deleteStory(store, story.name);
             }}
           >

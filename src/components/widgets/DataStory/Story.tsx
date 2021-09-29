@@ -1,20 +1,20 @@
-import React, { FC } from 'react';
-import { Story as DefaultStory } from '@data-story-org/core';
-import { SerializedReactDiagram } from '../../../types';
-import { DataStoryWidgetActions } from './StoryActions';
-import { DataStoryWidgetName } from './StoryName';
-import { DataStoryWidgetDescription } from './StoryDescription';
-import { DataStoryWidgetTags } from './StoryTags';
-import { Store } from '../../../store';
 import { observer } from 'mobx-react-lite';
-
-type Story =
-  | DefaultStory<SerializedReactDiagram>
-  | DefaultStory;
+import React, { FC, useState } from 'react';
+import Modal from 'react-modal';
+import { Store } from '../../../store';
+import {
+    GenericStory
+} from '../../../types';
+import { modalStyle } from '../../../utils/modalStyle';
+import { StoryWidgetModal } from '../../modals/StoryWidget/StoryWidget';
+import { DataStoryWidgetActions } from './StoryActions';
+import { DataStoryWidgetDescription } from './StoryDescription';
+import { DataStoryWidgetName } from './StoryName';
+import { DataStoryWidgetTags } from './StoryTags';
 
 interface Props {
   store: Store;
-  story: Story;
+  story: GenericStory;
   storyLoadHandler: (storyName: string) => void;
   isStoryDemo?: boolean;
 }
@@ -29,16 +29,33 @@ export const DataStoryWidget: FC<Props> = observer(
     storyLoadHandler,
     isStoryDemo = false,
   }) => {
+    const [isOpen, setIsOpen] = useState(false);
+
+    const openModal = () => {
+      store.setDiagramLocked(true);
+      setIsOpen(true);
+    };
+
+    const closeModal = () => {
+      store.setDiagramLocked(false);
+      setIsOpen(false);
+    };
+
     return (
       <div
         key={story.name}
         id="data-story"
         className={storyWidgetStyle}
-        onClick={() => storyLoadHandler(story.name)}
+        onClick={
+          isOpen
+            ? () => {}
+            : () => storyLoadHandler(story.name)
+        }
       >
         <div className="px-6 py-4 relative">
           {!isStoryDemo && (
             <DataStoryWidgetActions
+              onEdit={openModal}
               store={store}
               story={story}
             />
@@ -53,6 +70,18 @@ export const DataStoryWidget: FC<Props> = observer(
         <div className="px-6 pt-4 pb-2">
           <DataStoryWidgetTags storyTags={story.tags} />
         </div>
+
+        <Modal
+          isOpen={isOpen}
+          onRequestClose={closeModal}
+          style={modalStyle}
+        >
+          <StoryWidgetModal
+            store={store}
+            defaultStory={story}
+            handleCancel={closeModal}
+          />
+        </Modal>
       </div>
     );
   },
