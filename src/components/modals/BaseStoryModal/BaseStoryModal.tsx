@@ -88,7 +88,9 @@ export const BaseStoryWidgetModal: FC<Props> = ({
         addTag={addTag}
       />
       <StoryWidgetActions
-        handleSave={storySaver}
+        handleSave={(e) => {
+          storySaver(story);
+        }}
         handleCancel={handleCancel}
       />
     </div>
