@@ -12,46 +12,46 @@ interface Props {
   closeModal: () => void;
 }
 
-const SaveModal: FC<Props> = ({ store, closeModal }) => {
-  const handleCancel = (_e) => {
-    closeModal();
-  };
+export const SaveModal: FC<Props> = observer(
+  ({ store, closeModal }) => {
+    const handleCancel = (_e) => {
+      closeModal();
+    };
 
-  const handleSave = (story: SaveStoryI) => {
-    store.getModel().clearLinkLabels();
+    const handleSave = (story: SaveStoryI) => {
+      store.getModel().clearLinkLabels();
 
-    const dataStory = new Story<SerializedReactDiagram>(
-      story.name,
-      story.description,
-      Object.values(story.tags),
-      store.getModel().serialize(),
+      const dataStory = new Story<SerializedReactDiagram>(
+        story.name,
+        story.description,
+        Object.values(story.tags),
+        store.getModel().serialize(),
+      );
+
+      store.setStories([
+        ...store.metadata.stories,
+        dataStory,
+      ]);
+
+      store.metadata.client
+        .save(dataStory)
+        .then(() => {
+          closeModal();
+        })
+        .catch((error) => {
+          alert('Save error');
+        });
+    };
+
+    return (
+      <div id="story-save">
+        <BaseModalHeader action="save" />
+        <BaseStoryWidgetModal
+          storySaver={handleSave}
+          handleCancel={handleCancel}
+          withHeader={false}
+        />
+      </div>
     );
-
-    store.setStories([
-      ...store.metadata.stories,
-      dataStory,
-    ]);
-
-    store.metadata.client
-      .save(dataStory)
-      .then(() => {
-        closeModal();
-      })
-      .catch((error) => {
-        alert('Save error');
-      });
-  };
-
-  return (
-    <div id="story-save">
-      <BaseModalHeader action="save" />
-      <BaseStoryWidgetModal
-        storySaver={handleSave}
-        handleCancel={handleCancel}
-        withHeader={false}
-      />
-    </div>
-  );
-};
-
-export default observer(SaveModal);
+  },
+);

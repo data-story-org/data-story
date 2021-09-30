@@ -1,3 +1,1 @@
-import SaveModal from './Save';
-
-export default SaveModal;
+export * from './Save';
