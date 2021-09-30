@@ -4,7 +4,7 @@ import React, {
   useEffect,
   useCallback,
 } from 'react';
-import Header from '../Header';
+import { Header } from '../Header';
 import { Toolbar } from '../Toolbar';
 import pages from '../pages/factory';
 import { observer } from 'mobx-react-lite';
