@@ -1,12 +1,10 @@
 import React, { FC, useState } from 'react';
 import { observer } from 'mobx-react-lite';
-import Cookie from '../../../utils/Cookie';
-import { DiagramModel } from '../../../diagram/models';
+import { Cookie, loadStory } from '../../../utils';
 import { Store } from '../../../store';
 import OpenModalBody from './OpenBody';
 import OpenModalActions from './OpenActions';
 import BaseModalHeader from '../BaseModalHeader';
-import { loadStory } from '../../../utils';
 
 interface Props {
   store: Store;

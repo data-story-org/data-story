@@ -11,7 +11,7 @@ import { observer } from 'mobx-react-lite';
 import { ToastContainer, Slide } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { EngineFactory } from '../../diagram/factories';
-import Cookie from '../../utils/Cookie';
+import { Cookie } from '../../utils';
 import { useStore } from '../../store/StoreProvider';
 import { Store } from '../../store';
 import { showNotification } from '../../utils/Notifications';
