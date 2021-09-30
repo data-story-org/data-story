@@ -9,27 +9,24 @@ interface Props {
   node: NodeModel;
 }
 
-const NodeWidgetInspectIcon: FC<Props> = ({
-  store,
-  node,
-}) => {
-  // Listen to a property to force refresh
-  store.diagram.refresh;
+export const NodeWidgetInspectIcon: FC<Props> = observer(
+  ({ store, node }) => {
+    // Listen to a property to force refresh
+    store.diagram.refresh;
 
-  return (
-    <>
-      {node.isInspectable() ? (
-        <div
-          id="inspector-icon"
-          onClick={(e) => {
-            store.goToInspector(node.options.id);
-          }}
-        >
-          <i className="mr-2 text-malibu-600 fas fa-search hover:cursor"></i>
-        </div>
-      ) : null}
-    </>
-  );
-};
-
-export default observer(NodeWidgetInspectIcon);
+    return (
+      <>
+        {node.isInspectable() ? (
+          <div
+            id="inspector-icon"
+            onClick={(e) => {
+              store.goToInspector(node.options.id);
+            }}
+          >
+            <i className="mr-2 text-malibu-600 fas fa-search hover:cursor"></i>
+          </div>
+        ) : null}
+      </>
+    );
+  },
+);
