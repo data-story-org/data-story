@@ -18,7 +18,7 @@ import {
   withLoading,
   withLoadingProps,
 } from '../../utils/isLoadingHOC';
-import AppHotkeys from './AppHotkeys';
+import { AppHotkeys } from './AppHotkeys';
 import { SerializedReactDiagram } from '../../types';
 import { demos } from '@data-story-org/core';
 import { parse } from 'flatted';
