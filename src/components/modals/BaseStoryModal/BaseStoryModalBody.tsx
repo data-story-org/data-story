@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { SaveStoryI } from './SaveStoryI';
 
 interface Props {
@@ -6,17 +6,17 @@ interface Props {
   handleChange: (
     field: string,
     tagKey?: number,
-  ) => (event: any) => void;
-  addTag: (e) => void;
+  ) => (e: any) => void;
+  addTag: (e: any) => void;
 }
 
-const SaveModalBody: FC<Props> = ({
+export const StoryWidgetBody: FC<Props> = ({
   story,
   handleChange,
   addTag,
 }) => {
   return (
-    <div id="story-save">
+    <div>
       <div className="bg-gray-100 px-6 py-2">
         <div className="flex flex-col my-4 justify-center align-middle text-gray-500 text-xs">
           <span className="my-2 font-sans font-medium text-sm text-indigo-500">
@@ -33,17 +33,17 @@ const SaveModalBody: FC<Props> = ({
             Description
           </span>
           <input
-            onChange={handleChange('desc')}
+            onChange={handleChange('description')}
             type="textarea"
             className="w-full px-3 py-2 text-gray-700 border rounded-lg appearance-none focus:outline-none"
             placeholder="story description"
-            value={story.desc}
+            value={story.description}
           />
 
           <span className="my-2 font-sans font-medium text-sm text-indigo-500">
             Tags
           </span>
-          <div className="grid-cols-3">
+          <div>
             {Object.values(story.tags).map((tag, i) => {
               return (
                 <input
@@ -66,5 +66,3 @@ const SaveModalBody: FC<Props> = ({
     </div>
   );
 };
-
-export default SaveModalBody;

@@ -1,5 +1,5 @@
 export interface SaveStoryI {
   name: string;
-  desc: string;
+  description: string;
   tags: { [key: number]: string };
 }

@@ -1,77 +1,28 @@
-import React, { FC, useState } from 'react';
-import { useHotkeys } from 'react-hotkeys-hook';
-import { observer } from 'mobx-react-lite';
-import { Store } from '../../..//store';
-import SaveModalBody from './SaveBody';
-import SaveModalActions from './SaveActions';
-import BaseModalHeader from '../BaseModalHeader';
-import { SaveStoryI } from './SaveStoryI';
 import { Story } from '@data-story-org/core';
+import { observer } from 'mobx-react-lite';
+import React, { FC } from 'react';
+import { Store } from '../../..//store';
 import { SerializedReactDiagram } from '../../../types';
+import BaseModalHeader from '../BaseModalHeader';
+import { BaseStoryWidgetModal } from '../BaseStoryModal';
+import { SaveStoryI } from '../BaseStoryModal/SaveStoryI';
 
 interface Props {
   store: Store;
   closeModal: () => void;
 }
 
-const SaveModal: FC<Props> = ({
-  store,
-  closeModal,
-}: Props) => {
-  const [story, setStory] = useState<SaveStoryI>({
-    name: store.metadata.activeStory,
-    desc: '',
-    tags: {},
-  });
-
-  useHotkeys(
-    'enter',
-    (e) => {
-      e.stopPropagation();
-      handleSave(e);
-    },
-    {
-      enableOnTags: ['INPUT'],
-    },
-  );
-
-  const handleChange =
-    (field: string, tagKey: number = 0) =>
-    (e) => {
-      field === 'tags'
-        ? setStory({
-            ...story,
-            [field]: {
-              ...story.tags,
-              [tagKey]: e.target.value,
-            },
-          })
-        : setStory({
-            ...story,
-            [field]: e.target.value,
-          });
-    };
-
-  const addTag = (e) => {
-    setStory({
-      ...story,
-      tags: {
-        ...story.tags,
-        [Object.keys(story.tags).length]: '',
-      },
-    });
-  };
-
+const SaveModal: FC<Props> = ({ store, closeModal }) => {
   const handleCancel = (_e) => {
     closeModal();
   };
 
-  const handleSave = (_e) => {
+  const handleSave = (story: SaveStoryI) => {
     store.getModel().clearLinkLabels();
 
     const dataStory = new Story<SerializedReactDiagram>(
       story.name,
-      story.desc,
+      story.description,
       Object.values(story.tags),
       store.getModel().serialize(),
     );
@@ -92,16 +43,12 @@ const SaveModal: FC<Props> = ({
   };
 
   return (
-    <div>
+    <div id="story-save">
       <BaseModalHeader action="save" />
-      <SaveModalBody
-        handleChange={handleChange}
-        addTag={addTag}
-        story={story}
-      />
-      <SaveModalActions
+      <BaseStoryWidgetModal
+        storySaver={handleSave}
         handleCancel={handleCancel}
-        handleSave={handleSave}
+        withHeader={false}
       />
     </div>
   );

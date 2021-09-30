@@ -32,8 +32,10 @@ const Splash: FC<Props> = ({ store }) => {
           return (
             <div key={`${i}-${demo.name}`}>
               <DataStoryWidget
+                store={store}
                 story={demo}
                 storyLoadHandler={onClickDemo}
+                isStoryDemo={true}
               />
             </div>
           );
@@ -51,6 +53,7 @@ const Splash: FC<Props> = ({ store }) => {
               return (
                 <div key={`${i}-${story.name}`}>
                   <DataStoryWidget
+                    store={store}
                     story={story}
                     storyLoadHandler={onClickSaved}
                   />

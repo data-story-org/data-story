@@ -1,1 +1,1 @@
-export * from './DataStory';
+export * from './Story';

@@ -25,6 +25,29 @@ export const loadStory = (
   }
 };
 
+export const deleteStory = (
+  store: Store,
+  storyName: string,
+) => {
+  if (window.confirm(`Delete the '${storyName} story?'`)) {
+    try {
+      store.metadata.client.delete(storyName);
+
+      const withoutDeletedStory =
+        store.metadata.stories.filter(
+          (story) => story.name !== storyName,
+        );
+
+      store.setStories(withoutDeletedStory);
+    } catch (e) {
+      alert(
+        `Could not delete story ${storyName}. See console for details.`,
+      );
+      console.error(e);
+    }
+  }
+};
+
 export const loadDemo = (
   store: Store,
   demoName: string,

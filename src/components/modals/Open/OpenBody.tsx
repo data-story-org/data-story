@@ -24,6 +24,7 @@ const OpenModalBody: FC<Props> = ({
               return (
                 <div key={`${i}-${story.name}`}>
                   <DataStoryWidget
+                    store={store}
                     story={story}
                     storyLoadHandler={clickStory}
                   />
