@@ -9,28 +9,26 @@ interface Props {
   inspectableLinkStyle: (node: NodeModel) => string;
 }
 
-const ToolbarInspectables: FC<Props> = ({
-  store,
-  onClickInspectable,
-  inspectableLinkStyle,
-}) => {
-  return (
-    store.diagram.engine && (
-      <span className="border-l ml-8 pl-8">
-        {store.nodesWithInspectables().map((node) => {
-          return (
-            <span
-              key={node.getDisplayName() + node.options.id}
-              onClick={(e) => onClickInspectable(node)}
-              className={inspectableLinkStyle(node)}
-            >
-              {node.getDisplayName()}
-            </span>
-          );
-        })}
-      </span>
-    )
-  );
-};
-
-export default observer(ToolbarInspectables);
+export const ToolbarInspectables: FC<Props> = observer(
+  ({ store, onClickInspectable, inspectableLinkStyle }) => {
+    return (
+      store.diagram.engine && (
+        <span className="border-l ml-8 pl-8">
+          {store.nodesWithInspectables().map((node) => {
+            return (
+              <span
+                key={
+                  node.getDisplayName() + node.options.id
+                }
+                onClick={(e) => onClickInspectable(node)}
+                className={inspectableLinkStyle(node)}
+              >
+                {node.getDisplayName()}
+              </span>
+            );
+          })}
+        </span>
+      )
+    );
+  },
+);

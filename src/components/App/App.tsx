@@ -5,7 +5,7 @@ import React, {
   useCallback,
 } from 'react';
 import Header from '../Header';
-import Toolbar from '../Toolbar';
+import { Toolbar } from '../Toolbar';
 import pages from '../pages/factory';
 import { observer } from 'mobx-react-lite';
 import { ToastContainer, Slide } from 'react-toastify';
@@ -96,5 +96,3 @@ const registerExitConfirmation = () => {
     return 'Do you want to exit this page?';
   };
 };
-
-/* export default withLoading(observer(App)); */
