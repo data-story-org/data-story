@@ -36,7 +36,7 @@
     "prod": "npm run production",
     "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --config=node_modules/laravel-mix/setup/webpack.config.js",
     "test": "jest --testPathIgnorePatterns=.*e2e.test.* -c tests/jest.config.js",
-    "test:e2e": "jest --passWithNoTests -c tests/jest.e2e.config.js",
+    "test:e2e": "jest --passWithNoTests --detectOpenHandles -c tests/jest.e2e.config.js",
     "github-pages:deploy": "gh-pages -d public"
   },
   "dependencies": {
@@ -99,7 +99,7 @@
     "@types/jest-environment-puppeteer": "^4.4.1",
     "@types/node": "^16.6.1",
     "@types/puppeteer": "^5.4.4",
-    "@types/react": "^17.0.17",
+    "@types/react": "^17.0.25",
     "@types/react-syntax-highlighter": "^13.5.2",
     "@typescript-eslint/eslint-plugin": "^4.29.1",
     "@typescript-eslint/parser": "^4.29.1",
