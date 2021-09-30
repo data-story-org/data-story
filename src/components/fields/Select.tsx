@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Select = ({ options, handleChange }) => {
+export const Select = ({ options, handleChange }) => {
   return (
     <select
       key={`${options.name}`}
@@ -18,5 +18,3 @@ const Select = ({ options, handleChange }) => {
     </select>
   );
 };
-
-export default Select;

@@ -6,7 +6,7 @@ import React from 'react';
  *   handleChange: (e: any, o: NodeModelOptions) => void;
  * } */
 
-const JS = ({ options, handleChange }) => {
+export const JS = ({ options, handleChange }) => {
   return (
     <>
       {/* REPLACE WITH SOME EDITOR! */}
@@ -20,4 +20,3 @@ const JS = ({ options, handleChange }) => {
   );
 };
 
-export default JS;

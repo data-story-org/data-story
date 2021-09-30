@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Number = ({ options, handleChange }) => {
+export const Number = ({ options, handleChange }) => {
   return (
     <input
       key={`${options.name}`}
@@ -11,5 +11,3 @@ const Number = ({ options, handleChange }) => {
     />
   );
 };
-
-export default Number;

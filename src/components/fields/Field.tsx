@@ -1,17 +1,18 @@
 import React, { useCallback } from 'react';
 
-import BaseFieldHeader from './BaseFieldHeader';
-import withRepeatable from './Repeatable';
-
-import Boolean_ from './Boolean_';
-import Number from './Number';
-import JS from './JS';
-import JSON_ from './JSON_';
-import String_ from './String_';
-import Select from './Select';
-import Textarea from './Textarea';
-import Port from './Port';
-import Row from './Row';
+import {
+  Boolean_,
+  JS,
+  JSON_,
+  Number,
+  Select,
+  String_,
+  Textarea,
+  Port,
+  Row,
+  BaseFieldHeader,
+  withRepeatable,
+} from './';
 
 export const fields = {
   Boolean_,
@@ -25,7 +26,7 @@ export const fields = {
   Row,
 };
 
-const Field = ({
+export const Field = ({
   options,
   handleChange,
   handleRepeatableChange,
@@ -54,5 +55,3 @@ const Field = ({
     </div>
   );
 };
-
-export default Field;

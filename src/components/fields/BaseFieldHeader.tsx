@@ -5,7 +5,7 @@ interface Props {
   description: string;
 }
 
-const BaseFieldHeader: FC<Props> = ({
+export const BaseFieldHeader: FC<Props> = ({
   name,
   description,
 }) => {
@@ -18,5 +18,3 @@ const BaseFieldHeader: FC<Props> = ({
     </span>
   );
 };
-
-export default BaseFieldHeader;

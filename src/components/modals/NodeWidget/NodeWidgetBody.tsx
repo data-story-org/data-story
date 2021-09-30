@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import Field from '../../fields/Field';
+import { Field } from '../../fields/Field';
 import { NodeParameter } from '@data-story-org/core';
 
 interface Props {
