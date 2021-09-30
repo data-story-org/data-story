@@ -11,49 +11,49 @@ interface Props extends withLoadingProps {
   store: Store;
 }
 
-const RunControl: FC<Props> = ({ store, setLoading }) => {
-  useHotkeys('shift+r', () => {
-    onClick();
-  });
+export const RunControl: FC<Props> = observer(
+  ({ store, setLoading }) => {
+    useHotkeys('shift+r', () => {
+      onClick();
+    });
 
-  const [id, title, icon] = [
-    'run',
-    'Run story',
-    'fas fa-play',
-  ];
+    const [id, title, icon] = [
+      'run',
+      'Run story',
+      'fas fa-play',
+    ];
 
-  const onClick = () => {
-    setLoading(true);
-    store.clearResults();
-    store.setRunning();
+    const onClick = () => {
+      setLoading(true);
+      store.clearResults();
+      store.setRunning();
 
-    store.metadata.client
-      .run(store.getModel())
-      .then((result: RunResult) => {
-        const diagram = store.getModel();
-        const serverDiagram = result.diagram;
-        diagram.syncFeatures(serverDiagram);
-        store.setNotRunning();
-        setLoading(false);
-        store.showRunSuccessful();
-        store.refreshDiagram();
-      })
-      .catch((error) => {
-        store.setNotRunning();
-        store.showRunFail(error);
-        setLoading(false);
-        throw error;
-      });
-  };
+      store.metadata.client
+        .run(store.getModel())
+        .then((result: RunResult) => {
+          const diagram = store.getModel();
+          const serverDiagram = result.diagram;
+          diagram.syncFeatures(serverDiagram);
+          store.setNotRunning();
+          setLoading(false);
+          store.showRunSuccessful();
+          store.refreshDiagram();
+        })
+        .catch((error) => {
+          store.setNotRunning();
+          store.showRunFail(error);
+          setLoading(false);
+          throw error;
+        });
+    };
 
-  return (
-    <BaseControl
-      id={id}
-      title={title}
-      icon={icon}
-      onClick={onClick}
-    />
-  );
-};
-
-export default observer(RunControl);
+    return (
+      <BaseControl
+        id={id}
+        title={title}
+        icon={icon}
+        onClick={onClick}
+      />
+    );
+  },
+);

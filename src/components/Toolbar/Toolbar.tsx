@@ -4,7 +4,7 @@ import { observer } from 'mobx-react-lite';
 import WorkbenchControl from '../controls/WorkbenchControl';
 import OpenControl from '../controls/OpenControl';
 import SaveControl from '../controls/SaveControl';
-import RunControl from '../controls/RunControl';
+import { RunControl } from '../controls/RunControl';
 import DiagramJsonControl from '../controls/DiagramJsonControl';
 import ConfigControl from '../controls/ConfigControl';
 import AddNodeControl from '../controls/AddNodeControl';
