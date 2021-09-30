@@ -2,9 +2,7 @@ import { observer } from 'mobx-react-lite';
 import React, { FC, useState } from 'react';
 import Modal from 'react-modal';
 import { Store } from '../../../store';
-import {
-    GenericStory
-} from '../../../types';
+import { GenericStory } from '../../../types';
 import { modalStyle } from '../../../utils/modalStyle';
 import { StoryWidgetModal } from '../../modals/StoryWidget/StoryWidget';
 import { DataStoryWidgetActions } from './StoryActions';
