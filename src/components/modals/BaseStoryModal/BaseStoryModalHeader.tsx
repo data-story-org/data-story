@@ -6,7 +6,7 @@ interface Props {
   handleCancel: (event: any) => void;
 }
 
-const StoryWidgetModalHeader: FC<Props> = ({
+export const StoryWidgetModalHeader: FC<Props> = ({
   story,
   handleCancel,
 }) => {
@@ -28,5 +28,3 @@ const StoryWidgetModalHeader: FC<Props> = ({
     </div>
   );
 };
-
-export default StoryWidgetModalHeader;
