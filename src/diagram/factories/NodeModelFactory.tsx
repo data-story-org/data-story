@@ -1,7 +1,7 @@
 import React from 'react';
 import { AbstractReactFactory } from '@projectstorm/react-canvas-core';
 import { NodeModel } from '../models';
-import NodeWidget from '../../components/widgets/Node/';
+import { NodeWidget } from '../../components/widgets/Node/';
 import CommentNodeWidget from '../../components/widgets/CommentNodeWidget';
 // import OutputNodeWidget from '../../components/widgets/OutputNode';
 

@@ -1,3 +1,1 @@
-import NodeWidget from './Node';
-
-export default NodeWidget;
+export * from './Node';

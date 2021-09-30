@@ -1,6 +1,6 @@
 import React from 'react';
 
-const NodeWidgetHeader = ({ node }) => {
+export const NodeWidgetHeader = ({ node }) => {
   return (
     <div
       className={
@@ -15,5 +15,3 @@ const NodeWidgetHeader = ({ node }) => {
     </div>
   );
 };
-
-export default NodeWidgetHeader;
