@@ -1,3 +1,1 @@
-import ConfigModal from './Config';
-
-export default ConfigModal;
+export * from './Config';

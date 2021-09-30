@@ -3,7 +3,7 @@ import { observer } from 'mobx-react-lite';
 import { BaseControl } from './BaseControl';
 import Modal from 'react-modal';
 import { modalStyle } from '../../utils/modalStyle';
-import ConfigModal from '../modals/Config';
+import { ConfigModal } from '../modals/Config';
 import { Store } from '../../store';
 
 interface Props {
