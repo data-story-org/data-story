@@ -1,6 +1,6 @@
 import React, { FC, useState } from 'react';
 import { observer } from 'mobx-react-lite';
-import BaseControl from './BaseControl';
+import { BaseControl } from './BaseControl';
 import ReactModal from 'react-modal';
 import NodeSearch from './NodeSearch';
 import { Store } from '../../store/';

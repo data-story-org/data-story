@@ -45,7 +45,7 @@ const BaseOnClick = () => {
   alert('Not implemented');
 };
 
-const BaseControl: FC<Props> = ({
+export const BaseControl: FC<Props> = ({
   id = null,
   title,
   icon,
@@ -64,5 +64,3 @@ const BaseControl: FC<Props> = ({
     </span>
   );
 };
-
-export default BaseControl;

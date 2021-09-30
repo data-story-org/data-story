@@ -4,7 +4,7 @@ import { useHotkeys } from 'react-hotkeys-hook';
 import Modal from 'react-modal';
 import { modalStyle } from '../../utils/modalStyle';
 
-import BaseControl from './BaseControl';
+import { BaseControl } from './BaseControl';
 import { SaveModal } from '../modals/Save';
 import { Store } from '../../store';
 

@@ -2,7 +2,7 @@ import React, { FC, useEffect } from 'react';
 import { observer } from 'mobx-react-lite';
 import { useHotkeys } from 'react-hotkeys-hook';
 
-import BaseControl from './BaseControl';
+import { BaseControl } from './BaseControl';
 import { withLoadingProps } from '../../utils/isLoadingHOC';
 import { Store } from '../../store';
 import { RunResult } from '../../clients/ClientInterface';

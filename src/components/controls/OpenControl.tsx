@@ -1,6 +1,6 @@
 import React, { FC, useState } from 'react';
 import { observer } from 'mobx-react-lite';
-import BaseControl from './BaseControl';
+import { BaseControl } from './BaseControl';
 import Modal from 'react-modal';
 import { modalStyle } from '../../utils/modalStyle';
 import { OpenModal } from '../modals/Open';
