@@ -5,7 +5,7 @@ interface Props {
   handleSave: (event: any) => void;
 }
 
-const NodeWidgetModalActions: FC<Props> = ({
+export const NodeWidgetModalActions: FC<Props> = ({
   handleCancel,
   handleSave,
 }) => {
@@ -35,5 +35,3 @@ const NodeWidgetModalActions: FC<Props> = ({
     </div>
   );
 };
-
-export default NodeWidgetModalActions;
