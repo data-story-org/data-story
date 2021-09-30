@@ -3,7 +3,7 @@ import { observer } from 'mobx-react-lite';
 import BaseControl from './BaseControl';
 import Modal from 'react-modal';
 import { modalStyle } from '../../utils/modalStyle';
-import OpenModal from '../modals/Open';
+import { OpenModal } from '../modals/Open';
 import { Store } from '../../store';
 import { useHotkeys } from 'react-hotkeys-hook';
 

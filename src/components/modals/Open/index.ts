@@ -1,3 +1,1 @@
-import OpenModal from './Open';
-
-export default OpenModal;
+export * from './Open';
