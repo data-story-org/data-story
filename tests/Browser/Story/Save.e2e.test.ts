@@ -8,38 +8,11 @@ import {
   generateRandomString,
   openModal,
   saveModal,
+  saveStory,
 } from '../helpers';
 import { sample } from 'lodash';
 
 setDefaultOptions({ timeout: 0 });
-
-const saveStory = async (
-  page: puppeteer.Page,
-  name: string,
-  desc: string,
-  tags: string[],
-) => {
-  await expect(page).toMatch('save');
-
-  await expect(page).toFill(
-    'input[placeholder="descriptive story name"]',
-    name,
-  );
-  await expect(page).toFill(
-    'input[placeholder="story description"]',
-    desc,
-  );
-
-  for (const tag of tags) {
-    await expect(page).toClick('span', { text: '+' });
-    await expect(page).toFill(
-      'input[placeholder="story tag"][value=""]',
-      tag,
-    );
-  }
-
-  await expect(page).toClick('button', { text: 'Save' });
-};
 
 describe('Stories saving', () => {
   let browser: puppeteer.Browser;

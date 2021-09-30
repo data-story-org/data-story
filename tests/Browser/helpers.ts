@@ -72,3 +72,29 @@ export const saveModal = async (page: Page) => {
   await page.keyboard.press('KeyS');
   await page.keyboard.up('Shift');
 };
+
+export const saveStory = async (
+  page: Page,
+  name: string,
+  desc: string,
+  tags: string[],
+) => {
+  await expect(page).toFill(
+    'input[placeholder="descriptive story name"]',
+    name,
+  );
+  await expect(page).toFill(
+    'input[placeholder="story description"]',
+    desc,
+  );
+
+  for (const tag of tags) {
+    await expect(page).toClick('span', { text: '+' });
+    await expect(page).toFill(
+      'input[placeholder="story tag"][value=""]',
+      tag,
+    );
+  }
+
+  await expect(page).toClick('button', { text: 'Save' });
+};
