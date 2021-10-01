@@ -47,4 +47,3 @@ export const ConfigModalBody: FC = () => {
     </div>
   );
 };
-

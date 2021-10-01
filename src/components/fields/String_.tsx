@@ -11,4 +11,3 @@ export const String_ = ({ options, handleChange }) => {
     />
   );
 };
-

@@ -14,4 +14,3 @@ export const ActiveStory: FC<Props> = ({ store }) => {
     </span>
   );
 };
-

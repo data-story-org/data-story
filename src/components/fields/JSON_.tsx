@@ -13,4 +13,3 @@ export const JSON_ = ({ options, handleChange }) => {
     </>
   );
 };
-
