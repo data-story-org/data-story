@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { Diagram } from '../../Diagram';
+import { Diagram } from './Diagram';
 import { Store } from '../../../store';
 import { observer } from 'mobx-react-lite';
 
