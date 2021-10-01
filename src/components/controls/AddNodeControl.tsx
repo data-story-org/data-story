@@ -37,59 +37,59 @@ interface Props {
   store: Store;
 }
 
-const AddNodeControl: FC<Props> = ({ store }) => {
-  const [id, title, icon] = [
-    'add-node',
-    'Add Node',
-    'fas fa-plus',
-  ];
+export const AddNodeControl: FC<Props> = observer(
+  ({ store }) => {
+    const [id, title, icon] = [
+      'add-node',
+      'Add Node',
+      'fas fa-plus',
+    ];
 
-  const [isOpen, setIsOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState(false);
 
-  // shift+plus
-  useHotkeys('*', (e) => {
-    if (e.key === '+') {
-      e.preventDefault();
-      onClick();
-    }
-  });
+    // shift+plus
+    useHotkeys('*', (e) => {
+      if (e.key === '+') {
+        e.preventDefault();
+        onClick();
+      }
+    });
 
-  // shift+plus on swedish keyboard layout
-  useHotkeys('*', (e) => {
-    if (e.key === '?') {
-      e.preventDefault();
-      onClick();
-    }
-  });
+    // shift+plus on swedish keyboard layout
+    useHotkeys('*', (e) => {
+      if (e.key === '?') {
+        e.preventDefault();
+        onClick();
+      }
+    });
 
-  const onClick = () => {
-    store.setDiagramLocked(true);
-    setIsOpen(true);
-  };
+    const onClick = () => {
+      store.setDiagramLocked(true);
+      setIsOpen(true);
+    };
 
-  const closeModal = () => {
-    store.setDiagramLocked(false);
-    setIsOpen(false);
-  };
+    const closeModal = () => {
+      store.setDiagramLocked(false);
+      setIsOpen(false);
+    };
 
-  return (
-    <span>
-      <BaseControl
-        id={id}
-        title={title}
-        icon={icon}
-        onClick={onClick}
-      />
-      <ReactModal
-        isOpen={isOpen}
-        onRequestClose={closeModal}
-        style={customStyles}
-        contentLabel="Example Modal"
-      >
-        <NodeSearch store={store} onFinish={closeModal} />
-      </ReactModal>
-    </span>
-  );
-};
-
-export default observer(AddNodeControl);
+    return (
+      <span>
+        <BaseControl
+          id={id}
+          title={title}
+          icon={icon}
+          onClick={onClick}
+        />
+        <ReactModal
+          isOpen={isOpen}
+          onRequestClose={closeModal}
+          style={customStyles}
+          contentLabel="Example Modal"
+        >
+          <NodeSearch store={store} onFinish={closeModal} />
+        </ReactModal>
+      </span>
+    );
+  },
+);

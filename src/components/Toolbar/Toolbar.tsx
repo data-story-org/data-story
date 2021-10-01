@@ -1,14 +1,17 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 import { observer } from 'mobx-react-lite';
 
-import WorkbenchControl from '../controls/WorkbenchControl';
-import OpenControl from '../controls/OpenControl';
-import SaveControl from '../controls/SaveControl';
-import { RunControl } from '../controls/RunControl';
-import DiagramJsonControl from '../controls/DiagramJsonControl';
-import ConfigControl from '../controls/ConfigControl';
-import AddNodeControl from '../controls/AddNodeControl';
-import TokensControl from '../controls/TokensControl';
+import {
+  RunControl,
+  SaveControl,
+  OpenControl,
+  AddNodeControl,
+  ConfigControl,
+  DiagramJsonControl,
+  WorkbenchControl,
+  LogControl,
+  TokensControl,
+} from '../controls';
 import { withLoadingProps } from '../../utils/isLoadingHOC';
 import { Store } from '../../store';
 

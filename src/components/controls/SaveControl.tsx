@@ -12,40 +12,43 @@ interface Props {
   store: Store;
 }
 
-const SaveControl: FC<Props> = ({ store }) => {
-  const [title, icon] = ['Save story', 'fas fa-save'];
-  const [isOpen, setIsOpen] = useState(false);
+export const SaveControl: FC<Props> = observer(
+  ({ store }) => {
+    const [title, icon] = ['Save story', 'fas fa-save'];
+    const [isOpen, setIsOpen] = useState(false);
 
-  useHotkeys('shift+s', () => {
-    onClick();
-  });
+    useHotkeys('shift+s', () => {
+      onClick();
+    });
 
-  const onClick = () => {
-    store.setDiagramLocked(true);
-    setIsOpen(true);
-  };
+    const onClick = () => {
+      store.setDiagramLocked(true);
+      setIsOpen(true);
+    };
 
-  const closeModal = () => {
-    store.setDiagramLocked(false);
-    setIsOpen(false);
-  };
+    const closeModal = () => {
+      store.setDiagramLocked(false);
+      setIsOpen(false);
+    };
 
-  return (
-    <span>
-      <BaseControl
-        title={title}
-        icon={icon}
-        onClick={onClick}
-      />
-      <Modal
-        isOpen={isOpen}
-        onRequestClose={closeModal}
-        style={modalStyle}
-      >
-        <SaveModal store={store} closeModal={closeModal} />
-      </Modal>
-    </span>
-  );
-};
-
-export default observer(SaveControl);
+    return (
+      <span>
+        <BaseControl
+          title={title}
+          icon={icon}
+          onClick={onClick}
+        />
+        <Modal
+          isOpen={isOpen}
+          onRequestClose={closeModal}
+          style={modalStyle}
+        >
+          <SaveModal
+            store={store}
+            closeModal={closeModal}
+          />
+        </Modal>
+      </span>
+    );
+  },
+);

@@ -11,40 +11,43 @@ interface Props {
   store: Store;
 }
 
-const OpenControl: FC<Props> = ({ store }) => {
-  const [title, icon] = ['Open story', 'fas fa-folder'];
-  const [isOpen, setIsOpen] = useState(false);
+export const OpenControl: FC<Props> = observer(
+  ({ store }) => {
+    const [title, icon] = ['Open story', 'fas fa-folder'];
+    const [isOpen, setIsOpen] = useState(false);
 
-  useHotkeys('shift+o', () => {
-    onClick();
-  });
+    useHotkeys('shift+o', () => {
+      onClick();
+    });
 
-  const onClick = () => {
-    store.setDiagramLocked(true);
-    setIsOpen(true);
-  };
+    const onClick = () => {
+      store.setDiagramLocked(true);
+      setIsOpen(true);
+    };
 
-  const closeModal = () => {
-    store.setDiagramLocked(false);
-    setIsOpen(false);
-  };
+    const closeModal = () => {
+      store.setDiagramLocked(false);
+      setIsOpen(false);
+    };
 
-  return (
-    <span>
-      <BaseControl
-        title={title}
-        icon={icon}
-        onClick={onClick}
-      />
-      <Modal
-        isOpen={isOpen}
-        onRequestClose={closeModal}
-        style={modalStyle}
-      >
-        <OpenModal store={store} closeModal={closeModal} />
-      </Modal>
-    </span>
-  );
-};
-
-export default observer(OpenControl);
+    return (
+      <span>
+        <BaseControl
+          title={title}
+          icon={icon}
+          onClick={onClick}
+        />
+        <Modal
+          isOpen={isOpen}
+          onRequestClose={closeModal}
+          style={modalStyle}
+        >
+          <OpenModal
+            store={store}
+            closeModal={closeModal}
+          />
+        </Modal>
+      </span>
+    );
+  },
+);

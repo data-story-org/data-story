@@ -10,32 +10,32 @@ interface Props {
   store: Store;
 }
 
-const WorkbenchControl: FC<Props> = ({ store }) => {
-  const [title, id, icon, page] = [
-    'Story workbench',
-    'story-workbench',
-    'fas fa-project-diagram',
-    'Workbench',
-  ];
+export const WorkbenchControl: FC<Props> = observer(
+  ({ store }) => {
+    const [title, id, icon, page] = [
+      'Story workbench',
+      'story-workbench',
+      'fas fa-project-diagram',
+      'Workbench',
+    ];
 
-  const style =
-    page == store.metadata.page
-      ? BaseControlStyle + ' text-malibu-600'
-      : BaseControlStyle;
+    const style =
+      page == store.metadata.page
+        ? BaseControlStyle + ' text-malibu-600'
+        : BaseControlStyle;
 
-  const onClick = () => {
-    store.setPage(page);
-  };
+    const onClick = () => {
+      store.setPage(page);
+    };
 
-  return (
-    <BaseControl
-      title={title}
-      id={id}
-      icon={icon}
-      onClick={onClick}
-      style={style}
-    />
-  );
-};
-
-export default observer(WorkbenchControl);
+    return (
+      <BaseControl
+        title={title}
+        id={id}
+        icon={icon}
+        onClick={onClick}
+        style={style}
+      />
+    );
+  },
+);
