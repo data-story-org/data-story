@@ -1,3 +1,1 @@
-import NodeSearch from './NodeSearch';
-
-export default NodeSearch;
+export * from './NodeSearch';

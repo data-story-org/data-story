@@ -1,4 +1,4 @@
-import React, { FC, MutableRefObject } from 'react';
+import React, { FC } from 'react';
 import { NodeModel } from '../../../diagram/models';
 
 interface Props {
@@ -64,5 +64,3 @@ export const NodeListItem: FC<Props> = ({
     </li>
   );
 };
-
-export default NodeListItem;
