@@ -12,7 +12,7 @@ import {
   LogControl,
   TokensControl,
 } from '../../components/controls';
-import { withLoadingProps } from '../../utils/isLoadingHOC';
+import { withLoadingProps } from '../../lib/utils/';
 import { Store } from '../../store';
 
 import { ToolbarInspectables } from './ToolbarInspectables';

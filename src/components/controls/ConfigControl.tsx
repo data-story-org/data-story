@@ -2,7 +2,7 @@ import React, { FC, useState } from 'react';
 import { observer } from 'mobx-react-lite';
 import { BaseControl } from './BaseControl';
 import Modal from 'react-modal';
-import { modalStyle } from '../../utils/modalStyle';
+import { modalStyle } from '../../lib/utils';
 import { ConfigModal } from '../modals/Config';
 import { Store } from '../../store';
 

@@ -4,24 +4,25 @@ import React, {
   useEffect,
   useCallback,
 } from 'react';
-import { Header } from '../Header';
-import { Toolbar } from '../Toolbar';
-import { pagesFactory } from '../../components/pages';
 import { observer } from 'mobx-react-lite';
 import { ToastContainer, Slide } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { EngineFactory } from '../../diagram/factories';
-import { Cookie } from '../../utils';
-import { useStore } from '../../store/StoreProvider';
-import { showNotification } from '../../utils/Notifications';
-import {
-  withLoading,
-  withLoadingProps,
-} from '../../utils/isLoadingHOC';
-import { AppHotkeys } from './AppHotkeys';
-import { SerializedReactDiagram } from '../../lib/types';
 import { demos } from '@data-story-org/core';
 import { parse } from 'flatted';
+
+import { Header } from '../Header';
+import { Toolbar } from '../Toolbar';
+import { pagesFactory } from '../../components/pages';
+import { AppHotkeys } from './AppHotkeys';
+import { EngineFactory } from '../../diagram/factories';
+import { useStore } from '../../store/StoreProvider';
+import { SerializedReactDiagram } from '../../lib/types';
+import {
+  Cookie,
+  showNotification,
+  withLoading,
+  withLoadingProps,
+} from '../../lib/utils';
 
 export const App: FC<withLoadingProps> = withLoading(
   observer(({ setLoading }) => {

@@ -3,7 +3,7 @@ import React, { FC, useState } from 'react';
 import Modal from 'react-modal';
 import { Store } from '../../../store';
 import { GenericStory } from '../../../lib/types';
-import { modalStyle } from '../../../utils/modalStyle';
+import { modalStyle } from '../../../lib/utils';
 import { StoryWidgetModal } from '../../modals/StoryWidget';
 import { DataStoryWidgetActions } from './StoryActions';
 import { DataStoryWidgetDescription } from './StoryDescription';

@@ -1,6 +1,6 @@
 import React, { useState, useReducer, FC } from 'react';
 import Modal from 'react-modal';
-import { modalStyle } from '../../../utils/modalStyle';
+import { modalStyle } from '../../../lib/utils';
 import {
   Store,
   withStore,

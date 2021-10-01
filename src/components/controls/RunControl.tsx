@@ -1,9 +1,9 @@
-import React, { FC, useEffect } from 'react';
+import React, { FC } from 'react';
 import { observer } from 'mobx-react-lite';
 import { useHotkeys } from 'react-hotkeys-hook';
 
 import { BaseControl } from './BaseControl';
-import { withLoadingProps } from '../../utils/isLoadingHOC';
+import { withLoadingProps } from '../../lib/utils';
 import { Store } from '../../store';
 import { RunResult } from '../../clients/ClientInterface';
 
