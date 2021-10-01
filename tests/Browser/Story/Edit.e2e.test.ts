@@ -95,7 +95,7 @@ describe('Stories editing', () => {
     await openModal(page);
 
     await testEditing();
-  }, 50000);
+  }, 70000);
 
   test('Stories can be edited from splash screen', async () => {
     await expect(page).toClick('span', {
@@ -103,7 +103,7 @@ describe('Stories editing', () => {
     });
 
     await testEditing();
-  }, 50000);
+  }, 70000);
 
   afterEach(async () => {
     await page.close();
