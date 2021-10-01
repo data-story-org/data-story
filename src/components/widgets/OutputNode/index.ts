@@ -1,3 +1,1 @@
-import OutputNodeWidget from './OutputNode';
-
-export default OutputNodeWidget;
+export * from './OutputNode';
