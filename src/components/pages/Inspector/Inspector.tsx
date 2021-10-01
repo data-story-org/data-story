@@ -1,7 +1,7 @@
 import React, { FC, useCallback } from 'react';
 import { observer } from 'mobx-react-lite';
-import InspectorTable from './InspectorTable';
-import InspectorJSON from './InspectorJSON';
+import { InspectorTable } from './InspectorTable';
+import { InspectorJSON } from './InspectorJSON';
 import { Store } from '../../../store';
 import {
   InspectorMode,
@@ -25,64 +25,65 @@ const inspectorComponentsMap = new Map<
   ['JSON', InspectorJSON],
 ]);
 
-const Inspector: FC<Props> = ({ store }) => {
-  const id = store.metadata.activeInspector.nodeId;
-  const mode = store.metadata.activeInspector.mode;
-  const features = id
-    ? (
-        store.diagram.engine
-          .getModel()
-          .getNode(`${id}`) as NodeModel
-      ).features
-    : [];
+export const Inspector: FC<Props> = observer(
+  ({ store }) => {
+    const id = store.metadata.activeInspector.nodeId;
+    const mode = store.metadata.activeInspector.mode;
+    const features = id
+      ? (
+          store.diagram.engine
+            .getModel()
+            .getNode(`${id}`) as NodeModel
+        ).features
+      : [];
 
-  const InspectorComponent = useCallback(
-    inspectorComponentsMap.get(mode),
-    [mode],
-  );
+    const InspectorComponent = useCallback(
+      inspectorComponentsMap.get(mode),
+      [mode],
+    );
 
-  const handleModeSelect =
-    (mode: InspectorMode) => (_e) => {
-      store.setActiveInspectorMode(mode);
+    const handleModeSelect =
+      (mode: InspectorMode) => (_e) => {
+        store.setActiveInspectorMode(mode);
+      };
+
+    const modeStyle = (mode: InspectorMode) => {
+      const style =
+        'mr-8 text-gray-200 hover:text-malibu-500 text-lg cursor-pointer';
+
+      const activeMode =
+        store.metadata.activeInspector.mode;
+
+      return activeMode && activeMode == mode
+        ? style + ' text-malibu-500'
+        : style + ' font-semibold';
     };
 
-  const modeStyle = (mode: InspectorMode) => {
-    const style =
-      'mr-8 text-gray-200 hover:text-malibu-500 text-lg cursor-pointer';
-
-    const activeMode = store.metadata.activeInspector.mode;
-
-    return activeMode && activeMode == mode
-      ? style + ' text-malibu-500'
-      : style + ' font-semibold';
-  };
-
-  return (
-    <>
-      <div className="flex justify-center ml-auto shadow shadow-xl p-4">
-        {INSPECTOR_MODES.map((mode) => {
-          return (
-            <span
-              key={mode}
-              onClick={handleModeSelect(mode)}
-              className={modeStyle(mode)}
-            >
-              {mode}
-            </span>
-          );
-        })}
-      </div>
-      <div className="p-4">
-        <InspectorComponent
-          features={features}
-          handleModeSelect={handleModeSelect}
-        />
-      </div>
-    </>
-  );
-};
-
-export default observer(Inspector);
+    return (
+      <>
+        <div className="flex justify-center ml-auto shadow shadow-xl p-4">
+          {INSPECTOR_MODES.map((mode) => {
+            return (
+              <span
+                key={mode}
+                onClick={handleModeSelect(mode)}
+                className={modeStyle(mode)}
+              >
+                {mode}
+              </span>
+            );
+          })}
+        </div>
+        <div className="p-4">
+          <InspectorComponent
+            features={features}
+            handleModeSelect={handleModeSelect}
+          />
+        </div>
+      </>
+    );
+  },
+);
 
 /*
 

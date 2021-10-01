@@ -1,3 +1,1 @@
-import { InspectorJSON } from './InspectorJSON';
-
-export default InspectorJSON;
+export * from './InspectorJSON';

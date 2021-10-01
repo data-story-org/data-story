@@ -1,7 +1,7 @@
 import React, { FC, useState } from 'react';
 import { Feature } from '@data-story-org/core';
-import InspectorTableBody from './InspectorTableBody';
-import InspectorTableHeading from './InspectorTableHeading';
+import { InspectorTableBody } from './InspectorTableBody';
+import { InspectorTableHeading } from './InspectorTableHeading';
 import { InspectorMode } from '../../../../types';
 
 interface Props {
@@ -11,7 +11,7 @@ interface Props {
   ) => (e: any) => void;
 }
 
-const InspectorTable: FC<Props> = ({
+export const InspectorTable: FC<Props> = ({
   features,
   handleModeSelect,
 }) => {
@@ -117,5 +117,3 @@ const InspectorTable: FC<Props> = ({
     </div>
   );
 };
-
-export default InspectorTable;

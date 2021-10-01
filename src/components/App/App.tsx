@@ -6,7 +6,7 @@ import React, {
 } from 'react';
 import { Header } from '../Header';
 import { Toolbar } from '../Toolbar';
-import pages from '../pages/factory';
+import { pagesFactory } from '../pages';
 import { observer } from 'mobx-react-lite';
 import { ToastContainer, Slide } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -75,9 +75,10 @@ export const App: FC<withLoadingProps> = withLoading(
         });
     };
 
-    const Page = useCallback(pages(store.metadata.page), [
-      store.metadata.page,
-    ]);
+    const Page = useCallback(
+      pagesFactory(store.metadata.page),
+      [store.metadata.page],
+    );
 
     return (
       <div>
