@@ -6,7 +6,7 @@ import {
   Inspector,
   InspectorMode,
   SerializedReactDiagram,
-} from '../types';
+} from '../lib/types';
 import { DiagramEngine } from '@projectstorm/react-diagrams';
 import { DiagramModel, NodeModel } from '../diagram/models';
 import {

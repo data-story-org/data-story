@@ -6,7 +6,7 @@ import {
 } from '../ClientInterface';
 import context from './localSampleContext';
 import { BootPayload } from '@data-story-org/core';
-import { SerializedReactDiagram, Story } from '../../types';
+import { SerializedReactDiagram, Story } from '../../lib/types';
 
 const server = new LocalServer(context);
 

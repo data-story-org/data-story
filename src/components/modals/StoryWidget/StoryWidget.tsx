@@ -2,7 +2,7 @@ import React, { FC, useState } from 'react';
 import { observer } from 'mobx-react-lite';
 import partition from 'lodash/partition';
 import { Store } from '../../../store';
-import { Story, GenericStory } from '../../../types';
+import { Story, GenericStory } from '../../../lib/types';
 import { BaseStoryWidgetModal } from '../BaseStoryModal';
 import { SaveStoryI } from '../BaseStoryModal/SaveStoryI';
 

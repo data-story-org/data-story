@@ -3,7 +3,7 @@ import {
   BootPayload,
   SerializedReactDiagram,
   Story,
-} from '../types';
+} from '../lib/types';
 
 export interface RunResult {
   diagram: DiagramModel;

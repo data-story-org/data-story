@@ -6,7 +6,7 @@ import { Store } from '../../../store';
 import {
   InspectorMode,
   INSPECTOR_MODES,
-} from '../../../types';
+} from '../../../lib/types';
 import { NodeModel } from '../../../diagram/models';
 
 interface Props {

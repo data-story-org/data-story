@@ -6,7 +6,7 @@ import {
   RunResult,
 } from './ClientInterface';
 import { parse } from 'flatted';
-import { SerializedReactDiagram, Story } from '../types';
+import { SerializedReactDiagram, Story } from '../lib/types';
 
 export class APIClient implements ClientInterface {
   public root = 'http://localhost:3000'; // https://data-story-server.herokuapp.com

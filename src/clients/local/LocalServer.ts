@@ -1,5 +1,5 @@
 import { Server, Diagram } from '@data-story-org/core';
-import { SerializedReactDiagram, Story } from '../../types';
+import { SerializedReactDiagram, Story } from '../../lib/types';
 import { parse, stringify } from 'flatted';
 
 export class LocalServer extends Server {
