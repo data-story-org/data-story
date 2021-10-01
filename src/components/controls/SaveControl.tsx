@@ -6,7 +6,7 @@ import { modalStyle } from '../../lib/utils';
 
 import { BaseControl } from './BaseControl';
 import { SaveModal } from '../modals/Save';
-import { Store } from '../../store';
+import { Store } from '../../lib/store';
 
 interface Props {
   store: Store;

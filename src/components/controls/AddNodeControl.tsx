@@ -3,7 +3,7 @@ import { observer } from 'mobx-react-lite';
 import { BaseControl } from './BaseControl';
 import ReactModal from 'react-modal';
 import { NodeSearch } from './NodeSearch';
-import { Store } from '../../store/';
+import { Store } from '../../lib/store/';
 import { useHotkeys } from 'react-hotkeys-hook';
 
 const customStyles = {

@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { observer } from 'mobx-react-lite';
 import { useHotkeys } from 'react-hotkeys-hook';
 import { NodeModel } from '../../lib/diagram';
-import { Store } from '../../store';
+import { Store } from '../../lib/store';
 
 interface Props {
   store: Store;

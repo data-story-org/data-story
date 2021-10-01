@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { Store } from '../../../store';
+import { Store } from '../../../lib/store';
 import { observer } from 'mobx-react-lite';
 import { DataStoryWidget } from '../../widgets/DataStory';
 

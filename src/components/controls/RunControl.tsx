@@ -4,7 +4,7 @@ import { useHotkeys } from 'react-hotkeys-hook';
 
 import { BaseControl } from './BaseControl';
 import { withLoadingProps } from '../../lib/utils';
-import { Store } from '../../store';
+import { Store } from '../../lib/store';
 import { RunResult } from '../../lib/clients/ClientInterface';
 
 interface Props extends withLoadingProps {

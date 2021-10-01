@@ -3,7 +3,7 @@ import {
   EngineFactory,
 } from '../../../src/lib/diagram';
 
-import { Store } from '../../../src/store';
+import { Store } from '../../../src/lib/store';
 import { generateRandomString } from '../../Browser/helpers';
 
 describe('RootStore', () => {

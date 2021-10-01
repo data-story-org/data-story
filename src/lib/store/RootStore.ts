@@ -1,18 +1,18 @@
 import { action, observable, makeObservable } from 'mobx';
-import { Client, ClientFactory } from '../lib/clients';
-import { showNotification } from '../lib/utils/Notifications';
+import { Client, ClientFactory } from '../clients';
+import { showNotification } from '../utils/Notifications';
 import {
   Page,
   Inspector,
   InspectorMode,
   SerializedReactDiagram,
-} from '../lib/types';
+} from '../types';
 import { DiagramEngine } from '@projectstorm/react-diagrams';
 import {
   EngineFactory,
   DiagramModel,
   NodeModel,
-} from '../lib/diagram';
+} from '../diagram';
 import {
   Story,
   demos,

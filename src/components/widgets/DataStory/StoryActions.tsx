@@ -1,6 +1,6 @@
 import { observer } from 'mobx-react-lite';
 import React, { FC } from 'react';
-import { Store } from '../../../store';
+import { Store } from '../../../lib/store';
 import { deleteStory } from '../../../lib/utils';
 
 interface Story {

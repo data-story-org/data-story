@@ -1,7 +1,7 @@
 import React, { FC, useState } from 'react';
 import Modal from 'react-modal';
 import { modalStyle } from '../../../lib/utils';
-import { Store, withStore } from '../../../store';
+import { Store, withStore } from '../../../lib/store';
 
 import { OutputNodeWidgetHeader } from './OutputNodeHeader';
 import { DiagramEngine } from '@projectstorm/react-diagrams';

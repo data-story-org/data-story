@@ -3,7 +3,7 @@ import { render } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 
 import { Header } from '../../../src/sections/Header';
-import { Store } from '../../../src/store';
+import { Store } from '../../../src/lib/store';
 
 describe('<Header />', () => {
   window.config = {

@@ -1,7 +1,7 @@
 import React, { FC, useState } from 'react';
 import { observer } from 'mobx-react-lite';
 import { Cookie, loadStory } from '../../../lib/utils';
-import { Store } from '../../../store';
+import { Store } from '../../../lib/store';
 import { OpenModalBody } from './OpenBody';
 import { OpenModalActions } from './OpenActions';
 import { BaseModalHeader } from '../BaseModalHeader';

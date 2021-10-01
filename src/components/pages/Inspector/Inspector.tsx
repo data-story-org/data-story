@@ -2,7 +2,7 @@ import React, { FC, useCallback } from 'react';
 import { observer } from 'mobx-react-lite';
 import { InspectorTable } from './InspectorTable';
 import { InspectorJSON } from './InspectorJSON';
-import { Store } from '../../../store';
+import { Store } from '../../../lib/store';
 import {
   InspectorMode,
   INSPECTOR_MODES,

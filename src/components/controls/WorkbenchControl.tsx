@@ -4,7 +4,7 @@ import {
   BaseControl,
   BaseControlStyle,
 } from './BaseControl';
-import { Store } from '../../store';
+import { Store } from '../../lib/store';
 
 interface Props {
   store: Store;

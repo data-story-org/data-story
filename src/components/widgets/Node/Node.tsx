@@ -5,7 +5,7 @@ import {
   Store,
   withStore,
   withStoreProps,
-} from '../../../store';
+} from '../../../lib/store';
 
 import { NodeWidgetHeader } from './NodeHeader';
 import { NodeWidgetInPorts } from './NodeInPorts';

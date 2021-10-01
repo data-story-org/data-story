@@ -7,7 +7,7 @@ import {
 } from '@projectstorm/react-diagrams';
 
 import { NodeModel } from '../../../lib/diagram/models';
-import { Store } from '../../../store';
+import { Store } from '../../../lib/store';
 
 interface Props {
   node: NodeModel;

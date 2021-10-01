@@ -6,7 +6,7 @@ import React, {
 } from 'react';
 import { observer } from 'mobx-react-lite';
 import cloneDeep from 'lodash/cloneDeep';
-import { Store } from '../../../store/';
+import { Store } from '../../../lib/store';
 import { NodeListItem } from './NodeListItem';
 import { useHotkeys } from 'react-hotkeys-hook';
 import Fuse from 'fuse.js';

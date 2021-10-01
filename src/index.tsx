@@ -1,8 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { App } from './sections/App';
-import { StoreProvider } from './store/StoreProvider';
-import { RootStore } from './store/';
+import { RootStore, StoreProvider } from './lib/store/';
 
 ReactDOM.render(
   <StoreProvider store={RootStore}>

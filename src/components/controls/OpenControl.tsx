@@ -4,7 +4,7 @@ import { BaseControl } from './BaseControl';
 import Modal from 'react-modal';
 import { modalStyle } from '../../lib/utils';
 import { OpenModal } from '../modals/Open';
-import { Store } from '../../store';
+import { Store } from '../../lib/store';
 import { useHotkeys } from 'react-hotkeys-hook';
 
 interface Props {

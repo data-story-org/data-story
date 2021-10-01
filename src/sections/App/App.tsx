@@ -15,7 +15,7 @@ import { Toolbar } from '../Toolbar';
 import { pagesFactory } from '../../components/pages';
 import { AppHotkeys } from './AppHotkeys';
 import { EngineFactory } from '../../lib/diagram';
-import { useStore } from '../../store/StoreProvider';
+import { useStore } from '../../lib/store';
 import { SerializedReactDiagram } from '../../lib/types';
 import {
   Cookie,

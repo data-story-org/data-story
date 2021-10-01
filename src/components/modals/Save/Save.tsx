@@ -1,7 +1,7 @@
 import { Story } from '@data-story-org/core';
 import { observer } from 'mobx-react-lite';
 import React, { FC } from 'react';
-import { Store } from '../../..//store';
+import { Store } from '../../../lib/store';
 import { SerializedReactDiagram } from '../../../lib/types';
 import { BaseModalHeader } from '../BaseModalHeader';
 import { BaseStoryWidgetModal } from '../BaseStoryModal';
