@@ -5,7 +5,7 @@ interface Props {
   handleCancel: (event: any) => void;
 }
 
-const OpenModalActions: FC<Props> = ({
+export const OpenModalActions: FC<Props> = ({
   handleClear,
   handleCancel,
 }) => {
@@ -34,5 +34,3 @@ const OpenModalActions: FC<Props> = ({
     </div>
   );
 };
-
-export default OpenModalActions;
