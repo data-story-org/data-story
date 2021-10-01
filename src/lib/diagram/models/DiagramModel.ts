@@ -3,8 +3,8 @@ import {
   DiagramModel as DefaultDiagramModel,
 } from '@projectstorm/react-diagrams';
 import { NodeModel } from './NodeModel';
-import { SerializedReactDiagram } from '../../lib/types';
-import { version as VERSION } from '../../lib/utils';
+import { SerializedReactDiagram } from '../../types';
+import { version as VERSION } from '../../utils';
 import { stringify } from 'flatted';
 
 /**

@@ -3,7 +3,7 @@ import createEngine, {
 } from '@projectstorm/react-diagrams';
 import { NodeModelFactory } from './NodeModelFactory';
 import { DiagramModel } from '../models';
-import { SerializedReactDiagram } from '../../lib/types';
+import { SerializedReactDiagram } from '../../types';
 
 export class EngineFactory {
   static loadOrCreate(

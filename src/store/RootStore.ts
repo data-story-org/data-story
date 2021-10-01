@@ -8,13 +8,16 @@ import {
   SerializedReactDiagram,
 } from '../lib/types';
 import { DiagramEngine } from '@projectstorm/react-diagrams';
-import { DiagramModel, NodeModel } from '../diagram/models';
+import {
+  EngineFactory,
+  DiagramModel,
+  NodeModel,
+} from '../lib/diagram';
 import {
   Story,
   demos,
   Node as HeadlessNode,
 } from '@data-story-org/core';
-import { EngineFactory } from '../diagram/factories';
 
 interface Metadata {
   running: boolean;

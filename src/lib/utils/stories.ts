@@ -1,4 +1,4 @@
-import { DiagramModel } from '../../diagram/models';
+import { DiagramModel } from '../diagram/models';
 import { Store } from '../../store';
 
 export const loadStory = (

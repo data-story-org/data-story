@@ -3,7 +3,7 @@ import { BasePositionModelOptions } from '@projectstorm/react-canvas-core';
 import { PortModel } from './PortModel';
 import { UID, pickBy } from '@data-story-org/core/utils';
 import { NodeParameter } from '@data-story-org/core';
-import { SerializedNodeModel } from '../../lib/types';
+import { SerializedNodeModel } from '../../types';
 import { ReactNode } from 'react';
 
 export interface NodeModelOptions

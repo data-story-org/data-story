@@ -3,7 +3,7 @@ import {
   DiagramEngine,
   PortWidget,
 } from '@projectstorm/react-diagrams';
-import { NodeModel } from '../../../diagram/models';
+import { NodeModel } from '../../../lib/diagram';
 
 interface Props {
   node: NodeModel;

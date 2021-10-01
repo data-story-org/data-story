@@ -1,5 +1,5 @@
 import { LocalServer } from './LocalServer';
-import { DiagramModel } from '../../diagram/models';
+import { DiagramModel } from '../../lib/diagram/models';
 import {
   ClientInterface,
   RunResult,

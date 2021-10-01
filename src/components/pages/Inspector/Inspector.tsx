@@ -7,7 +7,7 @@ import {
   InspectorMode,
   INSPECTOR_MODES,
 } from '../../../lib/types';
-import { NodeModel } from '../../../diagram/models';
+import { NodeModel } from '../../../lib/diagram';
 
 interface Props {
   store: Store;

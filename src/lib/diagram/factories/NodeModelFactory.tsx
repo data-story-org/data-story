@@ -4,7 +4,7 @@ import { NodeModel } from '../models';
 import {
   CommentNodeWidget,
   NodeWidget,
-} from '../../components/widgets';
+} from '../../../components/widgets';
 // import OutputNodeWidget from '../../components/widgets/OutputNode';
 
 export class NodeModelFactory extends AbstractReactFactory {

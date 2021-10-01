@@ -1,4 +1,4 @@
-import { DiagramModel } from '../diagram/models';
+import { DiagramModel } from '../lib/diagram/models';
 import {
   BootPayload,
   SerializedReactDiagram,

@@ -1,5 +1,8 @@
-import { EngineFactory } from '../../../src/diagram/factories';
-import { NodeModel } from '../../../src/diagram/models';
+import {
+  NodeModel,
+  EngineFactory,
+} from '../../../src/lib/diagram';
+
 import { Store } from '../../../src/store';
 import { generateRandomString } from '../../Browser/helpers';
 

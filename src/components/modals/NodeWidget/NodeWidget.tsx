@@ -7,10 +7,7 @@ import {
   repeatableConverter,
 } from '@data-story-org/core';
 
-import {
-  NodeModel,
-  PortModel,
-} from '../../../diagram/models';
+import { NodeModel, PortModel } from '../../../lib/diagram';
 import { NodeWidgetModalActions } from './NodeWidgetActions';
 import { NodeWidgetModalBody } from './NodeWidgetBody';
 import { NodeWidgetModalHeader } from './NodeWidgetHeader';

@@ -14,7 +14,7 @@ import { Header } from '../Header';
 import { Toolbar } from '../Toolbar';
 import { pagesFactory } from '../../components/pages';
 import { AppHotkeys } from './AppHotkeys';
-import { EngineFactory } from '../../diagram/factories';
+import { EngineFactory } from '../../lib/diagram';
 import { useStore } from '../../store/StoreProvider';
 import { SerializedReactDiagram } from '../../lib/types';
 import {

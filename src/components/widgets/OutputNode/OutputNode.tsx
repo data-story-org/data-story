@@ -5,7 +5,7 @@ import { Store, withStore } from '../../../store';
 
 import { OutputNodeWidgetHeader } from './OutputNodeHeader';
 import { DiagramEngine } from '@projectstorm/react-diagrams';
-import { NodeModel } from '../../../diagram/models';
+import { NodeModel } from '../../../lib/diagram';
 
 interface Props {
   engine: DiagramEngine;

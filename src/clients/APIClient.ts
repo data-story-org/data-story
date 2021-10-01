@@ -1,6 +1,6 @@
 import { BootPayload } from '@data-story-org/core/lib/src/types/BootPayload';
 import axios from 'axios';
-import { DiagramModel } from '../diagram/models';
+import { DiagramModel } from '../lib/diagram/models';
 import {
   ClientInterface,
   RunResult,

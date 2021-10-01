@@ -13,7 +13,7 @@ import { NodeWidgetOutPorts } from './NodeOutPorts';
 import { NodeWidgetModal } from '../../modals/NodeWidget';
 import { NodeOpenModalRequest } from './NodeOpenModalRequest';
 import { DiagramEngine } from '@projectstorm/react-diagrams';
-import { NodeModel } from '../../../diagram/models';
+import { NodeModel } from '../../../lib/diagram';
 
 /**
  * Using a observer on this component will break things... :/
