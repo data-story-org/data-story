@@ -1,5 +1,5 @@
 import { action, observable, makeObservable } from 'mobx';
-import { Client, ClientFactory } from '../clients';
+import { Client, ClientFactory } from '../lib/clients';
 import { showNotification } from '../lib/utils/Notifications';
 import {
   Page,
