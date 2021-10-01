@@ -4,7 +4,7 @@ import { Cookie, loadStory } from '../../../utils';
 import { Store } from '../../../store';
 import OpenModalBody from './OpenBody';
 import OpenModalActions from './OpenActions';
-import BaseModalHeader from '../BaseModalHeader';
+import { BaseModalHeader } from '../BaseModalHeader';
 
 interface Props {
   store: Store;

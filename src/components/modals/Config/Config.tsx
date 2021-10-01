@@ -5,7 +5,7 @@ import { observer } from 'mobx-react-lite';
 import { Store } from '../../../store';
 import { ConfigModalBody } from './ConfigBody';
 import { ConfigModalActions } from './ConfigActions';
-import BaseModalHeader from '../BaseModalHeader';
+import { BaseModalHeader } from '../BaseModalHeader';
 
 interface Props {
   store: Store;
