@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 
 import { fields } from './Field';
 
-const Port = ({ options, handleChange }) => {
+export const Port = ({ options, handleChange }) => {
   const Field = useCallback(
     fields[options.wrappedPortType],
     [],
@@ -12,5 +12,3 @@ const Port = ({ options, handleChange }) => {
     <Field options={options} handleChange={handleChange} />
   );
 };
-
-export default Port;

@@ -20,5 +20,3 @@ export const InspectorJSON = ({ features }) => {
     </div>
   );
 };
-
-export default InspectorJSON;

@@ -9,7 +9,7 @@ interface Props {
 
 const linkStyle = 'hover:underline cursor-pointer';
 
-const InspectorTableBody: FC<Props> = ({
+export const InspectorTableBody: FC<Props> = ({
   primitiveFeatures,
   rows,
   isComplexObject,
@@ -78,5 +78,3 @@ const InspectorTableBody: FC<Props> = ({
     </>
   );
 };
-
-export default InspectorTableBody;

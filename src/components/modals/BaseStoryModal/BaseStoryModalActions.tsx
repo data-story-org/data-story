@@ -5,7 +5,7 @@ interface Props {
   handleSave: (event: any) => void;
 }
 
-const StoryWidgetActions: FC<Props> = ({
+export const StoryWidgetActions: FC<Props> = ({
   handleCancel,
   handleSave,
 }) => {
@@ -32,5 +32,3 @@ const StoryWidgetActions: FC<Props> = ({
     </div>
   );
 };
-
-export default StoryWidgetActions;

@@ -4,7 +4,7 @@ interface Props {
   handleCancel: (event: any) => void;
 }
 
-const ConfigModalActions: FC<Props> = ({
+export const ConfigModalActions: FC<Props> = ({
   handleCancel,
 }) => {
   return (
@@ -24,5 +24,3 @@ const ConfigModalActions: FC<Props> = ({
     </div>
   );
 };
-
-export default ConfigModalActions;

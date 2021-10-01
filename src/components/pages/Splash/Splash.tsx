@@ -1,14 +1,14 @@
 import React, { FC } from 'react';
 import { observer } from 'mobx-react-lite';
-import { Store } from '../../store';
-import { DataStoryWidget } from '../widgets/DataStory';
-import { loadDemo, loadStory } from '../../utils';
+import { Store } from '../../../store';
+import { DataStoryWidget } from '../../widgets/DataStory';
+import { loadDemo, loadStory } from '../../../utils';
 
 interface Props {
   store: Store;
 }
 
-const Splash: FC<Props> = ({ store }) => {
+export const Splash: FC<Props> = observer(({ store }) => {
   const userHaveStories =
     store.metadata.stories.length !== 0;
 
@@ -65,6 +65,4 @@ const Splash: FC<Props> = ({ store }) => {
       ) : null}
     </div>
   );
-};
-
-export default observer(Splash);
+});

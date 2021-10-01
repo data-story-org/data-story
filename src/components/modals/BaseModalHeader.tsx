@@ -4,7 +4,7 @@ interface Props {
   action: string;
 }
 
-const BaseModalHeader: FC<Props> = ({ action }) => {
+export const BaseModalHeader: FC<Props> = ({ action }) => {
   return (
     <div className="w-full bg-gray-100 p-6 font-bold border-b border-gray-300">
       <div className="flex justify-between">
@@ -16,5 +16,3 @@ const BaseModalHeader: FC<Props> = ({ action }) => {
     </div>
   );
 };
-
-export default BaseModalHeader;

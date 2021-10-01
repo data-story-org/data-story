@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { FC } from 'react';
 
-const withRepeatable =
+export const withRepeatable =
   (Field) =>
   ({
     options,
@@ -98,5 +98,3 @@ const Button: FC<ButtonProps> = ({
     </>
   );
 };
-
-export default withRepeatable;

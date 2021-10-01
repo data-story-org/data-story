@@ -4,7 +4,7 @@ import {
 } from '@projectstorm/react-diagrams';
 import { NodeModel } from './NodeModel';
 import { SerializedReactDiagram } from '../../types';
-import VERSION from '../../utils/version';
+import { version as VERSION } from '../../utils';
 import { stringify } from 'flatted';
 
 /**

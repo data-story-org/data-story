@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Textarea = ({ options, handleChange }) => {
+export const Textarea = ({ options, handleChange }) => {
   return (
     <input
       type="textarea"
@@ -11,5 +11,3 @@ const Textarea = ({ options, handleChange }) => {
     />
   );
 };
-
-export default Textarea;

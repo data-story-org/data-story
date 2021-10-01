@@ -1,6 +1,6 @@
 import React from 'react';
 
-const String_ = ({ options, handleChange }) => {
+export const String_ = ({ options, handleChange }) => {
   return (
     <input
       key={`${options.name}`}
@@ -11,5 +11,3 @@ const String_ = ({ options, handleChange }) => {
     />
   );
 };
-
-export default String_;

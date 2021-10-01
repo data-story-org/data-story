@@ -5,7 +5,7 @@ interface Props {
   store: Store;
 }
 
-const ActiveStory: FC<Props> = ({ store }) => {
+export const ActiveStory: FC<Props> = ({ store }) => {
   return (
     <span className="ml-2 text-sm text-gray-400 font-normal subpixel-antialiased">
       {store.metadata.activeStory
@@ -14,5 +14,3 @@ const ActiveStory: FC<Props> = ({ store }) => {
     </span>
   );
 };
-
-export default ActiveStory;

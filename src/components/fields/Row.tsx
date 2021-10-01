@@ -8,7 +8,10 @@ interface Props {
   handleChange: (e: any) => void;
 }
 
-const Row: FC<Props> = ({ options, handleChange }) => {
+export const Row: FC<Props> = ({
+  options,
+  handleChange,
+}) => {
   const handleRowChange = (param: NodeParameter) => (e) => {
     const value = {
       ...options.value,
@@ -45,5 +48,3 @@ const Row: FC<Props> = ({ options, handleChange }) => {
     </>
   );
 };
-
-export default Row;

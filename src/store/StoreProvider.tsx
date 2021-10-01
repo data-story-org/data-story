@@ -4,6 +4,7 @@ import React, {
   ReactNode,
   FC,
   ReactElement,
+  ComponentType,
 } from 'react';
 import { Store } from './RootStore';
 
@@ -27,7 +28,17 @@ export const StoreProvider: StoreComponent = ({
   );
 };
 
+export interface withStoreProps {
+  store?: Store;
+}
+
 // HOC to be used with both class and functional components
-export const withStore = (Component) => (props) => {
-  return <Component {...props} store={useStore()} />;
-};
+export const withStore =
+  <P extends object>(
+    WrappedComponent: ComponentType<P & withStoreProps>,
+  ) =>
+  ({ ...props }: P) => {
+    return (
+      <WrappedComponent {...props} store={useStore()} />
+    );
+  };

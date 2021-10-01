@@ -1,8 +1,8 @@
 import React, { FC, useEffect, useState } from 'react';
 import { SaveStoryI } from './SaveStoryI';
 import { StoryWidgetBody } from './BaseStoryModalBody';
-import StoryWidgetActions from './BaseStoryModalActions';
-import StoryWidgetModalHeader from './BaseStoryModalHeader';
+import { StoryWidgetActions } from './BaseStoryModalActions';
+import { StoryWidgetModalHeader } from './BaseStoryModalHeader';
 import { useHotkeys } from 'react-hotkeys-hook';
 
 export type StoryWidgetSaver = (story: SaveStoryI) => void;

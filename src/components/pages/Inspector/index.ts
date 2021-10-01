@@ -1,3 +1,1 @@
-import Inspector from './Inspector';
-
-export default Inspector;
+export * from './Inspector';

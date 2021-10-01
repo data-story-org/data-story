@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import Field from '../../fields/Field';
+import { Field } from '../../fields/Field';
 import { NodeParameter } from '@data-story-org/core';
 
 interface Props {
@@ -16,7 +16,7 @@ interface Props {
   ) => (key: number) => void;
 }
 
-const NodeWidgetModalBody: FC<Props> = ({
+export const NodeWidgetModalBody: FC<Props> = ({
   parameters,
   handleChange,
   handleRepeatableChange,
@@ -50,5 +50,3 @@ const NodeWidgetModalBody: FC<Props> = ({
     </div>
   );
 };
-
-export default NodeWidgetModalBody;

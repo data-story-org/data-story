@@ -4,7 +4,7 @@ import Modal from 'react-modal';
 import { Store } from '../../../store';
 import { GenericStory } from '../../../types';
 import { modalStyle } from '../../../utils/modalStyle';
-import { StoryWidgetModal } from '../../modals/StoryWidget/StoryWidget';
+import { StoryWidgetModal } from '../../modals/StoryWidget';
 import { DataStoryWidgetActions } from './StoryActions';
 import { DataStoryWidgetDescription } from './StoryDescription';
 import { DataStoryWidgetName } from './StoryName';

@@ -10,7 +10,7 @@ interface Props {
   engine: DiagramEngine;
 }
 
-const NodeWidgetOutPorts: FC<Props> = ({
+export const NodeWidgetOutPorts: FC<Props> = ({
   node,
   engine,
 }) => {
@@ -52,5 +52,3 @@ const NodeWidgetOutPorts: FC<Props> = ({
     </>
   );
 };
-
-export default NodeWidgetOutPorts;

@@ -8,7 +8,7 @@ interface Props {
   store: Store;
 }
 
-const Diagram: FC<Props> = ({ store }) => {
+export const Diagram: FC<Props> = observer(({ store }) => {
   const diagramRef = useRef();
   store.diagram.refresh;
 
@@ -21,6 +21,4 @@ const Diagram: FC<Props> = ({ store }) => {
       />
     </div>
   );
-};
-
-export default observer(Diagram);
+});

@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import ActiveStory from './ActiveStory';
+import { ActiveStory } from './ActiveStory';
 import * as globalWindow from '../../types/globalWindow';
 import { Store } from '../../store';
 
@@ -7,7 +7,7 @@ interface Props {
   store: Store;
 }
 
-const Header: FC<Props> = ({ store }) => {
+export const Header: FC<Props> = ({ store }) => {
   const onClick = () => {
     store.setPage('Splash');
   };
@@ -26,5 +26,3 @@ const Header: FC<Props> = ({ store }) => {
     </div>
   );
 };
-
-export default Header;

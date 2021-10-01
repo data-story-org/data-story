@@ -1,6 +1,6 @@
 import React from 'react';
 
-const NodeWidgetHeader = ({ node }) => {
+export const OutputNodeWidgetHeader = ({ node }) => {
   return (
     <div className="flex">
       <div
@@ -17,5 +17,3 @@ const NodeWidgetHeader = ({ node }) => {
     </div>
   );
 };
-
-export default NodeWidgetHeader;

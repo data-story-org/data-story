@@ -1,6 +1,6 @@
 import { nonCircularJsonStringify } from '@data-story-org/core/utils';
 
-export default class Cookie {
+export class Cookie {
   static keys(): string[] {
     return Object.keys(localStorage);
   }

@@ -6,7 +6,7 @@ interface Props {
   handleCancel: (event: any) => void;
 }
 
-const NodeWidgetModalHeader: FC<Props> = ({
+export const NodeWidgetModalHeader: FC<Props> = ({
   node,
   handleCancel,
 }) => {
@@ -32,5 +32,3 @@ const NodeWidgetModalHeader: FC<Props> = ({
     </div>
   );
 };
-
-export default NodeWidgetModalHeader;

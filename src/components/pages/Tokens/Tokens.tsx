@@ -1,7 +1,6 @@
 import React, { FC } from 'react';
-import { observer } from 'mobx-react-lite';
 
-const Tokens: FC = () => {
+export const Tokens: FC = () => {
   const defaultContent = () => {
     return JSON.stringify(
       {
@@ -24,5 +23,3 @@ const Tokens: FC = () => {
     </div>
   );
 };
-
-export default observer(Tokens);

@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { Store } from '../../../store';
 
-const ConfigModalBody: FC = () => {
+export const ConfigModalBody: FC = () => {
   const servers = [
     '/data-story/api',
     'http://localhost:3000',
@@ -47,5 +47,3 @@ const ConfigModalBody: FC = () => {
     </div>
   );
 };
-
-export default ConfigModalBody;
