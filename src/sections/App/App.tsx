@@ -6,7 +6,7 @@ import React, {
 } from 'react';
 import { Header } from '../Header';
 import { Toolbar } from '../Toolbar';
-import { pagesFactory } from '../pages';
+import { pagesFactory } from '../../components/pages';
 import { observer } from 'mobx-react-lite';
 import { ToastContainer, Slide } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
