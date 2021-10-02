@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { observer } from 'mobx-react-lite';
 import { Store } from '../../../lib/store';
-import { CodeHighlighter } from '../../../lib/utils';
+import { CodeHighlighter } from '../../../lib/utils/CodeHighlighter';
 
 interface Props {
   store: Store;

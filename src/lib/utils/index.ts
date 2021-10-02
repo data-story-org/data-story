@@ -5,4 +5,3 @@ export * from './version';
 export * from './modalStyle';
 export * from './Notifications';
 export * from './isLoadingHOC';
-export * from './CodeHighlighter'
