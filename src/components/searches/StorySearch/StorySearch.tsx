@@ -10,7 +10,7 @@ import Fuse from 'fuse.js';
 
 interface Props {
   stories: GenericStory[];
-  setSearchResult: (e) => void;
+  setSearchResult: (result: GenericStory[]) => void;
 }
 
 const searchStyle =
