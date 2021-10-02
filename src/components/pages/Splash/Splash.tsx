@@ -3,6 +3,7 @@ import { observer } from 'mobx-react-lite';
 import { Store } from '../../../lib/store';
 import { DataStoryWidget } from '../../widgets/DataStory';
 import { loadDemo, loadStory } from '../../../lib/utils';
+import { SplashSectionHeader } from './SplashSectionHeader';
 
 interface Props {
   store: Store;
@@ -41,6 +42,7 @@ export const Splash: FC<Props> = observer(({ store }) => {
           );
         })}
       </div>
+      <SplashSectionHeader text={'Quick start:'} />
 
       {userHaveStories ? (
         <>
@@ -61,6 +63,7 @@ export const Splash: FC<Props> = observer(({ store }) => {
               );
             })}
           </div>
+          <SplashSectionHeader text={'Your stories:'} />
         </>
       ) : null}
     </div>
