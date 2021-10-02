@@ -1,7 +1,7 @@
 import React, { FC, useRef } from 'react';
 import { CanvasWidget } from '@projectstorm/react-canvas-core';
 import { observer } from 'mobx-react-lite';
-import { Store } from '../store';
+import { Store } from '../../../lib/store';
 const style = 'fullsize bg-gray-600';
 
 interface Props {

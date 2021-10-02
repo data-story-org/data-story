@@ -1,11 +1,11 @@
 import React, { useState, useReducer, FC } from 'react';
 import Modal from 'react-modal';
-import { modalStyle } from '../../../utils/modalStyle';
+import { modalStyle } from '../../../lib/utils';
 import {
   Store,
   withStore,
   withStoreProps,
-} from '../../../store';
+} from '../../../lib/store';
 
 import { NodeWidgetHeader } from './NodeHeader';
 import { NodeWidgetInPorts } from './NodeInPorts';
@@ -13,7 +13,7 @@ import { NodeWidgetOutPorts } from './NodeOutPorts';
 import { NodeWidgetModal } from '../../modals/NodeWidget';
 import { NodeOpenModalRequest } from './NodeOpenModalRequest';
 import { DiagramEngine } from '@projectstorm/react-diagrams';
-import { NodeModel } from '../../../diagram/models';
+import { NodeModel } from '../../../lib/diagram';
 
 /**
  * Using a observer on this component will break things... :/

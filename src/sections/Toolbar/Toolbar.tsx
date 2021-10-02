@@ -11,9 +11,9 @@ import {
   WorkbenchControl,
   LogControl,
   TokensControl,
-} from '../controls';
-import { withLoadingProps } from '../../utils/isLoadingHOC';
-import { Store } from '../../store';
+} from '../../components/controls';
+import { withLoadingProps } from '../../lib/utils/';
+import { Store } from '../../lib/store';
 
 import { ToolbarInspectables } from './ToolbarInspectables';
 

@@ -2,11 +2,11 @@ import React, { FC, useState } from 'react';
 import { observer } from 'mobx-react-lite';
 import { useHotkeys } from 'react-hotkeys-hook';
 import Modal from 'react-modal';
-import { modalStyle } from '../../utils/modalStyle';
+import { modalStyle } from '../../lib/utils';
 
 import { BaseControl } from './BaseControl';
 import { SaveModal } from '../modals/Save';
-import { Store } from '../../store';
+import { Store } from '../../lib/store';
 
 interface Props {
   store: Store;

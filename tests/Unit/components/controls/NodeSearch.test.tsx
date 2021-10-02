@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom/extend-expect';
 
 import { NodeSearch } from '../../../../src/components/controls/NodeSearch';
-import { Store } from '../../../../src/store';
+import { Store } from '../../../../src/lib/store';
 
 // RegExpFilter, Inspector, CreateJSON
 // prettier-ignore

@@ -4,7 +4,7 @@ import { Log } from './Log';
 import { Splash } from './Splash';
 import { Tokens } from './Tokens';
 import { Workbench } from './Workbench';
-import { Page } from '../../types';
+import { Page } from '../../lib/types';
 
 export const pages = {
   Inspector,

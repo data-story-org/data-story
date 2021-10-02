@@ -1,11 +1,11 @@
-import React, { FC, useEffect } from 'react';
+import React, { FC } from 'react';
 import { observer } from 'mobx-react-lite';
 import { useHotkeys } from 'react-hotkeys-hook';
 
 import { BaseControl } from './BaseControl';
-import { withLoadingProps } from '../../utils/isLoadingHOC';
-import { Store } from '../../store';
-import { RunResult } from '../../clients/ClientInterface';
+import { withLoadingProps } from '../../lib/utils';
+import { Store } from '../../lib/store';
+import { RunResult } from '../../lib/clients/ClientInterface';
 
 interface Props extends withLoadingProps {
   store: Store;

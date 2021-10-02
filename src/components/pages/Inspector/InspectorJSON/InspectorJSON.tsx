@@ -1,5 +1,5 @@
 import React, { FC, useCallback } from 'react';
-import { CodeHighlighter } from '../../../../utils/CodeHighlighter';
+import { CodeHighlighter } from '../../../../lib/utils/CodeHighlighter';
 
 export const InspectorJSON = ({ features }) => {
   const spreadOriginals = useCallback(

@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { ActiveStory } from './ActiveStory';
-import * as globalWindow from '../../types/globalWindow';
-import { Store } from '../../store';
+import * as globalWindow from '../../lib/types/globalWindow';
+import { Store } from '../../lib/store';
 
 interface Props {
   store: Store;

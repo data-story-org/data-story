@@ -2,12 +2,12 @@ import React, { FC, useCallback } from 'react';
 import { observer } from 'mobx-react-lite';
 import { InspectorTable } from './InspectorTable';
 import { InspectorJSON } from './InspectorJSON';
-import { Store } from '../../../store';
+import { Store } from '../../../lib/store';
 import {
   InspectorMode,
   INSPECTOR_MODES,
-} from '../../../types';
-import { NodeModel } from '../../../diagram/models';
+} from '../../../lib/types';
+import { NodeModel } from '../../../lib/diagram';
 
 interface Props {
   store: Store;

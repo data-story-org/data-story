@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import { DiagramEngine } from '@projectstorm/react-diagrams';
-import { EngineFactory } from '../../../../src/diagram/factories';
+import { EngineFactory } from '../../../../src/lib/diagram';
 // import { DiagramBuilder } from '@data-story-org/core'
 
 describe('EngineFactory', () => {

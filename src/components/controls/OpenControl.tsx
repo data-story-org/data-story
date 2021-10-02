@@ -2,9 +2,9 @@ import React, { FC, useState } from 'react';
 import { observer } from 'mobx-react-lite';
 import { BaseControl } from './BaseControl';
 import Modal from 'react-modal';
-import { modalStyle } from '../../utils/modalStyle';
+import { modalStyle } from '../../lib/utils';
 import { OpenModal } from '../modals/Open';
-import { Store } from '../../store';
+import { Store } from '../../lib/store';
 import { useHotkeys } from 'react-hotkeys-hook';
 
 interface Props {

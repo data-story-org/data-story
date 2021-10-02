@@ -1,11 +1,11 @@
 import React, { FC, useState } from 'react';
 import Modal from 'react-modal';
-import { modalStyle } from '../../../utils/modalStyle';
-import { Store, withStore } from '../../../store';
+import { modalStyle } from '../../../lib/utils';
+import { Store, withStore } from '../../../lib/store';
 
 import { OutputNodeWidgetHeader } from './OutputNodeHeader';
 import { DiagramEngine } from '@projectstorm/react-diagrams';
-import { NodeModel } from '../../../diagram/models';
+import { NodeModel } from '../../../lib/diagram';
 
 interface Props {
   engine: DiagramEngine;

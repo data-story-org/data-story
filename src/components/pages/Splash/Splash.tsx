@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
 import { observer } from 'mobx-react-lite';
-import { Store } from '../../../store';
+import { Store } from '../../../lib/store';
 import { DataStoryWidget } from '../../widgets/DataStory';
-import { loadDemo, loadStory } from '../../../utils';
+import { loadDemo, loadStory } from '../../../lib/utils';
 
 interface Props {
   store: Store;
