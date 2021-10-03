@@ -1,5 +1,7 @@
 import React, {
+  Dispatch,
   FC,
+  SetStateAction,
   useEffect,
   useRef,
   useState,
@@ -8,15 +10,19 @@ import React, {
 import { GenericStory } from '../../../lib/types';
 import Fuse from 'fuse.js';
 
-interface Props {
+export type StorySearchResultSetter = Dispatch<
+  SetStateAction<GenericStory[]>
+>;
+
+export interface StorySearchProps {
   stories: GenericStory[];
-  setSearchResult: (result: GenericStory[]) => void;
+  setSearchResult: StorySearchResultSetter;
 }
 
 const searchStyle =
   'w-full p-6 m-1 rounded appearance-none focus:outline-none focus:bg-white shadow-lg font-medium tracking-tighter antialiased';
 
-export const StorySearch: FC<Props> = ({
+export const StorySearch: FC<StorySearchProps> = ({
   stories,
   setSearchResult,
 }) => {

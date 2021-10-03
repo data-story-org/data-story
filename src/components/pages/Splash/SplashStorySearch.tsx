@@ -1,13 +1,10 @@
 import React, { FC } from 'react';
-import { GenericStory } from '../../../lib/types';
-import { StorySearch } from '../../searches';
+import {
+  StorySearch,
+  StorySearchProps,
+} from '../../searches';
 
-interface Props {
-  stories: GenericStory[];
-  setSearchResult: (result: GenericStory[]) => void;
-}
-
-export const SplashStorySearch: FC<Props> = ({
+export const SplashStorySearch: FC<StorySearchProps> = ({
   stories,
   setSearchResult,
 }) => {
