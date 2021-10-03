@@ -12,10 +12,10 @@ interface Props {
   isDemos?: boolean;
 }
 
-const splashStoryGridStyle =
-  'px-10 py-5 bg-gray-600 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5';
+const storyGridStyle =
+  'px-10 py-5 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5';
 
-export const SplashStoryGrid: FC<Props> = observer(
+export const StoryGrid: FC<Props> = observer(
   ({ store, stories, isDemos = false }) => {
     const onClick = (name: string) => {
       isDemos
@@ -26,7 +26,7 @@ export const SplashStoryGrid: FC<Props> = observer(
     };
 
     return (
-      <div className={splashStoryGridStyle}>
+      <div className={storyGridStyle}>
         {stories.map((story, i) => {
           return (
             <div key={`${i}-${story.name}`}>

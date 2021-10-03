@@ -3,9 +3,9 @@ import { observer } from 'mobx-react-lite';
 
 import { Store } from '../../../lib/store';
 import { SplashSectionHeader } from './SplashSectionHeader';
-import { SplashStoryGrid } from './SplashStoryGrid';
 import { GenericStory } from '../../../lib/types';
 import { SplashStorySearch } from './SplashStorySearch';
+import { StoryGrid } from '../../widgets';
 
 interface Props {
   store: Store;
@@ -41,10 +41,8 @@ export const Splash: FC<Props> = observer(({ store }) => {
       {userHaveDemos && (
         <>
           <SplashSectionHeader text={'Quick start:'} />
-          <SplashStoryGrid
-            stories={store.metadata.demos.filter(
-              isStorySearched,
-            )}
+          <StoryGrid
+            stories={demos.filter(isStorySearched)}
             store={store}
           />
         </>
@@ -53,10 +51,8 @@ export const Splash: FC<Props> = observer(({ store }) => {
       {userHaveStories && (
         <>
           <SplashSectionHeader text={'Your stories:'} />
-          <SplashStoryGrid
-            stories={store.metadata.stories.filter(
-              isStorySearched,
-            )}
+          <StoryGrid
+            stories={userStories.filter(isStorySearched)}
             store={store}
           />
         </>
