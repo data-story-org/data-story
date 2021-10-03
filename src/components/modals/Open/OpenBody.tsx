@@ -15,7 +15,7 @@ export const OpenModalBody: FC<Props> = observer(
     const userStories = store.metadata.stories;
 
     const [userSearchedStories, setUserSearchedStories] =
-      useState([...userStories]);
+      useState(userStories);
 
     const isStorySearched = (story: GenericStory) => {
       return userSearchedStories.includes(story as Story);
