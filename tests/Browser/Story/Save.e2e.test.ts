@@ -73,7 +73,7 @@ describe('Stories saving', () => {
     for (const node of storyNodes) {
       await expect(page).toMatch(node);
     }
-  }, 10000);
+  }, 70000);
 
   test('Stories can be restored from splash screen', async () => {
     await expect(page).toClick('span', {
@@ -86,7 +86,7 @@ describe('Stories saving', () => {
     for (const node of storyNodes) {
       await expect(page).toMatch(node);
     }
-  }, 10000);
+  }, 70000);
 
   afterAll(async () => {
     await page.close();

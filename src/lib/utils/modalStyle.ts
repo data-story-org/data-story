@@ -13,6 +13,7 @@ export const modalStyle = {
     //transform             : 'translate(-50%, -50%)'
   },
   overlay: {
+    zIndex: 1000,
     position: 'fixed',
     top: 0,
     left: 0,
