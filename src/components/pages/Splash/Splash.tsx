@@ -28,15 +28,19 @@ export const Splash: FC<Props> = observer(({ store }) => {
     userStories.some(isStorySearched);
 
   const userHaveDemos =
-    store.metadata.stories.length !== 0 &&
+    store.metadata.demos.length !== 0 &&
     demos.some(isStorySearched);
+
+  const searchMakesSense = stories.length !== 0;
 
   return (
     <div className="h-screen bg-gray-600 ">
-      <SplashStorySearch
-        stories={stories}
-        setSearchResult={setUserSearchedStories}
-      />
+      {searchMakesSense && (
+        <SplashStorySearch
+          stories={stories}
+          setSearchResult={setUserSearchedStories}
+        />
+      )}
 
       {userHaveDemos && (
         <>
