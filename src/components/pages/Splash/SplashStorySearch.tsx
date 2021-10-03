@@ -9,12 +9,14 @@ export const SplashStorySearch: FC<StorySearchProps> = ({
   setSearchResult,
 }) => {
   return (
-    <div className="sticky top-5 z-25 flex items-center justify-center">
+    <div className="sticky top-5 z-30 flex items-center justify-center">
       <div className="max-w-md flex-auto">
-        <StorySearch
-          stories={stories}
-          setSearchResult={setSearchResult}
-        />
+        <div className="text-sm m-10">
+          <StorySearch
+            stories={stories}
+            setSearchResult={setSearchResult}
+          />
+        </div>
       </div>
     </div>
   );
