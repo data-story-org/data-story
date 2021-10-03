@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { observer } from 'mobx-react-lite';
 
 import { Store } from '../../../lib/store';
@@ -14,7 +14,14 @@ interface Props {
 export const Splash: FC<Props> = observer(({ store }) => {
   const demos = store.metadata.demos;
   const userStories = store.metadata.stories;
-  const stories = [...demos, ...userStories];
+
+  const [stories, setStories] = useState([
+    ...demos,
+    ...userStories,
+  ]);
+  useEffect(() => {
+    setStories([...demos, ...userStories]);
+  }, [demos, userStories]);
 
   const [userSearchedStories, setUserSearchedStories] =
     useState(stories);
@@ -47,6 +54,7 @@ export const Splash: FC<Props> = observer(({ store }) => {
           <SplashSectionHeader text={'Quick start:'} />
           <StoryGrid
             stories={demos.filter(isStorySearched)}
+            isDemos={true}
             store={store}
           />
         </>
