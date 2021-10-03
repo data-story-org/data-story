@@ -17,57 +17,57 @@ const nodes = [
 const store = new Store();
 store.setAvailableNodes(nodes);
 store.setEngine({
-    model: {
-        setLocked: jest.fn(),
-    },
+  model: {
+    setLocked: jest.fn(),
+  },
 });
 
 describe('<NodeSearch />', () => {
-    it('Renders correctly', async () => {
-        const { findByPlaceholderText, findAllByRole } = render(
-            <NodeSearch store={store} onFinish={jest.fn()} />,
-        );
+  it('Renders correctly', async () => {
+    const { findByPlaceholderText, findAllByRole } = render(
+      <NodeSearch store={store} onFinish={jest.fn()} />,
+    );
 
-        expect(
-            await findByPlaceholderText(
-                'model | method | reader | writer ...',
-            ),
-        ).toBeInTheDocument;
+    expect(
+      await findByPlaceholderText(
+        'model | method | reader | writer ...',
+      ),
+    ).toBeInTheDocument;
 
-        expect(await findAllByRole('listitem')).toHaveLength(
-            nodes.length,
-        );
-    });
+    expect(await findAllByRole('listitem')).toHaveLength(
+      nodes.length,
+    );
+  });
 
-    it('Renders choosen choosen node as highlighted', async () => {
-        const { findAllByRole } = render(
-            <NodeSearch store={store} onFinish={jest.fn()} />,
-        );
+  it('Renders choosen choosen node as highlighted', async () => {
+    const { findAllByRole } = render(
+      <NodeSearch store={store} onFinish={jest.fn()} />,
+    );
 
-        const firstListItem = (
-            await findAllByRole('listitem')
-        )[0];
+    const firstListItem = (
+      await findAllByRole('listitem')
+    )[0];
 
-        expect(firstListItem).toBeInTheDocument;
-        expect(firstListItem).toHaveClass('shadow-2xl');
-    });
+    expect(firstListItem).toBeInTheDocument;
+    expect(firstListItem).toHaveClass('shadow-2xl');
+  });
 
-    it('Uses fuzzy-search and shows the right result', async () => {
-        const { findByRole } = render(
-            <NodeSearch store={store} onFinish={jest.fn()} />,
-        );
+  it('Uses fuzzy-search and shows the right result', async () => {
+    const { findByRole } = render(
+      <NodeSearch store={store} onFinish={jest.fn()} />,
+    );
 
-        const input = (await findByRole(
-            'textbox',
-        )) as HTMLInputElement;
+    const input = (await findByRole(
+      'textbox',
+    )) as HTMLInputElement;
 
-        userEvent.type(input, 'js on');
+    userEvent.type(input, 'js on');
 
-        expect(input.value).toBe('js on');
-        // Fix this when there are no problems with
-        // testing libraries and triggering state
-        /* expect(await findByRole('listitem')).toHaveTextContent(
-         *   'CreateJSON',
-         * ); */
-    });
+    expect(input.value).toBe('js on');
+    // Fix this when there are no problems with
+    // testing libraries and triggering state
+    /* expect(await findByRole('listitem')).toHaveTextContent(
+     *   'CreateJSON',
+     * ); */
+  });
 });

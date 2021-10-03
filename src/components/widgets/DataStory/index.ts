@@ -1,2 +1,2 @@
 export * from './Story';
-export * from './StoryGrid'
+export * from './StoryGrid';
