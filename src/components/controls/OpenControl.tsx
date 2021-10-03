@@ -16,7 +16,9 @@ export const OpenControl: FC<Props> = observer(
     const [title, icon] = ['Open story', 'fas fa-folder'];
     const [isOpen, setIsOpen] = useState(false);
 
-    useHotkeys('shift+o', () => {
+    useHotkeys('shift+o', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
       onClick();
     });
 

@@ -13,13 +13,6 @@ interface Props {
 
 export const OpenModal: FC<Props> = observer(
   ({ store, closeModal }) => {
-    // Never used
-    /* const [storyName, setStoryName] = useState(''); */
-
-    /* const handleChange = (e) => {
-     *   setStoryName(e.target.value);
-     * }; */
-
     const handleCancel = (_e) => {
       closeModal();
     };
@@ -29,13 +22,7 @@ export const OpenModal: FC<Props> = observer(
       store.setStories(Cookie.keys());
     };
 
-    /* const handleSave = (e) => {
-     *   //
-     * }; */
-
-    const clickStory = (name) => {
-      loadStory(store, name);
-
+    const afterStoryClick = () => {
       closeModal();
     };
 
@@ -44,7 +31,7 @@ export const OpenModal: FC<Props> = observer(
         <BaseModalHeader action="open" />
         <OpenModalBody
           store={store}
-          clickStory={clickStory}
+          afterStoryClick={afterStoryClick}
         />
         <OpenModalActions
           handleClear={handleClear}

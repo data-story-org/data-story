@@ -1,35 +1,49 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import { Store } from '../../../lib/store';
 import { observer } from 'mobx-react-lite';
-import { DataStoryWidget } from '../../widgets/DataStory';
+import { StoryGrid } from '../../widgets/DataStory';
+import { OpenBodyStorySearch } from './OpenBodyStorySearch';
+import { GenericStory, Story } from '../../../lib/types';
 
 interface Props {
   store: Store;
-  clickStory: (name: string) => void;
+  afterStoryClick: () => void;
 }
 
 export const OpenModalBody: FC<Props> = observer(
-  ({ store, clickStory }) => {
+  ({ store, afterStoryClick }) => {
+    const userStories = store.metadata.stories;
+
+    const [userSearchedStories, setUserSearchedStories] =
+      useState([...userStories]);
+
+    const isStorySearched = (story: GenericStory) => {
+      return userSearchedStories.includes(story as Story);
+    };
+
+    const userHaveSavedStories =
+      store.metadata.stories.length !== 0;
+
     return (
       <div>
         <div className="w-full bg-gray-100 px-6 py-2">
           <div className="flex flex-col my-4 justify-center align-middle text-gray-500 text-xs">
-            <span className="my-2 font-sans font-medium text-sm text-indigo-500">
-              Your Diagrams
-            </span>
-            <div className="py-5 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5">
-              {store.metadata.stories.map((story, i) => {
-                return (
-                  <div key={`${i}-${story.name}`}>
-                    <DataStoryWidget
-                      store={store}
-                      story={story}
-                      storyLoadHandler={clickStory}
-                    />
-                  </div>
-                );
-              })}
-            </div>
+            {userHaveSavedStories ? (
+              <OpenBodyStorySearch
+                stories={userStories}
+                setSearchResult={setUserSearchedStories}
+              />
+            ) : (
+              <span className="my-2 font-sans font-medium text-sm text-indigo-500">
+                No user saved stories found
+              </span>
+            )}
+
+            <StoryGrid
+              stories={userStories.filter(isStorySearched)}
+              store={store}
+              afterStoryClick={afterStoryClick}
+            />
           </div>
         </div>
       </div>
