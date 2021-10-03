@@ -33,12 +33,7 @@ export const Row: FC<Props> = ({
           return (
             <div key={`field-${p.name}-${i}`}>
               <Field
-                options={
-                  {
-                    ...options,
-                    value: p.value,
-                  } as NodeParameter
-                }
+                options={p}
                 handleChange={handleRowChange(p)}
               />
             </div>
