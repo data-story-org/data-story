@@ -34,7 +34,7 @@ export const Splash: FC<Props> = observer(({ store }) => {
   const searchMakesSense = stories.length !== 0;
 
   return (
-    <div className="h-screen bg-gray-600 ">
+    <div className="bg-gray-600 ">
       {searchMakesSense && (
         <SplashStorySearch
           stories={stories}
