@@ -2,7 +2,7 @@ import React, { FC, useState } from 'react';
 import { observer } from 'mobx-react-lite';
 import { BaseControl } from './BaseControl';
 import ReactModal from 'react-modal';
-import { NodeSearch } from './NodeSearch';
+import { NodeSearch } from '../searches';
 import { Store } from '../../lib/store/';
 import { useHotkeys } from 'react-hotkeys-hook';
 
