@@ -48,7 +48,7 @@ export const StorySearch: FC<StorySearchProps> = ({
           }),
         )
       : setSearchResult(stories);
-  }, [search]);
+  }, [search, stories]);
 
   const searchChange = (e) => {
     e.preventDefault();
