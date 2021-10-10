@@ -33,6 +33,8 @@ export const withRepeatable =
         handleRepeatableRemove(key);
       };
 
+		console.log("Repeatable_", options)
+
     return (
       <div className="flex flex-col space-y-2">
         {[...Array(fieldsCount).keys()].map((i) => {
