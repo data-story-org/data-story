@@ -24,35 +24,33 @@ describe('App', () => {
   }, 200000);
 
   it('Creates nodes', async () => {
-		const recorder = new PuppeteerScreenRecorder(page);
-		await recorder.start('./report/video/simple.mp4');
+    const recorder = new PuppeteerScreenRecorder(page);
+    await recorder.start('./report/video/simple.mp4');
 
     const node1 = 'CreateJSON';
     await addNode(node1, page);
 
     const node2 = 'HttpRequest';
-    await addNode(node2, page);		
+    await addNode(node2, page);
 
     const i1 = 'Inspect';
     await addNode(i1, page);
 
     const i2 = 'Inspect';
     await addNode(i2, page);
-		
-    const i3 = 'Inspect';
-    await addNode(i3, page);		
 
-		await expect(page).toClick('span#run');
+    const i3 = 'Inspect';
+    await addNode(i3, page);
+
+    await expect(page).toClick('span#run');
 
     await page.waitForSelector('.Toastify__toast-body', {
       visible: true,
-    });		
+    });
 
     await expect(page).toClick('div#inspector-icon');
-    await sleep(500);		
+    await sleep(500);
 
-		await recorder.stop();
-		
+    await recorder.stop();
   }, 100000);
-
 });
