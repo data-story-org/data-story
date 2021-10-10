@@ -1,4 +1,5 @@
 import React from 'react';
+import { baseFieldStyle } from '../../lib/styles';
 
 export const Boolean_ = ({ options, handleChange }) => {
   return (
@@ -8,7 +9,7 @@ export const Boolean_ = ({ options, handleChange }) => {
         key={`${options.name}`}
         type="checkbox"
         onChange={handleChange}
-        className="px-2 py-1 rounded"
+        className={baseFieldStyle}
       />
     </div>
   );

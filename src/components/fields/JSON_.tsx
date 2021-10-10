@@ -1,4 +1,5 @@
 import React from 'react';
+import { baseFieldStyle } from '../../lib/styles';
 
 export const JSON_ = ({ options, handleChange }) => {
   return (
@@ -7,7 +8,7 @@ export const JSON_ = ({ options, handleChange }) => {
       <textarea
         key={`${options.name}`}
         onChange={handleChange}
-        className="px-2 py-1 rounded h-64"
+        className={`${baseFieldStyle} h-64`}
         value={options.value}
       />
     </>
