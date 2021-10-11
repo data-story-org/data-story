@@ -12,6 +12,11 @@ import { NodeWidgetModalActions } from './NodeWidgetActions';
 import { NodeWidgetModalBody } from './NodeWidgetBody';
 import { NodeWidgetModalHeader } from './NodeWidgetHeader';
 import { Store } from '../../../lib/store';
+import {
+  RepeatableAddHandler,
+  RepeatableChangeHandler,
+  RepeatableRemoveHandler,
+} from './types';
 
 interface Props {
   node: NodeModel;
@@ -78,10 +83,8 @@ export const NodeWidgetModal: FC<Props> = observer(
       setParameters([...updatedParameters]);
     };
 
-    const handleRepeatableChange =
-      (param: NodeParameter) =>
-      (key: number) =>
-      (value: any) => {
+    const handleRepeatableChange: RepeatableChangeHandler =
+      (param) => (key) => (value) => {
         const values = parameters.find(
           (p) => p.name == param.name,
         ).value;
@@ -101,8 +104,8 @@ export const NodeWidgetModal: FC<Props> = observer(
         setParameters([...parameters]);
       };
 
-    const handleRepeatableAdd =
-      (param: NodeParameter) => (key: number) => {
+    const handleRepeatableAdd: RepeatableAddHandler =
+      (param) => (key) => {
         const values = parameters.find(
           (p) => p.name == param.name,
         ).value;
@@ -121,8 +124,8 @@ export const NodeWidgetModal: FC<Props> = observer(
         setParameters([...parameters]);
       };
 
-    const handleRepeatableRemove =
-      (param: NodeParameter) => (key: number) => {
+    const handleRepeatableRemove: RepeatableRemoveHandler =
+      (param) => (key) => {
         const values = parameters.find(
           (p) => p.name == param.name,
         ).value;

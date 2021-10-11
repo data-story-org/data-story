@@ -1,19 +1,18 @@
 import React, { FC } from 'react';
 import { Field } from '../../fields/Field';
 import { NodeParameter } from '@data-story-org/core';
+import {
+  RepeatableAddHandler,
+  RepeatableChangeHandler,
+  RepeatableRemoveHandler,
+} from './types';
 
 interface Props {
   parameters: NodeParameter[];
   handleChange: (param: NodeParameter) => (e) => void;
-  handleRepeatableChange: (
-    param: NodeParameter,
-  ) => (key: number) => (value: any) => void;
-  handleRepeatableAdd: (
-    param: NodeParameter,
-  ) => (key: number) => void;
-  handleRepeatableRemove: (
-    param: NodeParameter,
-  ) => (key: number) => void;
+  handleRepeatableChange: RepeatableChangeHandler;
+  handleRepeatableAdd: RepeatableAddHandler;
+  handleRepeatableRemove: RepeatableRemoveHandler;
 }
 
 export const NodeWidgetModalBody: FC<Props> = ({
