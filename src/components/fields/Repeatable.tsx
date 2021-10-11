@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import { FC } from 'react';
+import React, { useState, ComponentType, FC } from 'react';
+import { FieldProps, RepeatableFieldProps } from './types';
 
 export const withRepeatable =
-  (Field) =>
+  (Field: ComponentType<FieldProps>) =>
   ({
     options,
     handleRepeatableChange,
     handleRepeatableAdd,
     handleRepeatableRemove,
-  }) => {
+  }: RepeatableFieldProps) => {
     const [fieldsCount, setFieldsCount] = useState(
       Object.keys(options.value).length,
     );
