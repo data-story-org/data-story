@@ -9,8 +9,10 @@ export const withRepeatable =
     handleRepeatableAdd,
     handleRepeatableRemove,
   }: RepeatableFieldProps) => {
+    const repeatablesKeys = Object.keys(options.value);
+
     const [fieldsCount, setFieldsCount] = useState(
-      Object.keys(options.value).length,
+      repeatablesKeys.length,
     );
 
     const handleSimpleChange = (key) => (e) => {
@@ -38,30 +40,36 @@ export const withRepeatable =
     return (
       <div className="flex flex-col space-y-2">
         {[...Array(fieldsCount).keys()].map((i) => {
-          if (Object.keys(options.value).includes(`${i}`)) {
+          if (repeatablesKeys.includes(`${i}`)) {
+            const showAddButton =
+              repeatablesKeys.at(-1) === `${i}`;
+
+            const showRemoveButton =
+              fieldsCount !== 0 &&
+              repeatablesKeys.length > 1;
+
             return (
               <div
                 key={`field-${i}`}
                 className="flex flex-row rounded-lg bg-transparent space-x-1"
               >
                 <Field
-                  options={{
-                    ...options,
+                  options={Object.assign({}, options, {
                     value: options.value[i],
-                  }}
+                  })}
                   handleChange={handleChangeWrapper(i)}
                 />
 
                 <Button
                   symbol="-"
                   clickHandler={handleRemoveButtonPress(i)}
-                  showPredicate={i !== 0 || fieldsCount > 1}
+                  showPredicate={showRemoveButton}
                 />
 
                 <Button
                   symbol="+"
                   clickHandler={handleAddButtonPress(i)}
-                  showPredicate={i === fieldsCount - 1}
+                  showPredicate={showAddButton}
                 />
               </div>
             );
