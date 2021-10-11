@@ -29,7 +29,7 @@ export const NodeWidgetModalBody: FC<Props> = ({
         {Object.values(parameters).map((parameter, i) => {
           return (
             <Field
-              key={`field-${parameter.name}{i}`}
+              key={`field-${parameter.name}-{i}`}
               handleChange={handleChange(parameter)}
               handleRepeatableChange={handleRepeatableChange(
                 parameter,
@@ -41,8 +41,6 @@ export const NodeWidgetModalBody: FC<Props> = ({
                 parameter,
               )}
               options={parameter}
-              fieldType={parameter.fieldType}
-              isRepeatable={parameter.isRepeatable}
             />
           );
         })}

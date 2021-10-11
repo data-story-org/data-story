@@ -2,13 +2,9 @@ import React, { FC } from 'react';
 import { NodeParameter } from '@data-story-org/core';
 
 import { fields } from './Field';
+import { FieldProps } from './types';
 
-interface Props {
-  options: NodeParameter;
-  handleChange: (e: any) => void;
-}
-
-export const Row: FC<Props> = ({
+export const Row: FC<FieldProps> = ({
   options,
   handleChange,
 }) => {

@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { baseFieldStyle } from '../../lib/styles';
+import { FieldProps } from './types';
 
-export const Textarea = ({ options, handleChange }) => {
+export const Textarea: FC<FieldProps> = ({
+  options,
+  handleChange,
+}) => {
   return (
     <input
       type="textarea"
