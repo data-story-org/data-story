@@ -1,4 +1,5 @@
 import React, { useState, ComponentType, FC } from 'react';
+import { Button } from './Button';
 import { FieldProps, RepeatableFieldProps } from './types';
 
 export const withRepeatable =
@@ -78,33 +79,3 @@ export const withRepeatable =
       </div>
     );
   };
-
-const buttonStyle =
-  'bg-gray-100 text-gray-600 hover:text-malibu-700 w-8 rounded-r cursor-pointer';
-
-interface ButtonProps {
-  symbol: string;
-  clickHandler: (evt: any) => void;
-  showPredicate: boolean;
-}
-
-const Button: FC<ButtonProps> = ({
-  symbol,
-  clickHandler,
-  showPredicate,
-}) => {
-  return (
-    <>
-      {showPredicate && (
-        <button
-          className={buttonStyle}
-          onClick={clickHandler}
-        >
-          <span className="m-auto text-sm font-thin">
-            {symbol}
-          </span>
-        </button>
-      )}
-    </>
-  );
-};

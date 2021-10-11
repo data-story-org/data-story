@@ -3,6 +3,7 @@ import {
   baseFieldStyle,
   baseFieldTitleStyle,
 } from '../../../lib/styles';
+import { Button } from '../../fields/Button';
 import { SaveStoryI } from './SaveStoryI';
 
 interface Props {
@@ -58,11 +59,7 @@ export const StoryWidgetBody: FC<Props> = ({
                 />
               );
             })}
-            <button onClick={addTag}>
-              <span className="m-2 text-sm font-thin">
-                +
-              </span>
-            </button>
+            <Button symbol="+" clickHandler={addTag} />
           </div>
         </div>
       </div>
