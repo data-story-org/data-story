@@ -23,7 +23,9 @@ export const withRepeatable =
         : handleSimpleChange;
 
     const handleAddButtonPress = (key: number) => (e) => {
-      setFieldsCount(fieldsCount + 1);
+      setFieldsCount(
+        (prevFieldsCount) => prevFieldsCount + 1,
+      );
 
       handleRepeatableAdd(key);
     };
