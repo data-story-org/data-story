@@ -1,4 +1,8 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC } from 'react';
+import {
+  baseFieldStyle,
+  baseFieldTitleStyle,
+} from '../../../lib/styles';
 import { SaveStoryI } from './SaveStoryI';
 
 interface Props {
@@ -10,6 +14,9 @@ interface Props {
   addTag: (e: any) => void;
 }
 
+const fieldStyle = `${baseFieldStyle} w-full`;
+const tagFieldStyle = `${baseFieldStyle} w-1/5 rounded-full text-center`;
+
 export const StoryWidgetBody: FC<Props> = ({
   story,
   handleChange,
@@ -19,37 +26,33 @@ export const StoryWidgetBody: FC<Props> = ({
     <div>
       <div className="bg-gray-100 px-6 py-2">
         <div className="flex flex-col my-4 justify-center align-middle text-gray-500 text-xs">
-          <span className="my-2 font-sans font-medium text-sm text-indigo-500">
-            Name
-          </span>
+          <span className={baseFieldTitleStyle}>Name</span>
           <input
             onChange={handleChange('name')}
-            className="w-full px-3 py-2 text-gray-700 border rounded-lg appearance-none focus:outline-none"
+            className={fieldStyle}
             placeholder="descriptive story name"
             value={story.name}
           />
 
-          <span className="my-2 font-sans font-medium text-sm text-indigo-500">
+          <span className={baseFieldTitleStyle}>
             Description
           </span>
           <input
             onChange={handleChange('description')}
             type="textarea"
-            className="w-full px-3 py-2 text-gray-700 border rounded-lg appearance-none focus:outline-none"
+            className={fieldStyle}
             placeholder="story description"
             value={story.description}
           />
 
-          <span className="my-2 font-sans font-medium text-sm text-indigo-500">
-            Tags
-          </span>
+          <span className={baseFieldTitleStyle}>Tags</span>
           <div>
             {Object.values(story.tags).map((tag, i) => {
               return (
                 <input
                   key={i}
                   onChange={handleChange('tags', i)}
-                  className="rounded-full px-3 py-2 w-1/5 text-gray-700 text-center border appearance-none focus:outline-none"
+                  className={tagFieldStyle}
                   placeholder="story tag"
                   value={tag}
                 />
