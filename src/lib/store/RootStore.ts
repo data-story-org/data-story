@@ -9,14 +9,12 @@ import {
 } from '../types';
 import { DiagramEngine } from '@projectstorm/react-diagrams';
 import {
-  EngineFactory,
   DiagramModel,
   NodeModel,
 } from '../diagram';
 import {
   Story,
   demos,
-  Node as HeadlessNode,
 } from '@data-story-org/core';
 
 interface Metadata {

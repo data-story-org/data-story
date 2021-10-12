@@ -10,10 +10,6 @@ describe('RootStore', () => {
   const store = new Store();
   const random = () => `${Math.random}`;
 
-  // it("Clears link labels", () => {
-  //    store.diagram.engine.model.layers[0].models = ;
-  // })
-
   it('Changes page to inspector', () => {
     const id = random();
     store.goToInspector(id);

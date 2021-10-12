@@ -12,12 +12,6 @@ const customStyles = {
     top: '110px',
     left: '120px',
     padding: '0.25rem',
-    //top                   : '25%',
-    //left                  : '25%',
-    //right                 : 'auto',
-    //bottom                : 'auto',
-    //marginRight           : '-50%',
-    //transform             : 'translate(-50%, -50%)'
   },
   overlay: {
     position: 'fixed',
