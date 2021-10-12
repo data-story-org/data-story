@@ -107,5 +107,5 @@ describe('RootStore', () => {
 
     store.clearResults();
     expect(node.features).toStrictEqual([]);
-  });	
+  });
 });
