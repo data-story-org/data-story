@@ -3,7 +3,10 @@ import { observer } from 'mobx-react-lite';
 
 import { Store } from '../../../lib/store';
 import { loadDemo, loadStory } from '../../../lib/utils';
-import { BaseVoidEventHandler, GenericStory } from '../../../lib/types';
+import {
+  BaseVoidEventHandler,
+  GenericStory,
+} from '../../../lib/types';
 import { DataStoryWidget } from '../../widgets';
 
 interface Props {
