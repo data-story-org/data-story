@@ -1,13 +1,11 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { baseFieldStyle } from '../../lib/styles';
+import { FieldProps } from './types';
 
-// TODO Make JS field definitely typed
-/* interface Props {
- *   options: NodeModelOptions;
- *   handleChange: (e: any, o: NodeModelOptions) => void;
- * } */
-
-export const JS = ({ options, handleChange }) => {
+export const JS: FC<FieldProps> = ({
+  options,
+  handleChange,
+}) => {
   return (
     <>
       {/* REPLACE WITH SOME EDITOR! */}

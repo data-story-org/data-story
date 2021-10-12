@@ -1,8 +1,9 @@
 import React, { FC } from 'react';
+import { BaseEventHandler } from '../../../lib/types';
 
 interface Props {
-  handleCancel: (event: any) => void;
-  handleSave: (event: any) => void;
+  handleCancel: BaseEventHandler;
+  handleSave: BaseEventHandler;
 }
 
 export const NodeWidgetModalActions: FC<Props> = ({

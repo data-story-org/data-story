@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { baseFieldStyle } from '../../lib/styles';
+import { FieldProps } from './types';
 
-export const Number = ({ options, handleChange }) => {
+export const Number: FC<FieldProps> = ({
+  options,
+  handleChange,
+}) => {
   return (
     <input
       key={`${options.name}`}

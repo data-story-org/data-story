@@ -13,6 +13,7 @@ import {
   BaseFieldHeader,
   withRepeatable,
 } from './';
+import { FieldProps, RepeatableFieldProps } from './types';
 
 export const fields = {
   Boolean_,
@@ -26,20 +27,20 @@ export const fields = {
   Row,
 };
 
+export interface Props {}
+
 export const Field = ({
   options,
   handleChange,
   handleRepeatableChange,
   handleRepeatableAdd,
   handleRepeatableRemove,
-  fieldType,
-  isRepeatable,
-}) => {
+}: FieldProps & RepeatableFieldProps) => {
   const BaseField = useCallback(
-    isRepeatable
-      ? withRepeatable(fields[fieldType])
-      : fields[fieldType],
-    [],
+    options.isRepeatable
+      ? withRepeatable(fields[options.fieldType])
+      : fields[options.fieldType],
+    [options],
   );
 
   return (

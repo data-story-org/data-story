@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { baseFieldStyle } from '../../lib/styles';
+import { FieldProps } from './types';
 
-export const Select = ({ options, handleChange }) => {
+export const Select: FC<FieldProps> = ({
+  options,
+  handleChange,
+}) => {
   return (
     <select
       key={`${options.name}`}

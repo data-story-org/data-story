@@ -3,11 +3,15 @@ import { Store } from '../../../lib/store';
 import { observer } from 'mobx-react-lite';
 import { StoryGrid } from '../../widgets/DataStory';
 import { OpenBodyStorySearch } from './OpenBodyStorySearch';
-import { GenericStory, Story } from '../../../lib/types';
+import {
+  BaseVoidEventHandler,
+  GenericStory,
+  Story,
+} from '../../../lib/types';
 
 interface Props {
   store: Store;
-  afterStoryClick: () => void;
+  afterStoryClick: BaseVoidEventHandler;
 }
 
 export const OpenModalBody: FC<Props> = observer(

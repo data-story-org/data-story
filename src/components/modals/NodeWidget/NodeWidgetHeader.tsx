@@ -1,9 +1,10 @@
 import React, { FC } from 'react';
 import { NodeModel } from '../../../lib/diagram';
+import { BaseEventHandler } from '../../../lib/types';
 
 interface Props {
   node: NodeModel;
-  handleCancel: (event: any) => void;
+  handleCancel: BaseEventHandler;
 }
 
 export const NodeWidgetModalHeader: FC<Props> = ({

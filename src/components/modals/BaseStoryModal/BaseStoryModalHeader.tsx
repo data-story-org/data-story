@@ -1,9 +1,10 @@
 import React, { FC } from 'react';
+import { BaseEventHandler } from '../../../lib/types';
 import { SaveStoryI } from './SaveStoryI';
 
 interface Props {
   story: SaveStoryI;
-  handleCancel: (event: any) => void;
+  handleCancel: BaseEventHandler;
 }
 
 export const StoryWidgetModalHeader: FC<Props> = ({

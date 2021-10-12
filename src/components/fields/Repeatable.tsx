@@ -1,16 +1,19 @@
-import React, { useState, useEffect } from 'react';
-import { FC } from 'react';
+import React, { useState, ComponentType, FC } from 'react';
+import { Button } from './Button';
+import { FieldProps, RepeatableFieldProps } from './types';
 
 export const withRepeatable =
-  (Field) =>
+  (Field: ComponentType<FieldProps>) =>
   ({
     options,
     handleRepeatableChange,
     handleRepeatableAdd,
     handleRepeatableRemove,
-  }) => {
+  }: RepeatableFieldProps) => {
+    const repeatablesKeys = Object.keys(options.value);
+
     const [fieldsCount, setFieldsCount] = useState(
-      Object.keys(options.value).length,
+      repeatablesKeys.length,
     );
 
     const handleSimpleChange = (key) => (e) => {
@@ -23,7 +26,9 @@ export const withRepeatable =
         : handleSimpleChange;
 
     const handleAddButtonPress = (key: number) => (e) => {
-      setFieldsCount(fieldsCount + 1);
+      setFieldsCount(
+        (prevFieldsCount) => prevFieldsCount + 1,
+      );
 
       handleRepeatableAdd(key);
     };
@@ -36,30 +41,36 @@ export const withRepeatable =
     return (
       <div className="flex flex-col space-y-2">
         {[...Array(fieldsCount).keys()].map((i) => {
-          if (Object.keys(options.value).includes(`${i}`)) {
+          if (repeatablesKeys.includes(`${i}`)) {
+            const showAddButton =
+              repeatablesKeys.at(-1) === `${i}`;
+
+            const showRemoveButton =
+              fieldsCount !== 0 &&
+              repeatablesKeys.length > 1;
+
             return (
               <div
                 key={`field-${i}`}
                 className="flex flex-row rounded-lg bg-transparent space-x-1"
               >
                 <Field
-                  options={{
-                    ...options,
+                  options={Object.assign({}, options, {
                     value: options.value[i],
-                  }}
+                  })}
                   handleChange={handleChangeWrapper(i)}
                 />
 
                 <Button
                   symbol="-"
                   clickHandler={handleRemoveButtonPress(i)}
-                  showPredicate={i !== 0 || fieldsCount > 1}
+                  showPredicate={showRemoveButton}
                 />
 
                 <Button
                   symbol="+"
                   clickHandler={handleAddButtonPress(i)}
-                  showPredicate={i === fieldsCount - 1}
+                  showPredicate={showAddButton}
                 />
               </div>
             );
@@ -68,33 +79,3 @@ export const withRepeatable =
       </div>
     );
   };
-
-const buttonStyle =
-  'bg-gray-100 text-gray-600 hover:text-malibu-700 w-8 rounded-r cursor-pointer';
-
-interface ButtonProps {
-  symbol: string;
-  clickHandler: (evt: any) => void;
-  showPredicate: boolean;
-}
-
-const Button: FC<ButtonProps> = ({
-  symbol,
-  clickHandler,
-  showPredicate,
-}) => {
-  return (
-    <>
-      {showPredicate && (
-        <button
-          className={buttonStyle}
-          onClick={clickHandler}
-        >
-          <span className="m-auto text-sm font-thin">
-            {symbol}
-          </span>
-        </button>
-      )}
-    </>
-  );
-};

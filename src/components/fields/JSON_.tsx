@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { baseFieldStyle } from '../../lib/styles';
+import { FieldProps } from './types';
 
-export const JSON_ = ({ options, handleChange }) => {
+export const JSON_: FC<FieldProps> = ({
+  options,
+  handleChange,
+}) => {
   return (
     <>
       {/* REPLACE WITH SOME EDITOR! */}

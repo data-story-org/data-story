@@ -12,10 +12,17 @@ import { NodeWidgetModalActions } from './NodeWidgetActions';
 import { NodeWidgetModalBody } from './NodeWidgetBody';
 import { NodeWidgetModalHeader } from './NodeWidgetHeader';
 import { Store } from '../../../lib/store';
+import {
+  FieldChangeHandler,
+  RepeatableAddHandler,
+  RepeatableChangeHandler,
+  RepeatableRemoveHandler,
+} from './types';
+import { BaseVoidEventHandler } from '../../../lib/types';
 
 interface Props {
   node: NodeModel;
-  closeModal: () => void;
+  closeModal: BaseVoidEventHandler;
   store: Store;
 }
 
@@ -66,22 +73,21 @@ export const NodeWidgetModal: FC<Props> = observer(
       return () => clearTimeout(autoSaveTimer);
     }, [node.parameter]);
 
-    const handleChange = (param: NodeParameter) => (e) => {
-      const updatedParameters = parameters;
+    const handleChange: FieldChangeHandler =
+      (param) => (e) => {
+        const updatedParameters = parameters;
 
-      updatedParameters.find((p) => p.name == param.name)[
-        // e.target.getAttribute('name') ?? 'value'
-        // parameter.name
-        'value'
-      ] = e.target.value;
+        updatedParameters.find((p) => p.name == param.name)[
+          // e.target.getAttribute('name') ?? 'value'
+          // parameter.name
+          'value'
+        ] = e.target.value;
 
-      setParameters([...updatedParameters]);
-    };
+        setParameters([...updatedParameters]);
+      };
 
-    const handleRepeatableChange =
-      (param: NodeParameter) =>
-      (key: number) =>
-      (value: any) => {
+    const handleRepeatableChange: RepeatableChangeHandler =
+      (param) => (key) => (value) => {
         const values = parameters.find(
           (p) => p.name == param.name,
         ).value;
@@ -101,8 +107,8 @@ export const NodeWidgetModal: FC<Props> = observer(
         setParameters([...parameters]);
       };
 
-    const handleRepeatableAdd =
-      (param: NodeParameter) => (key: number) => {
+    const handleRepeatableAdd: RepeatableAddHandler =
+      (param) => (key) => {
         const values = parameters.find(
           (p) => p.name == param.name,
         ).value;
@@ -121,8 +127,8 @@ export const NodeWidgetModal: FC<Props> = observer(
         setParameters([...parameters]);
       };
 
-    const handleRepeatableRemove =
-      (param: NodeParameter) => (key: number) => {
+    const handleRepeatableRemove: RepeatableRemoveHandler =
+      (param) => (key) => {
         const values = parameters.find(
           (p) => p.name == param.name,
         ).value;

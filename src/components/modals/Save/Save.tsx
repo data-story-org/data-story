@@ -2,14 +2,17 @@ import { Story } from '@data-story-org/core';
 import { observer } from 'mobx-react-lite';
 import React, { FC } from 'react';
 import { Store } from '../../../lib/store';
-import { SerializedReactDiagram } from '../../../lib/types';
+import {
+  BaseVoidEventHandler,
+  SerializedReactDiagram,
+} from '../../../lib/types';
 import { BaseModalHeader } from '../BaseModalHeader';
 import { BaseStoryWidgetModal } from '../BaseStoryModal';
 import { SaveStoryI } from '../BaseStoryModal/SaveStoryI';
 
 interface Props {
   store: Store;
-  closeModal: () => void;
+  closeModal: BaseVoidEventHandler;
 }
 
 export const SaveModal: FC<Props> = observer(

@@ -92,21 +92,26 @@ describe('Fields', () => {
       const randomValue1 = generateRandomString();
       const randomValue2 = generateRandomString();
 
+      const attributeFieldSelector =
+        'input[placeholder="attribute"][value=""]';
+      const valueFieldSelector =
+        'input[placeholder="value"][value=""]';
+
       await expect(page).toFill(
-        'input[value="Attribute"]',
+        attributeFieldSelector,
         'random1',
       );
       await expect(page).toFill(
-        'input[value="Value"]',
+        valueFieldSelector,
         randomValue1,
       );
 
       await expect(page).toFill(
-        'input[value="Attribute"]',
+        attributeFieldSelector,
         'random2',
       );
       await expect(page).toFill(
-        'input[value="Value"]',
+        valueFieldSelector,
         randomValue2,
       );
       await page.keyboard.press('Enter');

@@ -1,19 +1,19 @@
 import React, { FC } from 'react';
 import { Field } from '../../fields/Field';
 import { NodeParameter } from '@data-story-org/core';
+import {
+  RepeatableAddHandler,
+  RepeatableChangeHandler,
+  RepeatableRemoveHandler,
+} from './types';
+import { BaseEventHandler } from '../../../lib/types';
 
 interface Props {
   parameters: NodeParameter[];
-  handleChange: (param: NodeParameter) => (e) => void;
-  handleRepeatableChange: (
-    param: NodeParameter,
-  ) => (key: number) => (value: any) => void;
-  handleRepeatableAdd: (
-    param: NodeParameter,
-  ) => (key: number) => void;
-  handleRepeatableRemove: (
-    param: NodeParameter,
-  ) => (key: number) => void;
+  handleChange: (param: NodeParameter) => BaseEventHandler;
+  handleRepeatableChange: RepeatableChangeHandler;
+  handleRepeatableAdd: RepeatableAddHandler;
+  handleRepeatableRemove: RepeatableRemoveHandler;
 }
 
 export const NodeWidgetModalBody: FC<Props> = ({
@@ -29,7 +29,7 @@ export const NodeWidgetModalBody: FC<Props> = ({
         {Object.values(parameters).map((parameter, i) => {
           return (
             <Field
-              key={`field-${parameter.name}{i}`}
+              key={`field-${parameter.name}-{i}`}
               handleChange={handleChange(parameter)}
               handleRepeatableChange={handleRepeatableChange(
                 parameter,
@@ -41,8 +41,6 @@ export const NodeWidgetModalBody: FC<Props> = ({
                 parameter,
               )}
               options={parameter}
-              fieldType={parameter.fieldType}
-              isRepeatable={parameter.isRepeatable}
             />
           );
         })}

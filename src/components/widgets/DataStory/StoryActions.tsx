@@ -1,6 +1,7 @@
 import { observer } from 'mobx-react-lite';
 import React, { FC } from 'react';
 import { Store } from '../../../lib/store';
+import { BaseVoidEventHandler } from '../../../lib/types';
 import { deleteStory } from '../../../lib/utils';
 
 interface Story {
@@ -10,7 +11,7 @@ interface Story {
 interface Props {
   store: Store;
   story: Story;
-  onEdit: () => void;
+  onEdit: BaseVoidEventHandler;
 }
 
 export const DataStoryWidgetActions: FC<Props> = observer(

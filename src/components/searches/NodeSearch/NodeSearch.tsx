@@ -10,10 +10,11 @@ import { Store } from '../../../lib/store';
 import { NodeListItem } from './NodeListItem';
 import { useHotkeys } from 'react-hotkeys-hook';
 import Fuse from 'fuse.js';
+import { BaseVoidEventHandler } from '../../../lib/types';
 
 interface Props {
   store: Store;
-  onFinish: () => void;
+  onFinish: BaseVoidEventHandler;
 }
 
 export const NodeSearch: FC<Props> = observer(

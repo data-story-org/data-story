@@ -1,10 +1,11 @@
 import React, { FC } from 'react';
+import { BaseEventHandler } from '../../../../lib/types';
 
 interface Props {
   primitiveFeatures: boolean;
   rows: any[];
   isComplexObject: boolean;
-  handleSelectJsonMode: (e: any) => void;
+  handleSelectJsonMode: BaseEventHandler;
 }
 
 const linkStyle = 'hover:underline cursor-pointer';

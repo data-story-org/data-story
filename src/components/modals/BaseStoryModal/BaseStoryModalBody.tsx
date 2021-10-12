@@ -3,6 +3,8 @@ import {
   baseFieldStyle,
   baseFieldTitleStyle,
 } from '../../../lib/styles';
+import { BaseEventHandler } from '../../../lib/types';
+import { Button } from '../../fields/Button';
 import { SaveStoryI } from './SaveStoryI';
 
 interface Props {
@@ -10,8 +12,8 @@ interface Props {
   handleChange: (
     field: string,
     tagKey?: number,
-  ) => (e: any) => void;
-  addTag: (e: any) => void;
+  ) => BaseEventHandler;
+  addTag: BaseEventHandler;
 }
 
 const fieldStyle = `${baseFieldStyle} w-full`;
@@ -58,11 +60,7 @@ export const StoryWidgetBody: FC<Props> = ({
                 />
               );
             })}
-            <button onClick={addTag}>
-              <span className="m-2 text-sm font-thin">
-                +
-              </span>
-            </button>
+            <Button symbol="+" clickHandler={addTag} />
           </div>
         </div>
       </div>
