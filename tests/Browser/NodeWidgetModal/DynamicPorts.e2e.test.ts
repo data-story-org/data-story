@@ -24,7 +24,7 @@ const createSomeRandomPorts = async (
   const randomValue2 = generateRandomString();
 
   await expect(page).toFill(
-    'input[placeholder="port"][value="port"]',
+    'input[placeholder="port name"]',
     randomValue1,
   );
 
@@ -32,7 +32,7 @@ const createSomeRandomPorts = async (
   expect(await repeatablesLength(modal)).toBe(2);
 
   await expect(page).toFill(
-    'input[placeholder="port"][value=""]',
+    'input[placeholder="port name"][value=""]',
     randomValue2,
   );
   await page.keyboard.press('Enter');
@@ -83,13 +83,12 @@ describe('Dynamic ports', () => {
 
     // Delete first port
     await expect(modal).toClick('span', { text: '-' });
+    console.log(await repeatablesLength(modal));
     expect(await repeatablesLength(modal)).toBe(1);
-    await expect(modal).toClick('span', { text: '-' });
-    expect(await repeatablesLength(modal)).toBe(0);
     await page.keyboard.press('Enter');
 
     await expect(page).not.toMatch(randomValue1);
-    await expect(page).not.toMatch(randomValue2);
+    await expect(page).toMatch(randomValue2);
   }, 100000);
 
   afterEach(async () => {
