@@ -83,7 +83,6 @@ describe('Dynamic ports', () => {
 
     // Delete first port
     await expect(modal).toClick('span', { text: '-' });
-    console.log(await repeatablesLength(modal));
     expect(await repeatablesLength(modal)).toBe(1);
     await page.keyboard.press('Enter');
 
