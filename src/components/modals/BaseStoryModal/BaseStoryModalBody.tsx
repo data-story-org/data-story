@@ -3,6 +3,7 @@ import {
   baseFieldStyle,
   baseFieldTitleStyle,
 } from '../../../lib/styles';
+import { BaseEventHandler } from '../../../lib/types';
 import { Button } from '../../fields/Button';
 import { SaveStoryI } from './SaveStoryI';
 
@@ -11,8 +12,8 @@ interface Props {
   handleChange: (
     field: string,
     tagKey?: number,
-  ) => (e: any) => void;
-  addTag: (e: any) => void;
+  ) => BaseEventHandler;
+  addTag: BaseEventHandler;
 }
 
 const fieldStyle = `${baseFieldStyle} w-full`;

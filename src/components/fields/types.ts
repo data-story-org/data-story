@@ -1,11 +1,12 @@
 import { NodeParameter } from '@data-story-org/core';
+import { BaseEventHandler } from '../../lib/types';
 
 interface BaseFieldProps {
   options: NodeParameter;
 }
 
 export interface FieldProps extends BaseFieldProps {
-  handleChange: (e) => void;
+  handleChange: BaseEventHandler;
 }
 
 export type RepeatableFieldChange = (

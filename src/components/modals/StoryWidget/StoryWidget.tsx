@@ -2,14 +2,18 @@ import React, { FC, useState } from 'react';
 import { observer } from 'mobx-react-lite';
 import partition from 'lodash/partition';
 import { Store } from '../../../lib/store';
-import { Story, GenericStory } from '../../../lib/types';
+import {
+  Story,
+  GenericStory,
+  BaseEventHandler,
+} from '../../../lib/types';
 import { BaseStoryWidgetModal } from '../BaseStoryModal';
 import { SaveStoryI } from '../BaseStoryModal/SaveStoryI';
 
 interface Props {
   store: Store;
   defaultStory: GenericStory;
-  handleCancel: (e) => void;
+  handleCancel: BaseEventHandler;
 }
 
 export const StoryWidgetModal: FC<Props> = observer(

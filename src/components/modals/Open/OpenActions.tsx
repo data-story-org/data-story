@@ -1,8 +1,9 @@
 import React, { FC } from 'react';
+import { BaseEventHandler } from '../../../lib/types';
 
 interface Props {
-  handleClear: (event: any) => void;
-  handleCancel: (event: any) => void;
+  handleClear: BaseEventHandler;
+  handleCancel: BaseEventHandler;
 }
 
 export const OpenModalActions: FC<Props> = ({

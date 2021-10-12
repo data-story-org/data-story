@@ -1,12 +1,12 @@
 import React, { FC } from 'react';
-import { observer } from 'mobx-react-lite';
+import { BaseVoidEventHandler } from '../../lib/types';
 
 interface Props {
   id?: string;
   title: string;
   icon: string;
   page?: string;
-  onClick?: () => void;
+  onClick?: BaseVoidEventHandler;
   style?: string;
 }
 

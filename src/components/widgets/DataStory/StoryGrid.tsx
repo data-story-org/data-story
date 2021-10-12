@@ -3,14 +3,14 @@ import { observer } from 'mobx-react-lite';
 
 import { Store } from '../../../lib/store';
 import { loadDemo, loadStory } from '../../../lib/utils';
-import { GenericStory } from '../../../lib/types';
+import { BaseVoidEventHandler, GenericStory } from '../../../lib/types';
 import { DataStoryWidget } from '../../widgets';
 
 interface Props {
   store: Store;
   stories: GenericStory[];
   isDemos?: boolean;
-  afterStoryClick?: () => void;
+  afterStoryClick?: BaseVoidEventHandler;
 }
 
 const storyGridStyle =

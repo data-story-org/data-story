@@ -1,14 +1,15 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 import { observer } from 'mobx-react-lite';
-import { Cookie, loadStory } from '../../../lib/utils';
+import { Cookie } from '../../../lib/utils';
 import { Store } from '../../../lib/store';
 import { OpenModalBody } from './OpenBody';
 import { OpenModalActions } from './OpenActions';
 import { BaseModalHeader } from '../BaseModalHeader';
+import { BaseVoidEventHandler } from '../../../lib/types';
 
 interface Props {
   store: Store;
-  closeModal: () => void;
+  closeModal: BaseVoidEventHandler;
 }
 
 export const OpenModal: FC<Props> = observer(

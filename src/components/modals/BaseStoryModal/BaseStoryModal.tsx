@@ -4,13 +4,14 @@ import { StoryWidgetBody } from './BaseStoryModalBody';
 import { StoryWidgetActions } from './BaseStoryModalActions';
 import { StoryWidgetModalHeader } from './BaseStoryModalHeader';
 import { useHotkeys } from 'react-hotkeys-hook';
+import { BaseEventHandler } from '../../../lib/types';
 
 export type StoryWidgetSaver = (story: SaveStoryI) => void;
 
 interface Props {
   defaultStory?: SaveStoryI;
   storySaver: StoryWidgetSaver;
-  handleCancel: (e: any) => void;
+  handleCancel: BaseEventHandler;
   withHeader?: boolean;
 }
 

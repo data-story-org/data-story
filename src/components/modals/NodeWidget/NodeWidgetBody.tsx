@@ -6,10 +6,11 @@ import {
   RepeatableChangeHandler,
   RepeatableRemoveHandler,
 } from './types';
+import { BaseEventHandler } from '../../../lib/types';
 
 interface Props {
   parameters: NodeParameter[];
-  handleChange: (param: NodeParameter) => (e) => void;
+  handleChange: (param: NodeParameter) => BaseEventHandler;
   handleRepeatableChange: RepeatableChangeHandler;
   handleRepeatableAdd: RepeatableAddHandler;
   handleRepeatableRemove: RepeatableRemoveHandler;

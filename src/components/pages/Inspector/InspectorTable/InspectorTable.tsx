@@ -2,13 +2,16 @@ import React, { FC, useState } from 'react';
 import { Feature } from '@data-story-org/core';
 import { InspectorTableBody } from './InspectorTableBody';
 import { InspectorTableHeading } from './InspectorTableHeading';
-import { InspectorMode } from '../../../../lib/types';
+import {
+  BaseEventHandler,
+  InspectorMode,
+} from '../../../../lib/types';
 
 interface Props {
   features: Feature[];
   handleModeSelect: (
     mode: InspectorMode,
-  ) => (e: any) => void;
+  ) => BaseEventHandler;
 }
 
 export const InspectorTable: FC<Props> = ({

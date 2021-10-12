@@ -1,7 +1,8 @@
 import React, { FC } from 'react';
+import { BaseEventHandler } from '../../../lib/types';
 
 interface Props {
-  handleCancel: (event: any) => void;
+  handleCancel: BaseEventHandler;
 }
 
 export const ConfigModalActions: FC<Props> = ({

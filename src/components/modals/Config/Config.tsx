@@ -6,10 +6,11 @@ import { Store } from '../../../lib/store';
 import { ConfigModalBody } from './ConfigBody';
 import { ConfigModalActions } from './ConfigActions';
 import { BaseModalHeader } from '../BaseModalHeader';
+import { BaseVoidEventHandler } from '../../../lib/types';
 
 interface Props {
   store: Store;
-  closeModal: () => void;
+  closeModal: BaseVoidEventHandler;
 }
 
 export const ConfigModal: FC<Props> = observer(
