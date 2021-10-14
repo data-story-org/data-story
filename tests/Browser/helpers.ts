@@ -1,5 +1,5 @@
 import 'expect-puppeteer';
-import { Page } from 'puppeteer';
+import { ElementHandle, Page } from 'puppeteer';
 
 export const puppeteerConfig = {
   // product: 'firefox',
@@ -56,8 +56,22 @@ export const generateRandomString = () => {
 export const repeatableRowSelector =
   '.flex.flex-row.space-x-1';
 
-export const repeatablesLength = async (el) => {
+export const tableRepeatableRowSelector =
+  '#table-repeatable-row';
+
+export const repeatablesLength = async (
+  el: ElementHandle<Element>,
+) => {
   const repeatables = await el.$$(repeatableRowSelector);
+  return repeatables.length;
+};
+
+export const tableRepeatablesLength = async (
+  el: ElementHandle<Element>,
+) => {
+  const repeatables = await el.$$(
+    tableRepeatableRowSelector,
+  );
   return repeatables.length;
 };
 
