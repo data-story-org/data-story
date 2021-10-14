@@ -7,7 +7,7 @@ import {
   sleep,
   addNode,
   generateRandomString,
-  repeatablesLength,
+  tableRepeatablesLength,
 } from '../helpers';
 import { sample } from 'lodash';
 
@@ -68,13 +68,13 @@ describe('Fields', () => {
       const modal = await expect(page).toMatchElement(
         '#node-modal',
       );
-      expect(await repeatablesLength(modal)).toBe(1);
+      expect(await tableRepeatablesLength(modal)).toBe(1);
 
       await expect(modal).toClick('span', { text: '+' });
-      expect(await repeatablesLength(modal)).toBe(2);
+      expect(await tableRepeatablesLength(modal)).toBe(2);
 
       await expect(modal).toClick('span', { text: '-' });
-      expect(await repeatablesLength(modal)).toBe(1);
+      expect(await tableRepeatablesLength(modal)).toBe(1);
     }, 100000);
 
     test('Repeatables are being respected', async () => {
@@ -87,7 +87,7 @@ describe('Fields', () => {
       );
 
       await expect(modal).toClick('span', { text: '+' });
-      expect(await repeatablesLength(modal)).toBe(2);
+      expect(await tableRepeatablesLength(modal)).toBe(2);
 
       const randomValue1 = generateRandomString();
       const randomValue2 = generateRandomString();
