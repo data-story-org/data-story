@@ -6,7 +6,7 @@ interface Props {
 }
 
 const style =
-  'px-6 py-3 bg-gray-50 text-left text-xs font-semibold text-malibu-700 uppercase hover:normal-case tracking-wider';
+  'px-6 py-3 bg-gray-50 text-left text-xs font-semibold text-malibu-700 hover:normal-case tracking-wider';
 
 export const InspectorTableHeading: FC<Props> = ({
   primitiveFeatures,
