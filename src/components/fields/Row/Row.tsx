@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
 import { NodeParameter } from '@data-story-org/core';
 
-import { fields } from './Field';
-import { FieldProps } from './types';
+import { fields } from '../Field';
+import { FieldProps } from '../types';
 
 export const Row: FC<FieldProps> = ({
   options,
@@ -20,22 +20,29 @@ export const Row: FC<FieldProps> = ({
     handleChange(value);
   };
 
+  const parameters: NodeParameter[] = Object.values(
+    options.value,
+  );
+
   return (
     <>
-      {Object.values(options.value).map(
-        (p: NodeParameter, i) => {
-          const Field = fields[p.fieldType];
+      {parameters.map((p, i) => {
+        const Field = fields[p.fieldType];
 
-          return (
-            <div key={`field-${p.name}-${i}`}>
+        return (
+          <td
+            className="px-6 py-4 whitespace-nowrap"
+            key={`field-${p.name}-${i}`}
+          >
+            <div>
               <Field
                 options={p}
                 handleChange={handleRowChange(p)}
               />
             </div>
-          );
-        },
-      )}
+          </td>
+        );
+      })}
     </>
   );
 };
