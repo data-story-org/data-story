@@ -7,12 +7,13 @@ export const Textarea: FC<FieldProps> = ({
   handleChange,
 }) => {
   return (
-    <input
-      type="textarea"
-      key={`${options.name}`}
-      onChange={handleChange}
-      className={`${baseFieldStyle} h-64`}
-      value={options.value}
-    />
+    <>
+      <textarea
+        key={`${options.name}`}
+        onChange={handleChange}
+        className={`${baseFieldStyle} h-64`}
+        value={options.value}
+      />
+    </>
   );
 };
