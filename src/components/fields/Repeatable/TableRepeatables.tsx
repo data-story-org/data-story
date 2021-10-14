@@ -21,7 +21,10 @@ export const TableRepeatables: FC<RepeatableRendererProps> =
             const paramValue = options.value[i];
 
             return (
-              <tr key={`field-${i}`}>
+              <tr
+                key={`field-${i}`}
+                id="table-repeatable-row"
+              >
                 <Field
                   options={Object.assign({}, options, {
                     value: paramValue,
