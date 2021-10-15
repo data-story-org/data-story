@@ -1,7 +1,7 @@
 import { ComponentType } from 'react';
-import { NodeParameter } from '../../../../../core/lib/src';
+import { NodeParameter } from '@data-story-org/core';
 import { BaseEventHandler } from '../../../lib/types';
-import { FieldProps, RepeatableFieldProps } from '../types';
+import { FieldProps } from '../types';
 
 export type ButtonShowPredicate = (
   index: number,
