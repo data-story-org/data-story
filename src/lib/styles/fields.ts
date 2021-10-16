@@ -4,7 +4,7 @@ const fieldBorder =
 const fieldText =
   'text-current focus:text-black hover:text-black';
 
-export const baseFieldStyle = `px-3 py-2  rounded-lg appearance-none ${fieldBorder} ${fieldText}`;
+export const baseFieldStyle = `px-3 py-2 rounded-lg appearance-none ${fieldBorder} ${fieldText}`;
 
 export const baseFieldTitleStyle =
   'my-2 font-sans font-medium text-sm text-indigo-500';
