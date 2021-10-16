@@ -13,6 +13,7 @@ import {
   BaseFieldHeader,
   withRepeatable,
 } from './';
+import { RowTable } from './Row/RowTable';
 import { FieldProps, RepeatableFieldProps } from './types';
 
 export const fields = {
@@ -26,8 +27,6 @@ export const fields = {
   Port,
   Row,
 };
-
-export interface Props {}
 
 export const Field = ({
   options,
@@ -43,16 +42,36 @@ export const Field = ({
     [options],
   );
 
+  const isRow = options.fieldType === 'Row';
+  let columnNames: string[];
+  if (isRow) {
+    columnNames = Object.keys(
+      Object.values(options.value)[0],
+    );
+  }
+
+  const Field = (
+    <BaseField
+      options={options}
+      handleChange={handleChange}
+      handleRepeatableChange={handleRepeatableChange}
+      handleRepeatableAdd={handleRepeatableAdd}
+      handleRepeatableRemove={handleRepeatableRemove}
+      isRow={isRow}
+    />
+  );
+
   return (
     <div className="flex flex-col my-4 justify-center align-middle text-gray-500 text-xs font-mono">
       <BaseFieldHeader {...options} />
-      <BaseField
-        options={options}
-        handleChange={handleChange}
-        handleRepeatableChange={handleRepeatableChange}
-        handleRepeatableAdd={handleRepeatableAdd}
-        handleRepeatableRemove={handleRepeatableRemove}
-      />
+
+      {isRow ? (
+        <RowTable columnNames={columnNames}>
+          {Field}
+        </RowTable>
+      ) : (
+        Field
+      )}
     </div>
   );
 };
