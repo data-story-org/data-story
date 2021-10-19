@@ -14,4 +14,5 @@
     "jsx": "react",
     "lib": ["es2019", "dom"]
   }
+    "declaration": true
 }
