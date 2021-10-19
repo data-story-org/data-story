@@ -23,10 +23,6 @@ const customStyles = {
   },
 };
 
-// Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
-if (process.env.NODE_ENV !== 'test')
-  ReactModal.setAppElement('#app');
-
 interface Props {
   store: Store;
 }

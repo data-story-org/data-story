@@ -1,6 +1,5 @@
 import React, {
   useState,
-  FC,
   ComponentType,
   Dispatch,
   SetStateAction,

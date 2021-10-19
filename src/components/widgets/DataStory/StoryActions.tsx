@@ -28,7 +28,7 @@ export const DataStoryWidgetActions: FC<Props> = observer(
               onEdit();
             }}
           >
-            <i className="fa fa-pencil-square"></i>
+            <i className="fas fa-pen-square"></i>
           </span>
 
           <span
