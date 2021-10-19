@@ -19,5 +19,6 @@
     "declarationMap": true,
     "declarationDir": "./lib/types"
   },
-  "include": ["src", "package.json"]
+  "include": ["src", "package.json"],
+  "exclude": ["src/render.tsx"]
 }
