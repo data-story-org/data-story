@@ -1,4 +1,4 @@
-import { nonCircularJsonStringify } from '@data-story-org/core/utils';
+import { nonCircularJsonStringify } from '@data-story-org/core/lib/src/utils';
 
 export class Cookie {
   static keys(): string[] {
