@@ -3,7 +3,7 @@ const tailwindcss = require('tailwindcss');
 
 // bundle into dist/
 mix
-  .ts('src/index.tsx', 'dist/js')
+  .ts('src/render.tsx', 'dist/js')
   .react()
   .sass('src/sass/app.scss', 'dist/css')
   .options({
