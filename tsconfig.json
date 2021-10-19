@@ -16,7 +16,8 @@
     "skipLibCheck": true,
 
     "declaration": true,
-    "declarationDir": "./types"
+    "declarationMap": true,
+    "declarationDir": "./lib/types"
   },
   "include": ["src", "package.json"]
 }

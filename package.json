@@ -4,7 +4,7 @@
   "version": "0.0.19",
   "main": "lib/cjs/src/index.js",
   "module": "lib/esm/src/index.js",
-  "types": "lib/esm/src/index.d.ts",
+  "types": "lib/types/src/index.d.ts",
   "directories": {
     "doc": "docs",
     "test": "tests"
