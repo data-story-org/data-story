@@ -6,7 +6,7 @@ import { Tokens } from './Tokens';
 import { Workbench } from './Workbench';
 import { Page } from '../../lib/types';
 
-export const pages = {
+const pages = {
   Inspector,
   DiagramJson,
   Log,
