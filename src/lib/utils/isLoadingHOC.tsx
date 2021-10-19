@@ -1,4 +1,10 @@
-import React, { useState, FC, ComponentType } from 'react';
+import React, {
+  useState,
+  FC,
+  ComponentType,
+  Dispatch,
+  SetStateAction,
+} from 'react';
 import ScaleLoader from 'react-spinners/ScaleLoader';
 import FadeIn from 'react-fade-in';
 
@@ -13,7 +19,7 @@ export const AnimationLoader = () => {
 };
 
 export interface withLoadingProps {
-  setLoading?: (loading: boolean) => void;
+  setLoading?: Dispatch<SetStateAction<boolean>>;
 }
 
 export const withLoading =
