@@ -43,6 +43,7 @@ export const OpenControl: FC<Props> = observer(
           isOpen={isOpen}
           onRequestClose={closeModal}
           style={modalStyle}
+          closeTimeoutMS={250}
         >
           <OpenModal
             store={store}
