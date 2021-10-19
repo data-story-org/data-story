@@ -2,7 +2,7 @@ import React, { FC, useRef } from 'react';
 import { CanvasWidget } from '@projectstorm/react-canvas-core';
 import { observer } from 'mobx-react-lite';
 import { Store } from '../../../lib/store';
-const style = 'fullsize bg-gray-600';
+const style = 'fullsize bg-gray-600 flex-1';
 
 interface Props {
   store: Store;
@@ -13,7 +13,7 @@ export const Diagram: FC<Props> = observer(({ store }) => {
   store.diagram.refresh;
 
   return (
-    <div id="app-diagram">
+    <div id="app-diagram" className="flex">
       <CanvasWidget
         ref={diagramRef}
         engine={store.diagram.engine}

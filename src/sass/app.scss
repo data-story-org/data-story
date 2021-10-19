@@ -20,9 +20,11 @@
 
 // React Diagrams must have explicit width and height
 .fullsize {
-  width: 100vw;
   height: 70vh;
 
+  & svg:not(:root) {
+    overflow: initial;
+  }
   // GRID BACKGROUND...
   // background-size: 50px 50px;
   // display: flex;
