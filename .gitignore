@@ -67,3 +67,5 @@ jspm_packages/
 /fonts
 /dist
 /docs
+
+/src/**/*.d.ts
