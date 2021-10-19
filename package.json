@@ -2,7 +2,9 @@
   "name": "@data-story-org/gui",
   "description": "![tests](https://github.com/ajthinking/data-story/workflows/tests/badge.svg) ![version](https://img.shields.io/packagist/v/ajthinking/data-story?color=blue) ![proofofconcept](https://img.shields.io/badge/proof%20of%20concept-gold)",
   "version": "0.0.19",
-  "main": "src/index.ts",
+  "main": "lib/cjs/src/index.js",
+  "module": "lib/esm/src/index.js",
+  "types": "lib/esm/src/index.d.ts",
   "directories": {
     "doc": "docs",
     "test": "tests"
@@ -37,7 +39,10 @@
     "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --config=node_modules/laravel-mix/setup/webpack.config.js",
     "test": "jest --testPathIgnorePatterns=.*e2e.test.* -c tests/jest.config.js",
     "test:e2e": "jest --passWithNoTests --detectOpenHandles -c tests/jest.e2e.config.js",
-    "github-pages:deploy": "gh-pages -d public"
+    "github-pages:deploy": "gh-pages -d public",
+    "build:cjs": "tsc --module commonjs --outDir lib/cjs",
+    "build:esm": "tsc --outDir lib/esm",
+    "build": "npm run build:esm && npm run build:cjs"
   },
   "dependencies": {
     "@data-story-org/core": "latest",
