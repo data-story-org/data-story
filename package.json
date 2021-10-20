@@ -5,6 +5,7 @@
   "main": "lib/cjs/src/index.js",
   "module": "lib/esm/src/index.js",
   "types": "lib/types/src/index.d.ts",
+  "files": ["lib/**/*"],
   "directories": {
     "doc": "docs",
     "test": "tests"
