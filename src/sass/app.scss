@@ -4,6 +4,13 @@
 
 @tailwind utilities;
 
+// Do some styles resettings so parent components
+// can't dictate their own styles when used as widget
+#data-story-gui {
+  text-align: initial;
+  background-color: initial;
+}
+
 // React Diagrams must have explicit width and height
 .fullsize {
   height: 70vh;

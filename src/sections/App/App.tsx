@@ -82,7 +82,7 @@ export const App: FC<withLoadingProps> = withLoading(
     );
 
     return (
-      <div id="data-story-gui">
+      <div id="data-story-gui" className="bg-gray-700">
         <Header store={store} />
         <Toolbar store={store} setLoading={setLoading} />
         {booted && <Page store={store} />}
