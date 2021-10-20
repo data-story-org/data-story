@@ -27,7 +27,7 @@
   "homepage": "https://github.com/ajthinking/data-story#readme",
   "scripts": {
     "format": "prettier --write \"./**/*.(js|ts|jsx|tsx|json|md|css|less|scss)\" --ignore-path ./configs/.prettierignore",
-    "lint": "eslint src --ext .js,.ts -c ./configs/.eslintrc",
+    "lint": "eslint src --ext .js,.ts,.tsx -c ./configs/.eslintrc",
     "lint:fix": "npm run lint -- --fix",
     "lint:quiet:fix": "npm run lint:fix -- --quiet",
     "dev": "npm run development",
@@ -42,7 +42,8 @@
     "github-pages:deploy": "gh-pages -d public",
     "build:cjs": "tsc --module commonjs --outDir lib/cjs",
     "build:esm": "tsc --outDir lib/esm",
-    "build": "npm run build:esm && npm run build:cjs"
+    "build": "npm run build:esm && npm run build:cjs",
+    "prepublishOnly": "npm test && && npm test:e2e && npm run lint:quiet:fix && npm run build"
   },
   "dependencies": {
     "@data-story-org/core": "latest",
