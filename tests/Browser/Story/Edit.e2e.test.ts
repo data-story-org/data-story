@@ -46,7 +46,7 @@ describe('Stories editing', () => {
       { text: storyName },
     );
 
-    await expect(story).toClick('i.fa-pencil-square');
+    await expect(story).toClick('i.fa-pen-square');
 
     const [storyNameNew, storyDescNew, storyTagsNew] = [
       generateRandomString(),
