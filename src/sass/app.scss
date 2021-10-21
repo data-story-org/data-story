@@ -4,9 +4,9 @@
 
 @tailwind utilities;
 
-// Do some styles resettings so parent components
-// can't dictate their own styles when used as widget
 #data-story-gui {
+  // Do some styles resettings so parent components
+  // can't dictate their own styles when used as widget
   text-align: initial;
   background-color: initial;
 }
@@ -90,28 +90,27 @@ foreignObject > div > div {
 
 /* Configure scrollbar */
 
-/* width */
-::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
-}
+#data-story-gui,
+.ReactModalPortal {
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
 
-/* Track */
-::-webkit-scrollbar-track {
-  border-radius: 100vh;
-  background: #edf2f7;
-}
+  ::-webkit-scrollbar-track {
+    border-radius: 100vh;
+    background: #edf2f7;
+  }
 
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: #cbd5e0;
-  border-radius: 100vh;
-  border: 3px solid #edf2f7;
-}
+  ::-webkit-scrollbar-thumb {
+    background: #cbd5e0;
+    border-radius: 100vh;
+    border: 3px solid #edf2f7;
+  }
 
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #a0aec0;
+  ::-webkit-scrollbar-thumb:hover {
+    background: #a0aec0;
+  }
 }
 
 /* disable tabindex outline */
