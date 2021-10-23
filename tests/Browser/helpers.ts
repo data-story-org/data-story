@@ -112,3 +112,10 @@ export const saveStory = async (
 
   await expect(page).toClick('button', { text: 'Save' });
 };
+
+export const possibleNodesNames = [
+  'CreateJSON',
+  'HTTPRequest',
+  'RenameAttributes',
+  'CreateAttribute',
+];
