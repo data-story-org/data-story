@@ -21,7 +21,7 @@ describe('Stories saving', () => {
   const possibleNodesNames = [
     'CreateJSON',
     'HTTPRequest',
-    'Inspect',
+    'RenameAttributes',
   ];
 
   const storyName = generateRandomString();
