@@ -9,7 +9,6 @@ module.exports = {
     './src/lib/styles/**/*.ts',
     './public/**/*.html',
   ],
-  important: true,
   darkMode: false, // or 'media' or 'class'
   theme: {
     fontFamily: {
