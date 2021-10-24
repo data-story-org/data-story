@@ -17,7 +17,7 @@ export const BaseFieldHeader: FC<Props> = ({
     <span className={baseFieldTitleStyle}>
       <div className="">
         <span className="text-indigo-500">{name}</span>
-        <span className="italic font-semibold">
+        <span className="italic font-semibold text-gray-900">
           {description ? ` (${description})` : ''}
         </span>
       </div>
