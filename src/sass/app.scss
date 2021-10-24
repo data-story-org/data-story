@@ -4,6 +4,9 @@
 
 @tailwind utilities;
 
+@import 'fonts.scss';
+@import 'icons.scss';
+
 #data-story-gui {
   // Do some styles resettings so parent components
   // can't dictate their own styles when used as widget
