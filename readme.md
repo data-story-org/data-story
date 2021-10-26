@@ -10,6 +10,20 @@ _Visual programming | Process design | Workflows | ETL | Data manipulation_
 
 [Demo](https://data-story-org.github.io/gui)
 
+## Installation and usage in react app
+
+```sh
+yarn add @data-story-org/gui
+```
+
+```js
+import { DataStory } from '@data-story-org/gui';
+import '@data-story-org/gui/lib/styles/app.css';
+
+const someComponent = () => {
+  return <DataStory />;
+};
+```
 ## Development
 
 See [contributing](contributing.md) for setuping seamless development environment for core and gui.
