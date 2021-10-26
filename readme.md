@@ -24,6 +24,12 @@ const someComponent = () => {
   return <DataStory />;
 };
 ```
+
+> :warning: **Using React.StrictMode with data-story-org/gui in development mode will provoke a lot of useless errors**
+> see [projectstorm/react-diagrams#598](https://github.com/projectstorm/react-diagrams/issues/598#issuecomment-635924991)
+
+> as temporally fix you can either disable React.StrictMode or enable it only for production builds
+
 ## Development
 
 See [contributing](contributing.md) for setuping seamless development environment for core and gui.
