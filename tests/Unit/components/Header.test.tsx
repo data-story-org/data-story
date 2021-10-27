@@ -17,6 +17,6 @@ describe('<Header />', () => {
 
     expect(await findByText(window.config.appName))
       .toBeInTheDocument;
-    expect(await findByText('untitled')).toBeInTheDocument;
+    expect(await findByText('Untitled')).toBeInTheDocument;
   });
 });
