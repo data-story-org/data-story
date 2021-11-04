@@ -77,7 +77,7 @@
   },
   "devDependencies": {
     "typescript": "^4.2.2",
-    "tailwindcss": "^2.2.15",
+    "tailwindcss": "^2.2.19",
     "@fontsource/ibm-plex-mono": "^4.5.1",
     "@fontsource/ibm-plex-sans": "^4.5.1",
     "@fontsource/ibm-plex-serif": "^4.5.0",
