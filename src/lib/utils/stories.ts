@@ -11,12 +11,12 @@ export const loadStory = (
     const serializedModel =
       store.metadata.client.load(storyName);
 
-    console.log(serializedModel);
-
     model.deserializeModel(serializedModel, engine);
     engine.setModel(model);
 
     store.setDiagramLocked(false);
+		store.setPage('Workbench');
+		store.setActiveStory(storyName)
   } catch (e) {
     alert(
       `Could not create engine for story ${storyName}. See console for details.`,
@@ -58,6 +58,7 @@ export const loadDemo = (
 
     engine.setModel(model);
     store.importDemo(demoName);
+		store.setActiveStory('Untitled')		
   } catch (e) {
     alert(
       `Could not create engine for demo ${demoName}. See console for details.`,

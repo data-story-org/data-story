@@ -11,6 +11,6 @@ describe('<Header />', () => {
     const { findByText } = render(<Header store={store} />);
 
     expect(await findByText('DataStory')).toBeInTheDocument;
-    expect(await findByText('untitled')).toBeInTheDocument;
+    expect(await findByText('Untitled')).toBeInTheDocument;
   });
 });

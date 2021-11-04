@@ -117,15 +117,6 @@ export class DiagramModel extends DefaultDiagramModel {
 
   setLocked(locked = true) {
     super.setLocked(locked);
-
-    if (locked) {
-      //console.log(this.listeners)
-      // this.deregisterListener(DiagramListener)
-      //this.deregisterListener('zoom')
-    } else {
-      //this.registerListener(DiagramListener)
-      //this.registerListener('zoom')
-    }
   }
 
   smartInspectorNames(node) {

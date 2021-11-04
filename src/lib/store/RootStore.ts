@@ -48,7 +48,7 @@ export class Store {
     },
     requestOpenNodeModal: null,
     stories: [],
-    activeStory: '',
+    activeStory: 'Untitled',
     client: ClientFactory((window as any).config),
     demos: [],
   };
@@ -96,7 +96,7 @@ export class Store {
   }
 
   addNode(data) {
-    delete data.id; // TODO remove id at availableNodes prep
+		delete data.id; // TODO remove id at availableNodes prep
 
     this.getModel().addNode(
       new NodeModel({
