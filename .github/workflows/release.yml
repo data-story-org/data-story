@@ -3,12 +3,12 @@ name: Release
 on:
   push:
     tags:
-      - "v[0-9]+.[0-9]+.[0-9]+*"
+      - 'v[0-9]+.[0-9]+.[0-9]+*'
 
 jobs:
   release_core_on_npm:
-    name: "Build and release core"
-    runs-on: "ubuntu-latest"
+    name: 'Build and release gui'
+    runs-on: 'ubuntu-latest'
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
@@ -20,8 +20,8 @@ jobs:
 
       - name: Bundle styles and fonts
         run: |
-          yarn prod
           mkdir lib
+          yarn prod
           cp -r dist/css lib/styles
           cp -r dist/fonts lib/fonts
 
