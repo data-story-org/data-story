@@ -23,7 +23,6 @@ describe('App', () => {
   }, 200000);
 
   it('Loads and renders react', async () => {
-    await expect(page).toMatch('proof of concept');
     await expect(page).toMatch('DataStory');
   });
 

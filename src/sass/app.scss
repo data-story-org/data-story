@@ -4,25 +4,24 @@
 
 @tailwind utilities;
 
-@import '@fontsource/ibm-plex-sans/300.css';
-@import '@fontsource/ibm-plex-sans/400.css';
-@import '@fontsource/ibm-plex-sans/500.css';
-@import '@fontsource/ibm-plex-sans/600.css';
-@import '@fontsource/ibm-plex-sans/700.css';
-@import '@fontsource/ibm-plex-sans/400-italic.css';
+@import 'fonts.scss';
+@import 'icons.scss';
 
-@import '~@fontsource/ibm-plex-mono/300.css';
-@import '~@fontsource/ibm-plex-mono/400.css';
-@import '~@fontsource/ibm-plex-mono/500.css';
-@import '~@fontsource/ibm-plex-mono/600.css';
-@import '~@fontsource/ibm-plex-mono/700.css';
-@import '~@fontsource/ibm-plex-mono/400-italic.css';
+#data-story-gui {
+  // Do some styles resettings so parent components
+  // can't dictate their own styles when used as widget
+  text-align: initial;
+  margin: initial;
+  background-color: initial;
+}
 
 // React Diagrams must have explicit width and height
 .fullsize {
-  width: 100vw;
   height: 70vh;
 
+  & svg:not(:root) {
+    overflow: initial;
+  }
   // GRID BACKGROUND...
   // background-size: 50px 50px;
   // display: flex;
@@ -80,30 +79,42 @@ foreignObject > div > div {
   scrollbar-width: none; /* Firefox */
 }
 
+.ReactModal__Overlay {
+  opacity: 0;
+  transition: opacity 500ms ease-in-out;
+}
+
+.ReactModal__Overlay--after-open {
+  opacity: 1;
+}
+
+.ReactModal__Overlay--before-close {
+  opacity: 0;
+}
+
 /* Configure scrollbar */
 
-/* width */
-::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
-}
+#data-story-gui,
+.ReactModalPortal {
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
 
-/* Track */
-::-webkit-scrollbar-track {
-  border-radius: 100vh;
-  background: #edf2f7;
-}
+  ::-webkit-scrollbar-track {
+    border-radius: 100vh;
+    background: #edf2f7;
+  }
 
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: #cbd5e0;
-  border-radius: 100vh;
-  border: 3px solid #edf2f7;
-}
+  ::-webkit-scrollbar-thumb {
+    background: #cbd5e0;
+    border-radius: 100vh;
+    border: 3px solid #edf2f7;
+  }
 
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #a0aec0;
+  ::-webkit-scrollbar-thumb:hover {
+    background: #a0aec0;
+  }
 }
 
 /* disable tabindex outline */

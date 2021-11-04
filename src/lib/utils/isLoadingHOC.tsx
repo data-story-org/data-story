@@ -1,4 +1,9 @@
-import React, { useState, FC, ComponentType } from 'react';
+import React, {
+  useState,
+  ComponentType,
+  Dispatch,
+  SetStateAction,
+} from 'react';
 import ScaleLoader from 'react-spinners/ScaleLoader';
 import FadeIn from 'react-fade-in';
 
@@ -13,7 +18,7 @@ export const AnimationLoader = () => {
 };
 
 export interface withLoadingProps {
-  setLoading?: (loading: boolean) => void;
+  setLoading?: Dispatch<SetStateAction<boolean>>;
 }
 
 export const withLoading =
@@ -22,12 +27,6 @@ export const withLoading =
   ) =>
   ({ ...props }: P) => {
     const [isLoading, setIsLoading] = useState(true);
-
-    const setLoadingState = (
-      isComponentLoading: boolean,
-    ) => {
-      setIsLoading(isComponentLoading);
-    };
 
     const loadingStyle = {
       filter: 'blur(3px)',
@@ -42,7 +41,7 @@ export const withLoading =
         <div style={isLoading ? loadingStyle : {}}>
           <WrappedComponent
             {...(props as P)}
-            setLoading={setLoadingState}
+            setLoading={setIsLoading}
           />
         </div>
         {isLoading && <AnimationLoader />}

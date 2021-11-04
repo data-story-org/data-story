@@ -9,6 +9,7 @@ import {
   openModal,
   saveModal,
   saveStory,
+  possibleNodesNames,
 } from '../helpers';
 import { sample } from 'lodash';
 
@@ -17,12 +18,6 @@ setDefaultOptions({ timeout: 0 });
 describe('Stories saving', () => {
   let browser: puppeteer.Browser;
   let page: puppeteer.Page;
-
-  const possibleNodesNames = [
-    'CreateJSON',
-    'HTTPRequest',
-    'Inspect',
-  ];
 
   const storyName = generateRandomString();
   const storyDesc = generateRandomString();

@@ -1,5 +1,3 @@
-const defaultTheme = require('tailwindcss/defaultTheme');
-
 module.exports = {
   purge: [
     './src/components/**/*.tsx',
@@ -9,24 +7,14 @@ module.exports = {
     './src/lib/styles/**/*.ts',
     './public/**/*.html',
   ],
-  important: true,
   darkMode: false, // or 'media' or 'class'
   theme: {
-    fontFamily: {
-      sans: [
-        'IBM Plex Sans',
-        ...defaultTheme.fontFamily.sans,
-      ],
-      serif: [
-        'IBM Plex Serif',
-        ...defaultTheme.fontFamily.serif,
-      ],
-      mono: [
-        'IBM Plex Mono',
-        ...defaultTheme.fontFamily.mono,
-      ],
-    },
     extend: {
+      fontFamily: {
+        sans: ['IBM Plex Sans'],
+        serif: ['IBM Plex Serif'],
+        mono: ['IBM Plex Mono'],
+      },
       colors: {
         malibu: {
           500: '#61dafb',

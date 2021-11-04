@@ -18,8 +18,8 @@ module.exports = {
   // support package.json "exports"
   // https://github.com/facebook/jest/issues/9771
   // https://github.com/facebook/jest/issues/10422
-  moduleNameMapper: {
-    '^@data-story-org/core/(.*)$':
-      '@data-story-org/core/lib/src/$1',
-  },
+  // moduleNameMapper: {
+  //   '^@data-story-org/core/(.*)$':
+  //     '@data-story-org/core/lib/src/$1',
+  // },
 };

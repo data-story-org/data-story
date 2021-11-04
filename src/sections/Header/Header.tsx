@@ -1,6 +1,5 @@
 import React, { FC } from 'react';
 import { ActiveStory } from './ActiveStory';
-import * as globalWindow from '../../lib/types/globalWindow';
 import { Store } from '../../lib/store';
 import { observer } from 'mobx-react-lite';
 
@@ -20,7 +19,7 @@ export const Header: FC<Props> = observer(({ store }) => {
           className="text-xl text-malibu-500 hover:text-malibu-600 cursor-pointer font-medium subpixel-antialiased"
           onClick={onClick}
         >
-          {window.config.appName}
+          DataStory
         </span>
         <ActiveStory store={store} />
       </div>

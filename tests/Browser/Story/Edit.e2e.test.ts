@@ -7,6 +7,7 @@ import {
   generateRandomString,
   openModal,
   pageSetup,
+  possibleNodesNames,
   puppeteerConfig,
   saveModal,
   saveStory,
@@ -17,12 +18,6 @@ setDefaultOptions({ timeout: 0 });
 describe('Stories editing', () => {
   let browser: puppeteer.Browser;
   let page: puppeteer.Page;
-
-  const possibleNodesNames = [
-    'CreateJSON',
-    'HTTPRequest',
-    'Inspect',
-  ];
 
   const storyName = generateRandomString();
   const storyDesc = generateRandomString();
@@ -46,7 +41,7 @@ describe('Stories editing', () => {
       { text: storyName },
     );
 
-    await expect(story).toClick('i.fa-pencil-square');
+    await expect(story).toClick('i.fa-pen-square');
 
     const [storyNameNew, storyDescNew, storyTagsNew] = [
       generateRandomString(),
