@@ -80,7 +80,7 @@
     "tailwindcss": "^2.2.15",
     "@fontsource/ibm-plex-mono": "^4.5.1",
     "@fontsource/ibm-plex-sans": "^4.5.1",
-    "@fontsource/ibm-plex-serif": "^4.5.0",
+    "@fontsource/ibm-plex-serif": "^4.5.1",
     "@fortawesome/fontawesome-free": "^5.15.4",
     "@babel/plugin-proposal-decorators": "^7.12.1",
     "@babel/plugin-transform-modules-commonjs": "^7.13.8",
