@@ -86,7 +86,16 @@ export const App: FC<withLoadingProps> = withLoading(
         <Header store={store} />
         <Toolbar store={store} setLoading={setLoading} />
         {booted && <Page store={store} />}
-        <ToastContainer style={{ paddingTop: '0px' }} />
+        <ToastContainer
+          style={{
+            position: 'absolute',
+            bottom: '2%',
+            right: '2%',
+            overflow: 'hidden',
+            zIndex: 0,
+            padding: '1em',
+          }}
+        />
         <AppHotkeys store={store} />
       </div>
     );
