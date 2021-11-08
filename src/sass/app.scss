@@ -13,6 +13,21 @@
   text-align: initial;
   margin: initial;
   background-color: initial;
+$font-sans: IBM Plex Sans;
+$font-mono: IBM Plex Mono;
+
+.font-sans {
+  font-family: $font-sans;
+}
+
+.font-mono {
+  font-family: $font-mono;
+}
+
+#data-story-gui,
+.ReactModalPortal {
+  @extend .no-scrollbar;
+  @extend .font-sans;
 }
 
 // React Diagrams must have explicit width and height
