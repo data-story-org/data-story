@@ -11,9 +11,13 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['IBM Plex Sans'],
-        serif: ['IBM Plex Serif'],
-        mono: ['IBM Plex Mono'],
+        // Remove font settings so they
+        // won't be forced globally,
+        // and therefore gui can be used
+        // as widget in other apps
+        sans: [''],
+        serif: [''],
+        mono: [''],
       },
       colors: {
         malibu: {
