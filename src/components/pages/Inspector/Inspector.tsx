@@ -2,6 +2,7 @@ import React, { FC, useCallback } from 'react';
 import { observer } from 'mobx-react-lite';
 import { InspectorTable } from './InspectorTable';
 import { InspectorJSON } from './InspectorJSON';
+import { InspectorCanvas } from './InspectorCanvas';
 import { Store } from '../../../lib/store';
 import {
   InspectorMode,
@@ -15,7 +16,8 @@ interface Props {
 
 type InspectorModeComponent =
   | typeof InspectorTable
-  | typeof InspectorJSON;
+  | typeof InspectorJSON
+	| typeof InspectorCanvas;
 
 const inspectorComponentsMap = new Map<
   InspectorMode,
@@ -23,6 +25,7 @@ const inspectorComponentsMap = new Map<
 >([
   ['Table', InspectorTable],
   ['JSON', InspectorJSON],
+	['Canvas', InspectorCanvas],
 ]);
 
 export const Inspector: FC<Props> = observer(
