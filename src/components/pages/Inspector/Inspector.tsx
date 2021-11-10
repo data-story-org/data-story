@@ -17,7 +17,7 @@ interface Props {
 type InspectorModeComponent =
   | typeof InspectorTable
   | typeof InspectorJSON
-	| typeof InspectorCanvas;
+  | typeof InspectorCanvas;
 
 const inspectorComponentsMap = new Map<
   InspectorMode,
@@ -25,7 +25,7 @@ const inspectorComponentsMap = new Map<
 >([
   ['Table', InspectorTable],
   ['JSON', InspectorJSON],
-	['Canvas', InspectorCanvas],
+  ['Canvas', InspectorCanvas],
 ]);
 
 export const Inspector: FC<Props> = observer(
