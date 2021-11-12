@@ -1,12 +1,13 @@
 import { BootPayload } from '@data-story-org/core/lib/src/types/BootPayload';
 import axios from 'axios';
 import { DiagramModel } from '../diagram/models';
-import {
-  ClientInterface,
-  RunResult,
-} from './ClientInterface';
+import { ClientInterface } from './ClientInterface';
 import { parse } from 'flatted';
 import { SerializedReactDiagram, Story } from '../types';
+import {
+  DiagramRunResult,
+  RunResult,
+} from '@data-story-org/core';
 
 export class APIClient implements ClientInterface {
   public root = 'http://localhost:3000'; // https://data-story-server.herokuapp.com
@@ -24,7 +25,7 @@ export class APIClient implements ClientInterface {
     return response.data;
   }
 
-  async run(model: DiagramModel): Promise<RunResult> {
+  async run(model: DiagramModel): RunResult {
     const response = await axios.post(
       this.root + '/run',
       {
@@ -35,7 +36,7 @@ export class APIClient implements ClientInterface {
       },
     );
 
-    return response.data as RunResult;
+    return response.data as DiagramRunResult;
   }
 
   load(name: string): SerializedReactDiagram {

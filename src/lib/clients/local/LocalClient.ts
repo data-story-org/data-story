@@ -1,12 +1,13 @@
 import { LocalServer } from './LocalServer';
 import { DiagramModel } from '../../diagram/models';
-import {
-  ClientInterface,
-  RunResult,
-} from '../ClientInterface';
+import { ClientInterface } from '../ClientInterface';
 import context from './localSampleContext';
 import { BootPayload } from '@data-story-org/core';
 import { SerializedReactDiagram, Story } from '../../types';
+import {
+  DiagramRunResult,
+  RunResult,
+} from '@data-story-org/core';
 
 const server = new LocalServer(context);
 
@@ -15,10 +16,10 @@ export class LocalClient implements ClientInterface {
     return server.boot();
   }
 
-  async run(model: DiagramModel): Promise<RunResult> {
+  async run(model: DiagramModel): RunResult {
     return (await server.run(
       model.serialize(),
-    )) as RunResult;
+    )) as DiagramRunResult;
   }
 
   load(name: string): SerializedReactDiagram {

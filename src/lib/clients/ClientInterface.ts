@@ -4,14 +4,11 @@ import {
   SerializedReactDiagram,
   Story,
 } from '../types';
-
-export interface RunResult {
-  diagram: DiagramModel;
-}
+import { RunResult } from '@data-story-org/core';
 
 export interface ClientInterface {
   boot(options: object): Promise<BootPayload>;
-  run(model: DiagramModel): Promise<RunResult>;
+  run(model: DiagramModel): RunResult;
   save(story: Story): Promise<any>;
   delete(storyName: string): Promise<void>;
   load(name: string): SerializedReactDiagram;

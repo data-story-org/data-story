@@ -5,7 +5,7 @@ import { useHotkeys } from 'react-hotkeys-hook';
 import { BaseControl } from './BaseControl';
 import { withLoadingProps } from '../../lib/utils';
 import { Store } from '../../lib/store';
-import { RunResult } from '../../lib/clients/ClientInterface';
+import { DiagramRunResult } from '@data-story-org/core';
 
 interface Props extends withLoadingProps {
   store: Store;
@@ -30,7 +30,7 @@ export const RunControl: FC<Props> = observer(
 
       store.metadata.client
         .run(store.getModel())
-        .then((result: RunResult) => {
+        .then((result: DiagramRunResult) => {
           const diagram = store.getModel();
           const serverDiagram = result.diagram;
           diagram.syncFeatures(serverDiagram);
