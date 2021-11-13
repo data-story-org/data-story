@@ -90,7 +90,7 @@ describe('Hotkeys', () => {
   test('[SHIFT + D] opens diagram', async () => {
     // Go to inpector first
     await page.keyboard.down('Shift');
-    await page.keyboard.press('KeyT');
+    await page.keyboard.press('KeyI');
     await page.keyboard.up('Shift');
     await expect(page).toMatch('No data to show here');
 
