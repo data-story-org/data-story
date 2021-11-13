@@ -53,9 +53,9 @@ describe('Hotkeys', () => {
     await expect(page).toMatch('node_name');
   }, 100000);
 
-  test('[SHIFT + T] opens inspector', async () => {
+  test('[SHIFT + I] opens inspector', async () => {
     await page.keyboard.down('Shift');
-    await page.keyboard.press('KeyT');
+    await page.keyboard.press('KeyI');
     await page.keyboard.up('Shift');
 
     await expect(page).toMatch('No data to show here');
