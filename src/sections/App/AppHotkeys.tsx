@@ -15,12 +15,12 @@ export const AppHotkeys: FC<Props> = observer(
     });
 
     useHotkeys('shift+i', () => {
-			if(!store.metadata.activeInspector.nodeId) {
-				const inspectables = store.nodesWithInspectables()
-				store.setActiveInspector(
-					inspectables.length ? inspectables[0].id : null
-				)
-			}
+      if (!store.metadata.activeInspector.nodeId) {
+        const inspectables = store.nodesWithInspectables();
+        store.setActiveInspector(
+          inspectables.length ? inspectables[0].id : null,
+        );
+      }
 
       store.setPage('Inspector');
     });
