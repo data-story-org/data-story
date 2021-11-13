@@ -172,7 +172,7 @@ export class Store {
   setPage(name) {
     const alreadyOnPage = this.metadata.page == name;
     this.metadata.page =
-      alreadyOnPage && name !== 'Inspector'
+      alreadyOnPage
         ? 'Workbench'
         : name;
   }
