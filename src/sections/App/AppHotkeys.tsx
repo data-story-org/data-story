@@ -14,7 +14,14 @@ export const AppHotkeys: FC<Props> = observer(
       store.setPage('Workbench');
     });
 
-    useHotkeys('shift+t', () => {
+    useHotkeys('shift+i', () => {
+      if (!store.metadata.activeInspector.nodeId) {
+        const inspectables = store.nodesWithInspectables();
+        store.setActiveInspector(
+          inspectables.length ? inspectables[0].id : null,
+        );
+      }
+
       store.setPage('Inspector');
     });
 

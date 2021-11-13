@@ -39,6 +39,9 @@ See [contributing](contributing.md) for setuping seamless development environmen
 | Hotkey   |       Action       |
 | -------- | :----------------: |
 | ALT+D    |   Go to diagram    |
+| ALT+I    |  Go to Inspectors  |
 | ALT+J    | Go to diagram JSON |
+| ALT+O    |        open        |
 | ALT+PLUS |      Add node      |
 | ALT+R    |    Run diagram     |
+| ALT+S    |        save        |
