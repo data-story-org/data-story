@@ -1,5 +1,5 @@
 import { observer } from 'mobx-react-lite';
-import React, { FC, useState } from 'react';
+import React, { useState } from 'react';
 import Modal from 'react-modal';
 import { Store } from '../../../lib/store';
 import { GenericStory } from '../../../lib/types';
@@ -20,13 +20,14 @@ interface Props {
 const storyWidgetStyle =
   'cursor-pointer rounded bg-gray-400 hover:shadow-xl overflow-hidden shadow-lg';
 
-export const DataStoryWidget: FC<Props> = observer(
-  ({
-    store,
-    story,
-    storyLoadHandler,
-    isStoryDemo = false,
-  }) => {
+export const DataStoryWidget = observer<
+  Props,
+  HTMLDivElement
+>(
+  (
+    { store, story, storyLoadHandler, isStoryDemo = false },
+    ref,
+  ) => {
     const [isOpen, setIsOpen] = useState(false);
 
     const openModal = () => {
@@ -43,6 +44,7 @@ export const DataStoryWidget: FC<Props> = observer(
       <div
         key={story.name}
         id="data-story"
+        ref={ref}
         className={storyWidgetStyle}
         onClick={
           isOpen
@@ -83,4 +85,5 @@ export const DataStoryWidget: FC<Props> = observer(
       </div>
     );
   },
+  { forwardRef: true },
 );
