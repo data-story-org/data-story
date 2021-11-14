@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useRef, useState } from 'react';
 import { Store } from '../../../lib/store';
 import { observer } from 'mobx-react-lite';
 import { StoryGrid } from '../../widgets/DataStory';
@@ -8,6 +8,7 @@ import {
   GenericStory,
   Story,
 } from '../../../lib/types';
+import { useHotkeys } from 'react-hotkeys-hook';
 
 interface Props {
   store: Store;
@@ -17,6 +18,7 @@ interface Props {
 export const OpenModalBody: FC<Props> = observer(
   ({ store, afterStoryClick }) => {
     const userStories = store.metadata.stories;
+    const currentSearchedStory = useRef(null);
 
     const [userSearchedStories, setUserSearchedStories] =
       useState(userStories);
@@ -24,6 +26,15 @@ export const OpenModalBody: FC<Props> = observer(
     const isStorySearched = (story: GenericStory) => {
       return userSearchedStories.includes(story as Story);
     };
+
+    useHotkeys(
+      'enter',
+      (e) => {
+        e.stopPropagation();
+        currentSearchedStory.current.click();
+      },
+      { enableOnTags: ['INPUT'] },
+    );
 
     const userHaveSavedStories =
       store.metadata.stories.length !== 0;
@@ -47,6 +58,8 @@ export const OpenModalBody: FC<Props> = observer(
               stories={userStories.filter(isStorySearched)}
               store={store}
               afterStoryClick={afterStoryClick}
+              currentSearchedStory={currentSearchedStory}
+              visualSelection={true}
             />
           </div>
         </div>
