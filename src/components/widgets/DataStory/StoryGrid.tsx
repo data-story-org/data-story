@@ -1,4 +1,9 @@
-import React, { FC } from 'react';
+import React, {
+  FC,
+  RefObject,
+  useEffect,
+  useState,
+} from 'react';
 import { observer } from 'mobx-react-lite';
 
 import { Store } from '../../../lib/store';
@@ -8,12 +13,13 @@ import {
   GenericStory,
 } from '../../../lib/types';
 import { DataStoryWidget } from '../../widgets';
+import { useHotkeys } from 'react-hotkeys-hook';
 
 interface Props {
   store: Store;
   stories: GenericStory[];
   isDemos?: boolean;
-  visualSelectionStyles?: boolean;
+  visualSelection?: boolean;
   afterStoryClick?: BaseVoidEventHandler;
   currentSearchedStory?: RefObject<HTMLDivElement>;
 }
@@ -31,10 +37,58 @@ export const StoryGrid: FC<Props> = observer(
     stories,
     isDemos = false,
     currentSearchedStory = null,
-    visualSelectionStyles = false,
+    visualSelection = false,
     afterStoryClick = () => {},
   }) => {
     const [cursor, setCursor] = useState(0);
+    if (visualSelection) {
+      useEffect(() => {
+        setCursor(0);
+      }, [stories]);
+
+      const goNext = () => {
+        cursor < stories.length - 1
+          ? setCursor(cursor + 1)
+          : setCursor(0);
+
+        currentSearchedStory &&
+          currentSearchedStory.current.scrollIntoView(
+            false,
+          );
+      };
+
+      const goPrevious = () => {
+        cursor > 0
+          ? setCursor(cursor - 1)
+          : setCursor(stories.length - 1);
+
+        currentSearchedStory &&
+          currentSearchedStory.current.scrollIntoView(
+            false,
+          );
+      };
+
+      useHotkeys(
+        'tab, down',
+        (e) => {
+          e.preventDefault();
+          goNext();
+        },
+        { enableOnTags: ['INPUT'] },
+        [cursor],
+      );
+
+      useHotkeys(
+        'shift+tab, up',
+        (e) => {
+          e.preventDefault();
+          goPrevious();
+        },
+        { enableOnTags: ['INPUT'] },
+        [cursor],
+      );
+    }
+
     const onClick = (name: string) => {
       isDemos
         ? loadDemo(store, name)
@@ -49,7 +103,7 @@ export const StoryGrid: FC<Props> = observer(
         {stories.map((story, i) => {
           const selectedPredicate = i == cursor;
 
-          const selected = visualSelectionStyles
+          const selected = visualSelection
             ? selectedPredicate
             : true;
 
