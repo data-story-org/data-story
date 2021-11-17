@@ -6,6 +6,7 @@ import {
   BaseVoidEventHandler,
   SerializedReactDiagram,
 } from '../../../lib/types';
+import { saveStory } from '../../../lib/utils';
 import { BaseModalHeader } from '../BaseModalHeader';
 import { BaseStoryWidgetModal } from '../BaseStoryModal';
 import { SaveStoryI } from '../BaseStoryModal/SaveStoryI';
@@ -21,7 +22,7 @@ export const SaveModal: FC<Props> = observer(
       closeModal();
     };
 
-    const handleSave = (story: SaveStoryI) => {
+    const handleSave = async (story: SaveStoryI) => {
       store.getModel().clearLinkLabels();
 
       const dataStory = new Story<SerializedReactDiagram>(
@@ -31,19 +32,8 @@ export const SaveModal: FC<Props> = observer(
         store.getModel().serialize(),
       );
 
-      store.setStories([
-        ...store.metadata.stories,
-        dataStory,
-      ]);
-
-      store.metadata.client
-        .save(dataStory)
-        .then(() => {
-          closeModal();
-        })
-        .catch((error) => {
-          alert('Save error');
-        });
+      await saveStory(store, dataStory);
+      closeModal();
     };
 
     return (
@@ -53,6 +43,7 @@ export const SaveModal: FC<Props> = observer(
           storySaver={handleSave}
           handleCancel={handleCancel}
           withHeader={false}
+          store={store}
         />
       </div>
     );
