@@ -1,8 +1,9 @@
 import { observer } from 'mobx-react-lite';
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import { Store } from '../../../lib/store';
 import { BaseVoidEventHandler } from '../../../lib/types';
 import { deleteStory } from '../../../lib/utils';
+import { ConfirmDialog } from '../../../lib/utils/Dialog';
 
 interface Story {
   name: string;
@@ -16,6 +17,11 @@ interface Props {
 
 export const DataStoryWidgetActions: FC<Props> = observer(
   ({ store, story, onEdit }) => {
+    const [
+      deleteConfirmationRequired,
+      setDeleteConfirmationRequired,
+    ] = useState(false);
+
     return (
       <div className="absolute top-0 right-0 m-4">
         <div className="flex space-x-2">
@@ -37,12 +43,20 @@ export const DataStoryWidgetActions: FC<Props> = observer(
               e.preventDefault();
               e.stopPropagation();
 
-              deleteStory(store, story.name);
+              setDeleteConfirmationRequired(true);
             }}
           >
             <i className="fas fa-minus"></i>
           </span>
         </div>
+
+        <ConfirmDialog
+          title="Pernamently delete story"
+          description={`Are ypu sure want to delete «‎${story.name}»‎ story?`}
+          open={deleteConfirmationRequired}
+          setOpen={setDeleteConfirmationRequired}
+          onConfirm={() => deleteStory(store, story.name)}
+        />
       </div>
     );
   },
