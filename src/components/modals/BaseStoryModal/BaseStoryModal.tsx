@@ -1,9 +1,4 @@
-import React, {
-  FC,
-  useCallback,
-  useEffect,
-  useState,
-} from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { SaveStoryI } from './SaveStoryI';
 import { StoryWidgetBody } from './BaseStoryModalBody';
 import { StoryWidgetActions } from './BaseStoryModalActions';
@@ -12,6 +7,7 @@ import { useHotkeys } from 'react-hotkeys-hook';
 import { BaseEventHandler } from '../../../lib/types';
 import { Store } from '../../../lib/store';
 import { observer } from 'mobx-react-lite';
+import { ConfirmDialog } from '../../../lib/utils/Dialog';
 
 export type StoryWidgetSaver = (story: SaveStoryI) => void;
 
@@ -62,18 +58,15 @@ export const BaseStoryWidgetModal: FC<Props> = observer(
       (exstStory) => exstStory.name === story.name,
     );
 
+    const [
+      saveConfirmationRequired,
+      setSaveConfirmationRequired,
+    ] = useState(false);
+
     const handleSave = (e) => {
-      if (isStoryBeingEdited) {
-        if (
-          window.confirm(
-            `Are you sure want to overwrite '${story.name}''`,
-          )
-        ) {
-          storySaver(story);
-        }
-      } else {
-        storySaver(story);
-      }
+      isStoryBeingEdited
+        ? setSaveConfirmationRequired(true)
+        : storySaver(story);
     };
 
     const handleChange =
@@ -121,6 +114,15 @@ export const BaseStoryWidgetModal: FC<Props> = observer(
         <StoryWidgetActions
           handleSave={handleSave}
           handleCancel={handleCancel}
+        />
+
+        <ConfirmDialog
+          title="Overwrite existing story"
+          description={`Are you sure want to overwrite existing «‎${story.name}»‎ story?`}
+          open={saveConfirmationRequired}
+          setOpen={setSaveConfirmationRequired}
+          onConfirm={() => storySaver(story)}
+          onClose={() => setSaveConfirmationRequired(false)}
         />
       </div>
     );
