@@ -48,7 +48,7 @@ export const StoryWidgetBody: FC<Props> = observer(
         byName: [],
         byDescription: [],
       });
-    const [showMatches, setShowMatches] = useState(true);
+    const [showMatches, setShowMatches] = useState(false);
 
     const nameFuse = new Fuse<Story>(
       store.metadata.stories,
@@ -66,13 +66,15 @@ export const StoryWidgetBody: FC<Props> = observer(
           .map((result) => result.item),
       });
 
-      const matchedStorySelected =
-        possibleMatches.byName.some(
-          (matchedStory) =>
-            matchedStory.name === story.name,
-        );
+      if (possibleMatches.byName.length > 0) {
+        const matchedStorySelected =
+          possibleMatches.byName.some(
+            (matchedStory) =>
+              matchedStory.name === story.name,
+          );
 
-      if (!matchedStorySelected) setShowMatches(true);
+        if (!matchedStorySelected) setShowMatches(true);
+      }
     }, [story]);
 
     return (
