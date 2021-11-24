@@ -31,14 +31,8 @@ export const deleteStory = (
   store: Store,
   storyName: string,
 ) => {
-  if (window.confirm(`Delete the '${storyName} story?'`)) {
-    try {
-      store.metadata.client.delete(storyName);
-
-      const withoutDeletedStory =
-        store.metadata.stories.filter(
-          (story) => story.name !== storyName,
-        );
+  try {
+    store.metadata.client.delete(storyName);
 
       store.setStories(withoutDeletedStory);
     } catch (e) {
