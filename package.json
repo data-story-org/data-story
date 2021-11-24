@@ -53,7 +53,7 @@
     "@emotion/react": "^11.4.1",
     "@emotion/styled": "^11.3.0",
     "@projectstorm/react-diagrams": "^6.6.1",
-    "axios": "^0.21",
+    "axios": "^0.24",
     "dagre": "^0.8.5",
     "flatted": "^3.2.2",
     "fuse.js": "^6.4.6",
