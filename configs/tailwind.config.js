@@ -13,7 +13,7 @@ module.exports = {
       fontFamily: {
         // Remove font settings so they
         // won't be forced globally,
-        // and therefore gui can be used
+        // and therefore data-story can be used
         // as widget in other apps
         sans: [''],
         serif: [''],

@@ -2,7 +2,7 @@
 
 ## Local development
 
-To have seamless experience of developing [data-story-org/core](https://github.com/data-story-org/core) with [data-story-org/gui](https://github.com/data-story-org/gui) in your local environment you have to setup some things:
+To have seamless experience of developing [data-story-org/core](https://github.com/data-story-org/core) with [data-story-org/data-story](https://github.com/data-story-org/data-story) in your local environment you have to setup some things:
 
 - Right directories structure
 - Git filters to exclude locally linked core dependency from version control
@@ -12,10 +12,10 @@ The most usable and correct folder structure will be
 ```sh
 data-story
 ├── core
-└── gui
+└── data-story
 ```
 
-Then in gui you most likely want to change dependency on core repo to your local copy of it, so
+Then in data-story you most likely want to change dependency on core repo to your local copy of it, so
 
 ```json
 "@data-story-org/core": "link:../core",
@@ -29,7 +29,7 @@ git config  filter.changeToGitVersion.smudge 'sed "s/\"@data-story-org\/core\": 
 git config  filter.changeToGitVersion.required true
 ```
 
-That's all, now it's possible to develop core and gui freely
+That's all, now it's possible to develop core and data-story freely
 
 ## Bundling
 
@@ -39,10 +39,10 @@ Build core files
 tsc --watch
 ```
 
-Build gui files
+Build data-story files
 
 ```
 yarn watch
 ```
 
-Serve `gui/public/index.html`
+Serve `data-story/public/index.html`
