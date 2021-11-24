@@ -8,6 +8,7 @@ import React, {
 } from 'react';
 import { Options, useHotkeys } from 'react-hotkeys-hook';
 import { BaseVoidEventHandler } from '../types';
+import { useStore } from '../store';
 
 interface Props {
   title: string;
@@ -28,13 +29,21 @@ export const ConfirmDialog: FC<Props> = ({
   onConfirm = () => {},
   onClose = () => {},
 }) => {
+  const store = useStore();
+
   let cancelButtonRef = useRef(null);
   let confirmButtonRef = useRef(null);
   const [currentButton, setCurrentButton] =
     useState<DialogButton>('Cancel');
 
   useEffect(() => {
-    open && cancelButtonRef.current.focus();
+    if (open) {
+      store.setConfirmRequired(true);
+    }
+
+    return () => {
+      store.setConfirmRequired(false);
+    };
   }, [open]);
 
   const confirmationHandler = (e) => {
