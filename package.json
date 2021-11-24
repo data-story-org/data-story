@@ -1,7 +1,7 @@
 {
   "name": "@data-story-org/data-story",
   "description": "![tests](https://github.com/ajthinking/data-story/workflows/tests/badge.svg) ![version](https://img.shields.io/packagist/v/ajthinking/data-story?color=blue) ![proofofconcept](https://img.shields.io/badge/proof%20of%20concept-gold)",
-  "version": "0.0.22",
+  "version": "0.0.26",
   "main": "lib/cjs/src/index.js",
   "module": "lib/esm/src/index.js",
   "types": "lib/types/src/index.d.ts",
