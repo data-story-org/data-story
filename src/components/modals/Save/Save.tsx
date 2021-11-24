@@ -1,10 +1,9 @@
-import { Story } from '@data-story-org/core';
 import { observer } from 'mobx-react-lite';
 import React, { FC } from 'react';
 import { Store } from '../../../lib/store';
 import {
   BaseVoidEventHandler,
-  SerializedReactDiagram,
+  DataStory,
 } from '../../../lib/types';
 import { saveStory } from '../../../lib/utils';
 import { BaseModalHeader } from '../BaseModalHeader';
@@ -25,15 +24,15 @@ export const SaveModal: FC<Props> = observer(
     const handleSave = async (story: SaveStoryI) => {
       store.getModel().clearLinkLabels();
 
-      const dataStory = new Story<SerializedReactDiagram>(
+      const dataStory = new DataStory(
         story.name,
         story.description,
         Object.values(story.tags),
         store.getModel().serialize(),
       );
 
-      await saveStory(store, dataStory);
       closeModal();
+      await saveStory(store, dataStory);
     };
 
     return (
