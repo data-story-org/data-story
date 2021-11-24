@@ -80,8 +80,9 @@ export const ConfirmDialog: FC<Props> = ({
   );
 
   useHotkeys(
-    'left, right',
+    'left, right, shift+tab, tab',
     (e) => {
+      e.preventDefault();
       e.stopPropagation();
       switch (currentButton) {
         case 'Cancel':
