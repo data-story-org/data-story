@@ -113,7 +113,7 @@
     "gh-pages": "^3.2.3",
     "jest": "^27.0.6",
     "jest-cli": "^27.0.6",
-    "jest-puppeteer": "^5.0.4",
+    "jest-puppeteer": "^6.0.0",
     "laravel-mix": "^6.0.28",
     "prettier": "^2.4.1",
     "puppeteer": "^10.2.0",
