@@ -43,7 +43,7 @@ export const ConfigModal: FC<Props> = observer(
         <BaseModalHeader action="config" />
         <ConfigModalBody />
         <ConfigModalActions handleCancel={handleCancel} />
-		v0.026
+        v0.026
       </div>
     );
   },
