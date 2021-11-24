@@ -27,17 +27,20 @@ export const OpenModalBody: FC<Props> = observer(
       return userSearchedStories.includes(story as Story);
     };
 
+    const userHaveSavedStories =
+      store.metadata.stories.length !== 0;
+
     useHotkeys(
       'enter',
       (e) => {
         e.stopPropagation();
         currentSearchedStory.current.click();
       },
-      { enableOnTags: ['INPUT'] },
+      {
+        enableOnTags: ['INPUT'],
+        enabled: !store.metadata.confirmationRequired,
+      },
     );
-
-    const userHaveSavedStories =
-      store.metadata.stories.length !== 0;
 
     return (
       <div>

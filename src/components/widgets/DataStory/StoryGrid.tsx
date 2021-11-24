@@ -13,7 +13,7 @@ import {
   GenericStory,
 } from '../../../lib/types';
 import { DataStoryWidget } from '../../widgets';
-import { useHotkeys } from 'react-hotkeys-hook';
+import { Options, useHotkeys } from 'react-hotkeys-hook';
 
 interface Props {
   store: Store;
@@ -68,13 +68,19 @@ export const StoryGrid: FC<Props> = observer(
           );
       };
 
+      const hotkeysOptions: Options = {
+        enableOnTags: ['INPUT'],
+        enabled: !store.metadata.confirmationRequired,
+      };
+
       useHotkeys(
         'tab, down',
         (e) => {
           e.preventDefault();
+          e.stopPropagation();
           goNext();
         },
-        { enableOnTags: ['INPUT'] },
+        hotkeysOptions,
         [cursor],
       );
 
@@ -82,9 +88,10 @@ export const StoryGrid: FC<Props> = observer(
         'shift+tab, up',
         (e) => {
           e.preventDefault();
+          e.stopPropagation();
           goPrevious();
         },
-        { enableOnTags: ['INPUT'] },
+        hotkeysOptions,
         [cursor],
       );
     }
