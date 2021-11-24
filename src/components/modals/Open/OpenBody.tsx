@@ -17,6 +17,18 @@ interface Props {
 
 export const OpenModalBody: FC<Props> = observer(
   ({ store, afterStoryClick }) => {
+    useHotkeys(
+      'shift+enter',
+      (e) => {
+        e.stopPropagation();
+        currentSearchedStory.current.click();
+      },
+      {
+        enableOnTags: ['INPUT'],
+        enabled: !store.metadata.confirmationRequired,
+      },
+    );
+
     const userStories = store.metadata.stories;
     const currentSearchedStory = useRef(null);
 
@@ -29,18 +41,6 @@ export const OpenModalBody: FC<Props> = observer(
 
     const userHaveSavedStories =
       store.metadata.stories.length !== 0;
-
-    useHotkeys(
-      'enter',
-      (e) => {
-        e.stopPropagation();
-        currentSearchedStory.current.click();
-      },
-      {
-        enableOnTags: ['INPUT'],
-        enabled: !store.metadata.confirmationRequired,
-      },
-    );
 
     return (
       <div>
