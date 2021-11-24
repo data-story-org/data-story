@@ -54,16 +54,17 @@ export const BaseStoryWidgetModal: FC<Props> = observer(
       }
     }, [defaultStory]);
 
-    const isStoryBeingEdited = store.metadata.stories.some(
-      (exstStory) => exstStory.name === story.name,
-    );
-
     const [
       saveConfirmationRequired,
       setSaveConfirmationRequired,
     ] = useState(false);
 
     const handleSave = (e) => {
+      const isStoryBeingEdited =
+        store.metadata.stories.some(
+          (exstStory) => exstStory.name === story.name,
+        );
+
       isStoryBeingEdited
         ? setSaveConfirmationRequired(true)
         : storySaver(story);
