@@ -34,13 +34,17 @@ export const deleteStory = (
   try {
     store.metadata.client.delete(storyName);
 
-      store.setStories(withoutDeletedStory);
-    } catch (e) {
-      alert(
-        `Could not delete story ${storyName}. See console for details.`,
+    const withoutDeletedStory =
+      store.metadata.stories.filter(
+        (story) => story.name !== storyName,
       );
-      console.error(e);
-    }
+
+    store.setStories(withoutDeletedStory);
+  } catch (e) {
+    alert(
+      `Could not delete story ${storyName}. See console for details.`,
+    );
+    console.error(e);
   }
 };
 
@@ -104,6 +108,7 @@ export const editStory = async (
       name: story.name,
       description: story.description,
       tags: story.tags,
+      diagram: story.diagram,
     };
 
     store.setStories([...stories, updatedStory]);
