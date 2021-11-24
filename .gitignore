@@ -68,3 +68,5 @@ jspm_packages/
 /dist
 /docs
 /lib
+
+public/render.js.LICENCE.txt
