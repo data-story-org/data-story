@@ -5,6 +5,7 @@ import React, {
   FC,
   SetStateAction,
   useEffect,
+  useRef,
   useState,
 } from 'react';
 import { Store } from '../../../lib/store';
@@ -58,6 +59,11 @@ export const StoryWidgetBody: FC<Props> = observer(
       },
     );
 
+    const nameInput = useRef(null);
+    useEffect(() => {
+      nameInput.current.focus();
+    }, []);
+
     useEffect(() => {
       setPossibleMatches({
         ...possibleMatches,
@@ -89,6 +95,7 @@ export const StoryWidgetBody: FC<Props> = observer(
               className={fieldStyle}
               placeholder="descriptive story name"
               value={story.name}
+              ref={nameInput}
             />
             {showMatches &&
               possibleMatches.byName.length > 0 && (
