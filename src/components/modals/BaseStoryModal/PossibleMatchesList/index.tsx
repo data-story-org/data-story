@@ -29,7 +29,13 @@ export const PossibleMatchesList: FC<Props> = ({
 
           return (
             <li
-              className="px-4 py-2 border-b border-gray-200 hover:bg-gray-100 hover:text-indigo-700 hover:text-gray-900"
+              className={`px-4 py-2 border-b border-gray-200 hover:bg-gray-100 hover:text-indigo-700 hover:text-gray-900 ${
+                i === 0
+                  ? 'rounded-t-lg'
+                  : i === possibleMatches.length - 1
+                  ? 'rounded-b-lg'
+                  : 'rounded-none'
+              }`}
               key={`${possibleMatch.name}-${i}`}
               onClick={clickHandler}
             >
