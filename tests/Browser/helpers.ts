@@ -21,12 +21,12 @@ export const puppeteerConfig = {
 };
 
 export const confirmDialog = async (page: Page) => {
-  await page.waitForTimeout(1000);
-
-  await page.waitForSelector('div#confirm-dialog', {
-    visible: true,
-  });
-  await expect(page).toClick('button#confirm-button');
+  const confirmDialog = await expect(page).toMatchElement(
+    'div#confirm-dialog',
+  );
+  await expect(confirmDialog).toClick(
+    'button#confirm-button',
+  );
 };
 
 export const pageSetup = async (page: Page) => {
