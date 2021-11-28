@@ -20,7 +20,11 @@ export const puppeteerConfig = {
   ],
 };
 
-export const pageSetup = async (page) => {
+export const confirmDialog = async (page: Page) => {
+  await expect(page).toClick('button#confirm-button');
+};
+
+export const pageSetup = async (page: Page) => {
   await page.setViewport({ width: 1366, height: 768 });
   await page.setUserAgent('UA-TEST');
   await page.goto(

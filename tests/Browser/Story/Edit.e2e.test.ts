@@ -4,6 +4,7 @@ import { sample } from 'lodash';
 import puppeteer from 'puppeteer';
 import {
   addNode,
+  confirmDialog,
   generateRandomString,
   openModal,
   pageSetup,
@@ -55,6 +56,7 @@ describe('Stories editing', () => {
       storyDescNew,
       storyTagsNew,
     );
+
 
     await expect(page).toMatch(storyNameNew);
     await expect(page).toMatch(storyDescNew);
