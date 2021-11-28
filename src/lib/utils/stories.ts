@@ -92,9 +92,14 @@ export const saveStory = async (
   }
 };
 
+type EditStoryOptions = {
+  noDiagramSaving?: boolean;
+};
+
 export const editStory = async (
   store: Store,
   story: Story,
+  options: EditStoryOptions = { noDiagramSaving: false },
 ) => {
   try {
     const [editedStories, stories] = partition(
@@ -103,13 +108,20 @@ export const editStory = async (
     );
 
     const storyToEdit = editedStories[0];
-    const updatedStory = {
-      ...storyToEdit,
-      name: story.name,
-      description: story.description,
-      tags: story.tags,
-      diagram: story.diagram,
-    };
+    const updatedStory = options.noDiagramSaving
+      ? {
+          ...storyToEdit,
+          name: story.name,
+          description: story.description,
+          tags: story.tags,
+        }
+      : {
+          ...storyToEdit,
+          name: story.name,
+          description: story.description,
+          tags: story.tags,
+          diagram: story.diagram,
+        };
 
     store.setStories([...stories, updatedStory]);
 
