@@ -29,6 +29,8 @@ export const DataStoryWidget = observer<
     ref,
   ) => {
     const [isOpen, setIsOpen] = useState(false);
+    const [doDiagramSaving, setDoDiagramSaving] =
+      useState(false);
 
     const openModal = () => {
       store.setDiagramLocked(true);
@@ -38,6 +40,11 @@ export const DataStoryWidget = observer<
     const closeModal = () => {
       store.setDiagramLocked(false);
       setIsOpen(false);
+    };
+
+    const handleModalSave = () => {
+      setDoDiagramSaving(true);
+      openModal();
     };
 
     return (
@@ -56,6 +63,7 @@ export const DataStoryWidget = observer<
           {!isStoryDemo && (
             <DataStoryWidgetActions
               onEdit={openModal}
+              onSave={handleModalSave}
               store={store}
               story={story}
             />
@@ -80,6 +88,7 @@ export const DataStoryWidget = observer<
             store={store}
             defaultStory={story}
             handleCancel={closeModal}
+            saveDiagram={doDiagramSaving}
           />
         </Modal>
       </div>

@@ -8,16 +8,22 @@ import {
 } from '../../../lib/types';
 import { BaseStoryWidgetModal } from '../BaseStoryModal';
 import { SaveStoryI } from '../BaseStoryModal/SaveStoryI';
-import { saveStory } from '../../../lib/utils';
+import { editStory } from '../../../lib/utils';
 
 interface Props {
   store: Store;
   defaultStory: GenericStory;
   handleCancel: BaseEventHandler;
+  saveDiagram?: boolean;
 }
 
 export const StoryWidgetModal: FC<Props> = observer(
-  ({ store, defaultStory, handleCancel }) => {
+  ({
+    store,
+    defaultStory,
+    handleCancel,
+    saveDiagram = false,
+  }) => {
     const handleStoryEdit = async (story: SaveStoryI) => {
       const dataStory = new DataStory(
         story.name,
@@ -26,7 +32,9 @@ export const StoryWidgetModal: FC<Props> = observer(
         store.getModel().serialize(),
       );
 
-      await saveStory(store, dataStory);
+      await editStory(store, dataStory, {
+        noDiagramSaving: !saveDiagram,
+      });
       handleCancel(1);
     };
 
