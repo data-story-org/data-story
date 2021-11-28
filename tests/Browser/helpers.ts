@@ -22,10 +22,10 @@ export const puppeteerConfig = {
 
 export const confirmDialog = async (page: Page) => {
   const confirmDialog = await expect(page).toMatchElement(
-    'div#confirm-dialog',
+    '[aria-label="Confirm Modal"]',
   );
   await expect(confirmDialog).toClick(
-    'button#confirm-button',
+    '[aria-label="Confirm"]',
   );
 };
 
