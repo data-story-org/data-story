@@ -24,9 +24,17 @@ export const confirmDialog = async (page: Page) => {
   const confirmDialog = await expect(page).toMatchElement(
     '[aria-label="Confirm Modal"]',
   );
-  await expect(confirmDialog).toClick(
-    '[aria-label="Confirm"]',
+
+  await page.waitForSelector(
+    '[aria-label="Confirm Modal"]',
+    { visible: true },
   );
+
+  await page.keyboard.press('Tab');
+  await page.keyboard.press('Enter');
+  // await expect(confirmDialog).toClick(
+  //   '[aria-label="Confirm"]',
+  // );
 };
 
 export const pageSetup = async (page: Page) => {
