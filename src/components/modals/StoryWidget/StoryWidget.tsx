@@ -8,7 +8,7 @@ import {
 } from '../../../lib/types';
 import { BaseStoryWidgetModal } from '../BaseStoryModal';
 import { SaveStoryI } from '../BaseStoryModal/SaveStoryI';
-import { editStory } from '../../../lib/utils';
+import { editStory, saveStory } from '../../../lib/utils';
 
 interface Props {
   store: Store;
@@ -32,9 +32,20 @@ export const StoryWidgetModal: FC<Props> = observer(
         store.getModel().serialize(),
       );
 
-      await editStory(store, dataStory, {
-        noDiagramSaving: !saveDiagram,
-      });
+      const storyBeingEdited =
+        defaultStory.name === story.name;
+
+      storyBeingEdited
+        ? await editStory(store, dataStory, {
+            noDiagramSaving: !saveDiagram,
+          })
+        : await saveStory(store, {
+            ...dataStory,
+            diagram: store.metadata.stories.find(
+              (story) => story.name === defaultStory.name,
+            ).diagram,
+          });
+
       handleCancel(1);
     };
 
