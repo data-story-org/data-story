@@ -44,28 +44,28 @@ describe('Stories editing', () => {
 
     await expect(story).toClick('i.fa-pen-square');
 
-    const [storyNameNew, storyDescNew, storyTagsNew] = [
-      generateRandomString(),
+    const [storyDescNew, storyTagsNew] = [
       generateRandomString(),
       [...storyTags, generateRandomString()],
     ];
 
     await saveStory(
       page,
-      storyNameNew,
+      storyName,
       storyDescNew,
       storyTagsNew,
     );
 
+    await confirmDialog(page);
 
-    await expect(page).toMatch(storyNameNew);
+    await expect(page).toMatch(storyName);
     await expect(page).toMatch(storyDescNew);
     for (const tag of storyTags) {
       await expect(page).toMatch(tag);
     }
 
     await expect(page).toClick('div#data-story', {
-      text: storyNameNew,
+      text: storyName,
     });
 
     for (const node of storyNodes) {
