@@ -27,6 +27,6 @@ jobs:
       - name: Commit changes
         uses: EndBug/add-and-commit@v7
         with:
-          message: Bundle latest gui
+          message: Bundle latest data-story
           default_author: github_actions
           add: 'public --force'

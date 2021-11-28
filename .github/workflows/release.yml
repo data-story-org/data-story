@@ -7,7 +7,7 @@ on:
 
 jobs:
   release_core_on_npm:
-    name: 'Build and release gui'
+    name: 'Build and release data-story'
     runs-on: 'ubuntu-latest'
     steps:
       - uses: actions/checkout@v2

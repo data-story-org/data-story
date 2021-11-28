@@ -1,7 +1,7 @@
 {
-  "name": "@data-story-org/gui",
+  "name": "@data-story-org/data-story",
   "description": "![tests](https://github.com/ajthinking/data-story/workflows/tests/badge.svg) ![version](https://img.shields.io/packagist/v/ajthinking/data-story?color=blue) ![proofofconcept](https://img.shields.io/badge/proof%20of%20concept-gold)",
-  "version": "0.0.22",
+  "version": "0.0.26",
   "main": "lib/cjs/src/index.js",
   "module": "lib/esm/src/index.js",
   "types": "lib/types/src/index.d.ts",
@@ -53,7 +53,7 @@
     "@emotion/react": "^11.4.1",
     "@emotion/styled": "^11.3.0",
     "@projectstorm/react-diagrams": "^6.6.1",
-    "axios": "^0.21",
+    "axios": "^0.24",
     "dagre": "^0.8.5",
     "flatted": "^3.2.2",
     "fuse.js": "^6.4.6",
@@ -67,7 +67,7 @@
     "react-modal": "^3.12.1",
     "react-spinners": "^0.11.0",
     "react-syntax-highlighter": "^15.4.4",
-    "react-toastify": "^7.0.4",
+    "react-toastify": "^8.1.0",
     "resize-observer-polyfill": "^1.5.1"
   },
   "peerDependencies": {
@@ -112,7 +112,7 @@
     "gh-pages": "^3.2.3",
     "jest": "^27.0.6",
     "jest-cli": "^27.0.6",
-    "jest-puppeteer": "^5.0.4",
+    "jest-puppeteer": "^6.0.0",
     "laravel-mix": "^6.0.28",
     "prettier": "^2.4.1",
     "puppeteer": "^10.2.0",
